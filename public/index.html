@@ -7,17 +7,72 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Nyrix - Empowering businesses with custom AI agents and cutting-edge automation solutions. Transform your operations with intelligent technology. Contact us at sarim@nyrix.co"
+      content="Nyrix - Modern Marketing Solutions"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <title>Nyrix - AI Agents & Automation Solutions</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+              <title>Nyrix - Modern Marketing Solutions</title>
+          
+          <!-- Google tag (gtag.js) -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RVE61MDWE"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-9RVE61MDWE');
+          </script>
+          
+                     <!-- Cookiebot Consent Management -->
+           <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="fbf4abd4-c027-4c7f-891a-6ed2c217f1be" type="text/javascript" async></script>
+           
+           <!-- Fallback Cookie Consent -->
+           <script>
+             // Simple fallback cookie consent
+             if (!document.cookie.includes('cookieconsent')) {
+               setTimeout(() => {
+                 const banner = document.createElement('div');
+                 banner.style.cssText = `
+                   position: fixed;
+                   bottom: 0;
+                   left: 0;
+                   right: 0;
+                   background: #1a1a1a;
+                   color: white;
+                   padding: 20px;
+                   text-align: center;
+                   z-index: 10000;
+                   border-top: 1px solid #333;
+                 `;
+                 banner.innerHTML = `
+                   <p>We use cookies to enhance your experience. 
+                   <button onclick="acceptCookies()" style="background: #8b5cf6; color: white; border: none; padding: 10px 20px; margin-left: 10px; cursor: pointer;">Accept</button>
+                   <button onclick="declineCookies()" style="background: transparent; color: white; border: 1px solid #666; padding: 10px 20px; margin-left: 10px; cursor: pointer;">Decline</button>
+                   </p>
+                 `;
+                 document.body.appendChild(banner);
+               }, 2000);
+             }
+             
+             function acceptCookies() {
+               document.cookie = 'cookieconsent=accepted; max-age=31536000; path=/';
+               document.querySelector('div[style*="position: fixed"]').remove();
+             }
+             
+             function declineCookies() {
+               document.cookie = 'cookieconsent=declined; max-age=31536000; path=/';
+               document.querySelector('div[style*="position: fixed"]').remove();
+             }
+           </script>
+        </head>
+     <body>
+     <noscript>You need to enable JavaScript to run this app.</noscript>
+     <div id="root"></div>
+   </body>
 </html> 

@@ -35,41 +35,32 @@ const Header = () => {
         <div className="header-content">
           <motion.div
             className="logo"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             <img 
               src="/logo icon no-bg.png" 
-              alt="Nyrix Logo" 
+              alt="N.JEY Logo" 
               className="logo-icon"
             />
           </motion.div>
 
-          <nav className="nav-desktop">
-            <ul className="nav-links">
-              {['services', 'features', 'about', 'contact'].map((item) => (
-                <li key={item}>
-                  <motion.button
-                    className="nav-link"
-                    onClick={() => scrollToSection(item)}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {item.charAt(0).toUpperCase() + item.slice(1)}
-                  </motion.button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <motion.button
-            className="cta-button btn-primary"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => scrollToSection('contact')}
-          >
-            Get Started
-          </motion.button>
+                           <nav className="nav-desktop">
+                   <ul className="nav-links">
+                     {['HOME', 'VEEKO', 'ABOUT', 'SERVICES', 'CONTACTS'].map((item) => (
+                       <li key={item}>
+                         <motion.button
+                           className="nav-link"
+                           onClick={() => scrollToSection(item.toLowerCase())}
+                           whileHover={{ scale: 1.05 }}
+                           whileTap={{ scale: 0.95 }}
+                         >
+                           {item}
+                         </motion.button>
+                       </li>
+                     ))}
+                   </ul>
+                 </nav>
 
           <button
             className="mobile-menu-toggle"
@@ -80,29 +71,29 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <motion.div
-        className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ 
-          opacity: isMobileMenuOpen ? 1 : 0, 
-          y: isMobileMenuOpen ? 0 : -20 
-        }}
-        transition={{ duration: 0.3 }}
-      >
-        <nav className="mobile-nav">
-          {['services', 'features', 'about', 'contact'].map((item) => (
-            <motion.button
-              key={item}
-              className="mobile-nav-link"
-              onClick={() => scrollToSection(item)}
-              whileHover={{ x: 10 }}
-            >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
-            </motion.button>
-          ))}
-        </nav>
-      </motion.div>
+                   {/* Mobile Menu */}
+             <motion.div
+               className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
+               initial={{ opacity: 0, y: -20 }}
+               animate={{ 
+                 opacity: isMobileMenuOpen ? 1 : 0, 
+                 y: isMobileMenuOpen ? 0 : -20 
+               }}
+               transition={{ duration: 0.3 }}
+             >
+               <nav className="mobile-nav">
+                 {['HOME', 'VEEKO', 'ABOUT', 'SERVICES', 'CONTACTS'].map((item) => (
+                   <motion.button
+                     key={item}
+                     className="mobile-nav-link"
+                     onClick={() => scrollToSection(item.toLowerCase())}
+                     whileHover={{ x: 10 }}
+                   >
+                     {item}
+                   </motion.button>
+                 ))}
+               </nav>
+             </motion.div>
     </motion.header>
   );
 };

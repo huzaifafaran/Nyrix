@@ -1,11 +1,37 @@
 .about {
   position: relative;
-  background: linear-gradient(180deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+  background: var(--primary-dark);
 }
 
 .about-header {
   text-align: center;
   margin-bottom: 4rem;
+}
+
+.section-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.accent-text {
+  color: var(--accent-purple);
 }
 
 .about-content {
@@ -22,15 +48,17 @@
 }
 
 .story-text h3 {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .story-text p {
-  font-size: 1.1rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
 }
@@ -59,19 +87,17 @@
 
 .shape {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  background: var(--gradient-primary);
-  border-radius: 12px;
-  opacity: 0.7;
+  width: 30px;
+  height: 30px;
+  background: var(--accent-purple);
+  border-radius: 4px;
+  opacity: 0.3;
 }
 
 .shape:nth-child(1) { top: 20%; left: 10%; }
 .shape:nth-child(2) { top: 10%; right: 20%; border-radius: 50%; }
-.shape:nth-child(3) { bottom: 30%; left: 20%; width: 50px; height: 50px; }
-.shape:nth-child(4) { bottom: 20%; right: 15%; border-radius: 50%; width: 35px; height: 35px; }
-.shape:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; }
-.shape:nth-child(6) { top: 70%; right: 30%; width: 30px; height: 30px; }
+.shape:nth-child(3) { bottom: 30%; left: 20%; width: 40px; height: 40px; }
+.shape:nth-child(4) { bottom: 20%; right: 15%; border-radius: 50%; width: 25px; height: 25px; }
 
 .about-stats {
   display: grid;
@@ -84,18 +110,21 @@
   align-items: center;
   gap: 1.5rem;
   padding: 2rem;
-  border-radius: 16px;
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  background: transparent;
   transition: var(--transition-smooth);
 }
 
+.stat-card:hover {
+  border-color: var(--accent-purple);
+}
+
 .stat-icon {
-  width: 60px;
-  height: 60px;
-  background: var(--gradient-primary);
-  border-radius: 16px;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border: 1px solid var(--accent-purple);
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,9 +132,9 @@
 }
 
 .stat-icon svg {
-  width: 28px;
-  height: 28px;
-  color: white;
+  width: 24px;
+  height: 24px;
+  color: var(--accent-purple);
 }
 
 .stat-content {
@@ -114,15 +143,18 @@
 }
 
 .stat-number {
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 1.75rem;
+  font-weight: 700;
   margin-bottom: 0.25rem;
+  color: var(--text-primary);
 }
 
 .stat-label {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .about-values {
@@ -130,10 +162,12 @@
 }
 
 .values-title {
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 2rem;
+  font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .values-grid {
@@ -145,38 +179,29 @@
 
 .value-card {
   position: relative;
-  padding: 2.5rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
+  padding: 2rem;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
   transition: var(--transition-smooth);
   text-align: left;
 }
 
 .value-card:hover {
-  transform: translateY(-5px);
   border-color: var(--accent-purple);
-}
-
-.value-accent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  border-radius: 20px 20px 0 0;
+  transform: translateY(-2px);
 }
 
 .value-title {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .value-description {
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.6;
   color: var(--text-secondary);
 }
@@ -209,10 +234,10 @@
   }
   
   .value-card {
-    padding: 2rem;
+    padding: 1.5rem;
   }
   
   .values-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 } 

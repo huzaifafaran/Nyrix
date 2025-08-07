@@ -7,34 +7,33 @@
   padding: 0;
 }
 
-/* Custom Properties for Exotic Theme */
+/* Custom Properties for Futuristic Dark Theme */
 :root {
-  /* Dark exotic colors */
+  /* Dark futuristic colors with AI-inspired purples */
   --primary-dark: #0a0a0a;
-  --secondary-dark: #1a1a1a;
+  --secondary-dark: #111111;
   --accent-purple: #8b5cf6;
-  --accent-cyan: #06b6d4;
-  --accent-pink: #ec4899;
-  --accent-orange: #f97316;
+  --accent-purple-bright: #a855f7;
+  --accent-purple-light: #c084fc;
   --text-primary: #ffffff;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
-  --border-subtle: #27272a;
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-secondary: #cccccc;
+  --text-muted: #888888;
+  --border-subtle: #333333;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #ec4899 100%);
-  --gradient-secondary: linear-gradient(135deg, #f97316 0%, #8b5cf6 100%);
-  --gradient-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f23 100%);
+  --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  --gradient-bg: linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
   
   /* Shadows */
-  --shadow-glow: 0 0 20px rgba(139, 92, 246, 0.3);
-  --shadow-intense: 0 0 40px rgba(139, 92, 246, 0.5);
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(139, 92, 246, 0.2);
+  --shadow-intense: 0 0 40px rgba(139, 92, 246, 0.4);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.6);
   
-  /* Typography */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography - Clean Sans-serif */
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   
   /* Transitions */
@@ -49,8 +48,8 @@ html {
 }
 
 body {
-  font-family: var(--font-primary);
-  background: var(--gradient-bg);
+  font-family: var(--font-body);
+  background: var(--primary-dark);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -65,7 +64,7 @@ body {
 
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -74,11 +73,11 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--accent-purple);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-cyan);
+  background: var(--accent-purple-bright);
 }
 
 /* Utility Classes */
@@ -104,22 +103,22 @@ body {
 }
 
 .hover-lift:hover {
-  transform: translateY(-8px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-intense);
 }
 
 /* Animation Keyframes */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes pulse-glow {
   0%, 100% { 
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
   }
   50% { 
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.7);
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
   }
 }
 
@@ -142,68 +141,112 @@ body {
   animation: gradient-shift 4s ease infinite;
 }
 
-/* Typography Styles */
+/* Typography Styles - Matching the reference design */
 .text-hero {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 12vw, 8rem);
   font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
 }
 
 .text-subtitle {
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 400;
   opacity: 0.9;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .text-body {
-  font-size: 1.125rem;
-  line-height: 1.7;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
   opacity: 0.8;
+  font-weight: 400;
 }
 
-/* Button Styles */
-.btn-primary {
-  padding: 1rem 2rem;
-  background: var(--gradient-primary);
-  border: none;
-  border-radius: 12px;
-  color: white;
+.text-heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.text-heading-large {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.text-heading-medium {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.text-heading-small {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
   font-weight: 600;
-  font-size: 1.1rem;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+/* Button Styles - Matching the reference */
+.btn-primary {
+  font-family: var(--font-heading);
+  padding: 1rem 2.5rem;
+  background: transparent;
+  border: 1px solid var(--text-primary);
+  border-radius: 0;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .btn-primary:hover {
-  transform: scale(1.05);
-  box-shadow: var(--shadow-intense);
+  background: var(--text-primary);
+  color: var(--primary-dark);
+  transform: scale(1.02);
 }
 
 .btn-secondary {
-  padding: 1rem 2rem;
+  font-family: var(--font-heading);
+  padding: 1rem 2.5rem;
   background: transparent;
-  border: 2px solid var(--glass-border);
-  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  border-radius: 0;
   color: var(--text-primary);
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 500;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: var(--transition-smooth);
-  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .btn-secondary:hover {
   border-color: var(--accent-purple);
-  background: var(--glass-bg);
-  transform: scale(1.05);
+  color: var(--accent-purple);
+  transform: scale(1.02);
 }
 
 /* Container Styles */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -238,6 +281,6 @@ body {
   }
   
   .text-hero {
-    font-size: clamp(2.5rem, 10vw, 4rem);
+    font-size: clamp(3rem, 15vw, 5rem);
   }
 } 

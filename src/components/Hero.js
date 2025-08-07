@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Zap, Bot, Cog } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Bot, Cog, Star } from 'lucide-react';
 import './Hero.css';
 
 const Hero = () => {
-  const [currentWord, setCurrentWord] = useState(0);
-  const words = ['AI Agents', 'Automation', 'Innovation', 'Excellence'];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWord((prev) => (prev + 1) % words.length);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -39,10 +28,11 @@ const Hero = () => {
   };
 
   const floatingIcons = [
-    { Icon: Bot, delay: 0, x: 100, y: 50 },
-    { Icon: Zap, delay: 1, x: -80, y: 80 },
-    { Icon: Cog, delay: 2, x: 120, y: -60 },
-    { Icon: Sparkles, delay: 1.5, x: -100, y: -40 },
+    { Icon: Bot, delay: 0, x: 120, y: -100 },
+    { Icon: Zap, delay: 1, x: 100, y: -50 },
+    { Icon: Cog, delay: 2, x: 140, y: 80 },
+    { Icon: Sparkles, delay: 1.5, x: -80, y: -80 },
+    { Icon: Star, delay: 0.5, x: -100, y: 60 },
   ];
 
   return (
@@ -50,6 +40,8 @@ const Hero = () => {
       <div className="hero-background">
         <div className="hero-grid"></div>
         <div className="hero-glow"></div>
+        <div className="hero-blur"></div>
+        <div className="hero-blur-2"></div>
       </div>
 
       <div className="container">
@@ -62,118 +54,116 @@ const Hero = () => {
           <motion.div className="hero-text" variants={itemVariants}>
             <motion.div
               className="hero-badge"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
+              initial={{ opacity: 0, scale: 0.8, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8, ease: 'easeOut' }}
             >
               <Sparkles className="badge-icon" />
-              <span>Transforming Business Intelligence</span>
+              <span>Beyond Analytics, Predictive Intelligence.</span>
             </motion.div>
 
-            <h1 className="hero-title">
-              <span className="title-main">Unleash the Power of</span>
-              <motion.span
-                className="title-dynamic gradient-text"
-                key={currentWord}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-              >
-                {words[currentWord]}
-              </motion.span>
-              <span className="title-main">with Nyrix</span>
-            </h1>
+            <motion.h1 
+              className="hero-title"
+              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.8, duration: 1, ease: 'easeOut' }}
+            >
+              <span className="title-dynamic">NYRIX</span>
+            </motion.h1>
 
             <motion.p 
               className="hero-subtitle"
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1, duration: 0.8, ease: 'easeOut' }}
             >
-              We craft bespoke AI agents and cutting-edge automation solutions that 
-              revolutionize how businesses operate. From intelligent workflows to 
-              predictive analytics, we transform your vision into reality.
+              Decision Sciences that harness operational intelligence with agentic decision-making, empowering businesses to move beyond traditional analytics and into a new era of proactive, autonomous operations. Our expertise lies in transforming complex data into actionable insights, enabling systems to<br />make intelligent, real-time decisions.
             </motion.p>
 
             <motion.div 
               className="hero-cta"
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.4, duration: 0.8, ease: 'easeOut' }}
             >
               <motion.button
                 className="cta-primary btn-primary"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <span>Start Your Transformation</span>
+                <span>LET'S GO</span>
                 <ArrowRight className="cta-icon" />
               </motion.button>
-
-              <motion.button
-                className="cta-secondary btn-secondary"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Watch Demo
-              </motion.button>
-            </motion.div>
-
-            <motion.div 
-              className="hero-stats"
-              variants={itemVariants}
-            >
-              {[
-                { number: '500+', label: 'AI Agents Deployed' },
-                { number: '99.9%', label: 'Uptime Guarantee' },
-                { number: '50%', label: 'Average Cost Reduction' },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  className="stat-item"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <span className="stat-number gradient-text">{stat.number}</span>
-                  <span className="stat-label">{stat.label}</span>
-                </motion.div>
-              ))}
             </motion.div>
           </motion.div>
 
-          <motion.div className="hero-visual" variants={itemVariants}>
+          <motion.div 
+            className="hero-visual" 
+            initial={{ opacity: 0, scale: 0.8, x: 50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ delay: 1.2, duration: 1.2, ease: 'easeOut' }}
+          >
             <div className="visual-container">
               <motion.div
                 className="central-orb"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 360],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: 'linear',
-                }}
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 2, duration: 1.5, ease: 'easeOut' }}
               >
-                <div className="orb-core"></div>
-                <div className="orb-ring"></div>
-                <div className="orb-ring-outer"></div>
+                <motion.div 
+                  className="orb-core"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                    rotate: [0, 360],
+                  }}
+                  transition={{
+                    duration: 30,
+                    repeat: Infinity,
+                    ease: 'linear',
+                    delay: 3.5,
+                  }}
+                >
+                  <Star className="orb-icon" />
+                </motion.div>
+                <motion.div 
+                  className="orb-ring"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 2.3, duration: 1, ease: 'easeOut' }}
+                ></motion.div>
+                <motion.div 
+                  className="orb-ring-outer"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 2.6, duration: 1, ease: 'easeOut' }}
+                ></motion.div>
               </motion.div>
 
               {floatingIcons.map(({ Icon, delay, x, y }, index) => (
                 <motion.div
                   key={index}
                   className="floating-icon"
-                  style={{ '--x': `${x}px`, '--y': `${y}px` }}
-                  initial={{ opacity: 0, scale: 0 }}
+                  style={{ 
+                    left: `calc(50% + ${x}px)`, 
+                    top: `calc(50% + ${y}px)`,
+                    transform: 'translate(-50%, -50%)'
+                  }}
+                  initial={{ opacity: 0, scale: 0, rotate: -90 }}
                   animate={{ 
                     opacity: 1, 
                     scale: 1,
+                    rotate: 0,
                     y: [0, -10, 0],
                   }}
                   transition={{
-                    delay: delay,
+                    delay: 3 + (index * 0.2),
                     duration: 0.8,
+                    rotate: { duration: 0.6, ease: 'easeOut' },
                     y: {
                       duration: 3,
                       repeat: Infinity,
                       ease: 'easeInOut',
+                      delay: 3.8 + (index * 0.2),
                     },
                   }}
                 >
@@ -182,14 +172,14 @@ const Hero = () => {
               ))}
 
               <div className="connecting-lines">
-                {Array.from({ length: 8 }, (_, i) => (
+                {Array.from({ length: 6 }, (_, i) => (
                   <motion.div
                     key={i}
                     className="line"
-                    style={{ '--rotation': `${i * 45}deg` }}
+                    style={{ '--rotation': `${i * 60}deg` }}
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 0.3 }}
-                    transition={{ delay: 2 + i * 0.1, duration: 0.8 }}
+                    animate={{ scale: 1, opacity: 0.2 }}
+                    transition={{ delay: 3.5 + (i * 0.1), duration: 0.8 }}
                   />
                 ))}
               </div>
@@ -200,18 +190,18 @@ const Hero = () => {
 
       <motion.div
         className="scroll-indicator"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 3, duration: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 4, duration: 1 }}
       >
         <motion.div
           className="scroll-arrow"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, delay: 5 }}
         >
           <ArrowRight className="scroll-icon" />
         </motion.div>
-        <span>Discover More</span>
+        <span>DISCOVER MORE</span>
       </motion.div>
     </section>
   );

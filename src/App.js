@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import Veeko from './components/Veeko'; // Commented out
 import Services from './components/Services';
-import Features from './components/Features';
+// import Features from './components/Features'; // Commented out
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -12,11 +13,13 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <ParticleBackground />
+      {/* <ParticleBackground /> */}
       <Header />
       <Hero />
+      <Veeko/>
+      {/* <Veeko /> */} {/* Commented out */}
       <Services />
-      <Features />
+      {/* <Features /> */} {/* Commented out */}
       <About />
       <Contact />
       <Footer />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Bot, Cog, Brain, Zap, Users, BarChart3 } from 'lucide-react';
+import { Bot, Cog, Brain, Zap, Users, BarChart3, TrendingUp, Network } from 'lucide-react';
 import './Services.css';
 
 const Services = () => {
@@ -20,9 +20,9 @@ const Services = () => {
     },
     {
       icon: Cog,
-      title: 'Workflow Automation',
-      description: 'Streamline your operations with sophisticated automation that eliminates repetitive tasks and accelerates productivity.',
-      features: ['Process Optimization', 'Cross-System Integration', 'Real-time Monitoring', 'Scalable Architecture'],
+      title: 'System Intelligence Architecture',
+      description: 'Build foundational intelligence into your business systems with modular, scalable architectures that adapt and evolve with you.',
+      features: ['Context-aware Decision Nodes', 'Plug & Play Modules', 'Multi-Agent Orchestration', 'No-Code Rule Mapping'],
       gradient: 'linear-gradient(135deg, #06b6d4 0%, #ec4899 100%)',
     },
     {
@@ -40,17 +40,17 @@ const Services = () => {
       gradient: 'linear-gradient(135deg, #f97316 0%, #8b5cf6 100%)',
     },
     {
-      icon: Users,
-      title: 'Team Collaboration',
-      description: 'Enhance team productivity with AI-driven collaboration tools that facilitate seamless communication and project management.',
-      features: ['Smart Scheduling', 'Automated Reporting', 'Team Analytics', 'Integration Hub'],
+      icon: TrendingUp,
+      title: 'Decision Science-as-a-Service (DSaaS)',
+      description: 'Apply tailored decision science frameworks to key areas of your business, from pricing to funnel flows with ongoing optimization baked in.',
+      features: ['Continuous Feedback Loops', 'Funnel & Offer Optimization', 'A/B Testing Logic Built In', 'AI-Driven Scenario Modeling'],
       gradient: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
     },
     {
-      icon: BarChart3,
-      title: 'Performance Optimization',
-      description: 'Continuously improve your business performance with AI that identifies bottlenecks and suggests optimizations.',
-      features: ['Performance Metrics', 'Optimization Suggestions', 'Trend Analysis', 'ROI Tracking'],
+      icon: Network,
+      title: 'Cognitive Ops Layer',
+      description: 'We turn workflows into thinking systems, enabling dynamic collaboration between AI agents and humans with shared context and purpose.',
+      features: ['Shared Agent-Human Logs', 'Contextual Decision Trails', 'Adaptive Ops Layer', 'Role-Based Intelligence'],
       gradient: 'linear-gradient(135deg, #06b6d4 0%, #f97316 100%)',
     },
   ];

@@ -156,10 +156,16 @@
 .cta-button {
   font-size: 1.1rem;
   padding: 1.25rem 2.5rem;
+  display: inline-block;
+  margin: 0 auto;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .features-header {
+    display: none; /* Hide "Built for the Future" section on mobile */
+  }
+  
   .features-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;

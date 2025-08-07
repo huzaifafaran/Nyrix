@@ -154,7 +154,7 @@ Nyrix specializes in:
 
 ## 📞 Contact Information
 
-- **Email**: sarim@nyrix.co
+- **Email**: hello@nyrix.co
 - **Phone**: +92 333 1999263
 - **Location**: Karachi, Pakistan
 - **Social**: Twitter, LinkedIn, GitHub

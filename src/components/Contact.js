@@ -39,7 +39,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email Us',
-      content: 'sarim@nyrix.co',
+              content: 'hello@nyrix.co',
       description: 'Get in touch for project inquiries',
     },
     {
