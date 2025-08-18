@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import './Header.css';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +39,7 @@ const Header = () => {
             className="logo"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           >
             <img 
               src="/logo icon no-bg.png" 
@@ -45,13 +48,27 @@ const Header = () => {
             />
           </motion.div>
 
-                           <nav className="nav-desktop">
+                         <nav className="nav-desktop">
                    <ul className="nav-links">
-                     {['HOME', 'VEEKO', 'ABOUT', 'SERVICES', 'CONTACTS'].map((item) => (
+                     {['HOME', 'ABOUT', 'VEEKO', 'SERVICES', 'AGENTS', 'DEMO'].map((item) => (
                        <li key={item}>
                          <motion.button
                            className="nav-link"
-                           onClick={() => scrollToSection(item.toLowerCase())}
+                           onClick={() => {
+                             if (item === 'DEMO') {
+                               navigate('/');
+                               setTimeout(() => scrollToSection('contact'), 50);
+                             } else if (item === 'HOME') {
+                               navigate('/');
+                               window.scrollTo({ top: 0, behavior: 'smooth' });
+                             } else if (item === 'AGENTS') {
+                               navigate('/agents');
+                               setIsMobileMenuOpen(false);
+                             } else {
+                               navigate('/');
+                               setTimeout(() => scrollToSection(item.toLowerCase()), 50);
+                             }
+                           }}
                            whileHover={{ scale: 1.05 }}
                            whileTap={{ scale: 0.95 }}
                          >
@@ -82,11 +99,25 @@ const Header = () => {
                transition={{ duration: 0.3 }}
              >
                <nav className="mobile-nav">
-                 {['HOME', 'VEEKO', 'ABOUT', 'SERVICES', 'CONTACTS'].map((item) => (
+                 {['HOME', 'ABOUT', 'VEEKO', 'SERVICES', 'AGENTS', 'DEMO'].map((item) => (
                    <motion.button
                      key={item}
                      className="mobile-nav-link"
-                     onClick={() => scrollToSection(item.toLowerCase())}
+                     onClick={() => {
+                       if (item === 'DEMO') {
+                         navigate('/');
+                         setTimeout(() => scrollToSection('contact'), 50);
+                       } else if (item === 'HOME') {
+                         navigate('/');
+                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                       } else if (item === 'AGENTS') {
+                         navigate('/agents');
+                         setIsMobileMenuOpen(false);
+                       } else {
+                         navigate('/');
+                         setTimeout(() => scrollToSection(item.toLowerCase()), 50);
+                       }
+                     }}
                      whileHover={{ x: 10 }}
                    >
                      {item}

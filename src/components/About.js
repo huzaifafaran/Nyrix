@@ -85,7 +85,7 @@ const About = () => {
                                <motion.div className="story-text" variants={itemVariants}>
                      <h3>OUR MISSION</h3>
                      <p>
-                       At Nyrix, we are pioneering the future of Decision Sciences by harnessing 
+                       At Nyrix, we are advancing the future of Decision Sciences by harnessing 
                        operational intelligence with agentic decision-making. We build bespoke 
                        AI-powered operational intelligence engines that revolutionize how businesses 
                        operate, from e-commerce to enterprise-level challenges. By transforming 

@@ -10,6 +10,15 @@ const Services = () => {
     threshold: 0.1,
   });
 
+  const handleScheduleCall = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({ 
+        url: 'https://calendly.com/d/cwvd-6vj-tp8/demo-call' 
+      });
+    }
+    return false;
+  };
+
   const services = [
     {
       icon: Bot,
@@ -134,6 +143,7 @@ const Services = () => {
 
               <motion.button
                 className="service-cta"
+                onClick={handleScheduleCall}
                 whileHover={{ x: 5 }}
                 whileTap={{ scale: 0.95 }}
               >

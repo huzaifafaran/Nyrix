@@ -31,10 +31,17 @@
 }
 
 .footer-content {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
   margin-bottom: 3rem;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
 }
 
 .footer-brand {
@@ -71,7 +78,12 @@
 .social-links {
   display: flex;
   gap: 1rem;
+  margin-top: 1.5rem;
 }
+
+
+
+
 
 .social-link {
   display: flex;
@@ -99,9 +111,70 @@
   height: 20px;
 }
 
+.email-toggle {
+  cursor: pointer;
+  border: none;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+.email-toggle:hover {
+  background: var(--accent-purple);
+  color: white;
+  border-color: var(--accent-purple);
+}
+
+.email-expandable {
+  margin-top: 1rem;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+}
+
+.email-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+}
+
+.email-address {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--accent-purple);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+  background: var(--accent-purple-bright);
+  transform: scale(1.05);
+}
+
+.copy-button svg {
+  width: 16px;
+  height: 16px;
+}
+
 .footer-links {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
@@ -186,19 +259,28 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .footer-content {
+  .footer-main {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
   
   .footer-links {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
 }
 
 @media (max-width: 768px) {
   .footer {
     padding: 3rem 0 2rem;
+  }
+  
+  .footer-content {
+    gap: 2rem;
+  }
+  
+  .footer-main {
+    gap: 2rem;
   }
   
   .footer-links {
@@ -208,15 +290,23 @@
   
   .footer-bottom-content {
     flex-direction: column;
-    text-align: center;
+    text-align: left;
     gap: 1.5rem;
   }
   
   .social-links {
-    justify-content: center;
+    justify-content: flex-start;
   }
   
   .footer-badges {
-    justify-content: center;
+    justify-content: flex-start;
+  }
+  
+  .brand-description {
+    text-align: left;
+  }
+  
+  .brand-logo {
+    justify-content: flex-start;
   }
 }

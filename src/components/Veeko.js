@@ -13,7 +13,7 @@ const Veeko = () => {
     {
       icon: <MessageSquare className="feature-icon" />,
       title: 'BUILT-IN STORE ASSISTANT',
-      description: 'AI-powered assistant that answers customer queries, provides product recommendations, and handles support requests in real-time, 24/7.'
+      description: 'AI-powered assistant for merchants to ask questions about revenue, profits, top customers, inventory levels, and other business metrics, providing instant insights and data-driven answers.'
     },
     {
       icon: <BarChart3 className="feature-icon" />,
@@ -51,7 +51,7 @@ const Veeko = () => {
               VEEKO
             </h2>
             <p className="veeko-subtitle">
-              Our product blends intelligent workflows, agentic automation, and predictive logic into one integrated engine, giving founders and operators the clarity to grow, without getting stuck in ops.
+              A comprehensive e-commerce operations platform that combines fraud prevention, AI-powered business intelligence, real-time analytics, and automated reporting to give founders and operators complete visibility and control over their business operations.
             </p>
           </motion.div>
 

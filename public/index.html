@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Nyrix - Modern Marketing Solutions"
+      content="Nyrix - Decision Sciences"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
@@ -17,7 +17,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-              <title>Nyrix - Modern Marketing Solutions</title>
+    <!-- Calendly Integration -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    
+              <title>Nyrix - Decision Sciences</title>
           
           <!-- Google tag (gtag.js) -->
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RVE61MDWE"></script>
@@ -27,6 +31,26 @@
             gtag('js', new Date());
 
             gtag('config', 'G-9RVE61MDWE');
+          </script>
+          
+          <!-- Google Analytics Consent Configuration -->
+          <script data-cookieconsent="ignore">
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("consent", "default", {
+                ad_personalization: "denied",
+                ad_storage: "denied",
+                ad_user_data: "denied",
+                analytics_storage: "denied",
+                functionality_storage: "denied",
+                personalization_storage: "denied",
+                security_storage: "granted",
+                wait_for_update: 500,
+            });
+            gtag("set", "ads_data_redaction", true);
+            gtag("set", "url_passthrough", false);
           </script>
           
                      <!-- Cookiebot Consent Management -->

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Calendar, Clock, MessageSquare, ArrowRight, Sparkles, Zap, Star } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
@@ -10,51 +10,14 @@ const Contact = () => {
     threshold: 0.1,
   });
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: '',
-  });
-
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleScheduleCall = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({ 
+        url: 'https://calendly.com/d/cwvd-6vj-tp8/demo-call' 
+      });
+    }
+    return false;
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', company: '', message: '' });
-    }, 1000);
-  };
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: 'Email Us',
-              content: 'hello@nyrix.co',
-      description: 'Get in touch for project inquiries',
-    },
-    {
-      icon: Phone,
-      title: 'Call Us',
-      content: '+92 333 19991922',
-      description: 'Available 24/7 for urgent matters',
-    },
-    {
-      icon: MapPin,
-      title: 'Visit Us',
-      content: 'Karachi, Pakistan',
-      description: 'Innovation Hub, Tech City',
-    },
-  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -83,6 +46,17 @@ const Contact = () => {
     <section id="contact" className="contact section">
       <div className="contact-background">
         <div className="contact-pattern"></div>
+        <div className="floating-elements">
+          <motion.div className="floating-sparkle" animate={{ y: [-10, 10, -10], rotate: [0, 180, 360] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+            <Sparkles size={20} />
+          </motion.div>
+          <motion.div className="floating-zap" animate={{ y: [10, -10, 10], rotate: [360, 180, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}>
+            <Zap size={16} />
+          </motion.div>
+          <motion.div className="floating-star" animate={{ y: [-5, 15, -5], rotate: [0, 360, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}>
+            <Star size={18} />
+          </motion.div>
+        </div>
       </div>
 
       <div className="container">
@@ -93,132 +67,97 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           ref={ref}
         >
-          <span className="section-badge">Get In Touch</span>
-          <h2 className="section-title">
-            Let's Build the <span className="gradient-text">Future Together</span>
-          </h2>
-          <p className="section-subtitle">
-            Ready to transform your business with AI? Our team of experts is here to help 
-            you navigate the possibilities and create solutions tailored to your needs.
-          </p>
+          <motion.span 
+            className="section-badge"
+            initial={{ scale: 0.8 }}
+            animate={inView ? { scale: 1 } : {}}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            Ready to Transform?
+          </motion.span>
+          <motion.h2 
+            className="section-title"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            Let's <span className="gradient-text">Build Something Amazing</span>
+          </motion.h2>
+          <motion.p 
+            className="section-subtitle"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            Ready to unlock the full potential of your business with AI-powered decision sciences? 
+            Let's have a conversation about how we can transform your operations and drive real results.
+          </motion.p>
+          
+          <motion.button
+            onClick={handleScheduleCall}
+            className="cta-button"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            <span>Schedule Demo</span>
+            <ArrowRight className="cta-icon" />
+          </motion.button>
         </motion.div>
 
         <div className="contact-content">
           <motion.div
-            className="contact-info"
+            className="contact-benefits"
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
           >
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={index}
-                className="contact-card glass-effect"
-                variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -5 }}
-              >
-                <div className="contact-icon">
-                  <info.icon />
-                </div>
-                <div className="contact-details">
-                  <h3 className="contact-title">{info.title}</h3>
-                  <p className="contact-content">{info.content}</p>
-                  <span className="contact-description">{info.description}</span>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+            <motion.div
+              className="benefit-card"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -8 }}
+            >
+              <div className="benefit-icon">
+                <Calendar />
+              </div>
+              <div className="benefit-content">
+                <h4 className="benefit-title">Schedule a Demo</h4>
+                <p className="benefit-subtitle">30-minute discovery call</p>
+                <span className="benefit-description">See how AI can transform your business</span>
+              </div>
+            </motion.div>
 
-          <motion.div
-            className="contact-form-container"
-            variants={itemVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-          >
-            <div className="form-wrapper glass-effect">
-              {!isSubmitted ? (
-                <form className="contact-form" onSubmit={handleSubmit}>
-                  <div className="form-group">
-                    <label htmlFor="name">Full Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your full name"
-                    />
-                  </div>
+            <motion.div
+              className="benefit-card"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -8 }}
+            >
+              <div className="benefit-icon">
+                <Clock />
+              </div>
+              <div className="benefit-content">
+                <h4 className="benefit-title">Quick Setup</h4>
+                <p className="benefit-subtitle">Get started in days, not months</p>
+                <span className="benefit-description">No lengthy implementation cycles</span>
+              </div>
+            </motion.div>
 
-                  <div className="form-group">
-                    <label htmlFor="email">Email Address</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your email address"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="company">Company</label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      placeholder="Enter your company name"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="message">Message</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows="5"
-                      placeholder="Tell us about your project and requirements"
-                    ></textarea>
-                  </div>
-
-                  <motion.button
-                    type="submit"
-                    className="submit-button btn-primary"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span>Send Message</span>
-                    <Send className="submit-icon" />
-                  </motion.button>
-                </form>
-              ) : (
-                <motion.div
-                  className="success-message"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <CheckCircle className="success-icon" />
-                  <h3>Message Sent Successfully!</h3>
-                  <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
-                  <motion.button
-                    className="reset-button btn-secondary"
-                    onClick={() => setIsSubmitted(false)}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    Send Another Message
-                  </motion.button>
-                </motion.div>
-              )}
-            </div>
+            <motion.div
+              className="benefit-card"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -8 }}
+            >
+              <div className="benefit-icon">
+                <MessageSquare />
+              </div>
+              <div className="benefit-content">
+                <h4 className="benefit-title">Expert Guidance</h4>
+                <p className="benefit-subtitle">AI specialists at your service</p>
+                <span className="benefit-description">Dedicated support throughout your journey</span>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

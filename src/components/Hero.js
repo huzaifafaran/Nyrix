@@ -4,6 +4,15 @@ import { ArrowRight, Sparkles, Zap, Bot, Cog, Star } from 'lucide-react';
 import './Hero.css';
 
 const Hero = () => {
+  const handleScheduleCall = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({ 
+        url: 'https://calendly.com/d/cwvd-6vj-tp8/demo-call' 
+      });
+    }
+    return false;
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -88,10 +97,11 @@ const Hero = () => {
             >
               <motion.button
                 className="cta-primary btn-primary"
+                onClick={handleScheduleCall}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <span>LET'S GO</span>
+                <span>Schedule Demo</span>
                 <ArrowRight className="cta-icon" />
               </motion.button>
             </motion.div>

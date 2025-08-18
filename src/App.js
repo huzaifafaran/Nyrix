@@ -1,8 +1,11 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Veeko from './components/Veeko'; // Commented out
 import Services from './components/Services';
+import Agents from './components/Agents';
+import AgentsGallery from './components/AgentsGallery';
 // import Features from './components/Features'; // Commented out
 import About from './components/About';
 import Contact from './components/Contact';
@@ -15,14 +18,30 @@ function App() {
     <div className="App">
       {/* <ParticleBackground /> */}
       <Header />
-      <Hero />
-      <Veeko/>
-      {/* <Veeko /> */} {/* Commented out */}
-      <Services />
-      {/* <Features /> */} {/* Commented out */}
-      <About />
-      <Contact />
-      <Footer />
+      <Routes>
+        <Route
+          path="/"
+          element={(
+            <>
+              <Hero />
+              <About />
+              <Veeko />
+              <Services />
+              <Contact />
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          path="/agents"
+          element={(
+            <>
+              <AgentsGallery />
+              <Footer />
+            </>
+          )}
+        />
+      </Routes>
     </div>
   );
 }
