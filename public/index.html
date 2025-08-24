@@ -12,6 +12,8 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     
+
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +21,7 @@
     
     <!-- Calendly Integration -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="fbf4abd4-c027-4c7f-891a-6ed2c217f1be" data-blockingmode="auto" type="text/javascript"></script>
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     
               <title>Nyrix - Decision Sciences</title>
@@ -33,12 +36,12 @@
             gtag('config', 'G-9RVE61MDWE');
           </script>
           
-          <!-- Google Analytics Consent Configuration -->
-          <script data-cookieconsent="ignore">
+          <!-- Google Analytics Configuration - Only runs after consent -->
+          <script>
             window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
+            function gtag(){dataLayer.push(arguments);}
+            
+            // Set default denied state for all tracking
             gtag("consent", "default", {
                 ad_personalization: "denied",
                 ad_storage: "denied",
@@ -47,53 +50,34 @@
                 functionality_storage: "denied",
                 personalization_storage: "denied",
                 security_storage: "granted",
-                wait_for_update: 500,
             });
-            gtag("set", "ads_data_redaction", true);
-            gtag("set", "url_passthrough", false);
+            
+            // Wait for Cookiebot consent before enabling analytics
+            window.addEventListener('CookiebotOnAccept', function () {
+              console.log('Cookiebot consent given - enabling Google Analytics');
+              gtag("consent", "update", {
+                  ad_personalization: "granted",
+                  ad_storage: "granted",
+                  ad_user_data: "granted",
+                  analytics_storage: "granted",
+                  functionality_storage: "granted",
+                  personalization_storage: "granted",
+                  security_storage: "granted",
+              });
+              
+              // Now initialize GA after consent
+              gtag('js', new Date());
+              gtag('config', 'G-9RVE61MDWE');
+            });
+            
+            // If consent is declined, keep analytics disabled
+            window.addEventListener('CookiebotOnDecline', function () {
+              console.log('Cookiebot consent declined - keeping analytics disabled');
+            });
           </script>
-          
-                     <!-- Cookiebot Consent Management -->
-           <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="fbf4abd4-c027-4c7f-891a-6ed2c217f1be" type="text/javascript" async></script>
            
-           <!-- Fallback Cookie Consent -->
-           <script>
-             // Simple fallback cookie consent
-             if (!document.cookie.includes('cookieconsent')) {
-               setTimeout(() => {
-                 const banner = document.createElement('div');
-                 banner.style.cssText = `
-                   position: fixed;
-                   bottom: 0;
-                   left: 0;
-                   right: 0;
-                   background: #1a1a1a;
-                   color: white;
-                   padding: 20px;
-                   text-align: center;
-                   z-index: 10000;
-                   border-top: 1px solid #333;
-                 `;
-                 banner.innerHTML = `
-                   <p>We use cookies to enhance your experience. 
-                   <button onclick="acceptCookies()" style="background: #8b5cf6; color: white; border: none; padding: 10px 20px; margin-left: 10px; cursor: pointer;">Accept</button>
-                   <button onclick="declineCookies()" style="background: transparent; color: white; border: 1px solid #666; padding: 10px 20px; margin-left: 10px; cursor: pointer;">Decline</button>
-                   </p>
-                 `;
-                 document.body.appendChild(banner);
-               }, 2000);
-             }
-             
-             function acceptCookies() {
-               document.cookie = 'cookieconsent=accepted; max-age=31536000; path=/';
-               document.querySelector('div[style*="position: fixed"]').remove();
-             }
-             
-             function declineCookies() {
-               document.cookie = 'cookieconsent=declined; max-age=31536000; path=/';
-               document.querySelector('div[style*="position: fixed"]').remove();
-             }
-           </script>
+
+
         </head>
      <body>
      <noscript>You need to enable JavaScript to run this app.</noscript>

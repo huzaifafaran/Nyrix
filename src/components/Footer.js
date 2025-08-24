@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, Mail, Copy, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
@@ -19,9 +20,9 @@ const Footer = () => {
       { name: 'Consulting', href: '#services' },
     ],
 
-    legal: [
-      { name: 'Privacy Policy', href: '#privacy' },
-      { name: 'Terms of Service', href: '#terms' },
+            legal: [
+          { name: 'Privacy Policy', href: '/privacy-policy' },
+          { name: 'Terms of Service', href: '#terms' },
       { name: 'Cookie Policy', href: '#cookies' },
       { name: 'GDPR', href: '#gdpr' },
     ],
@@ -187,13 +188,26 @@ const Footer = () => {
                 <ul className="links-list">
                   {footerLinks.legal.map((link, index) => (
                     <li key={index}>
-                      <motion.a
-                        href={link.href}
-                        className="footer-link"
-                        whileHover={{ x: 5 }}
-                      >
-                        {link.name}
-                      </motion.a>
+                      {link.href.startsWith('/') ? (
+                        <motion.div
+                          whileHover={{ x: 5 }}
+                        >
+                          <Link
+                            to={link.href}
+                            className="footer-link"
+                          >
+                            {link.name}
+                          </Link>
+                        </motion.div>
+                      ) : (
+                        <motion.a
+                          href={link.href}
+                          className="footer-link"
+                          whileHover={{ x: 5 }}
+                        >
+                          {link.name}
+                        </motion.a>
+                      )}
                     </li>
                   ))}
                 </ul>

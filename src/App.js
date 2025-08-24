@@ -6,6 +6,7 @@ import Veeko from './components/Veeko'; // Commented out
 import Services from './components/Services';
 import Agents from './components/Agents';
 import AgentsGallery from './components/AgentsGallery';
+import PrivacyPolicy from './components/PrivacyPolicy';
 // import Features from './components/Features'; // Commented out
 import About from './components/About';
 import Contact from './components/Contact';
@@ -27,6 +28,7 @@ function App() {
               <About />
               <Veeko />
               <Services />
+              <Agents />
               <Contact />
               <Footer />
             </>
@@ -41,6 +43,15 @@ function App() {
             </>
           )}
         />
+                        <Route
+                  path="/privacy-policy"
+                  element={(
+                    <>
+                      <PrivacyPolicy />
+                      <Footer />
+                    </>
+                  )}
+                />
       </Routes>
     </div>
   );

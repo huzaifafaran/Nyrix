@@ -68,7 +68,7 @@ const Hero = () => {
               transition={{ delay: 0.5, duration: 0.8, ease: 'easeOut' }}
             >
               <Sparkles className="badge-icon" />
-              <span>Beyond Analytics, Predictive Intelligence.</span>
+              <span>BEYOND INSIGHT, INTO FORESIGHT.</span>
             </motion.div>
 
             <motion.h1 
@@ -86,7 +86,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1, duration: 0.8, ease: 'easeOut' }}
             >
-              Decision Sciences that harness operational intelligence with agentic decision-making, empowering businesses to move beyond traditional analytics and into a new era of proactive, autonomous operations. Our expertise lies in transforming complex data into actionable insights, enabling systems to<br />make intelligent, real-time decisions.
+              We combine decision sciences with AI to transform, how businesses make choices. Instead of waiting to react, what if your systems could see what's coming? We help enterprises and SMBs build AI-powered decision systems that anticipate, adapt, and keep you ahead.
             </motion.p>
 
             <motion.div 
