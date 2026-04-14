@@ -17,9 +17,9 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
+  background: rgba(124, 58, 237, 0.06);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   cursor: pointer;
@@ -28,14 +28,15 @@
 }
 
 .back-button:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(124, 58, 237, 0.12);
+  border-color: var(--accent-purple);
+  color: var(--accent-purple);
 }
 
 .privacy-header h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-purple) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -54,17 +55,18 @@
 .policy-section {
   margin-bottom: 2.5rem;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
   border-radius: 16px;
   backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(124, 58, 237, 0.04);
 }
 
 .policy-section h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: var(--accent-purple);
-  border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+  border-bottom: 2px solid rgba(124, 58, 237, 0.2);
   padding-bottom: 0.5rem;
 }
 
@@ -86,8 +88,8 @@
 }
 
 .contact-info {
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  background: rgba(124, 58, 237, 0.06);
+  border: 1px solid rgba(124, 58, 237, 0.15);
   border-radius: 12px;
   padding: 1.5rem;
   margin-top: 1rem;
@@ -143,7 +145,3 @@
     font-size: 1.2rem;
   }
 }
-
-
-
-

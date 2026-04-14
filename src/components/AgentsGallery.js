@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, X, Search, Filter } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Search, Filter } from 'lucide-react';
 import './AgentsGallery.css';
 import agents from './agentsData';
 
@@ -14,34 +14,24 @@ const CategoryRow = ({ category, items, onPick, selectedId }) => {
     setIsDragging(true);
     setStartX(e.pageX - rowRef.current.offsetLeft);
     setScrollLeft(rowRef.current.scrollLeft);
-    rowRef.current.style.cursor = 'grabbing';
-    rowRef.current.style.userSelect = 'none';
-    rowRef.current.style.scrollBehavior = 'auto'; // Disable smooth scroll during drag
+    rowRef.current.style.scrollBehavior = 'auto';
   };
 
   const handleMouseLeave = () => {
     setIsDragging(false);
-    if (rowRef.current) {
-      rowRef.current.style.cursor = 'grab';
-      rowRef.current.style.userSelect = 'auto';
-      rowRef.current.style.scrollBehavior = 'smooth'; // Re-enable smooth scroll
-    }
+    if (rowRef.current) rowRef.current.style.scrollBehavior = 'smooth';
   };
 
   const handleMouseUp = () => {
     setIsDragging(false);
-    if (rowRef.current) {
-      rowRef.current.style.cursor = 'grab';
-      rowRef.current.style.userSelect = 'auto';
-      rowRef.current.style.scrollBehavior = 'smooth'; // Re-enable smooth scroll
-    }
+    if (rowRef.current) rowRef.current.style.scrollBehavior = 'smooth';
   };
 
   const handleMouseMove = (e) => {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - rowRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5; // Reduced multiplier for smoother feel
+    const walk = (x - startX) * 1.5;
     rowRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -50,36 +40,35 @@ const CategoryRow = ({ category, items, onPick, selectedId }) => {
     setIsDragging(true);
     setStartX(touch.pageX - rowRef.current.offsetLeft);
     setScrollLeft(rowRef.current.scrollLeft);
-    rowRef.current.style.scrollBehavior = 'auto'; // Disable smooth scroll during touch
+    rowRef.current.style.scrollBehavior = 'auto';
   };
 
   const handleTouchMove = (e) => {
     if (!isDragging) return;
-    e.preventDefault();
     const touch = e.touches[0];
     const x = touch.pageX - rowRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5; // Reduced multiplier for smoother feel
+    const walk = (x - startX) * 1.5;
     rowRef.current.scrollLeft = scrollLeft - walk;
   };
 
   const handleTouchEnd = () => {
     setIsDragging(false);
-    if (rowRef.current) {
-      rowRef.current.style.scrollBehavior = 'smooth'; // Re-enable smooth scroll
-    }
+    if (rowRef.current) rowRef.current.style.scrollBehavior = 'smooth';
   };
 
   if (items.length === 0) return null;
 
   return (
-    <div className="category-section">
-      <div className="category-header">
-        <h3 className="category-title">{category}</h3>
-        <div className="category-count">{items.length} agent{items.length !== 1 ? 's' : ''}</div>
+    <div className="mb-14">
+      <div className="flex items-center justify-between mb-6 px-1">
+        <h3 className="text-2xl font-display font-bold text-nyrix-dark tracking-tight">{category}</h3>
+        <div className="px-3 py-1 bg-nyrix-purple/5 border border-nyrix-glassBorder rounded-full text-xs font-semibold text-nyrix-purple uppercase tracking-widest">
+          {items.length} agent{items.length !== 1 ? 's' : ''}
+        </div>
       </div>
-      <div className="agents-row">
+      <div className="relative -mx-4 px-4 sm:-mx-6 sm:px-6">
         <div 
-          className="cards" 
+          className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-8 pt-2 hide-scrollbar cursor-grab active:cursor-grabbing" 
           ref={rowRef}
           onMouseDown={handleMouseDown}
           onMouseLeave={handleMouseLeave}
@@ -88,29 +77,30 @@ const CategoryRow = ({ category, items, onPick, selectedId }) => {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          style={{ cursor: 'grab' }}
         >
           {items.map((agent) => (
             <motion.div
               key={agent.id}
-              className={`agent-card-tile ${selectedId === agent.id ? 'active' : ''}`}
-              whileHover={{ scale: 1.05, y: -6 }}
+              className={`flex-none w-[260px] sm:w-[280px] snap-start bg-white border rounded-[1.25rem] overflow-hidden cursor-pointer transition-all duration-300 ${
+                selectedId === agent.id 
+                  ? 'border-nyrix-purple shadow-glow scale-[1.02]' 
+                  : 'border-nyrix-glassBorder shadow-sm hover:border-nyrix-purple/30 hover:shadow-card hover:-translate-y-1 hover:scale-[1.01]'
+              }`}
               onClick={(e) => {
-                if (isDragging) {
-                  e.preventDefault();
-                  return;
-                }
-                onPick && onPick(agent);
+                if (isDragging) { e.preventDefault(); return; }
+                if (onPick) onPick(agent);
               }}
             >
-              {agent.imageThumb ? (
-                <img className="poster" src={agent.imageThumb} alt={agent.title} />
-              ) : (
-                <div className="poster" style={{ background: `linear-gradient(135deg, ${agent.color}55, ${agent.color})` }} />
-              )}
-              <div className="meta">
-                <span className="tag">{agent.subtitle}</span>
-                <h4 className="name">{agent.title}</h4>
+              <div className="h-[150px] relative bg-nyrix-light flex items-center justify-center p-6">
+                {agent.imageThumb ? (
+                  <img className="w-full h-full object-contain" src={agent.imageThumb} alt={agent.title} />
+                ) : (
+                  <div className="w-full h-full rounded-xl opacity-90" style={{ background: `linear-gradient(135deg, ${agent.color}40, ${agent.color})` }} />
+                )}
+              </div>
+              <div className="p-6 border-t border-nyrix-glassBorder/50">
+                <span className="text-[10px] font-bold tracking-widest uppercase text-nyrix-purple mb-2 block">{agent.subtitle}</span>
+                <h4 className="text-lg font-bold text-nyrix-dark truncate">{agent.title}</h4>
               </div>
             </motion.div>
           ))}
@@ -127,234 +117,176 @@ const AgentsGallery = () => {
   const [selectedCategory, setSelectedCategory] = React.useState('All');
   const [filteredAgents, setFilteredAgents] = React.useState(agents);
 
-  // Get unique categories
-  const categories = ['All', ...new Set(agents.map(agent => agent.category))];
+  const categories = ['All', ...new Set(agents.map(a => a.category))];
 
-  // Group agents by category for Netflix-style browsing
   const getGroupedAgents = () => {
     let filtered = agents;
-    
-    // Filter by search term first
     if (searchTerm) {
-      filtered = filtered.filter(agent => 
-        agent.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        agent.subtitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        agent.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        agent.features.some(feature => feature.toLowerCase().includes(searchTerm.toLowerCase()))
+      filtered = filtered.filter(a => 
+        a.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        a.subtitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        a.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        a.features.some(f => f.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
-    
-    // If "All" is selected, group by category for Netflix-style browsing
     if (selectedCategory === 'All') {
       const grouped = {};
-      filtered.forEach(agent => {
-        if (!grouped[agent.category]) {
-          grouped[agent.category] = [];
-        }
-        grouped[agent.category].push(agent);
+      filtered.forEach(a => {
+        if (!grouped[a.category]) grouped[a.category] = [];
+        grouped[a.category].push(a);
       });
       return grouped;
     }
-    
-    // If specific category is selected, return single group
-    const categoryFiltered = filtered.filter(agent => agent.category === selectedCategory);
-    return { [selectedCategory]: categoryFiltered };
+    return { [selectedCategory]: filtered.filter(a => a.category === selectedCategory) };
   };
 
   const groupedAgents = getGroupedAgents();
 
-  // Filter agents based on search and category for other uses
   React.useEffect(() => {
     let filtered = agents;
-    
-    // Filter by category
     if (selectedCategory !== 'All') {
-      filtered = filtered.filter(agent => agent.category === selectedCategory);
+      filtered = filtered.filter(a => a.category === selectedCategory);
     }
-    
-    // Filter by search term
     if (searchTerm) {
-      filtered = filtered.filter(agent => 
-        agent.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        agent.subtitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        agent.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        agent.features.some(feature => feature.toLowerCase().includes(searchTerm.toLowerCase()))
+      filtered = filtered.filter(a => 
+        a.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        a.subtitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        a.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        a.features.some(f => f.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
-    
     setFilteredAgents(filtered);
-    
-    // Update selected agent if current selection is not in filtered results
-    if (filtered.length > 0 && !filtered.find(agent => agent.id === selected.id)) {
+    if (filtered.length > 0 && !filtered.find(a => a.id === selected.id)) {
       setSelected(filtered[0]);
     }
   }, [searchTerm, selectedCategory, selected.id]);
 
   const openDetails = (agent) => {
     setSelected(agent);
-    // Scroll to top smoothly when an agent is selected
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  const closeDetails = () => setSelected(null);
+
   const go = (dir) => {
     const currentFiltered = filteredAgents.length > 0 ? filteredAgents : agents;
     const idx = currentFiltered.findIndex(a => a.id === selected.id);
     const next = (idx + dir + currentFiltered.length) % currentFiltered.length;
     setSelected(currentFiltered[next]);
-    // Scroll to top smoothly when navigating with arrow keys
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Keyboard navigation
   React.useEffect(() => {
     const handleKeyDown = (e) => {
-      // Handle arrow keys when the gallery is focused or when no input is focused
-      const isGalleryFocused = e.target.closest('.agents-gallery');
-      const isInputFocused = e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.contentEditable === 'true';
-      
+      const isGalleryFocused = e.target.closest('.agents-gallery-section');
+      const isInputFocused = e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA';
       if (isGalleryFocused && !isInputFocused) {
-        switch (e.key) {
-          case 'ArrowLeft':
-            e.preventDefault();
-            go(-1);
-            break;
-          case 'ArrowRight':
-            e.preventDefault();
-            go(1);
-            break;
-          default:
-            break;
-        }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
       }
     };
-
-    // Add event listener
     document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [selected?.id, filteredAgents]);
 
-    // Cleanup
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [selected?.id]); // Re-run when selected agent changes
-
-  React.useEffect(() => {
-    // reset load state when selection changes
-    setImageLoaded(false);
-  }, [selected?.id]);
+  React.useEffect(() => setImageLoaded(false), [selected?.id]);
 
   return (
-    <section className="agents-gallery section" tabIndex={0}>
-      <div className="container">
-        {/* Search and Filter Controls */}
-        <div className="gallery-controls">
-          <div className="search-container">
-            <Search className="search-icon" />
+    <section className="agents-gallery-section relative pt-32 pb-24 bg-nyrix-light min-h-screen" tabIndex={0}>
+      <div className="max-w-6xl mx-auto px-6">
+        
+        {/* Controls */}
+        <div className="flex flex-col sm:flex-row gap-4 mb-12 p-3 bg-white/50 backdrop-blur-md rounded-2xl border border-nyrix-glassBorder shadow-sm">
+          <div className="flex-1 flex items-center gap-3 px-4 py-2 bg-white rounded-xl border border-nyrix-glassBorder/80">
+            <Search size={20} className="text-nyrix-purple" />
             <input
               type="text"
               placeholder="Search agents..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-input"
+              className="w-full bg-transparent outline-none text-nyrix-dark placeholder-nyrix-dark/40 text-sm font-medium"
             />
           </div>
-          
-          <div className="filter-container">
-            <Filter className="filter-icon" />
+          <div className="flex-1 sm:max-w-xs flex items-center gap-3 px-4 py-2 bg-white rounded-xl border border-nyrix-glassBorder/80">
+            <Filter size={20} className="text-nyrix-purple" />
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="category-filter"
+              className="w-full bg-transparent outline-none text-nyrix-dark min-w-0 text-sm font-medium cursor-pointer"
             >
-              {categories.map(category => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
+              {categories.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
-          </div>
-          
-          <div className="results-count">
-            {filteredAgents.length} agent{filteredAgents.length !== 1 ? 's' : ''} found
           </div>
         </div>
 
+        {/* Featured Section */}
         <AnimatePresence mode="wait">
-        {selected && (
-          <motion.div key={selected.id} className="featured" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.35 }}>
-          <div className="featured-media">
-            {!imageLoaded && (
-              <div className="media-skeleton" />
-            )}
-            {selected?.imageHero ? (
-              <>
-                <motion.img
-                  key={selected.id + '-img'}
-                  src={selected.imageHero}
-                  alt={selected.title}
-                  onLoad={() => setImageLoaded(true)}
-                  onError={() => setImageLoaded(true)}
-                  initial={{ opacity: 0, scale: 1.02 }}
-                  animate={{ opacity: imageLoaded ? 1 : 0, scale: 1 }}
-                  transition={{ duration: 0.4 }}
-                  style={{ 
-                    position: imageLoaded ? 'static' : 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%'
-                  }}
-                />
-              </>
-            ) : (
-              <div className="poster large" style={{ background: selected?.gradient }} />
-            )}
-            <button className="nav-btn abs left" onClick={() => go(-1)} aria-label="Previous"><ChevronLeft/></button>
-            <button className="nav-btn abs right" onClick={() => go(1)} aria-label="Next"><ChevronRight/></button>
-          </div>
-          <div className="featured-info">
-            {imageLoaded ? (
-              <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.35 }}>
-                <h2>{selected?.title}</h2>
-                <p className="subtitle">{selected?.subtitle}</p>
-                <p className="description">{selected?.fullDescription}</p>
-                <h4 className="cap-title">Key Capabilities</h4>
-                <ul className="capabilities">
-                  {selected?.features.map((f, i) => (<li key={i}>{f}</li>))}
-                </ul>
-                <motion.button className="demo-button" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => {
-                  if (window.Calendly) {
-                    window.Calendly.initPopupWidget({ url: 'https://calendly.com/d/cwvd-6vj-tp8/demo-call' });
-                  }
-                }}>Request Demo</motion.button>
-              </motion.div>
-            ) : (
-              <div className="info-skeleton">
-                <div className="skeleton skeleton-title"></div>
-                <div className="skeleton skeleton-line" style={{ width: '60%' }}></div>
-                <div className="skeleton skeleton-line" style={{ width: '90%' }}></div>
-                <div className="skeleton skeleton-line" style={{ width: '95%' }}></div>
-                <div className="skeleton skeleton-line" style={{ width: '80%' }}></div>
-                <div className="skeleton skeleton-title small"></div>
-                <div className="skeleton skeleton-line" style={{ width: '70%' }}></div>
-                <div className="skeleton skeleton-line" style={{ width: '85%' }}></div>
-                <div className="skeleton skeleton-line" style={{ width: '75%' }}></div>
+          {selected && (
+            <motion.div 
+              key={selected.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 mb-20"
+            >
+              <div className="lg:col-span-3 relative aspect-video lg:aspect-square bg-white rounded-[2rem] border border-nyrix-glassBorder shadow-sm overflow-hidden flex items-center justify-center p-8 group">
+                {!imageLoaded && <div className="absolute inset-0 bg-nyrix-dark/5 animate-pulse" />}
+                {selected.imageHero ? (
+                  <img
+                    src={selected.imageHero}
+                    alt={selected.title}
+                    onLoad={() => setImageLoaded(true)}
+                    onError={() => setImageLoaded(true)}
+                    className={`w-full h-full object-contain transition-all duration-700 ${imageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+                  />
+                ) : (
+                  <div className="w-full h-full rounded-2xl opacity-90" style={{ background: selected.gradient }} />
+                )}
+                
+                {/* Navigation Arrows */}
+                <button onClick={() => go(-1)} className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full shadow-sm border border-nyrix-glassBorder flex items-center justify-center text-nyrix-dark/50 hover:text-nyrix-purple transition-colors opacity-0 group-hover:opacity-100 invisible group-hover:visible">
+                  <ChevronLeft size={20} />
+                </button>
+                <button onClick={() => go(1)} className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full shadow-sm border border-nyrix-glassBorder flex items-center justify-center text-nyrix-dark/50 hover:text-nyrix-purple transition-colors opacity-0 group-hover:opacity-100 invisible group-hover:visible">
+                  <ChevronRight size={20} />
+                </button>
               </div>
-            )}
-          </div>
-        </motion.div>
-        )}
+
+              <div className="lg:col-span-2 flex flex-col justify-center py-6">
+                <span className="text-xs font-bold tracking-widest uppercase text-nyrix-purple mb-4">
+                  {selected.subtitle}
+                </span>
+                <h2 className="text-4xl md:text-5xl font-display font-extrabold text-nyrix-dark leading-tight mb-6 tracking-tight">
+                  {selected.title}
+                </h2>
+                <p className="text-lg text-nyrix-dark/60 leading-relaxed mb-8 font-medium">
+                  {selected.fullDescription}
+                </p>
+                
+                <h4 className="text-sm font-bold tracking-wider text-nyrix-dark/80 uppercase mb-4">Key Capabilities</h4>
+                <ul className="space-y-3 mb-10">
+                  {selected.features.map((f, i) => (
+                    <li key={i} className="flex items-start gap-3 text-nyrix-dark/70 font-medium text-[15px]">
+                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-nyrix-purple shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <button 
+                  onClick={() => window.Calendly?.initPopupWidget({ url: 'https://calendly.com/d/cwvd-6vj-tp8/demo-call' })}
+                  className="px-8 py-4 bg-nyrix-purple text-white rounded-2xl font-bold tracking-wide shadow-glow hover:bg-nyrix-purpleBright hover:scale-[1.02] transition-all w-full sm:w-auto text-center"
+                >
+                  Request Demo
+                </button>
+              </div>
+            </motion.div>
+          )}
         </AnimatePresence>
 
-        {/* Category Sections - Netflix/YouTube Style */}
-        <div className="categories-container">
-          {Object.entries(groupedAgents).map(([category, categoryAgents]) => (
-            <CategoryRow
-              key={category}
-              category={category}
-              items={categoryAgents}
-              onPick={openDetails}
-              selectedId={selected?.id}
-            />
+        {/* Netflix style rows */}
+        <div className="space-y-4">
+          {Object.entries(groupedAgents).map(([cat, items]) => (
+            <CategoryRow key={cat} category={cat} items={items} onPick={openDetails} selectedId={selected?.id} />
           ))}
         </div>
       </div>
@@ -363,5 +295,3 @@ const AgentsGallery = () => {
 };
 
 export default AgentsGallery;
-
-

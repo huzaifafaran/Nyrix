@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Zap, Bot, Cog, Star } from 'lucide-react';
+import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 import './Hero.css';
 
 const Hero = () => {
@@ -15,206 +15,92 @@ const Hero = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: 'easeOut',
-      },
-    },
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
   };
 
-  const floatingIcons = [
-    { Icon: Bot, delay: 0, x: 120, y: -100 },
-    { Icon: Zap, delay: 1, x: 100, y: -50 },
-    { Icon: Cog, delay: 2, x: 140, y: 80 },
-    { Icon: Sparkles, delay: 1.5, x: -80, y: -80 },
-    { Icon: Star, delay: 0.5, x: -100, y: 60 },
-  ];
-
   return (
-    <section className="hero">
-      <div className="hero-background">
-        <div className="hero-grid"></div>
-        <div className="hero-glow"></div>
-        <div className="hero-blur"></div>
-        <div className="hero-blur-2"></div>
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-32 pb-20 bg-nyrix-light">
+      {/* Background Decor */}
+      <div className="absolute inset-0 z-0 pointer-events-none flex justify-center items-center overflow-hidden">
+        <div className="absolute -top-[20%] -left-[10%] w-[500px] h-[500px] rounded-full bg-nyrix-purple/10 blur-[100px]" />
+        <div className="absolute top-[20%] -right-[10%] w-[600px] h-[600px] rounded-full bg-nyrix-purpleBright/10 blur-[100px]" />
+        
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(124,58,237,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(124,58,237,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] w-[100%] h-[100%] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)]" />
       </div>
 
-      <div className="container">
+      <div className="max-w-6xl mx-auto px-6 relative z-10 w-full text-center">
         <motion.div
-          className="hero-content"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
+          className="flex flex-col items-center max-w-4xl mx-auto"
         >
-          <motion.div className="hero-text" variants={itemVariants}>
-            <motion.div
-              className="hero-badge"
-              initial={{ opacity: 0, scale: 0.8, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8, ease: 'easeOut' }}
-            >
-              <Sparkles className="badge-icon" />
-              <span>BEYOND INSIGHT, INTO FORESIGHT.</span>
-            </motion.div>
-
-            <motion.h1 
-              className="hero-title"
-              initial={{ opacity: 0, y: 60, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.8, duration: 1, ease: 'easeOut' }}
-            >
-              <span className="title-dynamic">NYRIX</span>
-            </motion.h1>
-
-            <motion.p 
-              className="hero-subtitle"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1, duration: 0.8, ease: 'easeOut' }}
-            >
-              We combine decision sciences with AI to transform, how businesses make choices. Instead of waiting to react, what if your systems could see what's coming? We help enterprises and SMBs build AI-powered decision systems that anticipate, adapt, and keep you ahead.
-            </motion.p>
-
-            <motion.div 
-              className="hero-cta"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 0.8, ease: 'easeOut' }}
-            >
-              <motion.button
-                className="cta-primary btn-primary"
-                onClick={handleScheduleCall}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span>Schedule Demo</span>
-                <ArrowRight className="cta-icon" />
-              </motion.button>
-            </motion.div>
+          {/* Badge */}
+          <motion.div variants={itemVariants} className="mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-nyrix-glassBorder bg-white/50 backdrop-blur-md shadow-sm">
+              <Sparkles size={14} className="text-nyrix-purpleBright" />
+              <span className="text-xs font-bold tracking-widest uppercase text-nyrix-dark/80 pt-0.5">
+                BEYOND INSIGHT, INTO FORESIGHT
+              </span>
+            </div>
           </motion.div>
 
-          <motion.div 
-            className="hero-visual" 
-            initial={{ opacity: 0, scale: 0.8, x: 50 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ delay: 1.2, duration: 1.2, ease: 'easeOut' }}
+          {/* Heading */}
+          <motion.h1 
+            variants={itemVariants}
+            className="text-5xl md:text-7xl lg:text-[5.5rem] font-display font-extrabold tracking-tight text-nyrix-dark leading-[1.05] mb-6"
           >
-            <div className="visual-container">
-              <motion.div
-                className="central-orb"
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 2, duration: 1.5, ease: 'easeOut' }}
-              >
-                <motion.div 
-                  className="orb-core"
-                  animate={{
-                    scale: [1, 1.05, 1],
-                    rotate: [0, 360],
-                  }}
-                  transition={{
-                    duration: 30,
-                    repeat: Infinity,
-                    ease: 'linear',
-                    delay: 3.5,
-                  }}
-                >
-                  <Star className="orb-icon" />
-                </motion.div>
-                <motion.div 
-                  className="orb-ring"
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 2.3, duration: 1, ease: 'easeOut' }}
-                ></motion.div>
-                <motion.div 
-                  className="orb-ring-outer"
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 2.6, duration: 1, ease: 'easeOut' }}
-                ></motion.div>
-              </motion.div>
+            Anticipate the future with <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-nyrix-purple to-[#4f46e5]">AI Decision Sciences</span>
+          </motion.h1>
 
-              {floatingIcons.map(({ Icon, delay, x, y }, index) => (
-                <motion.div
-                  key={index}
-                  className="floating-icon"
-                  style={{ 
-                    left: `calc(50% + ${x}px)`, 
-                    top: `calc(50% + ${y}px)`,
-                    transform: 'translate(-50%, -50%)'
-                  }}
-                  initial={{ opacity: 0, scale: 0, rotate: -90 }}
-                  animate={{ 
-                    opacity: 1, 
-                    scale: 1,
-                    rotate: 0,
-                    y: [0, -10, 0],
-                  }}
-                  transition={{
-                    delay: 3 + (index * 0.2),
-                    duration: 0.8,
-                    rotate: { duration: 0.6, ease: 'easeOut' },
-                    y: {
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                      delay: 3.8 + (index * 0.2),
-                    },
-                  }}
-                >
-                  <Icon />
-                </motion.div>
-              ))}
+          {/* Subtitle */}
+          <motion.p 
+            variants={itemVariants}
+            className="text-lg md:text-xl text-nyrix-dark/60 font-normal leading-relaxed max-w-2xl mx-auto mb-10"
+          >
+            We build enterprise AI systems that transform how businesses make choices. 
+            Stop reacting and start predicting with intelligent agents that continuously adapt to keep you ahead.
+          </motion.p>
 
-              <div className="connecting-lines">
-                {Array.from({ length: 6 }, (_, i) => (
-                  <motion.div
-                    key={i}
-                    className="line"
-                    style={{ '--rotation': `${i * 60}deg` }}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 0.2 }}
-                    transition={{ delay: 3.5 + (i * 0.1), duration: 0.8 }}
-                  />
-                ))}
+          {/* CTA Group */}
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 justify-center w-full sm:w-auto">
+            <button
+              onClick={handleScheduleCall}
+              className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-nyrix-dark text-white rounded-2xl font-semibold text-[15px] overflow-hidden transition-all hover:bg-black hover:scale-[1.02] hover:shadow-intense outline-none w-full sm:w-auto"
+            >
+              <span className="relative z-10 pt-0.5">Schedule Demo</span>
+              <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button
+              onClick={() => {
+                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/50 backdrop-blur-md border border-nyrix-glassBorder text-nyrix-dark rounded-2xl font-semibold text-[15px] transition-all hover:bg-white hover:border-nyrix-purple/30 hover:scale-[1.02] outline-none w-full sm:w-auto"
+            >
+              <span className="pt-0.5">Explore Platform</span>
+            </button>
+          </motion.div>
+
+          {/* Value Props */}
+          <motion.div variants={itemVariants} className="mt-16 flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-medium text-nyrix-dark/50">
+            {['Enterprise Grade', 'Predictive Intelligence', 'Seamless Integration'].map((prop, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-nyrix-purple/70" />
+                <span>{prop}</span>
               </div>
-            </div>
+            ))}
           </motion.div>
         </motion.div>
       </div>
-
-      <motion.div
-        className="scroll-indicator"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 4, duration: 1 }}
-      >
-        <motion.div
-          className="scroll-arrow"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, delay: 5 }}
-        >
-          <ArrowRight className="scroll-icon" />
-        </motion.div>
-        <span>DISCOVER MORE</span>
-      </motion.div>
     </section>
   );
 };
 
-export default Hero; 
+export default Hero;

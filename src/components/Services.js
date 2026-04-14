@@ -1,157 +1,119 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Bot, Cog, Brain, Zap, Users, BarChart3, TrendingUp, Network } from 'lucide-react';
-import './Services.css';
+import { useNavigate } from 'react-router-dom';
+import { Rocket, Compass, RefreshCw, Shield, ArrowRight } from 'lucide-react';
 
 const Services = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const handleScheduleCall = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({ 
-        url: 'https://calendly.com/d/cwvd-6vj-tp8/demo-call' 
-      });
-    }
-    return false;
-  };
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const navigate = useNavigate();
 
   const services = [
     {
-      icon: Bot,
-      title: 'Custom AI Agents',
-      description: 'Intelligent agents that understand your business context and automate complex decision-making processes.',
-      features: ['Natural Language Processing', '24/7 Autonomous Operation', 'Learning & Adaptation', 'Multi-Platform Integration'],
-      gradient: 'linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%)',
+      icon: Rocket,
+      title: 'AI MVP Development',
+      tagline: 'Concept to product in 14 days',
+      description: 'We build and launch functional, production-ready AI products at lightning speed — so you can test, iterate, and scale faster.',
+      route: '/ai-mvp-development',
+      className: 'md:col-span-2 lg:col-span-1',
     },
     {
-      icon: Cog,
-      title: 'System Intelligence Architecture',
-      description: 'Build foundational intelligence into your business systems with modular, scalable architectures that adapt and evolve with you.',
-      features: ['Context-aware Decision Nodes', 'Plug & Play Modules', 'Multi-Agent Orchestration', 'No-Code Rule Mapping'],
-      gradient: 'linear-gradient(135deg, #06b6d4 0%, #ec4899 100%)',
+      icon: Compass,
+      title: 'AI Enablement & Advisory',
+      tagline: 'Strategic guidance for the AI-first era',
+      description: 'Navigate the complex AI landscape with expert advisory — identifying high-impact opportunities while minimizing risk.',
+      route: '/ai-enablement-advisory',
+      className: 'md:col-span-1',
     },
     {
-      icon: Brain,
-      title: 'Intelligent Analytics',
-      description: 'Transform raw data into actionable insights with AI-powered analytics that predict trends and optimize performance.',
-      features: ['Predictive Modeling', 'Real-time Dashboards', 'Custom Reports', 'Data Visualization'],
-      gradient: 'linear-gradient(135deg, #ec4899 0%, #f97316 100%)',
+      icon: RefreshCw,
+      title: 'Business Transformation',
+      tagline: 'Modernizing legacy for the future',
+      description: 'Deep integration of AI to revolutionize how your business operates — woven into the fabric of your organization.',
+      route: '/business-transformation',
+      className: 'md:col-span-1',
     },
     {
-      icon: Zap,
-      title: 'Rapid Deployment',
-      description: 'Get your AI solutions up and running quickly with our streamlined deployment process and expert support.',
-      features: ['Quick Setup', 'Cloud Integration', 'Expert Support', 'Minimal Downtime'],
-      gradient: 'linear-gradient(135deg, #f97316 0%, #8b5cf6 100%)',
-    },
-    {
-      icon: TrendingUp,
-      title: 'Decision Science-as-a-Service (DSaaS)',
-      description: 'Apply tailored decision science frameworks to key areas of your business, from pricing to funnel flows with ongoing optimization baked in.',
-      features: ['Continuous Feedback Loops', 'Funnel & Offer Optimization', 'A/B Testing Logic Built In', 'AI-Driven Scenario Modeling'],
-      gradient: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
-    },
-    {
-      icon: Network,
-      title: 'Cognitive Ops Layer',
-      description: 'We turn workflows into thinking systems, enabling dynamic collaboration between AI agents and humans with shared context and purpose.',
-      features: ['Shared Agent-Human Logs', 'Contextual Decision Trails', 'Adaptive Ops Layer', 'Role-Based Intelligence'],
-      gradient: 'linear-gradient(135deg, #06b6d4 0%, #f97316 100%)',
+      icon: Shield,
+      title: 'AI Strategy & Governance',
+      tagline: 'Secure, ethical, and high-ROI AI',
+      description: 'Frameworks to manage risk, maintain compliance, and ensure your AI investments deliver measurable results.',
+      route: '/ai-strategy-governance',
+      className: 'md:col-span-2 lg:col-span-1',
     },
   ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut',
-      },
-    },
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
   };
 
   return (
-    <section id="services" className="services section">
-      <div className="container">
+    <section id="services" className="relative py-24 bg-nyrix-light overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
-          className="services-header"
+          ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          ref={ref}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="section-badge">Our Expertise</span>
-          <h2 className="section-title">
-            Transformative <span className="gradient-text">AI Solutions</span>
+          <div className="inline-flex items-center px-4 py-2 rounded-full border border-nyrix-glassBorder bg-white/50 backdrop-blur-md mb-6">
+            <span className="text-xs font-bold tracking-widest uppercase text-nyrix-purpleBright">
+              Our Services
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-nyrix-dark mb-6 tracking-tight">
+            End-to-End <span className="text-transparent bg-clip-text bg-gradient-to-r from-nyrix-purple to-[#4f46e5]">AI Solutions</span>
           </h2>
-          <p className="section-subtitle">
-            We deliver cutting-edge AI agents and automation solutions that revolutionize 
-            how businesses operate, making complex processes simple and efficient.
+          <p className="text-lg text-nyrix-dark/60 font-medium leading-relaxed">
+            From rapid prototyping to enterprise transformation and governance. We build intelligent systems that scale.
           </p>
         </motion.div>
 
         <motion.div
-          className="services-grid"
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={inView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="service-card glass-effect hover-lift"
               variants={itemVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
+              onClick={() => navigate(service.route)}
+              className={`group relative flex flex-col p-8 sm:p-10 bg-white rounded-[2rem] border border-nyrix-glassBorder shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-card cursor-pointer overflow-hidden ${service.className || ''}`}
             >
-              <div className="service-header">
-                <div 
-                  className="service-icon"
-                  style={{ background: service.gradient }}
-                >
-                  <service.icon />
+              {/* Hover gradient effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-nyrix-purple/0 via-transparent to-nyrix-purple/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="w-14 h-14 bg-nyrix-purple/5 border border-nyrix-purple/10 rounded-2xl flex items-center justify-center mb-8 text-nyrix-purpleBright group-hover:scale-110 group-hover:bg-nyrix-purple/10 transition-all duration-500">
+                  <service.icon size={26} strokeWidth={1.5} />
                 </div>
-                <h3 className="service-title">{service.title}</h3>
-              </div>
-              
-              <p className="service-description">{service.description}</p>
-              
-              <ul className="service-features">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="service-feature">
-                    <span className="feature-dot"></span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+                
+                <div className="mb-6 flex-grow">
+                  <span className="inline-block text-xs font-bold tracking-wider uppercase text-nyrix-purple/60 mb-3">
+                    {service.tagline}
+                  </span>
+                  <h3 className="text-2xl font-bold text-nyrix-dark mb-3 tracking-tight">
+                    {service.title}
+                  </h3>
+                  <p className="text-nyrix-dark/60 font-medium leading-relaxed text-[15px]">
+                    {service.description}
+                  </p>
+                </div>
 
-              <motion.button
-                className="service-cta"
-                onClick={handleScheduleCall}
-                whileHover={{ x: 5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Learn More
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </motion.button>
+                <div className="flex items-center gap-2 text-sm font-semibold tracking-wide text-nyrix-dark/50 group-hover:text-nyrix-purple transition-colors mt-auto pt-4 border-t border-nyrix-glassBorder/50">
+                  <span>Explore Offering</span>
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -160,4 +122,4 @@ const Services = () => {
   );
 };
 
-export default Services; 
+export default Services;

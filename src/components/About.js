@@ -10,12 +10,12 @@ const About = () => {
     threshold: 0.1,
   });
 
-           const stats = [
-           { number: '50+', label: 'AI AGENTS DEPLOYED', icon: Award },
-           { number: '99.5%', label: 'UPTIME GUARANTEE', icon: Target },
-           { number: '35%', label: 'COST REDUCTION', icon: Lightbulb },
-           { number: '24/7', label: 'SUPPORT AVAILABLE', icon: Users },
-         ];
+  const stats = [
+    { number: '50+', label: 'AI AGENTS DEPLOYED', icon: Award },
+    { number: '10+', label: 'INDUSTRIES SERVED', icon: Target },
+    { number: '35%', label: 'AVG COST REDUCTION', icon: Lightbulb },
+    { number: 'End-to-End', label: 'DELIVERY MODEL', icon: Users },
+  ];
 
   const values = [
     {
@@ -38,140 +38,132 @@ const About = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut',
-      },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
   };
 
   return (
-    <section id="about" className="about section">
-      <div className="container">
+    <section id="about" className="relative py-24 bg-white overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        
         <motion.div
-          className="about-header"
+          className="text-center max-w-2xl mx-auto mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           ref={ref}
         >
-          <span className="section-badge">ABOUT</span>
-                           <h2 className="section-title">
-                   ADVANCING THE <span className="accent-text">FUTURE</span>
-                 </h2>
+          <div className="inline-flex items-center px-4 py-2 rounded-full border border-nyrix-glassBorder bg-nyrix-light mb-6">
+            <span className="text-xs font-bold tracking-widest uppercase text-nyrix-purpleBright">
+              About Us
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-nyrix-dark mb-6 tracking-tight">
+            Advancing the <span className="text-transparent bg-clip-text bg-gradient-to-r from-nyrix-purple to-[#4f46e5]">Future</span>
+          </h2>
         </motion.div>
 
-        <div className="about-content">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           <motion.div
-            className="about-story"
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
+            className="flex flex-col justify-center"
           >
-                               <motion.div className="story-text" variants={itemVariants}>
-                     <h3>OUR MISSION</h3>
-                     <p>
-                       At Nyrix, we are advancing the future of Decision Sciences by harnessing 
-                       operational intelligence with agentic decision-making. We build bespoke 
-                       AI-powered operational intelligence engines that revolutionize how businesses 
-                       operate, from e-commerce to enterprise-level challenges. By transforming 
-                       intelligent workflows and predictive analytics into practical solutions, 
-                       we empower you to unleash the full potential of automation and turn your 
-                       strategic vision into reality.
-                     </p>
-                   </motion.div>
-
-            <motion.div className="story-visual" variants={itemVariants}>
-              <div className="visual-element">
-                <div className="floating-shapes">
-                  {Array.from({ length: 4 }, (_, i) => (
-                    <motion.div
-                      key={i}
-                      className="shape"
-                      style={{ '--delay': `${i * 0.5}s` }}
-                      animate={{
-                        y: [0, -15, 0],
-                        rotate: [0, 180, 360],
-                      }}
-                      transition={{
-                        duration: 4 + i,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                        delay: i * 0.5,
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
+            <motion.div variants={itemVariants} className="mb-8">
+              <h3 className="text-sm font-bold tracking-wider text-nyrix-purple uppercase mb-4">Our Mission</h3>
+              <p className="text-lg text-nyrix-dark/70 leading-relaxed font-medium">
+                At Nyrix, we are advancing the future of Decision Sciences by harnessing 
+                operational intelligence with agentic decision-making. We build bespoke 
+                AI-powered operational intelligence engines that revolutionize how businesses 
+                operate, from e-commerce to enterprise-level challenges. By transforming 
+                intelligent workflows and predictive analytics into practical solutions, 
+                we empower you to unleash the full potential of automation and turn your 
+                strategic vision into reality.
+              </p>
             </motion.div>
           </motion.div>
 
+          {/* Visual element */}
           <motion.div
-            className="about-stats"
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
+            className="relative h-[300px] sm:h-[400px] w-full bg-nyrix-light rounded-[2.5rem] border border-nyrix-glassBorder overflow-hidden flex items-center justify-center p-8"
           >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                className="stat-card"
-                variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="stat-icon">
-                  <stat.icon />
-                </div>
-                <div className="stat-content">
-                  <span className="stat-number">{stat.number}</span>
-                  <span className="stat-label">{stat.label}</span>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            className="about-values"
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-          >
-            <motion.h3 className="values-title" variants={itemVariants}>
-              CORE VALUES
-            </motion.h3>
-            
-            <div className="values-grid">
-              {values.map((value, index) => (
-                <motion.div
-                  key={index}
-                  className="value-card"
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <h4 className="value-title">{value.title}</h4>
-                  <p className="value-description">{value.description}</p>
-                </motion.div>
-              ))}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(124,58,237,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(124,58,237,0.04)_1px,transparent_1px)] bg-[size:2rem_2rem]" />
+            <div className="relative z-10 w-48 h-48 sm:w-64 sm:h-64 rounded-full border border-nyrix-purple/20 flex items-center justify-center">
+              <div className="w-32 h-32 sm:w-48 sm:h-48 rounded-full border border-nyrix-purple/30 flex items-center justify-center animate-spin-slow">
+                <div className="w-16 h-16 sm:w-32 sm:h-32 rounded-full border border-nyrix-purple/40 bg-nyrix-purple/5 backdrop-blur-sm shadow-glow" />
+              </div>
+              <motion.div 
+                className="absolute w-4 h-4 bg-nyrix-purple rounded-full shadow-intense"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+                style={{ originX: 4, originY: 4 }}
+              />
             </div>
           </motion.div>
         </div>
+
+        {/* Stats Grid */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20"
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="bg-nyrix-light border border-nyrix-glassBorder p-6 rounded-3xl flex flex-col items-center justify-center text-center hover:-translate-y-1 transition-transform"
+            >
+              <div className="w-12 h-12 rounded-xl bg-white shadow-sm border border-nyrix-glassBorder flex items-center justify-center text-nyrix-purpleBright mb-4">
+                <stat.icon size={24} strokeWidth={1.5} />
+              </div>
+              <span className="text-3xl font-display font-black text-nyrix-dark mb-1">{stat.number}</span>
+              <span className="text-[10px] font-bold tracking-widest uppercase text-nyrix-dark/50">{stat.label}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Core Values */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+        >
+          <motion.div variants={itemVariants} className="text-center mb-10">
+            <h3 className="text-2xl font-bold text-nyrix-dark tracking-tight">Core Values</h3>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="p-8 bg-white border border-nyrix-glassBorder rounded-3xl hover:border-nyrix-purple/30 hover:shadow-card transition-all"
+              >
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="w-2 h-2 rounded-full bg-nyrix-purple" />
+                  <h4 className="text-[15px] font-bold tracking-wide text-nyrix-dark">{value.title}</h4>
+                </div>
+                <p className="text-sm font-medium text-nyrix-dark/60 leading-relaxed ml-6">
+                  {value.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );
 };
 
-export default About; 
+export default About;
