@@ -166,13 +166,13 @@ const AgentsGallery = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const go = (dir) => {
+  const go = React.useCallback((dir) => {
     const currentFiltered = filteredAgents.length > 0 ? filteredAgents : agents;
     const idx = currentFiltered.findIndex(a => a.id === selected.id);
     const next = (idx + dir + currentFiltered.length) % currentFiltered.length;
     setSelected(currentFiltered[next]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, [filteredAgents, selected?.id]);
 
   React.useEffect(() => {
     const handleKeyDown = (e) => {
@@ -185,7 +185,7 @@ const AgentsGallery = () => {
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [selected?.id, filteredAgents]);
+  }, [go]);
 
   React.useEffect(() => setImageLoaded(false), [selected?.id]);
 
