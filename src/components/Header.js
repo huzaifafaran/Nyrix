@@ -69,9 +69,9 @@ const Header = () => {
             <img 
               src="/logo icon no-bg.png" 
               alt="Nyrix Logo" 
-              className="h-8 w-auto object-contain"
+              className="h-10 w-auto object-contain"
             />
-            <span className="ml-3 font-display font-bold tracking-tight text-xl text-nyrix-purple hidden sm:block">NYRIX</span>
+
           </motion.button>
 
           {/* Desktop Nav */}
