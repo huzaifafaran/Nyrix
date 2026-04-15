@@ -54,7 +54,7 @@ const Hero = () => {
           {/* Heading */}
           <motion.h1 
             variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-[5.5rem] font-display font-extrabold tracking-tight text-nyrix-dark leading-[1.05] mb-6"
+            className="text-5xl md:text-7xl lg:text-[5.5rem] font-display font-extrabold tracking-tight text-nyrix-dark leading-[1.05] mb-6 uppercase"
           >
             Anticipate the future with <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-nyrix-purple to-[#4f46e5]">AI Decision Sciences</span>

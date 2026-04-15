@@ -255,7 +255,7 @@ const AgentsGallery = () => {
                 <span className="text-xs font-bold tracking-widest uppercase text-nyrix-purple mb-4">
                   {selected.subtitle}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-display font-extrabold text-nyrix-dark leading-tight mb-6 tracking-tight">
+                <h2 className="text-4xl md:text-5xl font-display font-extrabold text-nyrix-dark leading-tight mb-6 tracking-tight uppercase">
                   {selected.title}
                 </h2>
                 <p className="text-lg text-nyrix-dark/60 leading-relaxed mb-8 font-medium">

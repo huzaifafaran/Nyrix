@@ -23,7 +23,7 @@ const PrivacyPolicy = () => {
             <ArrowLeft size={20} />
             Back
           </button>
-          <h1>Privacy Policy</h1>
+          <h1 className="uppercase">Privacy Policy</h1>
           <p className="last-updated">Last updated: {new Date().toLocaleDateString()}</p>
         </motion.div>
 

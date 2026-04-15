@@ -41,7 +41,7 @@ const Contact = () => {
             </span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-nyrix-dark mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-nyrix-dark mb-6 tracking-tight uppercase">
             Let's Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-nyrix-purple to-[#4f46e5]">Amazing</span>
           </h2>
           

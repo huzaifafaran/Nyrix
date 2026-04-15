@@ -68,8 +68,8 @@ const Services = () => {
               Our Services
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-nyrix-dark mb-6 tracking-tight">
-            End-to-End <span className="text-transparent bg-clip-text bg-gradient-to-r from-nyrix-purple to-[#4f46e5]">AI Solutions</span>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-nyrix-dark mb-6 tracking-tight uppercase">
+            Intelligent <span className="text-transparent bg-clip-text bg-gradient-to-r from-nyrix-purple to-[#4f46e5]">AI Solutions</span>
           </h2>
           <p className="text-lg text-nyrix-dark/60 font-medium leading-relaxed">
             From rapid prototyping to enterprise transformation and governance. We build intelligent systems that scale.

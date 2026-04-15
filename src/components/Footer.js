@@ -53,7 +53,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
               <img src="/logo icon no-bg.png" alt="Nyrix Logo" className="h-8 w-auto brightness-0 invert opacity-90" />
-              <span className="ml-3 font-display font-bold tracking-tight text-xl text-white">Nyrix</span>
+              <span className="ml-3 font-display font-bold tracking-tight text-xl text-white">NYRIX</span>
             </div>
             <p className="text-slate-400 font-medium leading-relaxed max-w-sm mb-8">
               Transforming businesses through intelligent AI solutions and cutting-edge automation. 
@@ -137,7 +137,7 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-slate-500 text-sm font-medium">
-            © {currentYear} Nyrix. All rights reserved.
+            © {currentYear} NYRIX. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             {['Enterprise Ready', 'SOC 2 Compliant', 'GDPR Ready'].map(badge => (

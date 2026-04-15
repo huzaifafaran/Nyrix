@@ -62,7 +62,7 @@ const About = () => {
               About Us
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-nyrix-dark mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-nyrix-dark mb-6 tracking-tight uppercase">
             Advancing the <span className="text-transparent bg-clip-text bg-gradient-to-r from-nyrix-purple to-[#4f46e5]">Future</span>
           </h2>
         </motion.div>
@@ -139,7 +139,7 @@ const About = () => {
           animate={inView ? "visible" : "hidden"}
         >
           <motion.div variants={itemVariants} className="text-center mb-10">
-            <h3 className="text-2xl font-bold text-nyrix-dark tracking-tight">Core Values</h3>
+            <h3 className="text-2xl font-bold text-nyrix-dark tracking-tight uppercase">Core Values</h3>
           </motion.div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

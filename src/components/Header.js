@@ -71,7 +71,7 @@ const Header = () => {
               alt="Nyrix Logo" 
               className="h-8 w-auto object-contain"
             />
-            <span className="ml-3 font-display font-semibold tracking-tight text-xl text-nyrix-dark hidden sm:block">Nyrix</span>
+            <span className="ml-3 font-display font-bold tracking-tight text-xl text-nyrix-purple hidden sm:block">NYRIX</span>
           </motion.button>
 
           {/* Desktop Nav */}
