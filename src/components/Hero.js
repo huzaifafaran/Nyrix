@@ -37,7 +37,7 @@ const Hero = () => {
             className="text-6xl md:text-8xl lg:text-[7rem] font-display font-black tracking-tighter text-nyrix-dark leading-[0.95] mb-8 uppercase"
           >
             Anticipate the future with <br className="hidden md:block" />
-            AI Decision Sciences.
+            <span className="text-nyrix-purple">AI Decision Sciences.</span>
           </h1>
 
           {/* Subtitle */}
