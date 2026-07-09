@@ -266,7 +266,7 @@ const AgentsGallery = () => {
                 <ul className="space-y-4 mb-12 border-l border-black/10 pl-6">
                   {selected.features.map((f, i) => (
                     <li key={i} className="flex items-start gap-4 text-nyrix-dark/70 font-medium text-[16px]">
-                      <span className="text-nyrix-purple font-mono">//</span>
+                      <span className="text-nyrix-purple font-mono">{"//"}</span>
                       {f}
                     </li>
                   ))}

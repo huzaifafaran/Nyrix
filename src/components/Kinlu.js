@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, AlertTriangle, MessageSquare, BarChart3, FileText, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, AlertTriangle, BarChart3, FileText, CheckCircle2 } from 'lucide-react';
 import './Kinlu.css';
 
 const Kinlu = () => {

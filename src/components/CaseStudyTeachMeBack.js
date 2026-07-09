@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Brain, MessageCircle, Trophy, Upload, Target, Star, Play } from 'lucide-react';
+import { ArrowRight, Brain, MessageCircle, Trophy, Upload, Target, Star } from 'lucide-react';
 import './ServicePage.css';
 
 const CaseStudyTeachMeBack = () => {

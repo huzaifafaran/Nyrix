@@ -205,7 +205,7 @@ const Agents = () => {
                         <ul className="space-y-4">
                           {agent.features.map((feature, index) => (
                             <li key={index} className="flex items-start gap-4 text-[16px] font-medium text-nyrix-dark/70">
-                              <span className="text-nyrix-purple font-mono">//</span>
+                              <span className="text-nyrix-purple font-mono">{"//"}</span>
                               {feature}
                             </li>
                           ))}
