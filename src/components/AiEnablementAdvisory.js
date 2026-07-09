@@ -5,9 +5,7 @@ import './ServicePage.css';
 
 const AiEnablementAdvisory = () => {
   const handleScheduleCall = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({ url: 'https://calendly.com/d/cwvd-6vj-tp8/demo-call' });
-    }
+    window.open('https://calendar.app.google/mhjiQ9t9g5Ge322s6', '_blank');
   };
 
   const services = [
@@ -23,11 +21,10 @@ const AiEnablementAdvisory = () => {
     <div>
       {/* Hero */}
       <section className="sp-hero">
-        <div className="sp-hero-glow" />
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
             <span className="sp-hero-badge">Advisory</span>
-            <h1>AI Enablement <span className="accent">& Advisory</span></h1>
+            <h1>AI Enablement & Advisory.</h1>
             <p className="sp-hero-sub">
               Strategic guidance for the AI-first era. We help businesses navigate the complex AI landscape, identifying high-impact opportunities while minimizing risk and disruption to current operations.
             </p>

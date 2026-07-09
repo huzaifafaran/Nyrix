@@ -36,14 +36,9 @@ const About = () => {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
-  };
-
-  const itemVariants = {
+  const fadeUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
   return (
@@ -57,106 +52,82 @@ const About = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           ref={ref}
         >
-          <div className="inline-flex items-center px-4 py-2 rounded-full border border-nyrix-glassBorder bg-nyrix-light mb-6">
-            <span className="text-xs font-bold tracking-widest uppercase text-nyrix-purpleBright">
-              About Us
-            </span>
+          <div className="text-[11px] font-bold tracking-[0.25em] uppercase text-nyrix-purple mb-8 border-b border-black/10 pb-4 inline-block">
+            About Us
           </div>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-nyrix-dark mb-6 tracking-tight uppercase">
-            Advancing the <span className="text-transparent bg-clip-text bg-gradient-to-r from-nyrix-purple to-[#4f46e5]">Future</span>
+          <h2 className="text-5xl md:text-6xl font-display font-black text-nyrix-dark mb-8 tracking-tighter uppercase">
+            Advancing the Future.
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+        <div className="max-w-5xl mx-auto mb-24 border-t border-black/10 pt-16">
           <motion.div
-            variants={containerVariants}
+            variants={fadeUp}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            className="flex flex-col justify-center"
+            className="flex flex-col md:flex-row gap-12 lg:gap-24 items-start"
           >
-            <motion.div variants={itemVariants} className="mb-8">
-              <h3 className="text-sm font-bold tracking-wider text-nyrix-purple uppercase mb-4">Our Mission</h3>
-              <p className="text-lg text-nyrix-dark/70 leading-relaxed font-medium">
+            <div className="w-full md:w-1/4 shrink-0">
+              <h3 className="text-[11px] font-bold tracking-[0.25em] text-nyrix-purple uppercase">Our Mission</h3>
+            </div>
+            <div className="w-full md:w-3/4 text-left">
+              <p className="text-2xl md:text-3xl text-nyrix-dark font-medium leading-[1.4] tracking-tight mb-6">
                 At Nyrix, we are advancing the future of Decision Sciences by harnessing 
                 operational intelligence with agentic decision-making. We build bespoke 
                 AI-powered operational intelligence engines that revolutionize how businesses 
-                operate, from e-commerce to enterprise-level challenges. By transforming 
-                intelligent workflows and predictive analytics into practical solutions, 
+                operate, from e-commerce to enterprise-level challenges.
+              </p>
+              <p className="text-xl text-nyrix-dark/70 font-medium leading-[1.6]">
+                By transforming intelligent workflows and predictive analytics into practical solutions, 
                 we empower you to unleash the full potential of automation and turn your 
                 strategic vision into reality.
               </p>
-            </motion.div>
-          </motion.div>
-
-          {/* Visual element */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="relative h-[300px] sm:h-[400px] w-full bg-nyrix-light rounded-[2.5rem] border border-nyrix-glassBorder overflow-hidden flex items-center justify-center p-8"
-          >
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(124,58,237,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(124,58,237,0.04)_1px,transparent_1px)] bg-[size:2rem_2rem]" />
-            <div className="relative z-10 w-48 h-48 sm:w-64 sm:h-64 rounded-full border border-nyrix-purple/20 flex items-center justify-center">
-              <div className="w-32 h-32 sm:w-48 sm:h-48 rounded-full border border-nyrix-purple/30 flex items-center justify-center animate-spin-slow">
-                <div className="w-16 h-16 sm:w-32 sm:h-32 rounded-full border border-nyrix-purple/40 bg-nyrix-purple/5 backdrop-blur-sm shadow-glow" />
-              </div>
-              <motion.div 
-                className="absolute w-4 h-4 bg-nyrix-purple rounded-full shadow-intense"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                style={{ originX: 4, originY: 4 }}
-              />
             </div>
           </motion.div>
         </div>
 
         {/* Stats Grid */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20"
-          variants={containerVariants}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-32"
+          variants={fadeUp}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
           {stats.map((stat, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={itemVariants}
-              className="bg-nyrix-light border border-nyrix-glassBorder p-6 rounded-3xl flex flex-col items-center justify-center text-center hover:-translate-y-1 transition-transform"
+              className="py-10 border-t border-black/10 flex flex-col items-start"
             >
-              <div className="w-12 h-12 rounded-xl bg-white shadow-sm border border-nyrix-glassBorder flex items-center justify-center text-nyrix-purpleBright mb-4">
-                <stat.icon size={24} strokeWidth={1.5} />
+              <div className="mb-6 text-nyrix-purple">
+                <stat.icon size={32} strokeWidth={1} />
               </div>
-              <span className="text-3xl font-display font-black text-nyrix-dark mb-1">{stat.number}</span>
-              <span className="text-[10px] font-bold tracking-widest uppercase text-nyrix-dark/50">{stat.label}</span>
-            </motion.div>
+              <span className="text-4xl font-display font-black text-nyrix-dark mb-2 tracking-tighter">{stat.number}</span>
+              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-nyrix-dark/50">{stat.label}</span>
+            </div>
           ))}
         </motion.div>
 
         {/* Core Values */}
         <motion.div
-          variants={containerVariants}
+          variants={fadeUp}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          <motion.div variants={itemVariants} className="text-center mb-10">
-            <h3 className="text-2xl font-bold text-nyrix-dark tracking-tight uppercase">Core Values</h3>
-          </motion.div>
+          <div className="text-left mb-12 border-b border-black/10 pb-4">
+            <h3 className="text-sm font-bold tracking-[0.25em] text-nyrix-purple uppercase">Core Values</h3>
+          </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-16">
             {values.map((value, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={itemVariants}
-                className="p-8 bg-white border border-nyrix-glassBorder rounded-3xl hover:border-nyrix-purple/30 hover:shadow-card transition-all"
+                className="pl-6 border-l-2 border-nyrix-dark"
               >
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="w-2 h-2 rounded-full bg-nyrix-purple" />
-                  <h4 className="text-[15px] font-bold tracking-wide text-nyrix-dark">{value.title}</h4>
-                </div>
-                <p className="text-sm font-medium text-nyrix-dark/60 leading-relaxed ml-6">
+                <h4 className="text-2xl font-black font-display tracking-tight text-nyrix-dark mb-3">{value.title}</h4>
+                <p className="text-lg font-medium text-nyrix-dark/60 leading-relaxed">
                   {value.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </motion.div>

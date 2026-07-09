@@ -116,40 +116,36 @@ const Agents = () => {
   };
 
   const handleScheduleCall = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({ url: 'https://calendly.com/d/cwvd-6vj-tp8/demo-call' });
-    }
+    window.open('https://calendar.app.google/mhjiQ9t9g5Ge322s6', '_blank');
   };
 
   const visibleAgentsList = agents.slice(0, visibleAgents);
 
   return (
     <section id="agents" className="relative py-24 bg-white overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(124,58,237,0.03),transparent_70%)]" />
+      {/* No Background */}
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10 w-full">
+      <div className="max-w-5xl mx-auto px-6 relative z-10 w-full">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           ref={ref}
         >
-          <div className="inline-flex items-center px-4 py-2 rounded-full border border-nyrix-glassBorder bg-nyrix-light mb-6">
-            <span className="text-xs font-bold tracking-widest uppercase text-nyrix-purpleBright">
-              Our AI Agents
-            </span>
+          <div className="text-[11px] font-bold tracking-[0.25em] uppercase text-nyrix-purple mb-8 border-b border-black/10 pb-4 inline-block">
+            Our AI Agents
           </div>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-nyrix-dark mb-6 tracking-tight uppercase">
-            Intelligent <span className="text-transparent bg-clip-text bg-gradient-to-r from-nyrix-purple to-[#4f46e5]">AI Solutions</span>
+          <h2 className="text-5xl md:text-6xl font-display font-black text-nyrix-dark mb-8 tracking-tighter uppercase">
+            Intelligent Agents.
           </h2>
-          <p className="text-lg text-nyrix-dark/60 font-medium leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xl text-nyrix-dark/70 font-medium leading-relaxed max-w-3xl mx-auto">
             Explore examples of our specialized AI agents and discover how we can build custom solutions tailored to your unique business needs.
           </p>
         </motion.div>
 
         <motion.div
-          className="flex flex-col gap-6"
+          className="flex flex-col"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.2, duration: 0.8 }}
@@ -157,32 +153,31 @@ const Agents = () => {
           {visibleAgentsList.map((agent) => (
             <div
               key={agent.id}
-              className={`bg-nyrix-light border border-nyrix-glassBorder p-6 rounded-3xl transition-all duration-300 ${expandedCard === agent.id ? 'shadow-card border-nyrix-purple/30' : 'hover:border-nyrix-purple/30 hover:shadow-sm'}`}
+              className={`border-t border-black/10 py-10 transition-all duration-300`}
             >
               <div 
-                className="flex items-start sm:items-center gap-6 cursor-pointer"
+                className="flex items-start sm:items-center gap-8 cursor-pointer"
                 onClick={() => toggleCard(agent.id)}
               >
                 <div 
-                  className="w-16 h-16 shrink-0 rounded-2xl flex items-center justify-center text-white shadow-glow"
-                  style={{ background: `linear-gradient(135deg, ${agent.color} 0%, #4f46e5 100%)` }}
+                  className="w-16 h-16 shrink-0 flex items-center justify-center text-nyrix-purple"
                 >
-                  <agent.icon size={28} strokeWidth={1.5} />
+                  <agent.icon size={40} strokeWidth={1} />
                 </div>
                 
                 <div className="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
-                    <h3 className="text-xl font-bold text-nyrix-dark tracking-tight mb-1">{agent.title}</h3>
-                    <p className="text-sm font-bold tracking-wider text-nyrix-purple uppercase mb-2">{agent.subtitle}</p>
-                    <p className="text-nyrix-dark/70 font-medium text-[15px]">{agent.shortDescription}</p>
+                    <h3 className="text-3xl font-display font-black text-nyrix-dark tracking-tighter mb-2">{agent.title}</h3>
+                    <p className="text-[11px] font-bold tracking-[0.25em] text-nyrix-purple uppercase mb-4">{agent.subtitle}</p>
+                    <p className="text-nyrix-dark/70 font-medium text-[16px]">{agent.shortDescription}</p>
                   </div>
                   
-                  <button className="shrink-0 w-10 h-10 rounded-full border border-nyrix-glassBorder bg-white flex items-center justify-center text-nyrix-dark/50 hover:text-nyrix-purple hover:border-nyrix-purple/30 transition-colors">
+                  <button className="shrink-0 flex items-center justify-center text-nyrix-dark/50 hover:text-nyrix-purple transition-colors">
                     <motion.div
                       animate={{ rotate: expandedCard === agent.id ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <ChevronDown size={20} />
+                      <ChevronDown size={24} />
                     </motion.div>
                   </button>
                 </div>
@@ -197,32 +192,34 @@ const Agents = () => {
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <div className="pt-6 border-t border-nyrix-glassBorder">
-                      <p className="text-nyrix-dark/80 font-medium leading-relaxed mb-8">
+                    <div className="pt-8 mt-8 border-t border-black/5">
+                      <p className="text-nyrix-dark/80 text-lg font-medium leading-relaxed mb-10 pl-24">
                         {agent.fullDescription}
                       </p>
                       
-                      <div className="bg-white border border-nyrix-glassBorder rounded-2xl p-6 mb-8">
-                        <h4 className="flex items-center gap-2 text-sm font-bold tracking-widest text-nyrix-dark/80 uppercase mb-6">
+                      <div className="pl-24 mb-10">
+                        <h4 className="flex items-center gap-2 text-[11px] font-bold tracking-[0.25em] text-nyrix-dark/80 uppercase mb-8">
                           <Zap size={16} className="text-nyrix-purple" />
                           Key Capabilities
                         </h4>
                         <ul className="space-y-4">
                           {agent.features.map((feature, index) => (
-                            <li key={index} className="flex items-start gap-3 text-[15px] font-medium text-nyrix-dark/70">
-                              <span className="mt-1.5 w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: agent.color }} />
+                            <li key={index} className="flex items-start gap-4 text-[16px] font-medium text-nyrix-dark/70">
+                              <span className="text-nyrix-purple font-mono">//</span>
                               {feature}
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      <button
-                        onClick={(e) => { e.stopPropagation(); handleScheduleCall(); }}
-                        className="w-full sm:w-auto px-8 py-4 bg-nyrix-dark text-white rounded-xl font-bold tracking-wide transition-all hover:bg-black hover:scale-[1.02] hover:shadow-intense flex flex-row items-center justify-center gap-2"
-                      >
-                        Request Demo For {agent.title}
-                      </button>
+                      <div className="pl-24">
+                        <button
+                          onClick={(e) => { e.stopPropagation(); handleScheduleCall(); }}
+                          className="w-full sm:w-auto px-10 py-5 bg-nyrix-dark text-white font-bold tracking-widest uppercase text-[13px] transition-all hover:bg-black outline-none flex flex-row items-center justify-center gap-2"
+                        >
+                          Request Demo For {agent.title}
+                        </button>
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -231,11 +228,11 @@ const Agents = () => {
           ))}
         </motion.div>
 
-        <div className="mt-12 flex justify-center gap-4">
+        <div className="mt-16 flex justify-center gap-6">
           {visibleAgents < agents.length && (
             <button
               onClick={() => setVisibleAgents(prev => Math.min(prev + 2, agents.length))}
-              className="px-6 py-3 bg-white border border-nyrix-glassBorder rounded-xl font-bold text-sm tracking-wide text-nyrix-dark/80 hover:text-nyrix-purple hover:border-nyrix-purple/30 transition-all flex items-center gap-2"
+              className="px-10 py-5 bg-transparent border-b-2 border-black font-bold text-[13px] tracking-widest uppercase text-nyrix-dark hover:border-nyrix-purple hover:text-nyrix-purple transition-all flex items-center gap-2"
             >
               Show More <ChevronDown size={16} />
             </button>
@@ -243,7 +240,7 @@ const Agents = () => {
           {visibleAgents > 2 && (
             <button
               onClick={() => setVisibleAgents(prev => Math.max(prev - 2, 2))}
-              className="px-6 py-3 bg-white border border-nyrix-glassBorder rounded-xl font-bold text-sm tracking-wide text-nyrix-dark/80 hover:text-nyrix-purple hover:border-nyrix-purple/30 transition-all flex items-center gap-2"
+              className="px-10 py-5 bg-transparent border-b-2 border-black font-bold text-[13px] tracking-widest uppercase text-nyrix-dark hover:border-nyrix-purple hover:text-nyrix-purple transition-all flex items-center gap-2"
             >
               Show Less <ChevronUp size={16} />
             </button>

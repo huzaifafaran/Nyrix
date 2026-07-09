@@ -61,8 +61,8 @@ const CategoryRow = ({ category, items, onPick, selectedId }) => {
   return (
     <div className="mb-14">
       <div className="flex items-center justify-between mb-6 px-1">
-        <h3 className="text-2xl font-display font-bold text-nyrix-dark tracking-tight">{category}</h3>
-        <div className="px-3 py-1 bg-nyrix-purple/5 border border-nyrix-glassBorder rounded-full text-xs font-semibold text-nyrix-purple uppercase tracking-widest">
+        <h3 className="text-3xl font-display font-black text-nyrix-dark tracking-tighter uppercase">{category}</h3>
+        <div className="text-[11px] font-bold text-nyrix-purple uppercase tracking-widest">
           {items.length} agent{items.length !== 1 ? 's' : ''}
         </div>
       </div>
@@ -81,26 +81,26 @@ const CategoryRow = ({ category, items, onPick, selectedId }) => {
           {items.map((agent) => (
             <motion.div
               key={agent.id}
-              className={`flex-none w-[260px] sm:w-[280px] snap-start bg-white border rounded-[1.25rem] overflow-hidden cursor-pointer transition-all duration-300 ${
+              className={`flex-none w-[260px] sm:w-[280px] snap-start bg-white border border-black cursor-pointer transition-all duration-300 ${
                 selectedId === agent.id 
-                  ? 'border-nyrix-purple shadow-glow scale-[1.02]' 
-                  : 'border-nyrix-glassBorder shadow-sm hover:border-nyrix-purple/30 hover:shadow-card hover:-translate-y-1 hover:scale-[1.01]'
+                  ? 'border-nyrix-purple' 
+                  : 'hover:border-nyrix-purple'
               }`}
               onClick={(e) => {
                 if (isDragging) { e.preventDefault(); return; }
                 if (onPick) onPick(agent);
               }}
             >
-              <div className="h-[150px] relative bg-nyrix-light flex items-center justify-center p-6">
+              <div className="h-[150px] relative bg-nyrix-light flex items-center justify-center p-6 border-b border-black">
                 {agent.imageThumb ? (
                   <img className="w-full h-full object-contain" src={agent.imageThumb} alt={agent.title} />
                 ) : (
-                  <div className="w-full h-full rounded-xl opacity-90" style={{ background: `linear-gradient(135deg, ${agent.color}40, ${agent.color})` }} />
+                  <div className="w-full h-full opacity-90" style={{ background: agent.color }} />
                 )}
               </div>
-              <div className="p-6 border-t border-nyrix-glassBorder/50">
-                <span className="text-[10px] font-bold tracking-widest uppercase text-nyrix-purple mb-2 block">{agent.subtitle}</span>
-                <h4 className="text-lg font-bold text-nyrix-dark truncate">{agent.title}</h4>
+              <div className="p-6">
+                <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-nyrix-purple mb-2 block">{agent.subtitle}</span>
+                <h4 className="text-xl font-display font-black tracking-tight text-nyrix-dark truncate">{agent.title}</h4>
               </div>
             </motion.div>
           ))}
@@ -194,23 +194,23 @@ const AgentsGallery = () => {
       <div className="max-w-6xl mx-auto px-6">
         
         {/* Controls */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-12 p-3 bg-white/50 backdrop-blur-md rounded-2xl border border-nyrix-glassBorder shadow-sm">
-          <div className="flex-1 flex items-center gap-3 px-4 py-2 bg-white rounded-xl border border-nyrix-glassBorder/80">
+        <div className="flex flex-col sm:flex-row gap-8 mb-16 border-b border-black/10 pb-8">
+          <div className="flex-1 flex items-center gap-3">
             <Search size={20} className="text-nyrix-purple" />
             <input
               type="text"
               placeholder="Search agents..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-transparent outline-none text-nyrix-dark placeholder-nyrix-dark/40 text-sm font-medium"
+              className="w-full bg-transparent border-b-2 border-black outline-none text-nyrix-dark placeholder-nyrix-dark/40 py-2 text-[13px] font-bold tracking-widest uppercase"
             />
           </div>
-          <div className="flex-1 sm:max-w-xs flex items-center gap-3 px-4 py-2 bg-white rounded-xl border border-nyrix-glassBorder/80">
+          <div className="flex-1 sm:max-w-xs flex items-center gap-3">
             <Filter size={20} className="text-nyrix-purple" />
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full bg-transparent outline-none text-nyrix-dark min-w-0 text-sm font-medium cursor-pointer"
+              className="w-full bg-transparent border-b-2 border-black outline-none text-nyrix-dark py-2 min-w-0 text-[13px] font-bold tracking-widest uppercase cursor-pointer"
             >
               {categories.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
@@ -228,7 +228,7 @@ const AgentsGallery = () => {
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 mb-20"
             >
-              <div className="lg:col-span-3 relative aspect-video lg:aspect-square bg-white rounded-[2rem] border border-nyrix-glassBorder shadow-sm overflow-hidden flex items-center justify-center p-8 group">
+              <div className="lg:col-span-3 relative aspect-video lg:aspect-square border-2 border-black bg-white flex items-center justify-center p-8 group">
                 {!imageLoaded && <div className="absolute inset-0 bg-nyrix-dark/5 animate-pulse" />}
                 {selected.imageHero ? (
                   <img
@@ -239,42 +239,42 @@ const AgentsGallery = () => {
                     className={`w-full h-full object-contain transition-all duration-700 ${imageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
                   />
                 ) : (
-                  <div className="w-full h-full rounded-2xl opacity-90" style={{ background: selected.gradient }} />
+                  <div className="w-full h-full opacity-90" style={{ background: selected.color || '#000' }} />
                 )}
                 
                 {/* Navigation Arrows */}
-                <button onClick={() => go(-1)} className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full shadow-sm border border-nyrix-glassBorder flex items-center justify-center text-nyrix-dark/50 hover:text-nyrix-purple transition-colors opacity-0 group-hover:opacity-100 invisible group-hover:visible">
-                  <ChevronLeft size={20} />
+                <button onClick={() => go(-1)} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-black flex items-center justify-center text-nyrix-dark hover:text-nyrix-purple transition-colors opacity-0 group-hover:opacity-100 invisible group-hover:visible">
+                  <ChevronLeft size={24} />
                 </button>
-                <button onClick={() => go(1)} className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full shadow-sm border border-nyrix-glassBorder flex items-center justify-center text-nyrix-dark/50 hover:text-nyrix-purple transition-colors opacity-0 group-hover:opacity-100 invisible group-hover:visible">
-                  <ChevronRight size={20} />
+                <button onClick={() => go(1)} className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-black flex items-center justify-center text-nyrix-dark hover:text-nyrix-purple transition-colors opacity-0 group-hover:opacity-100 invisible group-hover:visible">
+                  <ChevronRight size={24} />
                 </button>
               </div>
 
               <div className="lg:col-span-2 flex flex-col justify-center py-6">
-                <span className="text-xs font-bold tracking-widest uppercase text-nyrix-purple mb-4">
+                <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-nyrix-purple mb-4">
                   {selected.subtitle}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-display font-extrabold text-nyrix-dark leading-tight mb-6 tracking-tight uppercase">
-                  {selected.title}
+                <h2 className="text-5xl md:text-6xl font-display font-black text-nyrix-dark leading-none mb-8 tracking-tighter uppercase">
+                  {selected.title}.
                 </h2>
-                <p className="text-lg text-nyrix-dark/60 leading-relaxed mb-8 font-medium">
+                <p className="text-lg text-nyrix-dark/70 leading-relaxed mb-10 font-medium">
                   {selected.fullDescription}
                 </p>
                 
-                <h4 className="text-sm font-bold tracking-wider text-nyrix-dark/80 uppercase mb-4">Key Capabilities</h4>
-                <ul className="space-y-3 mb-10">
+                <h4 className="text-[11px] font-bold tracking-[0.25em] text-nyrix-dark uppercase mb-6">Key Capabilities</h4>
+                <ul className="space-y-4 mb-12 border-l border-black/10 pl-6">
                   {selected.features.map((f, i) => (
-                    <li key={i} className="flex items-start gap-3 text-nyrix-dark/70 font-medium text-[15px]">
-                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-nyrix-purple shrink-0" />
+                    <li key={i} className="flex items-start gap-4 text-nyrix-dark/70 font-medium text-[16px]">
+                      <span className="text-nyrix-purple font-mono">//</span>
                       {f}
                     </li>
                   ))}
                 </ul>
 
                 <button 
-                  onClick={() => window.Calendly?.initPopupWidget({ url: 'https://calendly.com/d/cwvd-6vj-tp8/demo-call' })}
-                  className="px-8 py-4 bg-nyrix-purple text-white rounded-2xl font-bold tracking-wide shadow-glow hover:bg-nyrix-purpleBright hover:scale-[1.02] transition-all w-full sm:w-auto text-center"
+                  onClick={() => window.open('https://calendar.app.google/mhjiQ9t9g5Ge322s6', '_blank')}
+                  className="px-10 py-5 bg-nyrix-dark text-white font-bold tracking-widest uppercase text-[13px] hover:bg-black transition-all w-full sm:w-auto text-center outline-none"
                 >
                   Request Demo
                 </button>

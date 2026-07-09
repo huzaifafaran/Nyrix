@@ -5,9 +5,7 @@ import './ServicePage.css';
 
 const AiMvpDevelopment = () => {
   const handleScheduleCall = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({ url: 'https://calendly.com/d/cwvd-6vj-tp8/demo-call' });
-    }
+    window.open('https://calendar.app.google/mhjiQ9t9g5Ge322s6', '_blank');
   };
 
   const whyCards = [
@@ -38,11 +36,10 @@ const AiMvpDevelopment = () => {
     <div>
       {/* Hero */}
       <section className="sp-hero">
-        <div className="sp-hero-glow" />
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
             <span className="sp-hero-badge">AI MVP Development</span>
-            <h1>From Concept to <span className="accent">AI MVP</span> in Under 2 Weeks</h1>
+            <h1>From Concept to AI MVP in Under 2 Weeks.</h1>
             <p className="sp-hero-sub">
               Stop waiting months for a prototype. We build and launch functional, production-ready AI products in just 14 days — so you can test, iterate, and scale faster.
             </p>

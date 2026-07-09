@@ -26,7 +26,7 @@ const Header = () => {
     }
   };
 
-  const navItems = ['HOME', 'ABOUT', 'VEEKO', 'SERVICES', 'AGENTS', 'DEMO'];
+  const navItems = ['HOME', 'ABOUT', 'KINLU', 'SERVICES', 'CASE STUDIES', 'AGENTS', 'DEMO'];
 
   const handleNavClick = (item) => {
     if (item === 'DEMO') {
@@ -38,6 +38,9 @@ const Header = () => {
     } else if (item === 'AGENTS') {
       navigate('/agents');
       setIsMobileMenuOpen(false);
+    } else if (item === 'CASE STUDIES') {
+      navigate('/');
+      setTimeout(() => scrollToSection('case-studies'), 50);
     } else {
       navigate('/');
       setTimeout(() => scrollToSection(item.toLowerCase()), 50);

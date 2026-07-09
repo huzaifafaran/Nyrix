@@ -5,9 +5,7 @@ import './ServicePage.css';
 
 const AiStrategyGovernance = () => {
   const handleScheduleCall = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({ url: 'https://calendly.com/d/cwvd-6vj-tp8/demo-call' });
-    }
+    window.open('https://calendar.app.google/mhjiQ9t9g5Ge322s6', '_blank');
   };
 
   const services = [
@@ -23,11 +21,10 @@ const AiStrategyGovernance = () => {
     <div>
       {/* Hero */}
       <section className="sp-hero">
-        <div className="sp-hero-glow" />
         <div className="container">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
             <span className="sp-hero-badge">Governance</span>
-            <h1>AI Strategy <span className="accent">& Governance</span></h1>
+            <h1>AI Strategy & Governance.</h1>
             <p className="sp-hero-sub">
               Secure, ethical, and high-ROI AI. We provide the frameworks necessary to manage risk, maintain compliance, and ensure your AI investments deliver measurable results.
             </p>

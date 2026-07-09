@@ -5,31 +5,31 @@
   /* Shared Service Page Styles */
 
   .sp-hero {
-    @apply relative pt-48 pb-24 bg-nyrix-light overflow-hidden text-center min-h-[70vh] flex flex-col items-center justify-center;
+    @apply relative pt-48 pb-24 bg-white overflow-hidden text-center min-h-[60vh] flex flex-col items-center justify-center border-b border-black/10;
   }
 
   .sp-hero-glow {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-nyrix-purple/10 blur-[120px] rounded-full pointer-events-none;
+    @apply hidden;
   }
 
   .sp-hero-badge {
-    @apply inline-flex items-center gap-2 px-4 py-2 bg-white/50 backdrop-blur-md border border-nyrix-glassBorder rounded-full text-nyrix-purpleBright text-xs font-bold tracking-widest uppercase mb-8 shadow-sm relative z-10;
+    @apply text-[11px] font-bold tracking-[0.25em] uppercase text-nyrix-purple mb-8 border-b border-black/10 pb-4 inline-block;
   }
 
   .sp-hero h1 {
-    @apply font-display text-5xl md:text-6xl lg:text-7xl font-extrabold text-nyrix-dark tracking-tight leading-[1.1] max-w-4xl mx-auto mb-8 relative z-10 uppercase;
+    @apply font-display text-5xl md:text-7xl font-black text-nyrix-dark tracking-tighter leading-[1] max-w-5xl mx-auto mb-8 relative z-10 uppercase;
   }
 
   .sp-hero h1 .accent {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-nyrix-purple to-[#4f46e5];
+    @apply text-nyrix-dark;
   }
 
   .sp-hero-sub {
-    @apply text-lg md:text-xl text-nyrix-dark/60 font-medium leading-relaxed max-w-2xl mx-auto mb-10 relative z-10;
+    @apply text-xl text-nyrix-dark/70 font-medium leading-relaxed max-w-2xl mx-auto mb-12 relative z-10;
   }
 
   .sp-hero-cta {
-    @apply relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-nyrix-dark text-white rounded-2xl font-bold tracking-wide transition-all hover:bg-black hover:scale-[1.02] hover:shadow-intense outline-none relative z-10;
+    @apply relative inline-flex items-center justify-center gap-2 px-10 py-5 bg-nyrix-dark text-white font-bold tracking-widest uppercase text-[13px] transition-all hover:bg-black outline-none z-10;
   }
   
   /* Manually add group class behavior where needed or just use regular CSS for group hover */
@@ -42,19 +42,19 @@
   }
 
   .sp-section {
-    @apply py-24 relative overflow-hidden bg-white;
+    @apply py-32 relative overflow-hidden bg-white;
   }
 
   .sp-section.alt {
-    @apply bg-nyrix-light;
+    @apply bg-white;
   }
 
   .sp-section-header {
-    @apply text-center max-w-3xl mx-auto mb-16;
+    @apply text-center max-w-4xl mx-auto mb-20;
   }
 
   .sp-section-title {
-    @apply font-display text-4xl md:text-5xl font-bold text-nyrix-dark mb-6 tracking-tight uppercase;
+    @apply font-display text-4xl md:text-5xl font-black text-nyrix-dark mb-6 tracking-tight uppercase;
   }
 
   .sp-section-sub {
@@ -63,91 +63,95 @@
 
   /* Cards Grid */
   .sp-cards {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-6 mt-12;
+    @apply grid grid-cols-1 md:grid-cols-2 gap-16 mt-16;
   }
 
   .sp-card {
-    @apply p-8 sm:p-10 bg-white border border-nyrix-glassBorder rounded-[2rem] hover:border-nyrix-purple/30 hover:shadow-card transition-all duration-500 relative overflow-hidden;
+    @apply border-t border-black/10 pt-10 pb-4 relative overflow-hidden text-left;
   }
 
   .sp-card-icon {
-    @apply w-14 h-14 bg-nyrix-light rounded-2xl border border-nyrix-glassBorder flex items-center justify-center text-nyrix-purpleBright mb-8 transition-all duration-500;
+    @apply text-nyrix-purple mb-6 transition-all duration-500;
   }
   
   .sp-card:hover .sp-card-icon {
-    @apply scale-110 bg-nyrix-purple/5;
+    @apply text-nyrix-dark;
   }
 
   .sp-card-icon svg {
-    @apply w-6 h-6;
+    @apply w-8 h-8;
   }
 
   .sp-card h3 {
-    @apply text-xl font-bold text-nyrix-dark mb-4 tracking-tight;
+    @apply text-3xl font-display font-black text-nyrix-dark mb-4 tracking-tighter;
   }
 
   .sp-card p {
-    @apply text-nyrix-dark/60 font-medium leading-relaxed text-[15px] m-0;
+    @apply text-nyrix-dark/70 font-medium leading-relaxed text-[16px] m-0;
   }
 
   /* Timeline */
   .sp-timeline {
-    @apply flex flex-col mt-12 max-w-2xl mx-auto relative;
+    @apply flex flex-col mt-16 max-w-3xl mx-auto relative;
   }
 
   .sp-timeline::before {
     content: '';
-    @apply absolute left-[28px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-nyrix-purple to-nyrix-purpleLight opacity-30;
+    @apply absolute left-[23px] top-0 bottom-0 w-px bg-black/10;
   }
 
   .sp-timeline-step {
-    @apply flex items-start gap-6 py-6 relative;
+    @apply flex items-start gap-8 py-8 relative;
   }
 
   .sp-step-number {
-    @apply w-14 h-14 min-w-[56px] bg-nyrix-purple rounded-full flex items-center justify-center font-display text-xl font-bold text-white z-10 shadow-glow border-4 border-nyrix-light;
+    @apply w-12 h-12 min-w-[48px] bg-white border-2 border-nyrix-dark flex items-center justify-center font-display text-xl font-black text-nyrix-dark z-10 transition-colors;
+  }
+
+  .sp-timeline-step:hover .sp-step-number {
+    @apply bg-nyrix-dark text-white;
   }
 
   .sp-section:not(.alt) .sp-step-number {
-    @apply border-white;
+    @apply border-nyrix-dark;
   }
 
   .sp-step-content h4 {
-    @apply font-display text-xl font-bold text-nyrix-dark mb-2 mt-1;
+    @apply font-display text-2xl font-black text-nyrix-dark mb-2 mt-1 tracking-tight;
   }
 
   .sp-step-content p {
-    @apply text-nyrix-dark/60 font-medium text-[15px] leading-relaxed m-0;
+    @apply text-nyrix-dark/70 font-medium text-[16px] leading-relaxed m-0;
   }
 
   /* Deliverables */
   .sp-deliverables {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-6 mt-12;
+    @apply grid grid-cols-1 md:grid-cols-2 gap-12 mt-16;
   }
 
   .sp-deliverable {
-    @apply flex gap-5 items-start p-8 bg-white border border-nyrix-glassBorder rounded-3xl hover:border-nyrix-purple/30 hover:shadow-card transition-all duration-300;
+    @apply flex gap-6 items-start border-t border-black/10 pt-8;
   }
 
   .sp-deliverable-icon {
-    @apply w-12 h-12 min-w-[48px] bg-nyrix-purple/5 rounded-xl flex items-center justify-center text-nyrix-purple;
+    @apply text-nyrix-purple mt-1;
   }
 
   .sp-deliverable-icon svg {
-    @apply w-6 h-6;
+    @apply w-8 h-8;
   }
 
   .sp-deliverable h4 {
-    @apply font-display text-[17px] font-bold text-nyrix-dark mb-2;
+    @apply font-display text-2xl font-black text-nyrix-dark mb-2 tracking-tight;
   }
 
   .sp-deliverable p {
-    @apply text-sm font-medium text-nyrix-dark/60 leading-relaxed m-0;
+    @apply text-[15px] font-medium text-nyrix-dark/70 leading-relaxed m-0;
   }
 
   /* Stats Row */
   .sp-stats {
-    @apply flex justify-center gap-12 mt-16 flex-wrap;
+    @apply flex justify-center gap-16 mt-24 flex-wrap border-t border-black/10 pt-16;
   }
 
   .sp-stat {
@@ -155,23 +159,23 @@
   }
 
   .sp-stat-value {
-    @apply font-display text-2xl sm:text-3xl font-black text-nyrix-purple tracking-tight mb-2;
+    @apply font-display text-4xl sm:text-5xl font-black text-nyrix-dark tracking-tighter mb-4;
   }
 
   .sp-stat-label {
-    @apply text-xs font-bold text-nyrix-dark/50 uppercase tracking-widest;
+    @apply text-[11px] font-bold text-nyrix-purple uppercase tracking-[0.2em];
   }
 
   /* Bottom CTA */
   .sp-bottom-cta {
-    @apply text-center py-32 bg-nyrix-dark relative overflow-hidden;
+    @apply text-center py-32 bg-white relative overflow-hidden border-t border-black/10;
   }
 
   .sp-bottom-cta h2 {
-    @apply font-display text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight relative z-10 uppercase;
+    @apply font-display text-4xl md:text-5xl font-black text-nyrix-dark mb-8 tracking-tighter relative z-10 uppercase;
   }
 
   .sp-bottom-cta p {
-    @apply text-lg text-slate-400 font-medium max-w-xl mx-auto mb-10 relative z-10;
+    @apply text-xl text-nyrix-dark/70 font-medium max-w-2xl mx-auto mb-12 relative z-10;
   }
 }
