@@ -26,7 +26,7 @@ const Header = () => {
     }
   };
 
-  const navItems = ['HOME', 'ABOUT', 'KINLU', 'SERVICES', 'CASE STUDIES', 'AGENTS', 'DEMO'];
+  const navItems = ['HOME', 'ABOUT', 'PRODUCTS', 'SERVICES', 'CASE STUDIES', 'AGENTS', 'DEMO'];
 
   const handleNavClick = (item) => {
     if (item === 'DEMO') {

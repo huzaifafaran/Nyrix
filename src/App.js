@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Kinlu from './components/Kinlu';
+import Products from './components/Products';
 import Services from './components/Services';
 import Agents from './components/Agents';
 import CaseStudies from './components/CaseStudies';
@@ -32,7 +32,7 @@ function App() {
             <>
               <Hero />
               <About />
-              <Kinlu />
+              <Products />
               <Services />
               <Agents />
               <CaseStudies />
