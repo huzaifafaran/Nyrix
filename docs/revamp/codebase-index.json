@@ -1,0 +1,1136 @@
+{
+  "generated_date": "2026-10-16",
+  "method": "Static filesystem/import inspection; no module execution, runtime crawl, or vector index.",
+  "source_file_count": 45,
+  "source_lines": 7082,
+  "routes": [
+    {
+      "path": "/",
+      "line": 102,
+      "components": [
+        "EnterpriseHome"
+      ]
+    },
+    {
+      "path": "/company",
+      "line": 103,
+      "components": [
+        "CompanyPage"
+      ]
+    },
+    {
+      "path": "/company/team",
+      "line": 104,
+      "components": [
+        "TeamPage"
+      ]
+    },
+    {
+      "path": "/company/advisors",
+      "line": 105,
+      "components": [
+        "AdvisorsPage"
+      ]
+    },
+    {
+      "path": "/solutions",
+      "line": 106,
+      "components": [
+        "SolutionsPage"
+      ]
+    },
+    {
+      "path": "/products",
+      "line": 107,
+      "components": [
+        "ProductsPage"
+      ]
+    },
+    {
+      "path": "/products/:slug",
+      "line": 108,
+      "components": [
+        "ProductPage"
+      ]
+    },
+    {
+      "path": "/case-studies",
+      "line": 109,
+      "components": [
+        "WorkPage"
+      ]
+    },
+    {
+      "path": "/resources",
+      "line": 110,
+      "components": [
+        "ResourcesPage"
+      ]
+    },
+    {
+      "path": "/resources/articles",
+      "line": 111,
+      "components": [
+        "ArticlesPage"
+      ]
+    },
+    {
+      "path": "/resources/podcasts",
+      "line": 112,
+      "components": [
+        "PodcastsPage"
+      ]
+    },
+    {
+      "path": "/contact",
+      "line": 113,
+      "components": [
+        "ContactPage"
+      ]
+    },
+    {
+      "path": "/agents",
+      "line": 114,
+      "components": [
+        "Legacy",
+        "AgentsGallery"
+      ]
+    },
+    {
+      "path": "/ai-mvp-development",
+      "line": 122,
+      "components": [
+        "Legacy",
+        "AiMvpDevelopment"
+      ]
+    },
+    {
+      "path": "/ai-enablement-advisory",
+      "line": 130,
+      "components": [
+        "Legacy",
+        "AiEnablementAdvisory"
+      ]
+    },
+    {
+      "path": "/business-transformation",
+      "line": 138,
+      "components": [
+        "Legacy",
+        "BusinessTransformation"
+      ]
+    },
+    {
+      "path": "/ai-strategy-governance",
+      "line": 146,
+      "components": [
+        "Legacy",
+        "AiStrategyGovernance"
+      ]
+    },
+    {
+      "path": "/privacy-policy",
+      "line": 154,
+      "components": [
+        "Legacy",
+        "PrivacyPolicy"
+      ]
+    },
+    {
+      "path": "/case-studies/cleanroom-ems",
+      "line": 162,
+      "components": [
+        "Legacy",
+        "CaseStudyEMS"
+      ]
+    },
+    {
+      "path": "/case-studies/teachmeback",
+      "line": 170,
+      "components": [
+        "Legacy",
+        "CaseStudyTeachMeBack"
+      ]
+    },
+    {
+      "path": "*",
+      "line": 178,
+      "components": [
+        "NotFoundPage"
+      ]
+    }
+  ],
+  "agent_catalog": {
+    "entries": 46,
+    "categories": {
+      "Personal Assistant": 2,
+      "Marketing": 7,
+      "Analytics": 8,
+      "Research": 5,
+      "Security": 3,
+      "Healthcare": 2,
+      "Communication": 4,
+      "Sales": 2,
+      "Document Processing": 1,
+      "Business Development": 1,
+      "Legal & Compliance": 1,
+      "Finance": 2,
+      "Health": 1,
+      "Travel": 1,
+      "Fashion": 1,
+      "Creative": 1,
+      "Human Resources": 3,
+      "Automation": 1
+    }
+  },
+  "source_files": [
+    {
+      "path": "src/App.css",
+      "lines": 20,
+      "bytes": 509,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/App.js",
+      "lines": 186,
+      "bytes": 6347,
+      "imports": [
+        "react",
+        "react-router-dom",
+        "framer-motion",
+        "./components/Header",
+        "./components/Footer",
+        "./components/ScrollToTop",
+        "./components/EnterpriseHome",
+        "./components/EnterprisePages",
+        "./App.css",
+        "./components/enterprise.css"
+      ],
+      "dynamic_imports": [
+        "./components/AgentsGallery",
+        "./components/AiMvpDevelopment",
+        "./components/AiEnablementAdvisory",
+        "./components/BusinessTransformation",
+        "./components/AiStrategyGovernance",
+        "./components/PrivacyPolicy",
+        "./components/CaseStudyEMS",
+        "./components/CaseStudyTeachMeBack"
+      ],
+      "local_dependencies": [
+        "src/components/Header.js",
+        "src/components/Footer.js",
+        "src/components/ScrollToTop.js",
+        "src/components/EnterpriseHome.js",
+        "src/components/EnterprisePages.js",
+        "src/App.css",
+        "src/components/enterprise.css",
+        "src/components/AgentsGallery.js",
+        "src/components/AiMvpDevelopment.js",
+        "src/components/AiEnablementAdvisory.js",
+        "src/components/BusinessTransformation.js",
+        "src/components/AiStrategyGovernance.js",
+        "src/components/PrivacyPolicy.js",
+        "src/components/CaseStudyEMS.js",
+        "src/components/CaseStudyTeachMeBack.js"
+      ],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/About.css",
+      "lines": 1,
+      "bytes": 28,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/About.js",
+      "lines": 140,
+      "bytes": 5518,
+      "imports": [
+        "react",
+        "framer-motion",
+        "react-intersection-observer",
+        "lucide-react",
+        "./About.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/About.css"
+      ],
+      "section_ids": [
+        "about"
+      ],
+      "motion_elements": 4,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/Agents.css",
+      "lines": 1,
+      "bytes": 72,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/Agents.js",
+      "lines": 254,
+      "bytes": 13325,
+      "imports": [
+        "react",
+        "framer-motion",
+        "react-intersection-observer",
+        "lucide-react",
+        "./Agents.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/Agents.css"
+      ],
+      "section_ids": [
+        "agents"
+      ],
+      "motion_elements": 4,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/agentsData.js",
+      "lines": 971,
+      "bytes": 61320,
+      "imports": [
+        "lucide-react"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/AgentsGallery.css",
+      "lines": 8,
+      "bytes": 199,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/AgentsGallery.js",
+      "lines": 298,
+      "bytes": 13211,
+      "imports": [
+        "react",
+        "framer-motion",
+        "lucide-react",
+        "./AgentsGallery.css",
+        "./agentsData"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/AgentsGallery.css",
+        "src/components/agentsData.js"
+      ],
+      "section_ids": [],
+      "motion_elements": 2,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/AiEnablementAdvisory.js",
+      "lines": 73,
+      "bytes": 3790,
+      "imports": [
+        "react",
+        "framer-motion",
+        "lucide-react",
+        "./ServicePage.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/ServicePage.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 6,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/AiMvpDevelopment.js",
+      "lines": 135,
+      "bytes": 7479,
+      "imports": [
+        "react",
+        "framer-motion",
+        "lucide-react",
+        "./ServicePage.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/ServicePage.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 10,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/AiStrategyGovernance.js",
+      "lines": 73,
+      "bytes": 3719,
+      "imports": [
+        "react",
+        "framer-motion",
+        "lucide-react",
+        "./ServicePage.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/ServicePage.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 6,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/BusinessTransformation.js",
+      "lines": 73,
+      "bytes": 3704,
+      "imports": [
+        "react",
+        "framer-motion",
+        "lucide-react",
+        "./ServicePage.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/ServicePage.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 6,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/CaseStudies.js",
+      "lines": 123,
+      "bytes": 5465,
+      "imports": [
+        "react",
+        "framer-motion",
+        "react-intersection-observer",
+        "react-router-dom",
+        "lucide-react"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [
+        "case-studies"
+      ],
+      "motion_elements": 2,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/CaseStudyEMS.js",
+      "lines": 178,
+      "bytes": 10884,
+      "imports": [
+        "react",
+        "framer-motion",
+        "lucide-react",
+        "./ServicePage.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/ServicePage.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 11,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/CaseStudyTeachMeBack.js",
+      "lines": 159,
+      "bytes": 10132,
+      "imports": [
+        "react",
+        "framer-motion",
+        "lucide-react",
+        "./ServicePage.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/ServicePage.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 12,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/Contact.css",
+      "lines": 1,
+      "bytes": 43,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/Contact.js",
+      "lines": 82,
+      "bytes": 3797,
+      "imports": [
+        "react",
+        "framer-motion",
+        "react-intersection-observer",
+        "lucide-react",
+        "./Contact.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/Contact.css"
+      ],
+      "section_ids": [
+        "contact"
+      ],
+      "motion_elements": 2,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/enterprise.css",
+      "lines": 1133,
+      "bytes": 22517,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/EnterpriseHome.js",
+      "lines": 418,
+      "bytes": 13906,
+      "imports": [
+        "react",
+        "react-router-dom",
+        "lucide-react",
+        "../content/nyrixContent"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/content/nyrixContent.js"
+      ],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/EnterprisePages.css",
+      "lines": 143,
+      "bytes": 2654,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/EnterprisePages.js",
+      "lines": 536,
+      "bytes": 18849,
+      "imports": [
+        "react",
+        "react-router-dom",
+        "../content/nyrixContent",
+        "./EnterprisePages.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/content/nyrixContent.js",
+        "src/components/EnterprisePages.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/Footer.css",
+      "lines": 1,
+      "bytes": 54,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/Footer.js",
+      "lines": 111,
+      "bytes": 3354,
+      "imports": [
+        "react",
+        "react-router-dom",
+        "lucide-react"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/Header.css",
+      "lines": 1,
+      "bytes": 58,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/Header.js",
+      "lines": 84,
+      "bytes": 2610,
+      "imports": [
+        "react",
+        "react-router-dom",
+        "lucide-react"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/Hero.css",
+      "lines": 1,
+      "bytes": 56,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/Hero.js",
+      "lines": 80,
+      "bytes": 3550,
+      "imports": [
+        "react",
+        "framer-motion",
+        "lucide-react",
+        "./Hero.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/Hero.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 1,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/Kinlu.css",
+      "lines": 1,
+      "bytes": 36,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/Kinlu.js",
+      "lines": 94,
+      "bytes": 3931,
+      "imports": [
+        "react",
+        "framer-motion",
+        "lucide-react",
+        "./Kinlu.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/Kinlu.css"
+      ],
+      "section_ids": [
+        "kinlu"
+      ],
+      "motion_elements": 3,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/PrivacyPolicy.css",
+      "lines": 147,
+      "bytes": 2722,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/PrivacyPolicy.js",
+      "lines": 126,
+      "bytes": 5631,
+      "imports": [
+        "react",
+        "framer-motion",
+        "lucide-react",
+        "react-router-dom",
+        "./PrivacyPolicy.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/PrivacyPolicy.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 2,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/Products.css",
+      "lines": 1,
+      "bytes": 31,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/Products.js",
+      "lines": 305,
+      "bytes": 14392,
+      "imports": [
+        "react",
+        "framer-motion",
+        "lucide-react",
+        "./Products.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/Products.css"
+      ],
+      "section_ids": [
+        "products"
+      ],
+      "motion_elements": 4,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/ScrollToTop.js",
+      "lines": 32,
+      "bytes": 1046,
+      "imports": [
+        "react",
+        "react-router-dom"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/ServicePage.css",
+      "lines": 181,
+      "bytes": 4625,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/Services.css",
+      "lines": 1,
+      "bytes": 60,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/Services.js",
+      "lines": 114,
+      "bytes": 4930,
+      "imports": [
+        "react",
+        "framer-motion",
+        "react-intersection-observer",
+        "react-router-dom",
+        "lucide-react"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [
+        "services"
+      ],
+      "motion_elements": 2,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/content/enterprise.js",
+      "lines": 323,
+      "bytes": 14965,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/content/nyrixContent.js",
+      "lines": 204,
+      "bytes": 6997,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/enterprise.test.js",
+      "lines": 140,
+      "bytes": 7228,
+      "imports": [
+        "react",
+        "@testing-library/jest-dom",
+        "@testing-library/react",
+        "react-router-dom",
+        "./App"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/App.js"
+      ],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/index.css",
+      "lines": 43,
+      "bytes": 1181,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/index.js",
+      "lines": 14,
+      "bytes": 360,
+      "imports": [
+        "react",
+        "react-dom/client",
+        "./index.css",
+        "./App",
+        "react-router-dom"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/index.css",
+        "src/App.js"
+      ],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/replace_calendly.js",
+      "lines": 43,
+      "bytes": 1634,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/replace_veeko.js",
+      "lines": 29,
+      "bytes": 1138,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    }
+  ],
+  "public_files": [
+    {
+      "path": "public/ad churn agent.jpeg",
+      "bytes": 59232
+    },
+    {
+      "path": "public/ad fatigu agent.jpg",
+      "bytes": 556045
+    },
+    {
+      "path": "public/ai websit analyzer and personalized recommnedation.jpeg",
+      "bytes": 63288
+    },
+    {
+      "path": "public/alex- the diary manager.jpeg",
+      "bytes": 52914
+    },
+    {
+      "path": "public/auto monitoring of url and downtime alert.jpg",
+      "bytes": 565021
+    },
+    {
+      "path": "public/business analyst-lead-gen agent.jpeg",
+      "bytes": 57852
+    },
+    {
+      "path": "public/certiguard-ai.jpeg",
+      "bytes": 111297
+    },
+    {
+      "path": "public/clinicall.jpeg",
+      "bytes": 112882
+    },
+    {
+      "path": "public/cmo.jpg",
+      "bytes": 380811
+    },
+    {
+      "path": "public/crypto-alert.jpeg",
+      "bytes": 62060
+    },
+    {
+      "path": "public/data-query.jpeg",
+      "bytes": 55786
+    },
+    {
+      "path": "public/deep-researcher.jpg",
+      "bytes": 538172
+    },
+    {
+      "path": "public/email auto responder draft.jpeg",
+      "bytes": 44826
+    },
+    {
+      "path": "public/expense tracker.jpeg",
+      "bytes": 57844
+    },
+    {
+      "path": "public/finsense.jpg",
+      "bytes": 431697
+    },
+    {
+      "path": "public/fitness agent.jpeg",
+      "bytes": 58896
+    },
+    {
+      "path": "public/flux1-dev_a-futuristic-neon-poster-in-a-dark (13).jpeg",
+      "bytes": 66946
+    },
+    {
+      "path": "public/followup-genie.jpeg",
+      "bytes": 51184
+    },
+    {
+      "path": "public/gmail auto labeler.jpeg",
+      "bytes": 40530
+    },
+    {
+      "path": "public/growth oracle.jpeg",
+      "bytes": 55598
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 3629
+    },
+    {
+      "path": "public/interview agent fritz.jpeg",
+      "bytes": 52374
+    },
+    {
+      "path": "public/invoice-capture.jpeg",
+      "bytes": 55524
+    },
+    {
+      "path": "public/isthisascam.jpeg",
+      "bytes": 56442
+    },
+    {
+      "path": "public/legal-agent.jpeg",
+      "bytes": 48056
+    },
+    {
+      "path": "public/linkdin-commnts to leads.jpeg",
+      "bytes": 63188
+    },
+    {
+      "path": "public/logo icon no-bg.png",
+      "bytes": 509388
+    },
+    {
+      "path": "public/logo.png",
+      "bytes": 352392
+    },
+    {
+      "path": "public/looks-lab-artistic-style-filter.jpeg",
+      "bytes": 71900
+    },
+    {
+      "path": "public/lookslab virtual-try-on.jpeg",
+      "bytes": 52244
+    },
+    {
+      "path": "public/manifest.json",
+      "bytes": 396
+    },
+    {
+      "path": "public/market-whisperer.jpg",
+      "bytes": 532691
+    },
+    {
+      "path": "public/n8n backup agent.jpeg",
+      "bytes": 63268
+    },
+    {
+      "path": "public/New folder/Black White Minimal Real Estate Business Email Signature.png",
+      "bytes": 80692
+    },
+    {
+      "path": "public/New folder/CMO.zip",
+      "bytes": 27285
+    },
+    {
+      "path": "public/New folder/Nyrix Agents.zip",
+      "bytes": 721040
+    },
+    {
+      "path": "public/New folder/Sair.zip",
+      "bytes": 26795
+    },
+    {
+      "path": "public/newsletter agent.jpeg",
+      "bytes": 60920
+    },
+    {
+      "path": "public/people/ehtesham-malik.webp",
+      "bytes": 25872
+    },
+    {
+      "path": "public/people/huzaifa-faran.webp",
+      "bytes": 9640
+    },
+    {
+      "path": "public/people/sarim-bin-tahir.webp",
+      "bytes": 2002
+    },
+    {
+      "path": "public/personalized-writing agent.jpg",
+      "bytes": 465729
+    },
+    {
+      "path": "public/pharmacy stock keeper and reporter.jpeg",
+      "bytes": 52546
+    },
+    {
+      "path": "public/product-to-ad-poster.jpeg",
+      "bytes": 57774
+    },
+    {
+      "path": "public/proposal-craft.jpeg",
+      "bytes": 59332
+    },
+    {
+      "path": "public/prsonalized yt strategist.jpeg",
+      "bytes": 49878
+    },
+    {
+      "path": "public/reddithound.jpeg",
+      "bytes": 58176
+    },
+    {
+      "path": "public/resume builder.jpeg",
+      "bytes": 50208
+    },
+    {
+      "path": "public/resume screener.jpeg",
+      "bytes": 61624
+    },
+    {
+      "path": "public/sa.jpg",
+      "bytes": 466091
+    },
+    {
+      "path": "public/sair th.jpg",
+      "bytes": 152053
+    },
+    {
+      "path": "public/SalesIQ AI The Conversational Data Analyst.jpeg",
+      "bytes": 67608
+    },
+    {
+      "path": "public/scrap recent news about company and dcide meeting tone.jpeg",
+      "bytes": 53860
+    },
+    {
+      "path": "public/travel agent.jpeg",
+      "bytes": 59000
+    },
+    {
+      "path": "public/twitter-sentiment-analysis.jpeg",
+      "bytes": 57780
+    },
+    {
+      "path": "public/your-outlook-manager.jpeg",
+      "bytes": 59788
+    },
+    {
+      "path": "public/youtub auto description writer.jpeg",
+      "bytes": 49508
+    },
+    {
+      "path": "public/youtube-summarizer.jpeg",
+      "bytes": 56682
+    }
+  ],
+  "root_config_files": [
+    "package.json",
+    "package-lock.json",
+    "tailwind.config.js",
+    "postcss.config.js",
+    ".gitignore",
+    "README.md"
+  ]
+}

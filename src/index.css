@@ -36,3 +36,8 @@
   margin: 0 auto;
   padding: 0 2rem;
 }
+/* Enterprise foundation; keep Tailwind entry directives and legacy utilities above. */
+html { scroll-padding-top: 110px; }
+body { overflow-x: clip; scroll-behavior: auto; }
+.enterprise-site main { min-height: 45vh; outline: none; }
+@media (prefers-reduced-motion: reduce) { html, body { scroll-behavior: auto; } }
