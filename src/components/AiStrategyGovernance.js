@@ -1,73 +1,25 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Shield, Scale, Lock, TrendingUp } from 'lucide-react';
-import './ServicePage.css';
+import React from "react";
+import ServiceDetail from "./ServiceDetail";
 
-const AiStrategyGovernance = () => {
-  const handleScheduleCall = () => {
-    window.open('https://calendar.app.google/mhjiQ9t9g5Ge322s6', '_blank');
-  };
-
-  const services = [
-    { icon: Shield, title: 'Risk Mitigation Frameworks', desc: 'Identifying and neutralizing potential security vulnerabilities and operational risks associated with AI deployment.' },
-    { icon: Scale, title: 'Ethical AI Guidelines', desc: 'Establishing clear principles for bias detection, transparency, and accountability in your AI systems.' },
-    { icon: Lock, title: 'Data Privacy Compliance', desc: 'Ensuring all AI initiatives adhere to global standards like GDPR, SOC 2, and industry-specific regulations.' },
-    { icon: TrendingUp, title: 'Performance Monitoring', desc: 'Implementing robust tracking to measure ROI, accuracy, and the ongoing health of your AI models.' },
-  ];
-
-  const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
-
-  return (
-    <div>
-      {/* Hero */}
-      <section className="sp-hero">
-        <div className="container">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
-            <span className="sp-hero-badge">Governance</span>
-            <h1>AI Strategy & Governance.</h1>
-            <p className="sp-hero-sub">
-              Secure, ethical, and high-ROI AI. We provide the frameworks necessary to manage risk, maintain compliance, and ensure your AI investments deliver measurable results.
-            </p>
-            <motion.button className="sp-hero-cta" onClick={handleScheduleCall} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              Schedule a Consultation <ArrowRight />
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="sp-section alt">
-        <div className="container">
-          <motion.div className="sp-section-header" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6 }}>
-            <h2 className="sp-section-title">Sustainable AI at Scale</h2>
-            <p className="sp-section-sub">Ensuring your transition to AI is safe, compliant, and delivers ROI.</p>
-          </motion.div>
-          <div className="sp-cards">
-            {services.map((s, i) => (
-              <motion.div key={i} className="sp-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: i * 0.1, duration: 0.5 }}>
-                <div className="sp-card-icon"><s.icon /></div>
-                <h3>{s.title}</h3>
-                <p>{s.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom CTA */}
-      <section className="sp-bottom-cta">
-        <div className="container">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.7 }}>
-            <h2>Ready to govern AI with confidence?</h2>
-            <p>Let's discuss how we can help your business thrive in the AI age.</p>
-            <motion.button className="sp-hero-cta" onClick={handleScheduleCall} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              Schedule a Consultation <ArrowRight />
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
-    </div>
-  );
+const page = {
+  index: "04",
+  title: "AI strategy & governance",
+  headline: "Give AI decisions clear ownership.",
+  lead: "An AI initiative needs more than a model. It needs a defined purpose, accountable people and a way to examine its output and risks as the work changes.",
+  media: "/media/service-ai-governance.webp",
+  mediaAlt: "Conceptual layered decision boundaries and a carefully routed violet signal",
+  fitTitle: "A structure for decisions",
+  fit: "Governance becomes useful when teams can explain what a system is for, who reviews its results and when a person should step in.",
+  workTitle: "Put responsibility into the design",
+  work: [
+    { title: "Set the purpose", detail: "Define the decision, users and limits of the proposed AI system." },
+    { title: "Assign oversight", detail: "Clarify who approves changes, reviews results and handles exceptions." },
+    { title: "Plan for review", detail: "Decide what to observe over time so the system can be questioned and adjusted." },
+  ],
+  closing: "Need a clearer AI decision framework?",
+  closingCopy: "Tell us what you are planning and which questions your team needs to resolve.",
 };
 
-export default AiStrategyGovernance;
+export default function AiStrategyGovernance() {
+  return <ServiceDetail page={page} />;
+}

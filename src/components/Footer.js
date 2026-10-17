@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Linkedin, Youtube, ArrowUpRight } from "lucide-react";
-import FooterBackground from "./FooterBackground";
+import FooterShowcase from "./FooterShowcase";
 
 const groups = [
   {
@@ -19,6 +19,7 @@ const groups = [
       ["Kinlu", "/products/kinlu"],
       ["Artifex", "/products/artifex"],
       ["Numaya", "/products/numaya"],
+      ["Veeko", "/products/veeko"],
       ["Agent library", "/agents"],
     ],
   },
@@ -45,8 +46,8 @@ const groups = [
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <FooterBackground />
-      <div className="site-container">
+      <FooterShowcase />
+      <div className="site-container footer-directory">
         <div className="footer-top">
           <div className="footer-brand">
             <Link to="/" className="site-brand" aria-label="Nyrix home">

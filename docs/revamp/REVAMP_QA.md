@@ -24,3 +24,9 @@ Reviewed 16 October 2026. Implementation lead: `/root`; assignments and decision
 - External `src/content/enterprise.js` is retained but not integrated. No deployment or publication performed.
 
 The implementation is ready for local review; visual QA and the listed content/release checks remain open.
+
+## 17 October reference lander and supplied footer update
+
+Hallmark image study: LANDER_STUDY.md. Reference design language applied with current content/nav retained and original violet ribbon media, GPU deformation and safe still fallback. Footer source reviewed and audio-free derivative/poster integrated beneath the full directory; details in FOOTER_MEDIA_QA.md.
+
+Lead full suite:36tests passed,2suites,zero snapshots,7.778seconds. Production build passed. Actual browser rendering/GPU/video behavior and responsive screenshot gates remain unavailable under the prior browser access denial; neither a visual pass nor deployment is claimed.

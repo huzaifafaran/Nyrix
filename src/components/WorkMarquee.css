@@ -1,0 +1,64 @@
+/* Hallmark · pre-emit critique: P5 H4 E4 S5 R5 V4 */
+.work-marquee-section {
+  --work-mark-ink: oklch(26% 0 0);
+  overflow: clip;
+  border-bottom: 1px solid var(--color-rule);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  padding-top: 20px;
+}
+
+.work-marquee-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: 8px;
+}
+.work-marquee-caption span {
+  width: clamp(28px, 5vw, 64px);
+  height: 1px;
+  background: var(--color-rule);
+}
+.enterprise-site .work-marquee-caption h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -.015em;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.work-marquee { padding-block: 10px 22px; }
+.work-marquee-viewport { overflow: hidden; }
+.work-marquee-belt { display: flex; width: max-content; animation: work-marquee-run 46s linear infinite; }
+.work-marquee-group { display: flex; flex: 0 0 auto; align-items: center; gap: clamp(62px, 8vw, 145px); padding-right: clamp(62px, 8vw, 145px); }
+.work-marquee-mark { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; height: 74px; min-width: 150px; overflow: clip; color: var(--work-mark-ink); }
+.work-marquee-mark img { display: block; filter: grayscale(1) brightness(.55); opacity: .78; }
+.work-mark-gerrys img { width: 100px; height: 100px; object-fit: contain; transform: translateY(-9px) scaleX(1.4); }
+.work-mark-genix img { width: 153px; height: 60px; object-fit: contain; }
+.work-mark-teachmeback { gap: 9px; font-family: var(--font-display); font-size: 20px; font-weight: 500; letter-spacing: -.04em; }
+.work-mark-teachmeback img { width: 37px; height: 37px; object-fit: contain; }
+.work-mark-vintage img { width: 168px; height: 64px; object-fit: contain; }
+.work-mark-sejong img { width: 68px; height: 68px; object-fit: contain; }
+
+@keyframes work-marquee-run { to { transform: translateX(-50%); } }
+
+@media (max-width: 650px) {
+  .work-marquee-section { padding-top: 18px; }
+  .work-marquee { padding-block: 8px 18px; }
+  .work-marquee-caption { gap: 12px; }
+  .enterprise-site .work-marquee-caption h2 { font-size: 14px; }
+  .work-marquee-group { gap: 58px; padding-right: 58px; }
+  .work-marquee-mark { height: 68px; min-width: 130px; }
+  .work-mark-gerrys img { width: 92px; height: 92px; transform: translateY(-8px) scaleX(1.4); }
+  .work-mark-teachmeback { font-size: 18px; }
+  .work-mark-vintage img { width: 150px; height: 58px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-marquee-belt { animation: none; }
+  .work-marquee-viewport { overflow-x: auto; }
+  .work-marquee-group:not(:first-child) { display: none; }
+}

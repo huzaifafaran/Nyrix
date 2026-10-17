@@ -10,6 +10,8 @@ The goal is a clean, simple, minimal enterprise website with dedicated pages, te
 
 ## Engineering collaboration
 
+Record every new user request in root `TASKS.md` before implementation, including requests received while another task is running. Maintain an ordered queue with status, implementation evidence and remaining verification. Work through it one by one without dropping earlier requirements; use `conversation.md` for agent ownership, decisions and reviews. Update both before handoff, and distinguish source/build completion from rendered visual approval.
+
 Read root `conversation.md` before substantial engineering work. It is the authoritative assignment/decision/review log; actual code, checks and runtime behavior remain the implementation source of truth. Consult `docs/revamp/IMPLEMENTATION_PLAN.md` for the queued delivery sequence and `docs/revamp/IMPLEMENTATION_READINESS.md` for the reviewed baseline.
 
 Actively delegate independently executable work when a collaborator is available, with exact file ownership, dependencies, constraints and verifiable acceptance criteria recorded before execution. Keep shared routing, shell/tokens, interface decisions, integration and final review lead-owned unless ownership is explicitly reassigned. This checkout is shared; avoid simultaneous edits to the coordination log or other shared files. Use the log's status vocabulary and require lead review before APPROVED. If no executable collaborator is available, prepare assignments in the log and state that they have not been dispatched.

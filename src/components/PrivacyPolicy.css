@@ -1,147 +1,144 @@
+/* Hallmark · genre: modern-minimal · macrostructure: long document · design-system: design.md · designed-as-app */
 .privacy-policy {
-  background: var(--primary-dark);
   min-height: 100vh;
-  padding: 2rem 0;
+  padding: clamp(36px, 5vw, 76px) 0 clamp(80px, 10vw, 144px);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
 }
 
 .privacy-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  position: relative;
+  padding-bottom: clamp(56px, 7vw, 112px);
 }
 
-.back-button {
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: flex;
+.privacy-back {
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(124, 58, 237, 0.06);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-primary);
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
+  gap: 12px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-small);
+  color: var(--color-ink);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 180ms ease, background-color 180ms ease;
 }
 
-.back-button:hover {
-  background: rgba(124, 58, 237, 0.12);
-  border-color: var(--accent-purple);
-  color: var(--accent-purple);
+.privacy-back:hover {
+  border-color: var(--color-accent);
+  background: var(--color-paper-soft);
 }
 
 .privacy-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-purple) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  width: fit-content;
+  margin: clamp(56px, 7vw, 112px) 0 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(46px, 5.5vw, 80px) !important;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.05;
 }
 
-.last-updated {
-  color: var(--text-muted);
-  font-size: 0.9rem;
+.privacy-header h1 span {
+  position: relative;
+  white-space: nowrap;
+}
+
+.privacy-header h1 span::after {
+  position: absolute;
+  right: 0;
+  bottom: -7px;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-paper-muted));
+  content: "";
 }
 
 .privacy-content {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 840px;
+  margin: 0;
 }
 
-.policy-section {
-  margin-bottom: 2.5rem;
-  padding: 2rem;
-  background: #ffffff;
-  border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 12px rgba(124, 58, 237, 0.04);
+.privacy-content .policy-section {
+  margin: 0;
+  padding: clamp(28px, 3vw, 44px) 0;
+  border-top: 1px solid var(--color-rule);
 }
 
-.policy-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--accent-purple);
-  border-bottom: 2px solid rgba(124, 58, 237, 0.2);
-  padding-bottom: 0.5rem;
+.privacy-content .policy-section h2 {
+  margin: 0 0 20px;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(23px, 2.1vw, 32px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
 }
 
-.policy-section p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
+.privacy-content .policy-section p,
+.privacy-content .policy-section li {
+  color: var(--color-ink);
+  font-size: 16px;
+  line-height: 1.75;
 }
 
-.policy-section ul {
-  margin: 1rem 0;
-  padding-left: 1.5rem;
+.privacy-content .policy-section p {
+  margin: 0 0 14px;
 }
 
-.policy-section li {
-  margin-bottom: 0.5rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
+.privacy-content .policy-section p:last-child {
+  margin-bottom: 0;
 }
 
-.contact-info {
-  background: rgba(124, 58, 237, 0.06);
-  border: 1px solid rgba(124, 58, 237, 0.15);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-top: 1rem;
+.privacy-content .policy-section ul {
+  margin: 14px 0 20px;
+  padding-left: 24px;
 }
 
-.contact-info p {
-  margin-bottom: 0.5rem;
+.privacy-content .policy-section li {
+  padding-left: 4px;
+  margin: 0 0 6px;
 }
 
-.contact-info strong {
-  color: var(--accent-purple);
+.privacy-content .contact-info {
+  margin-top: 18px;
+  padding: 18px 24px;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-paper-soft);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .privacy-policy {
-    padding: 1rem 0;
-  }
-  
+.privacy-content .contact-info strong {
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
   .privacy-header {
-    margin-bottom: 2rem;
+    padding-bottom: 50px;
   }
-  
-  .back-button {
-    position: relative;
-    margin-bottom: 1rem;
-  }
-  
   .privacy-header h1 {
-    font-size: 2rem;
+    margin-top: 56px;
+    font-size: clamp(42px, 10vw, 64px) !important;
   }
-  
-  .policy-section {
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .policy-section h2 {
-    font-size: 1.3rem;
+  .privacy-content .policy-section {
+    padding: 28px 0;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 380px) {
   .privacy-header h1 {
-    font-size: 1.8rem;
+    font-size: 41px !important;
   }
-  
-  .policy-section {
-    padding: 1rem;
+  .privacy-content .policy-section p,
+  .privacy-content .policy-section li {
+    font-size: 15px;
   }
-  
-  .policy-section h2 {
-    font-size: 1.2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .privacy-back {
+    transition: none;
   }
 }

@@ -1,180 +1,123 @@
-# 🚀 Nyrix - AI Agents & Automation Landing Page
+# Nyrix — Enterprise Platform & Decision Sciences
 
-A dynamic and exotic React landing page showcasing Nyrix's AI agent and automation services. Built with modern React practices, Framer Motion animations, and a stunning glass morphism design.
-
-![Nyrix Landing Page](https://img.shields.io/badge/React-18.2.0-blue) ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-7.2.1-purple) ![Status](https://img.shields.io/badge/Status-Complete-success)
-
-## ✨ Features
-
-### 🎨 **Exotic Design**
-- **Glass Morphism Effects**: Modern glass-like UI elements with backdrop blur
-- **Dynamic Animations**: Smooth Framer Motion animations throughout
-- **Interactive Particles**: Canvas-based particle system with mouse interaction
-- **Gradient Themes**: Beautiful color gradients and transitions
-- **Responsive Design**: Mobile-first approach with perfect cross-device compatibility
-
-### 🎯 **Core Sections**
-- **Hero Section**: Dynamic rotating text with animated visual elements
-- **Services**: Comprehensive AI and automation service showcase
-- **Features**: Key platform capabilities with highlight badges
-- **About**: Company story with animated floating shapes
-- **Contact**: Interactive form with success states
-- **Footer**: Complete site navigation and social links
-
-### 🔧 **Technical Excellence**
-- **Modern React**: Functional components with hooks
-- **TypeScript Ready**: Easy to convert to TypeScript
-- **Performance Optimized**: Intersection Observer for efficient animations
-- **Accessibility**: ARIA labels and semantic HTML
-- **SEO Optimized**: Proper meta tags and structured content
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 16+ 
-- npm or yarn
-
-### Installation
-
-1. **Clone & Install**
-   ```bash
-   cd Nyrix
-   npm install
-   ```
-
-2. **Start Development Server**
-   ```bash
-   npm start
-   ```
-
-3. **Open Browser**
-   Navigate to `http://localhost:3000`
-
-### Production Build
-```bash
-npm run build
-```
-
-## 📁 Project Structure
-
-```
-Nyrix/
-├── public/
-│   ├── index.html
-│   ├── manifest.json
-│   └── logo icon no-bg.png
-├── src/
-│   ├── components/
-│   │   ├── Header.js & Header.css
-│   │   ├── Hero.js & Hero.css
-│   │   ├── Services.js & Services.css
-│   │   ├── Features.js & Features.css
-│   │   ├── About.js & About.css
-│   │   ├── Contact.js & Contact.css
-│   │   ├── Footer.js & Footer.css
-│   │   └── ParticleBackground.js & ParticleBackground.css
-│   ├── App.js & App.css
-│   ├── index.js
-│   └── index.css
-├── package.json
-└── README.md
-```
-
-## 🎨 Design System
-
-### Color Palette
-- **Primary Dark**: `#0a0a0a`
-- **Secondary Dark**: `#1a1a1a`
-- **Accent Purple**: `#8b5cf6`
-- **Accent Cyan**: `#06b6d4`
-- **Accent Pink**: `#ec4899`
-- **Accent Orange**: `#f97316`
-
-### Typography
-- **Primary Font**: Inter (Google Fonts)
-- **Monospace Font**: JetBrains Mono (Google Fonts)
-- **Responsive Scaling**: clamp() functions for fluid typography
-
-### Animations
-- **Smooth Transitions**: Custom easing curves
-- **Particle System**: Canvas-based with mouse interaction
-- **Scroll Animations**: Intersection Observer triggers
-- **Micro-Interactions**: Button hovers and form states
-
-## 📱 Responsive Breakpoints
-
-- **Mobile**: 0px - 768px
-- **Tablet**: 768px - 1024px
-- **Desktop**: 1024px+
-
-## 🛠 Technologies Used
-
-- **React 18.2.0**: Modern React with functional components
-- **Framer Motion 7.2.1**: Professional animation library
-- **Lucide React**: Beautiful SVG icons
-- **React Intersection Observer**: Efficient scroll animations
-- **CSS Custom Properties**: Dynamic theming system
-- **Modern CSS**: Grid, Flexbox, and advanced selectors
-
-## 🎯 Business Focus
-
-Nyrix specializes in:
-- **Custom AI Agents**: Intelligent business automation
-- **Workflow Automation**: Process optimization and integration
-- **Intelligent Analytics**: Data-driven insights and predictions
-- **Rapid Deployment**: Quick setup and expert support
-- **Team Collaboration**: AI-driven productivity tools
-- **Performance Optimization**: Continuous improvement systems
-
-## 🌟 Key Highlights
-
-- **500+ Projects Completed**
-- **99.9% Client Satisfaction**
-- **24/7 Support Available**
-- **Enterprise Security**
-- **Global Scale Operations**
-- **300% ROI Guarantee**
-
-## 🎬 Animations & Interactions
-
-- **Particle Background**: Interactive canvas with mouse following
-- **Floating Elements**: CSS and Framer Motion animations
-- **Scroll Reveals**: Components animate on scroll
-- **Micro-Interactions**: Button hovers, form focus states
-- **Dynamic Text**: Rotating hero text with smooth transitions
-- **Glass Morphism**: Backdrop blur effects throughout
-
-## 🚀 Performance Features
-
-- **Lazy Loading**: Intersection Observer for animations
-- **Optimized Assets**: Minimized bundle size
-- **Efficient Animations**: GPU-accelerated transforms
-- **Responsive Images**: Proper scaling and optimization
-- **Clean Code**: Modular component architecture
-
-## 📞 Contact Information
-
-- **Email**: hello@nyrix.co
-- **Phone**: +92 333 1999263
-- **Location**: Karachi, Pakistan
-- **Social**: Twitter, LinkedIn, GitHub
-
-## 📄 License
-
-This project is created for Nyrix and demonstrates modern React development practices. 
+Clean, modern, and minimal enterprise website for **Nyrix** (`nyrix.co`). Built with React 18, React Router 6, Tailwind CSS, and a unified enterprise design system.
 
 ---
 
-**Built with ❤️ using React, Framer Motion, and modern web technologies.**
+## 🗺️ Complete Site Architecture & Sitemap
 
-*Ready to transform your business with AI? The future starts with Nyrix.* 
+Nyrix uses dedicated top-level and nested multi-page routing. Every public route shares a single cohesive shell (Header, Accessibility Skip-Link, Scroll Restoration, and Comprehensive Shared Enterprise Footer).
 
-# One-time setup
-npm i -g vercel
-vercel login
+### Visual Hierarchy
 
-# Deploy
-vercel --prod
+```text
+Nyrix Platform (/)
+├── Solutions (/solutions)
+│   ├── AI MVP Development (/ai-mvp-development)
+│   ├── AI Enablement & Advisory (/ai-enablement-advisory)
+│   ├── Business Transformation (/business-transformation)
+│   └── AI Strategy & Governance (/ai-strategy-governance)
+├── Products (/products)
+│   ├── Kinlu (/products/kinlu) — Predictive Analytics
+│   ├── Artifex (/products/artifex) — Product Photography AI · Shelved
+│   ├── Numaya (/products/numaya) — Social Marketing Automation
+│   └── Veeko (/products/veeko) — Ecommerce intelligence · Shelved
+├── Our Work & Case Studies (/case-studies)
+│   ├── Cleanroom Environmental Monitoring (/case-studies/cleanroom-ems)
+│   └── TeachMeBack AI (/case-studies/teachmeback)
+├── Company (/company)
+│   ├── Team (/company/team) — Verified founders & ML leadership
+│   └── Advisors (/company/advisors) — Industry advisors
+├── Insights & Resources (/resources)
+│   ├── Articles & Publications (/resources/articles) — Published chapters & articles
+│   └── The Next Question Podcast (/resources/podcasts) — Video episodes & upcoming premieres
+├── Agents Library (/agents) — Searchable AI agent directory
+├── Contact (/contact) — Direct inquiries & Google Calendar booking
+└── Legal
+    └── Privacy Policy (/privacy-policy)
+```
 
-# Add custom domain (run this after first deploy)
-vercel domains add nyrix.co 
+---
+
+## 📑 Route Directory & Technical Specification
+
+| Route Path | Page Component | Category | Description | Primary Data Source |
+|---|---|---|---|---|
+| `/` | `EnterpriseHome` | Homepage | Enterprise overview, media-led hero, capabilities, featured work, and insights. | `nyrixContent.js` |
+| `/solutions` | `SolutionsPage` | Solutions | Practical path for enterprise AI initiatives, advisory, and transformation. | `services` |
+| `/ai-mvp-development` | `AiMvpDevelopment` | Services Detail | Rapid scoping, prototyping, and user evaluation of AI workflows. | Legacy Service |
+| `/ai-enablement-advisory` | `AiEnablementAdvisory` | Services Detail | Organizational readiness, capability building, and AI adoption strategy. | Legacy Service |
+| `/business-transformation` | `BusinessTransformation` | Services Detail | Integrating AI systems into operational workflows and enterprise tech stacks. | Legacy Service |
+| `/ai-strategy-governance` | `AiStrategyGovernance` | Services Detail | Decision ownership, risk management, and compliance for AI deployments. | Legacy Service |
+| `/products` | `ProductsPage` | Products Hub | Overview of Nyrix's AI platforms for decisions, creative work, and marketing. | `products` |
+| `/products/kinlu` | `ProductPage` (`:slug`) | Product Detail | Automated machine learning for customer churn, lifetime value, and intent. | `products` (`slug: kinlu`) |
+| `/products/artifex` | `ProductPage` (`:slug`) | Product Detail | Creative generative AI platform turning product photos into marketing visuals. | `products` (`slug: artifex`) |
+| `/products/numaya` | `ProductPage` (`:slug`) | Product Detail | Marketing automation for restaurants & businesses via OMNIA planning. | `products` (`slug: numaya`) |
+| `/products/veeko` | `ProductPage` (`:slug`) | Product Detail | Shelved Shopify store-assistant and order-risk concept. | `products` (`slug: veeko`) |
+| `/case-studies` | `WorkPage` | Case Studies Hub | Index of real applied AI systems built for specific industrial & educational problems. | `caseStudies` |
+| `/case-studies/cleanroom-ems` | `CaseStudyEMS` | Case Study Detail | Telemetry & environmental monitoring web platform for Genix cleanrooms. | Legacy Case Study |
+| `/case-studies/teachmeback` | `CaseStudyTeachMeBack` | Case Study Detail | Active recall learning system where learners teach an AI student. | Legacy Case Study |
+| `/company` | `CompanyPage` | Company | Company overview, mission, work philosophy, and links to team/advisors. | `nyrixContent.js` |
+| `/company/team` | `TeamPage` | People | Verified profiles for Sarim bin Tahir (CEO), Huzaifa Faran, and M. Ehtesham. | `team` |
+| `/company/advisors` | `AdvisorsPage` | People | Confirmed industry advisors: Shams ul Islam and Mashhoodurrehman. | `advisors` |
+| `/resources` | `ResourcesPage` | Insights Hub | Nyrix thinking, articles, research, and podcast series directory. | `nyrixContent.js` |
+| `/resources/articles` | `ArticlesPage` | Publications | Published articles and LinkedIn thought leadership (e.g. Chapter 6: Memory). | `articles` |
+| `/resources/podcasts` | `PodcastsPage` | Media / Podcasts | *The Next Question* (TNQ) podcast episodes (E01–E03 published, E04 premiere). | `episodes` |
+| `/agents` | `AgentsGallery` | Product / Tools | Interactive, searchable, and category-filtered library of AI agents. | `agentsData.js` |
+| `/contact` | `ContactPage` | Engagement | Inquiries, email touchpoint (`hello@nyrix.co`), and Google Calendar scheduler. | `bookingUrl` |
+| `/privacy-policy` | `PrivacyPolicy` | Legal | Data privacy, cookies, and regulatory compliance disclosures. | `PrivacyPolicy.js` |
+| `*` | `NotFoundPage` | System | 404 handler with intuitive breadcrumb and return to home navigation. | `EnterprisePages.js` |
+
+---
+
+## 🎨 Design System & Typography Tokens
+
+The site adheres to a shared, minimal enterprise design language:
+
+- **Display Typography (`h1`, `h2`, `h3`, `h4`, wordmark)**: `"IBM Plex Sans", sans-serif`
+- **Body & Interface Typography (paragraphs, labels, navigation, buttons)**: `"Inter", sans-serif`
+- **Core Palette**:
+  - Paper / Backgrounds: `#ffffff` (soft: `#f5f5f7`, muted: `#eeebf4`)
+  - Ink / Text: black (`#000000`); white on dark surfaces
+  - Accent Purple: `#7045ba` (dark: `#593194`)
+  - Dark / Footer: `#18171d` with subtle border `#453a56`
+- **Motion & Accessibility**:
+  - Video and SVG animations strictly respect `prefers-reduced-motion: reduce`.
+  - Background motion controls omitted at user request; automatic preference/offscreen/hidden policies remain.
+  - Full keyboard accessibility with visible focus rings (`:focus-visible`).
+
+---
+
+## 💻 Developer Quick Start
+
+### Prerequisites
+- **Node.js**: v18+ (tested on Node v24 LTS)
+- **npm**: v9+
+
+### Commands
+
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Start local development server
+npm start
+# -> Local URL: http://localhost:3000
+
+# 3. Run automated regression test suite
+npm test -- --watchAll=false
+
+# 4. Generate production build
+npm run build
+```
+
+---
+
+## 🌐 SEO & Indexing Files
+
+- **`public/sitemap.xml`**: Standard XML sitemap containing all 23 canonical public routes with priority and change frequencies.
+- **`public/robots.txt`**: Standard robots instructions directing web crawlers to `https://nyrix.co/sitemap.xml`.
+- **Dynamic Head Metadata**: Handled route-by-route via `PageMetadata` in `src/App.js`.
+## Current design and source notes
+
+Reference lander uses Inter with enlarged Instrument Serif italic emphasis on “work”; black/white text and purple media/design accents. Homepage narrative: business proposition → capabilities → actual work → product portfolio with honest lifecycle labels → real people → published conversations → contact. Distinct generated product campaign artwork is conceptual, not a product screenshot or claimed output. React Bits source adaptations and license are recorded in `docs/revamp/REACT_BITS.md`; no live MCP server connection is implied. Current ownership and executed QA: `conversation.md`.

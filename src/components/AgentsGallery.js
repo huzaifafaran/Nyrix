@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Search, Filter } from "lucide-react";
 import { useReducedMotion } from "framer-motion";
 import "./AgentsGallery.css";
 import agents from "./agentsData";
+import EmphasizedTitle from "./EmphasizedTitle";
 
 const CategoryRow = ({ category, items, onPick, selectedId }) => {
   if (!items.length) return null;
@@ -112,7 +113,7 @@ const AgentsGallery = () => {
       <div className="site-container">
         <header className="agent-library-intro">
           <p className="eyebrow">Agent library</p>
-          <h1 id="agent-library-heading">Agent library</h1>
+          <h1 id="agent-library-heading"><EmphasizedTitle text="Agent library" /></h1>
           <p>
             Explore agents by capability and find the right starting point for
             your workflow.

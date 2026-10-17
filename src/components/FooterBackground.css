@@ -1,0 +1,10 @@
+/* Footer media policy: unobtrusive background with preference-aware still fallback. */
+.site-footer .footer-background video {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer .footer-background video {
+    display: none;
+  }
+}

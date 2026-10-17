@@ -44,3 +44,7 @@ DOM integration tests do not establish responsive layout, CSS menu visibility, i
 ## NYX-206 follow-up
 
 Agents primary navigation and visible gallery H1 added. Lead reran suite: 26 tests passed, 6.846 seconds, exit 0; production build also passed. Test source SHA256: `82C672F926828F21CF2E1DF3D24711A741D560FF3B1BFAD6CE3F36FA4CBCDE1E`. New check actually navigates from the header to the lazy-loaded agent library and confirms menu closure and active link state. Earlier 25-test hash/result above remains historical. Browser limits still apply.
+
+## 17 October integrated regression result
+
+Full CRA suite:36tests passed across2suites,zero snapshots,7.778seconds,exit0. New homepage regression verifies retained headline and actual solutions navigation; 8 dedicated FooterBackground tests cover deferred loading, media policies and controls. Route suite explicitly mocks unavailable JSDOM play/pause APIs instead of treating them as real playback. Existing act deprecation/Router future warnings retained. Browser/GPU/video decoding remains a separate unavailable gate.

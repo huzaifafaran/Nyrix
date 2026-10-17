@@ -1,96 +1,96 @@
 {
-  "generated_date": "2026-10-16",
+  "generated_date": "2026-10-17",
   "method": "Static filesystem/import inspection; no module execution, runtime crawl, or vector index.",
-  "source_file_count": 45,
-  "source_lines": 7082,
+  "source_file_count": 62,
+  "source_lines": 10799,
   "routes": [
     {
       "path": "/",
-      "line": 102,
+      "line": 103,
       "components": [
         "EnterpriseHome"
       ]
     },
     {
       "path": "/company",
-      "line": 103,
+      "line": 104,
       "components": [
         "CompanyPage"
       ]
     },
     {
       "path": "/company/team",
-      "line": 104,
+      "line": 105,
       "components": [
         "TeamPage"
       ]
     },
     {
       "path": "/company/advisors",
-      "line": 105,
+      "line": 106,
       "components": [
         "AdvisorsPage"
       ]
     },
     {
       "path": "/solutions",
-      "line": 106,
+      "line": 107,
       "components": [
         "SolutionsPage"
       ]
     },
     {
       "path": "/products",
-      "line": 107,
+      "line": 108,
       "components": [
         "ProductsPage"
       ]
     },
     {
       "path": "/products/:slug",
-      "line": 108,
+      "line": 109,
       "components": [
         "ProductPage"
       ]
     },
     {
       "path": "/case-studies",
-      "line": 109,
+      "line": 110,
       "components": [
         "WorkPage"
       ]
     },
     {
       "path": "/resources",
-      "line": 110,
+      "line": 111,
       "components": [
         "ResourcesPage"
       ]
     },
     {
       "path": "/resources/articles",
-      "line": 111,
+      "line": 112,
       "components": [
         "ArticlesPage"
       ]
     },
     {
       "path": "/resources/podcasts",
-      "line": 112,
+      "line": 113,
       "components": [
         "PodcastsPage"
       ]
     },
     {
       "path": "/contact",
-      "line": 113,
+      "line": 114,
       "components": [
         "ContactPage"
       ]
     },
     {
       "path": "/agents",
-      "line": 114,
+      "line": 115,
       "components": [
         "Legacy",
         "AgentsGallery"
@@ -98,7 +98,7 @@
     },
     {
       "path": "/ai-mvp-development",
-      "line": 122,
+      "line": 123,
       "components": [
         "Legacy",
         "AiMvpDevelopment"
@@ -106,7 +106,7 @@
     },
     {
       "path": "/ai-enablement-advisory",
-      "line": 130,
+      "line": 131,
       "components": [
         "Legacy",
         "AiEnablementAdvisory"
@@ -114,7 +114,7 @@
     },
     {
       "path": "/business-transformation",
-      "line": 138,
+      "line": 139,
       "components": [
         "Legacy",
         "BusinessTransformation"
@@ -122,7 +122,7 @@
     },
     {
       "path": "/ai-strategy-governance",
-      "line": 146,
+      "line": 147,
       "components": [
         "Legacy",
         "AiStrategyGovernance"
@@ -130,7 +130,7 @@
     },
     {
       "path": "/privacy-policy",
-      "line": 154,
+      "line": 155,
       "components": [
         "Legacy",
         "PrivacyPolicy"
@@ -138,7 +138,7 @@
     },
     {
       "path": "/case-studies/cleanroom-ems",
-      "line": 162,
+      "line": 163,
       "components": [
         "Legacy",
         "CaseStudyEMS"
@@ -146,7 +146,7 @@
     },
     {
       "path": "/case-studies/teachmeback",
-      "line": 170,
+      "line": 171,
       "components": [
         "Legacy",
         "CaseStudyTeachMeBack"
@@ -154,7 +154,7 @@
     },
     {
       "path": "*",
-      "line": 178,
+      "line": 179,
       "components": [
         "NotFoundPage"
       ]
@@ -197,8 +197,8 @@
     },
     {
       "path": "src/App.js",
-      "lines": 186,
-      "bytes": 6347,
+      "lines": 187,
+      "bytes": 6377,
       "imports": [
         "react",
         "react-router-dom",
@@ -321,8 +321,8 @@
     },
     {
       "path": "src/components/AgentsGallery.css",
-      "lines": 8,
-      "bytes": 199,
+      "lines": 310,
+      "bytes": 6586,
       "imports": [],
       "dynamic_imports": [],
       "local_dependencies": [],
@@ -332,12 +332,12 @@
     },
     {
       "path": "src/components/AgentsGallery.js",
-      "lines": 298,
-      "bytes": 13211,
+      "lines": 236,
+      "bytes": 8103,
       "imports": [
         "react",
-        "framer-motion",
         "lucide-react",
+        "framer-motion",
         "./AgentsGallery.css",
         "./agentsData"
       ],
@@ -347,79 +347,71 @@
         "src/components/agentsData.js"
       ],
       "section_ids": [],
-      "motion_elements": 2,
+      "motion_elements": 0,
       "reachable_from_entry_via_static_imports": true
     },
     {
       "path": "src/components/AiEnablementAdvisory.js",
-      "lines": 73,
-      "bytes": 3790,
+      "lines": 25,
+      "bytes": 1403,
       "imports": [
         "react",
-        "framer-motion",
-        "lucide-react",
-        "./ServicePage.css"
+        "./ServiceDetail"
       ],
       "dynamic_imports": [],
       "local_dependencies": [
-        "src/components/ServicePage.css"
+        "src/components/ServiceDetail.js"
       ],
       "section_ids": [],
-      "motion_elements": 6,
+      "motion_elements": 0,
       "reachable_from_entry_via_static_imports": true
     },
     {
       "path": "src/components/AiMvpDevelopment.js",
-      "lines": 135,
-      "bytes": 7479,
+      "lines": 25,
+      "bytes": 1389,
       "imports": [
         "react",
-        "framer-motion",
-        "lucide-react",
-        "./ServicePage.css"
+        "./ServiceDetail"
       ],
       "dynamic_imports": [],
       "local_dependencies": [
-        "src/components/ServicePage.css"
+        "src/components/ServiceDetail.js"
       ],
       "section_ids": [],
-      "motion_elements": 10,
+      "motion_elements": 0,
       "reachable_from_entry_via_static_imports": true
     },
     {
       "path": "src/components/AiStrategyGovernance.js",
-      "lines": 73,
-      "bytes": 3719,
+      "lines": 25,
+      "bytes": 1329,
       "imports": [
         "react",
-        "framer-motion",
-        "lucide-react",
-        "./ServicePage.css"
+        "./ServiceDetail"
       ],
       "dynamic_imports": [],
       "local_dependencies": [
-        "src/components/ServicePage.css"
+        "src/components/ServiceDetail.js"
       ],
       "section_ids": [],
-      "motion_elements": 6,
+      "motion_elements": 0,
       "reachable_from_entry_via_static_imports": true
     },
     {
       "path": "src/components/BusinessTransformation.js",
-      "lines": 73,
-      "bytes": 3704,
+      "lines": 25,
+      "bytes": 1365,
       "imports": [
         "react",
-        "framer-motion",
-        "lucide-react",
-        "./ServicePage.css"
+        "./ServiceDetail"
       ],
       "dynamic_imports": [],
       "local_dependencies": [
-        "src/components/ServicePage.css"
+        "src/components/ServiceDetail.js"
       ],
       "section_ids": [],
-      "motion_elements": 6,
+      "motion_elements": 0,
       "reachable_from_entry_via_static_imports": true
     },
     {
@@ -442,39 +434,65 @@
       "reachable_from_entry_via_static_imports": false
     },
     {
-      "path": "src/components/CaseStudyEMS.js",
-      "lines": 178,
-      "bytes": 10884,
+      "path": "src/components/CaseStudyDetail.css",
+      "lines": 198,
+      "bytes": 4274,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/CaseStudyDetail.js",
+      "lines": 129,
+      "bytes": 4564,
       "imports": [
         "react",
-        "framer-motion",
-        "lucide-react",
-        "./ServicePage.css"
+        "react-router-dom",
+        "../content/nyrixContent",
+        "./CaseStudyDetail.css"
       ],
       "dynamic_imports": [],
       "local_dependencies": [
-        "src/components/ServicePage.css"
+        "src/content/nyrixContent.js",
+        "src/components/CaseStudyDetail.css"
       ],
       "section_ids": [],
-      "motion_elements": 11,
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/CaseStudyEMS.js",
+      "lines": 6,
+      "bytes": 171,
+      "imports": [
+        "react",
+        "./CaseStudyDetail"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/CaseStudyDetail.js"
+      ],
+      "section_ids": [],
+      "motion_elements": 0,
       "reachable_from_entry_via_static_imports": true
     },
     {
       "path": "src/components/CaseStudyTeachMeBack.js",
-      "lines": 159,
-      "bytes": 10132,
+      "lines": 6,
+      "bytes": 177,
       "imports": [
         "react",
-        "framer-motion",
-        "lucide-react",
-        "./ServicePage.css"
+        "./CaseStudyDetail"
       ],
       "dynamic_imports": [],
       "local_dependencies": [
-        "src/components/ServicePage.css"
+        "src/components/CaseStudyDetail.js"
       ],
       "section_ids": [],
-      "motion_elements": 12,
+      "motion_elements": 0,
       "reachable_from_entry_via_static_imports": true
     },
     {
@@ -511,8 +529,8 @@
     },
     {
       "path": "src/components/enterprise.css",
-      "lines": 1133,
-      "bytes": 22517,
+      "lines": 1806,
+      "bytes": 38071,
       "imports": [],
       "dynamic_imports": [],
       "local_dependencies": [],
@@ -522,16 +540,24 @@
     },
     {
       "path": "src/components/EnterpriseHome.js",
-      "lines": 418,
-      "bytes": 13906,
+      "lines": 257,
+      "bytes": 9547,
       "imports": [
         "react",
         "react-router-dom",
+        "./HeroRibbon",
+        "./TeamShowcase",
+        "./reactbits/BlurText",
+        "./reactbits/SpotlightCard",
         "lucide-react",
         "../content/nyrixContent"
       ],
       "dynamic_imports": [],
       "local_dependencies": [
+        "src/components/HeroRibbon.js",
+        "src/components/TeamShowcase.js",
+        "src/components/reactbits/BlurText.js",
+        "src/components/reactbits/SpotlightCard.js",
         "src/content/nyrixContent.js"
       ],
       "section_ids": [],
@@ -539,9 +565,22 @@
       "reachable_from_entry_via_static_imports": true
     },
     {
+      "path": "src/components/EnterpriseIcons.js",
+      "lines": 125,
+      "bytes": 3732,
+      "imports": [
+        "react"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
       "path": "src/components/EnterprisePages.css",
-      "lines": 143,
-      "bytes": 2654,
+      "lines": 778,
+      "bytes": 16216,
       "imports": [],
       "dynamic_imports": [],
       "local_dependencies": [],
@@ -551,18 +590,22 @@
     },
     {
       "path": "src/components/EnterprisePages.js",
-      "lines": 536,
-      "bytes": 18849,
+      "lines": 748,
+      "bytes": 27239,
       "imports": [
         "react",
         "react-router-dom",
         "../content/nyrixContent",
-        "./EnterprisePages.css"
+        "./EnterprisePages.css",
+        "./EnterpriseIcons",
+        "./TeamShowcase"
       ],
       "dynamic_imports": [],
       "local_dependencies": [
         "src/content/nyrixContent.js",
-        "src/components/EnterprisePages.css"
+        "src/components/EnterprisePages.css",
+        "src/components/EnterpriseIcons.js",
+        "src/components/TeamShowcase.js"
       ],
       "section_ids": [],
       "motion_elements": 0,
@@ -581,18 +624,65 @@
     },
     {
       "path": "src/components/Footer.js",
-      "lines": 111,
-      "bytes": 3354,
+      "lines": 114,
+      "bytes": 3468,
       "imports": [
         "react",
         "react-router-dom",
-        "lucide-react"
+        "lucide-react",
+        "./FooterBackground"
       ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/FooterBackground.js"
+      ],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/FooterBackground.css",
+      "lines": 10,
+      "bytes": 258,
+      "imports": [],
       "dynamic_imports": [],
       "local_dependencies": [],
       "section_ids": [],
       "motion_elements": 0,
       "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/FooterBackground.js",
+      "lines": 84,
+      "bytes": 2691,
+      "imports": [
+        "react",
+        "./FooterBackground.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/FooterBackground.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/FooterBackground.test.js",
+      "lines": 160,
+      "bytes": 4842,
+      "imports": [
+        "react",
+        "@testing-library/react",
+        "./FooterBackground"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/FooterBackground.js"
+      ],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
     },
     {
       "path": "src/components/Header.css",
@@ -607,8 +697,8 @@
     },
     {
       "path": "src/components/Header.js",
-      "lines": 84,
-      "bytes": 2610,
+      "lines": 96,
+      "bytes": 3172,
       "imports": [
         "react",
         "react-router-dom",
@@ -648,6 +738,33 @@
       "section_ids": [],
       "motion_elements": 1,
       "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/HeroRibbon.css",
+      "lines": 403,
+      "bytes": 9266,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/HeroRibbon.js",
+      "lines": 202,
+      "bytes": 7370,
+      "imports": [
+        "react",
+        "./HeroRibbon.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/HeroRibbon.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
     },
     {
       "path": "src/components/Kinlu.css",
@@ -742,6 +859,83 @@
       "reachable_from_entry_via_static_imports": false
     },
     {
+      "path": "src/components/reactbits/BlurText.js",
+      "lines": 54,
+      "bytes": 1806,
+      "imports": [
+        "react",
+        "framer-motion",
+        "./reactbits.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/reactbits/reactbits.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 1,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/reactbits/LICENSE.react-bits.txt",
+      "lines": 25,
+      "bytes": 1303,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/reactbits/reactbits.css",
+      "lines": 67,
+      "bytes": 1369,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/reactbits/SpotlightCard.js",
+      "lines": 29,
+      "bytes": 993,
+      "imports": [
+        "react",
+        "./reactbits.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/reactbits/reactbits.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/reactbits/upstream/SpotlightCard.css",
+      "lines": 51,
+      "bytes": 980,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
+      "path": "src/components/reactbits/upstream/SpotlightCard.jsx",
+      "lines": 288,
+      "bytes": 10294,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": false
+    },
+    {
       "path": "src/components/ScrollToTop.js",
       "lines": 32,
       "bytes": 1046,
@@ -756,9 +950,27 @@
       "reachable_from_entry_via_static_imports": true
     },
     {
+      "path": "src/components/ServiceDetail.js",
+      "lines": 69,
+      "bytes": 2675,
+      "imports": [
+        "react",
+        "react-router-dom",
+        "lucide-react",
+        "./ServicePage.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/components/ServicePage.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
       "path": "src/components/ServicePage.css",
-      "lines": 181,
-      "bytes": 4625,
+      "lines": 239,
+      "bytes": 9548,
       "imports": [],
       "dynamic_imports": [],
       "local_dependencies": [],
@@ -797,6 +1009,38 @@
       "reachable_from_entry_via_static_imports": false
     },
     {
+      "path": "src/components/TeamShowcase.css",
+      "lines": 390,
+      "bytes": 7534,
+      "imports": [],
+      "dynamic_imports": [],
+      "local_dependencies": [],
+      "section_ids": [],
+      "motion_elements": 0,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
+      "path": "src/components/TeamShowcase.js",
+      "lines": 212,
+      "bytes": 8022,
+      "imports": [
+        "react",
+        "react-router-dom",
+        "lucide-react",
+        "framer-motion",
+        "../content/nyrixContent",
+        "./TeamShowcase.css"
+      ],
+      "dynamic_imports": [],
+      "local_dependencies": [
+        "src/content/nyrixContent.js",
+        "src/components/TeamShowcase.css"
+      ],
+      "section_ids": [],
+      "motion_elements": 3,
+      "reachable_from_entry_via_static_imports": true
+    },
+    {
       "path": "src/content/enterprise.js",
       "lines": 323,
       "bytes": 14965,
@@ -809,8 +1053,8 @@
     },
     {
       "path": "src/content/nyrixContent.js",
-      "lines": 204,
-      "bytes": 6997,
+      "lines": 257,
+      "bytes": 10390,
       "imports": [],
       "dynamic_imports": [],
       "local_dependencies": [],
@@ -820,8 +1064,8 @@
     },
     {
       "path": "src/enterprise.test.js",
-      "lines": 140,
-      "bytes": 7228,
+      "lines": 214,
+      "bytes": 11714,
       "imports": [
         "react",
         "@testing-library/jest-dom",
@@ -974,7 +1218,7 @@
     },
     {
       "path": "public/index.html",
-      "bytes": 3629
+      "bytes": 3642
     },
     {
       "path": "public/interview agent fritz.jpeg",
@@ -1021,6 +1265,78 @@
       "bytes": 532691
     },
     {
+      "path": "public/media/nyrix-clarity-1536.webp",
+      "bytes": 149392
+    },
+    {
+      "path": "public/media/nyrix-clarity-768.webp",
+      "bytes": 49958
+    },
+    {
+      "path": "public/media/nyrix-connected-work-1536.webp",
+      "bytes": 96456
+    },
+    {
+      "path": "public/media/nyrix-connected-work-768.webp",
+      "bytes": 27144
+    },
+    {
+      "path": "public/media/nyrix-footer-poster.webp",
+      "bytes": 8922
+    },
+    {
+      "path": "public/media/nyrix-footer.mp4",
+      "bytes": 1198098
+    },
+    {
+      "path": "public/media/nyrix-violet-ribbon-1900.webp",
+      "bytes": 42978
+    },
+    {
+      "path": "public/media/nyrix-violet-ribbon-950.webp",
+      "bytes": 16812
+    },
+    {
+      "path": "public/media/product-artifex.webp",
+      "bytes": 19832
+    },
+    {
+      "path": "public/media/product-kinlu.webp",
+      "bytes": 39922
+    },
+    {
+      "path": "public/media/product-numaya.webp",
+      "bytes": 56112
+    },
+    {
+      "path": "public/media/product-veeko.webp",
+      "bytes": 27762
+    },
+    {
+      "path": "public/media/service-ai-enablement.webp",
+      "bytes": 39296
+    },
+    {
+      "path": "public/media/service-ai-governance.webp",
+      "bytes": 69384
+    },
+    {
+      "path": "public/media/service-ai-mvp.webp",
+      "bytes": 61324
+    },
+    {
+      "path": "public/media/service-business-transformation.webp",
+      "bytes": 38776
+    },
+    {
+      "path": "public/media/work-cleanroom.webp",
+      "bytes": 51762
+    },
+    {
+      "path": "public/media/work-teachmeback.webp",
+      "bytes": 37290
+    },
+    {
       "path": "public/n8n backup agent.jpeg",
       "bytes": 63268
     },
@@ -1043,6 +1359,14 @@
     {
       "path": "public/newsletter agent.jpeg",
       "bytes": 60920
+    },
+    {
+      "path": "public/people/advisor-mashhood-rahman.webp",
+      "bytes": 33038
+    },
+    {
+      "path": "public/people/advisor-shamsul-islam.webp",
+      "bytes": 7888
     },
     {
       "path": "public/people/ehtesham-malik.webp",
@@ -1089,6 +1413,10 @@
       "bytes": 61624
     },
     {
+      "path": "public/robots.txt",
+      "bytes": 62
+    },
+    {
       "path": "public/sa.jpg",
       "bytes": 466091
     },
@@ -1103,6 +1431,10 @@
     {
       "path": "public/scrap recent news about company and dcide meeting tone.jpeg",
       "bytes": 53860
+    },
+    {
+      "path": "public/sitemap.xml",
+      "bytes": 4287
     },
     {
       "path": "public/travel agent.jpeg",

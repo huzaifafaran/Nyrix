@@ -1,18 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import HeroRibbon from "./HeroRibbon";
+import WorkMarquee from "./WorkMarquee";
+import BlurText from "./reactbits/BlurText";
+import SpotlightCard from "./reactbits/SpotlightCard";
 import {
   ArrowRight,
   Brain,
   Compass,
   Workflow,
   ShieldCheck,
-  Play,
 } from "lucide-react";
 import {
   services,
-  products,
   caseStudies,
-  team,
   episodes,
 } from "../content/nyrixContent";
 
@@ -24,60 +25,45 @@ export default function EnterpriseHome() {
   );
   return (
     <>
-      <section className="media-hero" aria-labelledby="home-title">
-        <div className="site-container">
-          <div className="media-hero-intro">
-            <div>
-              <p className="media-eyebrow">Nyrix / Decision sciences</p>
-              <h1 id="home-title">
-                Intelligence,
-                <br />
-                put to work.
-              </h1>
-            </div>
-            <div className="media-hero-summary">
-              <p>
-                AI systems, predictive models and intelligent workflows.
-                Designed around your business. Engineered for the work ahead.
-              </p>
+      <section className="ribbon-hero" aria-labelledby="home-title">
+        <HeroRibbon />
+        <div className="site-container ribbon-hero-content">
+          <div className="ribbon-hero-copy">
+            <h1 id="home-title">
+              Intelligence,
+              <br />
+              <span>
+                put to <em className="hero-work">work.</em>
+              </span>
+            </h1>
+            <p>
+              AI systems, predictive models and intelligent workflows. Designed
+              around your business. Engineered for the work ahead.
+            </p>
+            <div className="ribbon-hero-actions">
               <Link className="button button-primary" to="/contact">
-                Talk to our team <ArrowRight size={16} aria-hidden="true" />
+                Talk to our team <ArrowRight size={17} aria-hidden="true" />
+              </Link>
+              <Link className="ribbon-secondary-link" to="/solutions">
+                Explore our solutions
               </Link>
             </div>
           </div>
-          <div className="brand-landscape">
-            <img
-              src="/media/nyrix-clarity-1536.webp"
-              srcSet="/media/nyrix-clarity-768.webp 768w, /media/nyrix-clarity-1536.webp 1536w"
-              sizes="(max-width: 768px) 100vw, 92vw"
-              width="1536"
-              height="1024"
-              alt=""
-              fetchpriority="high"
-            />
-            <div className="brand-landscape-copy">
-              <span>From complexity</span>
-              <strong>to clarity.</strong>
-            </div>
-            <Link to="/solutions" className="landscape-link">
-              Explore our solutions <ArrowRight size={18} aria-hidden="true" />
-            </Link>
-          </div>
-          <div className="media-hero-index">
-            <span>Strategy. Engineering. Applied intelligence.</span>
+          <div className="ribbon-hero-footnote">
             <Link to="/case-studies">
               See our work <ArrowRight size={15} aria-hidden="true" />
             </Link>
           </div>
         </div>
       </section>
+      <WorkMarquee />
       <section className="enterprise-section">
         <div className="site-container">
           <div className="intro-split">
             <div>
               <span className="section-kicker">What we do</span>
               <h2 className="section-heading">
-                From a useful question to a working AI system.
+                <BlurText text="From a useful question to a working AI system." />
               </h2>
             </div>
             <p className="section-copy">
@@ -97,9 +83,6 @@ export default function EnterpriseHome() {
                 alt=""
                 loading="lazy"
               />
-              <figcaption>
-                A clear path from possibility to practice.
-              </figcaption>
             </figure>
             <div className="capability-list">
               {services.map((service, index) => {
@@ -125,7 +108,90 @@ export default function EnterpriseHome() {
           </div>
         </div>
       </section>
-      <section className="enterprise-section section-soft">
+      <section className="enterprise-section home-product-section">
+        <div className="site-container">
+          <div className="section-topline">
+            <div>
+              <span className="section-kicker">OUR PRODUCTS</span>
+              <h2 className="section-heading">
+                Focused tools for everyday complexity.
+              </h2>
+            </div>
+            <Link className="text-link" to="/products">
+              Explore products <ArrowRight size={16} />
+            </Link>
+          </div>
+          <div className="home-product-showcase-list">
+            {/* Kinlu Showcase Card */}
+            <article className="home-product-showcase-card kinlu-showcase-card">
+              <div className="home-product-showcase-copy">
+                <span className="home-product-showcase-kicker">KINLU</span>
+                <h3 className="home-product-showcase-title">Kinlu</h3>
+                <span className="home-product-showcase-sub">PREDICTIVE ANALYTICS</span>
+                <p className="home-product-showcase-desc">
+                  An automated machine learning platform focused on customer churn, lifetime value and marketing intent.
+                </p>
+                <Link className="home-product-showcase-btn" to="/products/kinlu">
+                  <span>Learn more</span>
+                  <span className="home-product-showcase-btn-arrow" aria-hidden="true">→</span>
+                </Link>
+              </div>
+              <figure className="home-product-showcase-visual">
+                <img
+                  src="/media/kinlu-website-clean.png"
+                  alt="Kinlu machine learning platform interface featuring predictive customer models and analytics dashboard"
+                  loading="lazy"
+                  width="1100"
+                  height="640"
+                />
+              </figure>
+            </article>
+
+            {/* Numaya Showcase Card */}
+            <article className="home-product-showcase-card numaya-showcase-card">
+              <div className="home-product-showcase-copy">
+                <span className="home-product-showcase-kicker">NUMAYA</span>
+                <h3 className="home-product-showcase-title">Numaya</h3>
+                <span className="home-product-showcase-sub">SOCIAL MARKETING</span>
+                <p className="home-product-showcase-desc">
+                  A marketing platform for restaurants and growing businesses, bringing creative, publishing and social operations together.
+                </p>
+                <Link className="home-product-showcase-btn" to="/products/numaya">
+                  <span>Learn more</span>
+                  <span className="home-product-showcase-btn-arrow" aria-hidden="true">→</span>
+                </Link>
+              </div>
+              <figure className="home-product-showcase-visual">
+                <img
+                  src="/media/numaya-website-clean.png"
+                  alt="Numaya brand growth platform interface showing social media marketing campaigns and AI creative assets"
+                  loading="lazy"
+                  width="1100"
+                  height="640"
+                />
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section className="enterprise-section section-soft home-work-section">
+        {/* Background organic ribbon curve echoing the team section pedigree */}
+        <div className="section-ambient-bg" aria-hidden="true">
+          <svg viewBox="0 0 1440 500" fill="none" preserveAspectRatio="none">
+            <path
+              d="M-80 320 C 320 220, 700 380, 1100 260 C 1320 200, 1480 240, 1600 220 L 1600 500 L -80 500 Z"
+              fill="#f6f3fb"
+              opacity="0.85"
+            />
+            <path
+              d="M 500 180 C 800 290, 1150 140, 1550 250"
+              stroke="#e5dfef"
+              strokeWidth="1.2"
+              fill="none"
+              opacity="0.6"
+            />
+          </svg>
+        </div>
         <div className="site-container">
           <div className="section-topline">
             <div>
@@ -140,132 +206,121 @@ export default function EnterpriseHome() {
           </div>
           <div className="work-grid">
             {caseStudies.map((study) => (
-              <Link key={study.slug} to={study.href} className="work-card">
-                <span className="work-meta">{study.category}</span>
-                <h3>{study.title}</h3>
-                <p>{study.description}</p>
-                <span className="text-link">
-                  Read the case study <ArrowRight size={16} />
-                </span>
-              </Link>
+              <SpotlightCard key={study.slug} className="work-card">
+                <Link to={study.href} className="work-card-link">
+                  <figure className="home-work-visual">
+                    <img
+                      src={study.image}
+                      alt={study.imageAlt}
+                      width="1200"
+                      height="800"
+                      loading="lazy"
+                    />
+                  </figure>
+                  <div className="home-work-copy">
+                    <span className="work-meta">{study.category}</span>
+                    <h3>{study.title}</h3>
+                    <p>{study.description}</p>
+                    <span className="text-link">
+                      Read the case study <ArrowRight size={16} />
+                    </span>
+                  </div>
+                </Link>
+              </SpotlightCard>
             ))}
           </div>
         </div>
       </section>
-      <section className="enterprise-section">
-        <div className="site-container">
-          <div className="section-topline">
-            <div>
-              <span className="section-kicker">Our products</span>
-              <h2 className="section-heading">
-                Focused tools for everyday complexity.
-              </h2>
-            </div>
-            <Link className="text-link" to="/products">
-              Explore products <ArrowRight size={16} />
-            </Link>
-          </div>
-          <div className="product-list">
-            {products.map((product) => (
-              <Link
-                key={product.slug}
-                to={product.href}
-                className="product-row"
-              >
-                <span className="product-name">{product.name}</span>
-                <div>
-                  <div className="product-category">{product.category}</div>
-                  <p>{product.description}</p>
-                </div>
-                <ArrowRight size={20} />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="enterprise-section section-soft">
-        <div className="site-container company-feature">
+      <section className="enterprise-section site-container home-people-section">
+        <div className="section-topline">
           <div>
-            <span className="section-kicker">The people behind Nyrix</span>
+            <span className="section-kicker">People &amp; perspective</span>
             <h2 className="section-heading">
-              Engineering grounded in curiosity.
+              Grounded in curiosity. Guided by experience.
             </h2>
-            <p className="section-copy">
-              We work across AI strategy, solutions architecture and machine
-              learning. Get to know the team building Nyrix and the advisors
-              supporting our journey.
-            </p>
-            <Link className="text-link" to="/company">
-              Meet Nyrix <ArrowRight size={16} />
-            </Link>
           </div>
-          <div className="people-preview">
-            {team.map((person) => (
-              <div className="person-preview" key={person.name}>
-                {person.photo ? (
-                  <img
-                    className="person-photo"
-                    src={person.photo}
-                    alt=""
-                    width="45"
-                    height="45"
-                    loading="lazy"
-                  />
-                ) : (
-                  <span className="person-monogram" aria-hidden="true">
-                    {person.name
-                      .split(" ")
-                      .filter((word) => word.length > 1)
-                      .slice(0, 2)
-                      .map((word) => word[0])
-                      .join("")}
-                  </span>
-                )}
-                <div>
-                  <h3>{person.name}</h3>
-                  <p>{person.role}</p>
-                </div>
+          <Link className="text-link" to="/company">
+            About our company <ArrowRight size={16} />
+          </Link>
+        </div>
+        <div className="company-showcase-grid">
+          <Link className="company-showcase-card" to="/company/team">
+            <div className="company-showcase-content">
+              <span className="section-kicker">Core Leadership &amp; Engineering</span>
+              <h2>The team</h2>
+              <p>Meet the engineers and architects behind Nyrix and our applied AI work.</p>
+              <div className="company-showcase-action">
+                <span className="company-showcase-link">Meet the full team</span>
+                <span className="company-showcase-arrow" aria-hidden="true">→</span>
               </div>
-            ))}
-            <Link className="text-link" to="/company/advisors">
-              Meet our advisors <ArrowRight size={16} />
-            </Link>
-          </div>
+            </div>
+            <figure className="company-showcase-visual">
+              <img
+                src="/media/nyrix-team-illustration.png"
+                alt="Glass sheets illustration representing Nyrix engineering leadership"
+                loading="lazy"
+                width="340"
+                height="340"
+              />
+            </figure>
+          </Link>
+          <Link className="company-showcase-card" to="/company/advisors">
+            <div className="company-showcase-content">
+              <span className="section-kicker">External Perspective</span>
+              <h2>Advisors</h2>
+              <p>The institutional leaders and industry executives who bring perspective to Nyrix.</p>
+              <div className="company-showcase-action">
+                <span className="company-showcase-link">Meet our advisors</span>
+                <span className="company-showcase-arrow" aria-hidden="true">→</span>
+              </div>
+            </div>
+            <figure className="company-showcase-visual">
+              <img
+                src="/media/nyrix-advisors-illustration.png"
+                alt="Architectural curved glass sculpture representing Nyrix advisory board"
+                loading="lazy"
+                width="340"
+                height="340"
+              />
+            </figure>
+          </Link>
         </div>
       </section>
       {featuredEpisode ? (
-        <section className="enterprise-section">
-          <div className="site-container podcast-feature">
-            <a
-              className="podcast-artwork"
-              href={featuredEpisode.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={featuredEpisode.thumbnail}
-                alt={`${featuredEpisode.title} episode artwork`}
-                loading="lazy"
-                width="1280"
-                height="720"
+        <section className="enterprise-section home-podcast-section">
+          <div className="section-ambient-bg" aria-hidden="true">
+            <svg viewBox="0 0 1440 400" fill="none" preserveAspectRatio="none">
+              <path
+                d="M -100 120 C 350 260, 850 80, 1600 200 L 1600 450 L -100 450 Z"
+                fill="#f8f5fc"
+                opacity="0.65"
               />
-              <span className="podcast-badge">
-                <Play size={14} /> Watch on YouTube
-              </span>
-            </a>
-            <div>
-              <span className="section-kicker">The Next Question</span>
-              <h2 className="section-heading">
-                Conversations that go beyond the headline.
-              </h2>
-              <p className="section-copy">
-                Researchers and practitioners join us to explore the questions
-                behind AI, from language and quantum computing to computer
-                vision.
-              </p>
-              <Link className="text-link" to="/resources/podcasts">
-                Explore the episodes <ArrowRight size={16} />
-              </Link>
+            </svg>
+          </div>
+          <div className="site-container">
+            <div className="podcast-showcase-card">
+              <div className="podcast-showcase-copy">
+                <span className="section-kicker">THE NEXT QUESTION</span>
+                <h2 className="podcast-showcase-heading">
+                  Conversations that go beyond the headline.
+                </h2>
+                <p className="podcast-showcase-description">
+                  Researchers and practitioners discuss the questions behind AI, language, quantum computing and more.
+                </p>
+                <Link className="podcast-showcase-link" to="/resources/podcasts">
+                  <span>Explore the episodes</span>
+                  <span className="podcast-showcase-arrow" aria-hidden="true">→</span>
+                </Link>
+              </div>
+              <figure className="podcast-showcase-visual">
+                <img
+                  src="/media/nyrix-next-question-illustration.png"
+                  alt="Minimalist layered translucent video player panels and play control illustration"
+                  loading="lazy"
+                  width="720"
+                  height="450"
+                />
+              </figure>
             </div>
           </div>
         </section>

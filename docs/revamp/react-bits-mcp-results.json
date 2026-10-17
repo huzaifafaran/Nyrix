@@ -1,0 +1,33 @@
+{
+  "server": {
+    "name": "shadcn",
+    "version": "1.0.0"
+  },
+  "toolNames": [
+    "get_project_registries",
+    "list_items_in_registries",
+    "search_items_in_registries",
+    "view_items_in_registries",
+    "get_item_examples_from_registries",
+    "get_add_command_for_items",
+    "get_audit_checklist"
+  ],
+  "results": {
+    "search": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Found 8 items matching \"SpotlightCard\" in registries @react-bits:\n\nShowing items 1-4 of 8:\n\n- SpotlightCard-TS-CSS (registry:component) - Card lit by a soft spotlight that follows the pointer, catches its edge and reaches nearby cards. [@react-bits] \n  Add command: `npx shadcn@latest add @react-bits/SpotlightCard-TS-CSS`\n\n- SpotlightCard-JS-TW (registry:component) - Card lit by a soft spotlight that follows the pointer, catches its edge and reaches nearby cards. [@react-bits] \n  Add command: `npx shadcn@latest add @react-bits/SpotlightCard-JS-TW`\n\n- SpotlightCard-TS-TW (registry:component) - Card lit by a soft spotlight that follows the pointer, catches its edge and reaches nearby cards. [@react-bits] \n  Add command: `npx shadcn@latest add @react-bits/SpotlightCard-TS-TW`\n\n- SpotlightCard-JS-CSS (registry:component) - Card lit by a soft spotlight that follows the pointer, catches its edge and reaches nearby cards. [@react-bits] \n  Add command: `npx shadcn@latest add @react-bits/SpotlightCard-JS-CSS`\n\nMore items available. Use offset: 4 to see the next page."
+        }
+      ]
+    },
+    "view": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Item Details:\n\n## SpotlightCard-JS-CSS\n\nCard lit by a soft spotlight that follows the pointer, catches its edge and reaches nearby cards.\n\n**Type:** registry:component\n**Files:** 2 file(s)\n\n---\n\n## BlurText-JS-CSS\n\nText starts blurred then crisply resolves for a soft-focus reveal effect.\n\n**Type:** registry:component\n**Files:** 1 file(s)\n**Dependencies:** motion@^12.23.12"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,403 @@
+/* Hallmark · macrostructure: Marquee Hero · theme: studied-DNA · source: user image
+ * P4 H4 E4 S4 R4 V4; visual rendering and WebGL hardware review still pending.
+ * Typography: neutral grotesque · palette: light paper, violet/indigo material. */
+:root {
+  --color-ribbon-paper: #fbfafc;
+  --color-ribbon-ink: #000000;
+  --color-ribbon-accent: #000000;
+  --color-ribbon-body: #000000;
+  --color-ribbon-guide: rgba(112, 69, 186, 0.12);
+  --color-ribbon-header: rgba(251, 250, 252, 0.88);
+  --font-ribbon-display: var(--font-body);
+}
+.ribbon-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: var(--color-ribbon-paper);
+  min-height: clamp(560px, calc(100svh - 88px), 760px);
+  display: flex;
+  align-items: stretch;
+}
+.hero-ribbon-art {
+  position: absolute;
+  inset: -88px 0 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.hero-ribbon-art img,
+.hero-ribbon-art canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-ribbon-art canvas {
+  opacity: 0;
+}
+.hero-ribbon-art canvas.is-ready {
+  opacity: 1;
+}
+.ribbon-hero .ribbon-hero-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;
+  padding-bottom: 120px;
+}
+.ribbon-hero-copy {
+  width: 51%;
+  max-width: 610px;
+  min-width: 0;
+}
+.enterprise-site .ribbon-hero h1 {
+  font-family: var(--font-ribbon-display);
+  font-size: clamp(3.25rem, 5.1vw, 4.9rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+  color: var(--color-ribbon-ink);
+  margin: 0 0 30px;
+  overflow-wrap: anywhere;
+}
+.ribbon-hero h1 span {
+  color: var(--color-ribbon-accent);
+}
+.ribbon-hero-copy > p {
+  max-width: 480px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-ribbon-body);
+  margin: 0;
+  text-wrap: pretty;
+}
+.ribbon-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  margin-top: 34px;
+}
+.ribbon-hero .button-primary {
+  border-radius: var(--radius-small, 8px);
+  padding: 17px 26px;
+  background: var(--color-ribbon-ink);
+  border-color: var(--color-ribbon-ink);
+  gap: 25px;
+  font-size: 13px;
+}
+.ribbon-secondary-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--color-ribbon-ink);
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 1px;
+  font-size: 13px;
+}
+.ribbon-hero-footnote {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--color-ribbon-body);
+}
+.ribbon-hero-footnote a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  color: var(--color-ribbon-ink);
+  text-decoration: none;
+}
+.hero-ribbon-toggle {
+  position: absolute;
+  z-index: 2;
+  bottom: 92px;
+  right: max(24px, calc((100% - var(--site-width)) / 2));
+  border: 1px solid var(--color-ribbon-guide);
+  border-radius: var(--radius-small, 8px);
+  background: var(--color-ribbon-paper);
+  color: var(--color-ribbon-ink);
+  font: 11px var(--font-body);
+  min-height: 44px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.hero-ribbon-toggle:focus-visible,
+.ribbon-secondary-link:focus-visible {
+  outline: 2px solid var(--color-ribbon-accent);
+  outline-offset: 5px;
+}
+.hero-ribbon-toggle:hover {
+  border-color: var(--color-ribbon-accent);
+}
+.site-header.site-header-lander {
+  background: var(--color-ribbon-header);
+  border-bottom: 0;
+  backdrop-filter: blur(14px);
+}
+.site-header-lander .header-inner {
+  min-height: 88px;
+}
+.site-header-lander .site-brand img {
+  filter: grayscale(1) brightness(0.2);
+}
+.site-header-lander .primary-nav > a.nav-contact {
+  border-radius: var(--radius-small, 8px);
+  padding: 13px 22px;
+}
+@media (min-width: 1100px) {
+  .ribbon-hero .site-container,
+  .site-header-lander .site-container {
+    width: min(1360px, calc(100% - 112px));
+  }
+}
+@media (max-width: 900px) {
+  .ribbon-hero-copy {
+    width: 60%;
+  }
+  .enterprise-site .ribbon-hero h1 {
+    font-size: clamp(2.8rem, 6.3vw, 3.8rem);
+  }
+  .hero-ribbon-art {
+    left: -12%;
+    right: -20%;
+  }
+  .ribbon-hero-copy > p {
+    font-size: 16px;
+  }
+  .site-header-lander .primary-nav {
+    background: var(--color-ribbon-paper);
+  }
+}
+@media (max-width: 650px) {
+  .ribbon-hero {
+    min-height: 730px;
+  }
+  .ribbon-hero .ribbon-hero-content {
+    justify-content: flex-start;
+    padding-top: 48px;
+    padding-bottom: 110px;
+  }
+  .ribbon-hero-copy {
+    width: 100%;
+    max-width: 470px;
+  }
+  .enterprise-site .ribbon-hero h1 {
+    font-size: clamp(2.8rem, 10vw, 3.7rem);
+    margin-bottom: 24px;
+  }
+  .ribbon-hero-copy > p {
+    font-size: 16px;
+    max-width: 390px;
+  }
+  .hero-ribbon-art {
+    inset: 245px -200px -60px -100px;
+    mask-image: linear-gradient(to bottom, transparent, black 34%);
+  }
+  .ribbon-hero-actions {
+    gap: 16px 22px;
+    margin-top: 28px;
+  }
+  .ribbon-hero .button {
+    width: auto;
+  }
+  .ribbon-hero-footnote {
+    bottom: 20px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0;
+  }
+  .hero-ribbon-toggle {
+    bottom: 112px;
+    right: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-ribbon-art canvas {
+    display: none;
+  }
+}
+
+/* User-directed refinement: one continuous canvas, larger italic work, monochrome text. */
+:root {
+  --font-emphasis: "Instrument Serif", Georgia, serif;
+  --color-work-underline-start: #c8b5ff;
+  --color-work-underline-end: #7045ba;
+  --color-nav-glass: rgba(255, 255, 255, 0.88);
+}
+.site-header.site-header-lander {
+  margin-bottom: -88px;
+}
+.site-header:not(.is-scrolled),
+.site-header.site-header-lander:not(.is-scrolled) {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+  box-shadow: none;
+}
+.site-header.is-scrolled,
+.site-header.site-header-lander.is-scrolled {
+  background: var(--color-nav-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-rule);
+}
+.ribbon-hero {
+  min-height: clamp(650px, 100svh, 850px);
+}
+.ribbon-hero .ribbon-hero-content {
+  padding-top: 156px;
+  padding-bottom: 112px;
+}
+.hero-ribbon-art {
+  inset: 0;
+}
+.enterprise-site .ribbon-hero h1 {
+  font-weight: 400;
+  line-height: 1.08;
+  color: var(--color-ink);
+}
+.ribbon-hero h1 span {
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+.enterprise-site .ribbon-hero h1 .hero-work {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-emphasis);
+  font-size: 1.4em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.85;
+  padding-bottom: 0.12em;
+  margin-left: 0.03em;
+  color: var(--color-ink);
+}
+.hero-work::after {
+  content: "";
+  position: absolute;
+  bottom: 0.015em;
+  left: 0.03em;
+  right: 0.05em;
+  height: 0.035em;
+  min-height: 3px;
+  border-radius: 50%;
+  background: linear-gradient(
+    100deg,
+    var(--color-work-underline-start),
+    var(--color-work-underline-end)
+  );
+  transform: rotate(-3deg);
+}
+.ribbon-hero-footnote {
+  justify-content: flex-end;
+}
+.ribbon-hero-copy > p {
+  color: var(--color-ink);
+}
+@media (max-width: 900px) {
+  .ribbon-hero h1 span {
+    white-space: normal;
+  }
+  .site-header .primary-nav.is-open {
+    background: var(--color-paper);
+  }
+}
+@media (max-width: 650px) {
+  .ribbon-hero {
+    min-height: 780px;
+  }
+  .ribbon-hero .ribbon-hero-content {
+    padding-top: 132px;
+    padding-bottom: 80px;
+  }
+  .ribbon-hero-copy {
+    max-width: 100%;
+  }
+  .enterprise-site .ribbon-hero h1 {
+    font-size: clamp(2.7rem, 10vw, 3.6rem);
+    margin-bottom: 25px;
+  }
+  .ribbon-hero h1 span {
+    white-space: nowrap;
+  }
+  .enterprise-site .ribbon-hero h1 .hero-work {
+    font-size: 1.36em;
+  }
+  .ribbon-hero-copy > p {
+    max-width: 360px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .hero-ribbon-art {
+    inset: 350px -120px 0 -100px;
+    mask-image: linear-gradient(to bottom, transparent, black 32%);
+  }
+  .ribbon-hero-footnote {
+    flex-direction: row;
+    bottom: 18px;
+  }
+}
+@media (max-width: 360px) {
+  .enterprise-site .ribbon-hero h1 {
+    font-size: 2.65rem;
+  }
+  .ribbon-hero-actions {
+    gap: 12px;
+  }
+  .ribbon-hero .button-primary {
+    padding-inline: 20px;
+  }
+}
+
+/* Scroll surface enters gently; links and document geometry stay in place. */
+.site-header {
+  isolation: isolate;
+}
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--color-nav-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-rule);
+  opacity: 0;
+  transform: translateY(-14px);
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.site-header.is-scrolled,
+.site-header.site-header-lander.is-scrolled {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+.site-header.is-scrolled::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header::before {
+    transition: none;
+    transform: none;
+  }
+}

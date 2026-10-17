@@ -1,0 +1,67 @@
+/* React Bits adaptations; palette inherited from the Nyrix token system. */
+.nyrix-bits-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.nyrix-blur-text__word {
+  display: inline;
+}
+
+.nyrix-spotlight-card {
+  position: relative;
+  isolation: isolate;
+}
+
+.nyrix-spotlight-card__light {
+  --bits-light-size: 240px;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: clip;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.nyrix-spotlight-card__light::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--bits-light-size);
+  height: var(--bits-light-size);
+  opacity: 0;
+  background: radial-gradient(
+    circle,
+    color-mix(in oklch, var(--color-accent) 10%, transparent),
+    transparent 70%
+  );
+  transform: translate(
+      var(--bits-pointer-x, 50%),
+      var(--bits-pointer-y, 50%)
+    )
+    translate(-50%, -50%);
+  transition: opacity 180ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nyrix-spotlight-card:hover > .nyrix-spotlight-card__light::before {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nyrix-spotlight-card__light {
+    display: none;
+  }
+  .nyrix-blur-text__word {
+    opacity: 1 !important;
+  }
+}
