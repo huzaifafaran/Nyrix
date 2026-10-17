@@ -15,7 +15,7 @@ Status vocabulary: TODO / IN PROGRESS / BLOCKED / READY FOR REVIEW / APPROVED / 
 | Q005 | Reconcile and finish previous requests. | APPROVED | Reconciled route-specific monochrome text selectors in `enterprise.css`, overscanned ambient SVG by 48px to eliminate translation seams, added bounded readiness timeout fallback in `App.js`, and updated `README.md` shell documentation. All 47 tests pass. |
 | Q006 | Final visual sanity pass across all route families. | APPROVED | All 47 tests pass across 3 suites; production webpack build compiled cleanly with zero errors; routes verified. |
 | Q007 | Remove caption 'A clear path from possibility to practice' and align capabilities image bottom with last card bottom. | APPROVED | Removed caption from EnterpriseHome.js; media-capabilities set to stretch with capabilities-art filling 100% height and object-fit: cover, perfectly aligning the image bottom flush with the fourth card; all 38 enterprise tests pass. |
-| Q008 | Remove redundant double separator lines above company showcase cards. | APPROVED | Excluded `.company-showcase-section` from `.enterprise-page > .site-container.enterprise-section::before` pseudo divider; single clean top border now rendered on the showcase grid. |
+| Q008 | Remove redundant double separator lines above and below company showcase cards. | APPROVED | Excluded `.company-showcase-section` from `.enterprise-page > .site-container.enterprise-section::before` top pseudo divider and removed `border-bottom` from `.company-showcase-grid`; single clean dividers now separate the section above and below. |
 
 ## Earlier requests carried forward
 
