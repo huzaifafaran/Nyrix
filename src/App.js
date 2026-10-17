@@ -71,7 +71,7 @@ const titles = {
 function PageMetadata() {
   const { pathname } = useLocation();
   useEffect(() => {
-    document.title = `${titles[pathname] || "Page not found"} | Nyrix`;
+    document.title = `NYRIX | ${titles[pathname] || "Page not found"}`;
     const description = document.querySelector('meta[name="description"]');
     if (description)
       description.setAttribute(
