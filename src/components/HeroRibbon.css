@@ -151,7 +151,7 @@
   min-height: 88px;
 }
 .site-header-lander .site-brand img {
-  filter: grayscale(1) brightness(0.2);
+  /* Retain original vibrant purple/blue Nyrix icon on white/light lander header */
 }
 .site-header-lander .primary-nav > a.nav-contact {
   border-radius: var(--radius-small, 8px);
