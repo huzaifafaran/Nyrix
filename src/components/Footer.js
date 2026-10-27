@@ -137,7 +137,7 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-slate-500 text-sm font-medium">
-            © {currentYear} NYRIX. All rights reserved.
+            © {currentYear} NYRIX AI PRIVATE LIMITED. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             {['Enterprise Ready', 'SOC 2 Compliant', 'GDPR Ready'].map(badge => (

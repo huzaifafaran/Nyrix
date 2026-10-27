@@ -114,6 +114,7 @@ const PrivacyPolicy = () => {
             <h2>11. Contact Us</h2>
             <p>If you have any questions about this privacy policy or our data practices, please contact us at:</p>
             <div className="contact-info">
+              <p><strong>Legal Entity:</strong> NYRIX AI PRIVATE LIMITED</p>
               <p><strong>Email:</strong> hello@nyrix.co</p>
             </div>
           </div>
