@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
+import Markdown from 'markdown-to-jsx';
 import actionRegistry from '../content/nyrixGptActions.json';
 import { bookingUrl } from '../content/nyrixContent';
 import './NyrixGPT.css';
@@ -40,8 +41,43 @@ function sessionId() {
 }
 
 function safeUrl(value) {
-  if (typeof value !== 'string' || !value.startsWith('/') || value.startsWith('//') || value.includes('\\')) return null;
+  if (typeof value !== 'string' || value.includes('\\')) return null;
+  if (/^https:\/\/nyrix\.co(?:\/|$)/i.test(value)) {
+    try { const url = new URL(value); if (url.origin !== 'https://nyrix.co' || url.username || url.password) return null; value = `${url.pathname}${url.search}${url.hash}`; } catch (_) { return null; }
+  }
+  if (!value.startsWith('/') || value.startsWith('//')) return null;
   return (value.includes('#') ? REGISTERED_PATHS.has(value) : REGISTERED_PAGES.has(value)) ? value : null;
+}
+
+function streamingMarkdown(content) {
+  let result = content, codeTicks = 0; const unmatched = { '**': null, '__': null };
+  for (let index = 0; index < content.length; index++) {
+    if (content[index] === '\\') { index++; continue; }
+    if (content[index] === '`') { let end = index; while (content[end] === '`') end++; const count = end - index; if (!codeTicks) codeTicks = count; else if (count === codeTicks || (codeTicks >= 3 && count >= codeTicks)) codeTicks = 0; index = end - 1; continue; }
+    const marker = content.slice(index, index + 2);
+    if (!codeTicks && Object.hasOwn(unmatched, marker)) { unmatched[marker] = unmatched[marker] === null ? index : null; index++; }
+  }
+  for (const index of Object.values(unmatched).filter(value => value !== null).sort((a, b) => b - a)) result = result.slice(0, index) + result.slice(index + 2);
+  return result.replace(/(^|\n)([ \t]*[-+*])$/, '$1');
+}
+
+function AssistantMarkdown({ content, onWebsiteClick }) {
+  const options = {
+    disableParsingRawHTML: true,
+    forceBlock: true,
+    overrides: {
+      a: ({ href, children }) => {
+        if (typeof href === 'string' && /^#[a-zA-Z0-9_-]{1,100}$/.test(href)) {
+          return <a href={href} onClick={event => { event.preventDefault(); const root = event.currentTarget.closest('.nyrixgpt-markdown'); const target = [...(root?.querySelectorAll('[id]') || [])].find(node => node.id === href.slice(1)); target?.scrollIntoView?.({ block: 'nearest' }); }}>{children}</a>;
+        }
+        const destination = safeUrl(href);
+        return destination ? <Link to={destination} onClick={event => onWebsiteClick?.(event, destination)}>{children}</Link> : <span>{children}</span>;
+      },
+      img: () => null,
+      input: ({ type, checked }) => type === 'checkbox' ? <input type="checkbox" checked={!!checked} readOnly disabled /> : null,
+    },
+  };
+  return <div className="nyrixgpt-message-text nyrixgpt-markdown"><Markdown options={options}>{content}</Markdown></div>;
 }
 
 function boundedHistory(messages, maxCharacters = 6000, maxMessages = 6) {
@@ -250,7 +286,7 @@ export default function NyrixGPT({ context = { path: '/' }, tours = [], onAction
       if (!confirmed && !valid) { setMessages(previous => [...previous, { id: newId(), role: 'assistant', content: 'To prepare your enquiry, please share your name, work email, organisation and a short description of the problem.' }]); return; }
       if (!confirmed) {
         setConfirmation({ ...action, inquiryDraft: values, requestId: newId() });
-        setMessages(previous => [...previous, { id: newId(), role: 'assistant', content: `Please review before I send this to hello@nyrix.co:\nName: ${values.name}\nEmail: ${values.email}\nOrganisation: ${values.organisation}\nMessage: ${values.decision}\n\nMay I send it? Please confirm or say no.` }]); return;
+        setMessages(previous => [...previous, { id: newId(), role: 'assistant', plain: true, content: `Please review before I send this to hello@nyrix.co:\nName: ${values.name}\nEmail: ${values.email}\nOrganisation: ${values.organisation}\nMessage: ${values.decision}\n\nMay I send it? Please confirm or say no.` }]); return;
       }
       setActionBusy(true); setError(null); setStatus('Sending your enquiry…');
       const controller = new AbortController(); const timeout = setTimeout(() => controller.abort(), 15000);
@@ -354,8 +390,8 @@ export default function NyrixGPT({ context = { path: '/' }, tours = [], onAction
           <div role="tabpanel" id="nyrixgpt-conversation" aria-labelledby="nyrixgpt-tab-conversation" hidden={tab !== 'conversation'}>
             {!messages.length && <div className="nyrixgpt-welcome"><p className="nyrixgpt-context">{context.title ? `Exploring ${context.title}` : 'Where would you like to begin?'}</p><h3>A clearer<br />next step.</h3><p>Ask about our work, describe a problem, or tell me where you would like to go.</p></div>}
             <div role="log" aria-label="Conversation" aria-live="off" className="nyrixgpt-messages">
-              {messages.map(message => <article className={`nyrixgpt-message nyrixgpt-message--${message.role}`} key={message.id}><h3>{message.role === 'user' ? 'You' : 'NyrixGPT'}</h3><p className="nyrixgpt-message-text">{message.content}</p>{message.citations?.length > 0 && <nav className="nyrixgpt-sources" aria-label="Sources"><h4>Sources</h4>{message.citations.map((citation, i) => <Link to={safeUrl(citation.url)} onClick={event => websiteClick(event, citation.url)} key={`${citation.id}-${i}`}>{citation.title}<span aria-hidden="true">↗</span></Link>)}</nav>}</article>)}
-              {partial && <article className="nyrixgpt-message nyrixgpt-message--assistant" aria-label="Response in progress"><h3>NyrixGPT</h3><p className="nyrixgpt-message-text">{partial}</p><p className="nyrixgpt-small">Response in progress</p></article>}
+              {messages.map(message => <article className={`nyrixgpt-message nyrixgpt-message--${message.role}`} key={message.id}><h3>{message.role === 'user' ? 'You' : 'NyrixGPT'}</h3>{message.role === 'user' || message.plain ? <p className="nyrixgpt-message-text">{message.content}</p> : <AssistantMarkdown content={message.content} onWebsiteClick={websiteClick} />}{message.citations?.length > 0 && <nav className="nyrixgpt-sources" aria-label="Sources"><h4>Sources</h4>{message.citations.map((citation, i) => <Link to={safeUrl(citation.url)} onClick={event => websiteClick(event, citation.url)} key={`${citation.id}-${i}`}>{citation.title}<span aria-hidden="true">↗</span></Link>)}</nav>}</article>)}
+              {partial && <article className="nyrixgpt-message nyrixgpt-message--assistant" aria-label="Response in progress"><h3>NyrixGPT</h3><AssistantMarkdown content={streamingMarkdown(partial)} onWebsiteClick={websiteClick} /><p className="nyrixgpt-small">Response in progress</p></article>}
               <div ref={lastMessage} />
             </div>
           </div>

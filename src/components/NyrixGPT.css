@@ -39,6 +39,24 @@ body.nyrix-consent-banner-visible :is(.nyrixgpt-overlay, .nyrixgpt-tour) { z-ind
 .nyrixgpt-message { min-width: 0; }
 .nyrixgpt-message h3 { font-size: 12px; font-weight: 600; margin-bottom: 8px; }
 .nyrixgpt-message-text { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.75; font-size: 14px; }
+.nyrixgpt-markdown { white-space: normal; min-width: 0; }
+.nyrixgpt-markdown :is(p,ul,ol,blockquote,pre,table,hr,h1,h2,h3,h4,h5,h6) { margin: 0 0 12px; }
+.nyrixgpt-markdown > :last-child, .nyrixgpt-markdown > div > :last-child { margin-bottom: 0; }
+.nyrixgpt-markdown :is(ul,ol) { padding-left: 1.5em; }
+.nyrixgpt-markdown ul { list-style: disc outside; }
+.nyrixgpt-markdown ol { list-style: decimal outside; }
+.nyrixgpt-markdown ul ul { list-style-type: circle; }
+.nyrixgpt-markdown ol ol { list-style-type: lower-alpha; }
+.nyrixgpt-markdown li + li { margin-top: 4px; }
+.nyrixgpt-markdown :is(h1,h2,h3,h4,h5,h6) { font-family: inherit; font-weight: 650; line-height: 1.35; letter-spacing: 0; }
+.nyrixgpt-markdown :is(h1,h2,h3) { font-size: 1.12em; }
+.nyrixgpt-markdown blockquote { border-left: 3px solid var(--color-accent); padding-left: 12px; }
+.nyrixgpt-markdown pre { max-width: 100%; overflow-x: auto; padding: 12px; background: var(--color-paper-soft); border-radius: var(--radius-small); }
+.nyrixgpt-markdown code { font-family: ui-monospace, Consolas, monospace; font-size: .9em; }
+.nyrixgpt-markdown :not(pre) > code { padding: .12em .3em; background: var(--color-paper-soft); border-radius: 3px; }
+.nyrixgpt-markdown table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; }
+.nyrixgpt-markdown :is(th,td) { padding: 7px 10px; border: 1px solid var(--color-rule); text-align: left; }
+.nyrixgpt-markdown a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .nyrixgpt-message--user { padding: 16px; background: var(--color-paper-soft); border-radius: var(--radius-card); }
 .nyrixgpt-sources { margin-top: 20px; border-top: 1px solid var(--color-rule); padding-top: 12px; }
 .nyrixgpt-sources h4 { font-size: 11px; font-weight: 500; margin-bottom: 6px; }

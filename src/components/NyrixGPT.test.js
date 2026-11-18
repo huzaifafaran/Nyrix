@@ -59,6 +59,64 @@ it('sends real context and bounded history, then renders plain text and safe cit
   expect(screen.getByRole('link', { name: 'How Nyrix works' })).toHaveAttribute('href', '/what-we-do');
 });
 
+it('renders assistant CommonMark and GFM as semantic, safe elements', async () => {
+  const markdown = '## Approach\n\n**Bold** and *italic* and ~~old~~.\n\n- First\n- Second\n\n1. One\n2. Two\n\n> A quote\n\n`inline code`\n\n```js\nconst x = 1;\n```\n\n| Stage | Owner |\n| --- | --- |\n| Pilot | Team |\n\n- [x] Checked\n\n[Team](/company/team)\n\n[unsafe](javascript:alert(1))\n\n<img src=x onerror=alert(1)>\n\n![remote](https://example.com/tracker.png)';
+  global.fetch.mockImplementation(() => response({ ...answer, answer: markdown }));
+  const dialog = open(); send('Explain the approach');
+  expect(await within(dialog).findByRole('heading', { name: 'Approach' })).toBeInTheDocument();
+  expect(within(dialog).getByText('Bold').tagName).toBe('STRONG');
+  expect(within(dialog).getByText('italic').tagName).toBe('EM');
+  expect(within(dialog).getByText('old').tagName).toBe('DEL');
+  expect(within(dialog).getByRole('table')).toBeInTheDocument();
+  expect(within(dialog).getByRole('checkbox')).toBeDisabled();
+  expect(within(dialog).getByRole('link', { name: 'Team' })).toHaveAttribute('href','/company/team');
+  expect(dialog.querySelector('a[href^="javascript:"]')).toBeNull();
+  expect(dialog.querySelector('img')).toBeNull();
+  expect(dialog.querySelector('script')).toBeNull();
+  expect(dialog.querySelector('blockquote')).toHaveTextContent('A quote');
+  expect(dialog.querySelector('pre code')).toHaveTextContent('const x = 1;');
+});
+
+it('keeps visitor text literal and supports footnotes and nested lists', async () => {
+  global.fetch.mockImplementation(() => response({ ...answer, answer:'Note[^1].\n\n- Outer\n  - Inner\n\n[^1]: Supporting detail.' }));
+  const dialog = open(); send('Please show **my literal text**');
+  await within(dialog).findByText('Supporting detail.', { exact:false });
+  expect(within(dialog).getByText('Please show **my literal text**')).toBeInTheDocument();
+  expect(dialog.querySelector('li ul li')).toHaveTextContent('Inner');
+  expect(within(dialog).getByRole('link', {name:'1'})).toHaveAttribute('href','#1');
+});
+
+it('formats streamed assistant text before the final response replaces it', async () => {
+  let release; let step = 0;
+  const encoder = new TextEncoder();
+  global.fetch.mockResolvedValue({ok:true,headers:{get:()=> 'text/event-stream'},body:{getReader:()=>({read:()=>{
+    step += 1;
+    if (step === 1) return Promise.resolve({done:false,value:encoder.encode('event: delta\ndata: {"delta":"A **useful** answer"}\n\n')});
+    if (step === 2) return new Promise(resolve => { release=resolve; });
+    return Promise.resolve({done:true});
+  },releaseLock:()=>{}})}});
+  const dialog=open();send('Stream a response');
+  expect((await within(dialog).findByText('useful')).tagName).toBe('STRONG');
+  await act(async()=>{release({done:false,value:encoder.encode(`event: final\ndata: ${JSON.stringify({...answer,answer:'A **final** answer'})}\n\n`)});});
+  expect((await within(dialog).findByText('final')).tagName).toBe('STRONG');
+  expect(within(dialog).queryByText('useful')).not.toBeInTheDocument();
+});
+
+it('does not display an unfinished bold delimiter while a response streams', async () => {
+  let release; let step = 0; const encoder = new TextEncoder();
+  global.fetch.mockResolvedValue({ok:true,headers:{get:()=> 'text/event-stream'},body:{getReader:()=>({read:()=>{
+    step += 1;
+    if (step === 1) return Promise.resolve({done:false,value:encoder.encode('event: delta\ndata: {"delta":"A **useful"}\n\n')});
+    if (step === 2) return new Promise(resolve => { release=resolve; });
+    return Promise.resolve({done:true});
+  },releaseLock:()=>{}})}});
+  const dialog=open();send('Stream a response');
+  expect(await within(dialog).findByText('A useful')).toBeInTheDocument();
+  expect(dialog).not.toHaveTextContent('**useful');
+  await act(async()=>{release({done:false,value:encoder.encode(`event: final\ndata: ${JSON.stringify({...answer,answer:'A **useful** answer'})}\n\n`)});});
+  expect((await within(dialog).findByText('useful')).tagName).toBe('STRONG');
+});
+
 it('does not show suggested action buttons', () => {
   open({ suggestions: [{ label: 'Explore inventory planning', prompt: 'Which workflow could we improve first?' }] });
   expect(screen.queryByRole('button', { name: 'Explore inventory planning' })).not.toBeInTheDocument();
