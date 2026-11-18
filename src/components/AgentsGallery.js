@@ -127,7 +127,7 @@ const AgentsGallery = () => {
               <input
                 id="agent-search"
                 type="search"
-                placeholder="Search by name or capability"
+                placeholder="Name or capability"
                 value={searchTerm}
                 onChange={(event) => setSearchTerm(event.target.value)}
               />

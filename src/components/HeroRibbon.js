@@ -22,7 +22,7 @@ export default function HeroRibbon() {
   const [ready, setReady] = useState(false);
   const [permitted, setPermitted] = useState(false);
   const [visible, setVisible] = useState(true);
-  const [hidden, setHidden] = useState(document.hidden);
+  const [hidden, setHidden] = useState(() => typeof document !== "undefined" && document.hidden);
 
   useEffect(() => {
     const preference = window.matchMedia?.("(prefers-reduced-motion: reduce)");

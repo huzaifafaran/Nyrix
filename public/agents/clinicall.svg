@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="The AI Appointment Assistant">
+  <title>The AI Appointment Assistant</title>
+  <rect width="512" height="512" fill="#F3F5F9"/>
+  <path d="M48 48h52M48 48v52M464 464h-52M464 464v-52" fill="none" stroke="#0A142F" stroke-width="3"/>
+  <rect x="72" y="72" width="368" height="368" fill="#FFFFFF" fill-opacity="0.72" stroke="#0A142F" stroke-opacity="0.18" stroke-width="2"/>
+  <rect x="120" y="128" width="270" height="254" fill="#FFFFFF" fill-opacity="0.55"/>
+  <rect x="110" y="128" width="300" height="254" fill="none" stroke="#0A142F" stroke-width="4"/>
+  <g fill="none" stroke="#0A142F" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"><path d="M232 176h46v46h46v46h-46v46h-46v-46h-46v-46h46z"/></g>
+  <path d="M110 405h300" stroke="#5E35B1" stroke-width="5"/>
+  <circle cx="110" cy="405" r="7" fill="#5E35B1"/><circle cx="410" cy="405" r="7" fill="#5E35B1"/>
+</svg>

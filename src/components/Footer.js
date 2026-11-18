@@ -1,46 +1,14 @@
+import BrandWordmark from "./BrandWordmark";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Linkedin, Youtube, ArrowUpRight } from "lucide-react";
 import FooterShowcase from "./FooterShowcase";
 
 const groups = [
-  {
-    title: "Solutions",
-    links: [
-      ["AI MVP development", "/ai-mvp-development"],
-      ["AI enablement & advisory", "/ai-enablement-advisory"],
-      ["Business transformation", "/business-transformation"],
-      ["AI strategy & governance", "/ai-strategy-governance"],
-    ],
-  },
-  {
-    title: "Products",
-    links: [
-      ["Kinlu", "/products/kinlu"],
-      ["Artifex", "/products/artifex"],
-      ["Numaya", "/products/numaya"],
-      ["Veeko", "/products/veeko"],
-      ["Agent library", "/agents"],
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      ["About Nyrix", "/company"],
-      ["Our team", "/company/team"],
-      ["Our advisors", "/company/advisors"],
-      ["Our work", "/case-studies"],
-      ["Contact", "/contact"],
-    ],
-  },
-  {
-    title: "Insights",
-    links: [
-      ["All insights", "/resources"],
-      ["Articles & publications", "/resources/articles"],
-      ["The Next Question", "/resources/podcasts"],
-    ],
-  },
+  { title: "What we do", links: [["Our approach", "/what-we-do"], ["AI strategy", "/what-we-do#decision-framing"], ["AI enablement", "/what-we-do#ai-enablement"], ["Engineering", "/what-we-do#productisation"], ["Governance", "/what-we-do#governance"]] },
+  { title: "Products & solutions", links: [["KINLU", "/products/kinlu"], ["KINLU Voice", "/products/kinlu-voice"], ["Decision domains", "/solutions"], ["Industries", "/industries"], ["Case studies", "/case-studies"]] },
+  { title: "Company", links: [["About Nyrix", "/company"], ["Our team", "/company/team"], ["Our advisors", "/company/advisors"], ["R&D wing", "/company/research"], ["Careers", "/careers"], ["Contact", "/contact"]] },
+  { title: "Explore", links: [["All insights", "/resources"], ["Articles", "/resources/articles"], ["The Next Question", "/resources/podcasts"], ["Agent library", "/agents"]] },
 ];
 
 export default function Footer() {
@@ -51,11 +19,10 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <Link to="/" className="site-brand" aria-label="Nyrix home">
-              <img src="/logo icon no-bg.png" alt="" width="42" height="42" />
-              <span className="site-wordmark">nyrix.</span>
+              <BrandWordmark className="site-wordmark" decorative />
             </Link>
             <p className="footer-brand-copy">
-              Decision sciences, AI systems and intelligent workflows for the
+              Decision sciences and applied AI for the
               way your business works.
             </p>
           </div>
@@ -104,8 +71,9 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Nyrix. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} NYRIX AI (PRIVATE) LIMITED. All rights reserved.</span>
           <Link to="/privacy-policy">Privacy policy</Link>
+          <button type="button" className="footer-consent-button" onClick={(event) => window.NyrixConsent?.open(event.currentTarget)}>Cookie preferences</button>
           <span>Beyond insight. Into foresight.</span>
         </div>
       </div>

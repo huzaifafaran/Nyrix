@@ -16,8 +16,6 @@ const meaningfulWord = {
   "Find where AI belongs in the work.": "work",
   "Connect intelligence to operations.": "operations",
   "Give AI decisions clear ownership.": "ownership",
-  "Cleanroom environmental monitoring": "monitoring",
-  "TeachMeBack AI": "TeachMeBack",
   "Agent library": "library",
 };
 

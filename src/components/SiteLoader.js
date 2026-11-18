@@ -1,3 +1,4 @@
+import BrandWordmark from "./BrandWordmark";
 /* Hallmark · pre-emit critique: P5 H4 E4 S5 R5 V4 */
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -18,7 +19,6 @@ function prefersStaticMotion() {
  */
 export default function SiteLoader({ ready = false, onExited }) {
   const rootRef = useRef(null);
-  const markRef = useRef(null);
   const wordmarkRef = useRef(null);
   const ruleRef = useRef(null);
   const pulseRef = useRef(null);
@@ -35,7 +35,7 @@ export default function SiteLoader({ ready = false, onExited }) {
     entranceRef.current = gsap.timeline();
     entranceRef.current
       .fromTo(
-        [markRef.current, wordmarkRef.current],
+        wordmarkRef.current,
         { autoAlpha: 0, y: 15 },
         { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.08, ease: "power3.out" }
       )
@@ -85,7 +85,7 @@ export default function SiteLoader({ ready = false, onExited }) {
         ease: "power2.out",
       })
       .to(
-        [markRef.current, wordmarkRef.current],
+        wordmarkRef.current,
         { autoAlpha: 0, y: -14, duration: 0.32, stagger: 0.035, ease: "power2.in" },
         "+=0.05"
       )
@@ -95,15 +95,7 @@ export default function SiteLoader({ ready = false, onExited }) {
   return (
     <div className="site-loader" ref={rootRef} role="status" aria-live="polite" aria-label="Loading Nyrix">
       <div className="site-loader__identity" aria-hidden="true">
-        <img
-          ref={markRef}
-          className="site-loader__mark"
-          src="/logo icon no-bg.png"
-          alt=""
-          width="54"
-          height="54"
-        />
-        <span ref={wordmarkRef} className="site-loader__wordmark">nyrix.</span>
+        <BrandWordmark ref={wordmarkRef} className="site-loader__wordmark" decorative />
         <span className="site-loader__track">
           <span ref={ruleRef} className="site-loader__rule" />
         </span>

@@ -1,0 +1,185 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/nyrixgpt.js": { "maxDuration": 60 },
+    "api/nyrixgpt/maintenance.js": { "maxDuration": 60 }
+  },
+  "crons": [
+    { "path": "/api/nyrixgpt/maintenance", "schedule": "0 6 * * *" }
+  ],
+  "buildCommand": "GENERATE_SOURCEMAP=false npm run build",
+  "outputDirectory": "build",
+  "routes": [
+    {
+      "src": "^/products/(?:numaya|artifex|veeko)/?$",
+      "dest": "/404.html",
+      "status": 410,
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
+    },
+    {
+      "src": "^/case-studies/teachmeback/?$",
+      "dest": "/404.html",
+      "status": 410,
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
+    },
+    {
+      "src": "^/ai-mvp-development/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/what-we-do#productisation"
+      }
+    },
+    {
+      "src": "^/ai-enablement-advisory/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/what-we-do#ai-enablement"
+      }
+    },
+    {
+      "src": "^/business-transformation/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/what-we-do#productisation"
+      }
+    },
+    {
+      "src": "^/ai-strategy-governance/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/what-we-do#governance"
+      }
+    },
+    {
+      "src": "^/$",
+      "dest": "/index.html"
+    },
+    {
+      "src": "^/what-we-do/?$",
+      "dest": "/what-we-do/index.html"
+    },
+    {
+      "src": "^/products/?$",
+      "dest": "/products/index.html"
+    },
+    {
+      "src": "^/products/kinlu/?$",
+      "dest": "/products/kinlu/index.html"
+    },
+    {
+      "src": "^/products/kinlu-voice/?$",
+      "dest": "/products/kinlu-voice/index.html"
+    },
+    {
+      "src": "^/solutions/?$",
+      "dest": "/solutions/index.html"
+    },
+    {
+      "src": "^/industries/?$",
+      "dest": "/industries/index.html"
+    },
+    {
+      "src": "^/case-studies/?$",
+      "dest": "/case-studies/index.html"
+    },
+    {
+      "src": "^/case-studies/gerrys-dnata/?$",
+      "dest": "/case-studies/gerrys-dnata/index.html"
+    },
+    {
+      "src": "^/case-studies/private-bank-voice-poc/?$",
+      "dest": "/case-studies/private-bank-voice-poc/index.html"
+    },
+    {
+      "src": "^/company/?$",
+      "dest": "/company/index.html"
+    },
+    {
+      "src": "^/company/team/?$",
+      "dest": "/company/team/index.html"
+    },
+    {
+      "src": "^/company/advisors/?$",
+      "dest": "/company/advisors/index.html"
+    },
+    {
+      "src": "^/company/research/?$",
+      "dest": "/company/research/index.html"
+    },
+    {
+      "src": "^/careers/?$",
+      "dest": "/careers/index.html"
+    },
+    {
+      "src": "^/resources/?$",
+      "dest": "/resources/index.html"
+    },
+    {
+      "src": "^/resources/articles/?$",
+      "dest": "/resources/articles/index.html"
+    },
+    {
+      "src": "^/resources/podcasts/?$",
+      "dest": "/resources/podcasts/index.html"
+    },
+    {
+      "src": "^/agents/?$",
+      "dest": "/agents/index.html"
+    },
+    {
+      "src": "^/contact/?$",
+      "dest": "/contact/index.html"
+    },
+    {
+      "src": "^/privacy-policy/?$",
+      "dest": "/privacy-policy/index.html"
+    },
+    {
+      "src": "^/industries/banking-finance/?$",
+      "dest": "/industries/banking-finance/index.html"
+    },
+    {
+      "src": "^/industries/food-beverage/?$",
+      "dest": "/industries/food-beverage/index.html"
+    },
+    {
+      "src": "^/industries/insurance/?$",
+      "dest": "/industries/insurance/index.html"
+    },
+    {
+      "src": "^/industries/legal/?$",
+      "dest": "/industries/legal/index.html"
+    },
+    {
+      "src": "^/industries/media-advertising/?$",
+      "dest": "/industries/media-advertising/index.html"
+    },
+    {
+      "src": "^/industries/travel-hospitality/?$",
+      "dest": "/industries/travel-hospitality/index.html"
+    },
+    {
+      "src": "^/industries/pharmaceutical/?$",
+      "dest": "/industries/pharmaceutical/index.html"
+    },
+    {
+      "src": "^/case-studies/cleanroom-ems/?$",
+      "dest": "/case-studies/cleanroom-ems/index.html"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "^/.*$",
+      "dest": "/404.html",
+      "status": 404,
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
+    }
+  ]
+}

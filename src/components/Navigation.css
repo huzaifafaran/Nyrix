@@ -1,0 +1,129 @@
+/* Hallmark · existing design.md · mobile navigation is a bounded touch surface.
+   P5 H5 E4 S5 R5 V4. Desktop remains the established editorial directory. */
+:root {
+  --navigation-shadow: 0 12px 24px rgb(0 0 0 / .06);
+  --navigation-scrim: rgb(0 0 0 / .16);
+}
+.navigation-scrim { display: none; }
+.site-header .nav-links > .nav-item-wrap > a,
+.site-header .nav-dropdown [role="menuitem"] { min-height: 44px; display: flex; align-items: center; }
+.site-header .nav-dropdown {
+  max-height: calc(100vh - 112px);
+  max-height: calc(100dvh - 112px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.site-header .nav-dropdown [role="menuitem"]:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: -2px;
+  border-radius: var(--radius-small);
+}
+@media (max-width: 900px) {
+  .enterprise-site .site-header .menu-toggle { min-width: 86px; min-height: 44px; justify-content: center; }
+  .enterprise-site .site-header .primary-nav {
+    max-height: calc(100vh - var(--navigation-offset, 88px));
+    max-height: calc(100dvh - var(--navigation-offset, 88px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px 24px max(20px, env(safe-area-inset-bottom));
+    gap: 12px;
+    box-shadow: var(--navigation-shadow);
+  }
+  .enterprise-site .site-header .nav-links { width: 100%; gap: 0; }
+  .enterprise-site .site-header .nav-item-wrap { min-width: 0; border-bottom: 1px solid var(--color-rule); }
+  .enterprise-site .site-header .nav-links > .nav-item-wrap > a {
+    min-height: 50px;
+    width: 100%;
+    padding: 12px 0;
+    font-size: 16px;
+    line-height: 1.4;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+  }
+  .enterprise-site .site-header .primary-nav .nav-contact {
+    min-height: 48px;
+    width: 100%;
+    margin: 0;
+    padding: 13px 18px;
+    align-self: stretch;
+    justify-content: space-between;
+    font-size: 15px;
+  }
+  .site-header .navigation-scrim {
+    display: block;
+    position: fixed;
+    inset: var(--navigation-offset, 88px) 0 0;
+    width: 100%;
+    height: auto;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+    background: var(--navigation-scrim);
+    cursor: pointer;
+  }
+}
+@media (max-width: 900px) {
+  .no-js .site-header { position: relative; }
+  .no-js .site-header .header-inner { flex-wrap: wrap; padding-block: 16px 0; }
+  .no-js .site-header .menu-toggle { display: none; }
+  .no-js .site-header .primary-nav {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+    padding: 12px 0 20px;
+    border: 0;
+    box-shadow: none;
+  }
+}
+@media (max-width: 414px) {
+  .enterprise-site .site-header .primary-nav { padding-inline: 20px; }
+}
+@media (max-height: 480px) and (max-width: 900px) {
+  .enterprise-site .site-header .primary-nav { padding-block: 8px max(12px, env(safe-area-inset-bottom)); gap: 8px; }
+  .enterprise-site .site-header .nav-links > .nav-item-wrap > a { min-height: 44px; padding-block: 10px; }
+}
+
+/* Compact navigation exposes the same real destinations as the desktop menus. */
+.mobile-nav-details { display: none; }
+@media (max-width: 900px) {
+  .enterprise-site .site-header .nav-item-wrap { position: relative; }
+  .enterprise-site .site-header .nav-links > .nav-item-wrap > a { padding-right: 56px; }
+  .mobile-nav-details { display: block; }
+  .mobile-nav-details summary { position: absolute; top: 0; right: 0; display: flex; align-items: center; justify-content: center; width: 48px; height: 50px; cursor: pointer; list-style: none; font-size: 23px; line-height: 1; }
+  .mobile-nav-details summary::-webkit-details-marker { display: none; }
+  .mobile-nav-details[open] > summary span { transform: rotate(45deg); }
+  .mobile-nav-details summary:focus-visible, .mobile-nav-children a:focus-visible { outline: 2px solid var(--color-ink); outline-offset: -2px; }
+  .mobile-nav-children { padding: 0 0 12px 14px; }
+  .mobile-nav-children a { display: flex; min-height: 44px; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 8px; font-size: 14px; line-height: 1.35; color: var(--color-ink); text-decoration: none; }
+}
+
+/* Insights is a real submenu inside Company. */
+.insights-submenu-trigger { width: 100%; border: 0; background: transparent; text-align: left; cursor: pointer; font: inherit; }
+.insights-submenu-trigger[aria-expanded="true"] { background: #f2eef8; }
+.insights-submenu { margin: 0 0 6px 12px; padding-left: 10px; border-left: 1px solid #bba6df; }
+.insights-submenu .nav-dropdown-item { font-size: 13px; }
+@media (max-width: 900px) {
+ .mobile-insights-details { position: relative; }
+ .mobile-insights-details summary { position: static; width: 100%; height: auto; min-height: 44px; justify-content: space-between; padding: 9px 8px; font-size: 14px; font-weight: inherit; }
+ .mobile-insights-details summary span { font-size: 20px; }
+ .mobile-insights-details[open] summary span { transform: rotate(45deg); }
+ .mobile-insights-children { margin-left: 12px; padding-left: 10px; border-left: 1px solid #bba6df; }
+}
+
+/* Separate destination and expansion controls for Insights. */
+.insights-submenu-row { position: relative; display: flex; align-items: stretch; }
+.insights-submenu-row .insights-submenu-link { flex: 1; min-width: 0; padding-right: 48px; }
+.insights-expand { position: absolute; right: 0; top: 0; display: flex; align-items: center; justify-content: center; width: 44px; min-height: 44px; border: 0; border-radius: 8px; background: transparent; color: inherit; cursor: pointer; }
+.insights-expand:hover, .insights-expand:focus-visible { background: #f2eef8; }
+@media (max-width: 900px) {
+ .mobile-insights-wrap { position: relative; }
+ .mobile-nav-children .mobile-insights-link { padding-right: 52px; }
+ .mobile-insights-details { position: static; }
+ .mobile-insights-details summary { position: absolute; right: 0; top: 0; width: 44px; height: 44px; min-height: 44px; display: flex; justify-content: center; padding: 0; }
+}

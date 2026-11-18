@@ -7,7 +7,7 @@ export default function FooterBackground() {
   const [visible, setVisible] = useState(false);
   const [blocked, setBlocked] = useState(true);
   const [loaded, setLoaded] = useState(false);
-  const [hidden, setHidden] = useState(document.hidden);
+  const [hidden, setHidden] = useState(() => typeof document !== "undefined" && document.hidden);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {

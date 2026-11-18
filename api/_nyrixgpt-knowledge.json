@@ -1,0 +1,698 @@
+[
+  {
+    "id": "service_decision-framing",
+    "title": "Decision framing & AI strategy",
+    "path": "/what-we-do#decision-framing",
+    "text": "Start with the decision, workflow or customer experience that matters. Define the problem, the opportunity and the path to value. A clear business question gives the work a useful starting point."
+  },
+  {
+    "id": "service_ai-enablement",
+    "title": "AI enablement & advisory",
+    "path": "/what-we-do#ai-enablement",
+    "text": "Assess AI opportunities, clarify the operating model and establish a practical path to adoption for your teams. Connect the opportunity with the people and processes it needs to support."
+  },
+  {
+    "id": "service_productisation",
+    "title": "Productisation & engineering",
+    "path": "/what-we-do#productisation",
+    "text": "Connect models, software, data and existing systems into dependable operational products. Scope and evaluate a useful first version, then connect it to the work around it."
+  },
+  {
+    "id": "service_governance",
+    "title": "Governance & operating model",
+    "path": "/what-we-do#governance",
+    "text": "Define priorities, decision ownership, security expectations and controls for long-term operation. Make responsibility and operating expectations part of the system from the start."
+  },
+  {
+    "id": "solution_inventory-planning",
+    "title": "Inventory & Planning Intelligence",
+    "path": "/solutions#inventory-planning",
+    "text": "What should we stock, replenish and plan for? Demand, stock and replenishment decisions."
+  },
+  {
+    "id": "solution_audience",
+    "title": "Audience Intelligence",
+    "path": "/solutions#audience",
+    "text": "Who should we target, retain and grow? Understand the customers and audiences behind your next decision."
+  },
+  {
+    "id": "solution_group-office",
+    "title": "Group Office Intelligence",
+    "path": "/solutions#group-office",
+    "text": "What is happening across our business units? Portfolio visibility across business units."
+  },
+  {
+    "id": "solution_contact-centre",
+    "title": "Contact Centre Intelligence",
+    "path": "/solutions#contact-centre",
+    "text": "What does this conversation tell us to do next? Conversation insight and next-best action."
+  },
+  {
+    "id": "solution_marketing-opportunity",
+    "title": "Marketing Opportunity Intelligence",
+    "path": "/solutions#marketing-opportunity",
+    "text": "Where can our spend turn into growth? Connect marketing opportunity with the decisions behind your next investment."
+  },
+  {
+    "id": "solution_cargo",
+    "title": "Cargo Intelligence",
+    "path": "/solutions#cargo",
+    "text": "Where are movement, capacity and handling changing? Movement, capacity and handling signals."
+  },
+  {
+    "id": "solution_decision-sciences",
+    "title": "Decision Sciences",
+    "path": "/solutions#decision-sciences",
+    "text": "What if the question does not fit a template? Custom models, scenario analysis and decision support for the questions specific to your business."
+  },
+  {
+    "id": "product_kinlu",
+    "title": "KINLU",
+    "path": "/products/kinlu",
+    "text": "An automated machine-learning platform that understands a business question, builds, trains and hosts the model, and returns live predictions 24/7. Works with the systems and data you already use, from CRM and ERP platforms to spreadsheets and marketing tools."
+  },
+  {
+    "id": "product_kinlu-voice",
+    "title": "KINLU Voice",
+    "path": "/products/kinlu-voice",
+    "text": "Private AI-powered contact-centre intelligence designed to automate customer interactions in natural Urdu and English. Designed to integrate with existing contact-centre infrastructure while keeping sensitive data within your organisation’s approved private AI environment."
+  },
+  {
+    "id": "case_gerrys-dnata",
+    "title": "Gerry’s dnata — Customer Support & Tariff Intelligence",
+    "path": "/case-studies/gerrys-dnata",
+    "text": "Enterprise implementation. An enterprise AI implementation for Gerry’s dnata, focused on customer support and tariff intelligence. Tariff and quotation queries arrived through several channels, while the answers lived across rate sheets, documents and individual expertise. Response time and consistency depended on who was available."
+  },
+  {
+    "id": "case_private-bank-voice-poc",
+    "title": "Private voice intelligence, tested inside a bank.",
+    "path": "/case-studies/private-bank-voice-poc",
+    "text": "Proof of concept. A KINLU Voice proof of concept for a leading local bank, bringing Urdu and English interactions together with predictive intelligence. Explore private contact-centre intelligence that understands natural Urdu and English and connects customer conversations with a predictive layer."
+  },
+  {
+    "id": "case_cleanroom-ems",
+    "title": "Genix — Cleanroom Environmental Monitoring",
+    "path": "/case-studies/cleanroom-ems",
+    "text": "Enterprise project. A monitoring application for Genix pharmaceutical cleanrooms, connecting environmental telemetry with an operational web interface. Cleanroom teams need environmental readings in a form they can inspect while managing daily operations. This project connects monitoring data from Genix pharmaceutical cleanrooms to a web interface designed around that work."
+  },
+  {
+    "id": "industry_banking-finance",
+    "title": "Banking & Finance",
+    "path": "/industries/banking-finance",
+    "text": "Banks and financial institutions operate across high-volume interactions, complex risk signals and strict data obligations. Nyrix helps teams turn customer, contact-centre and operational data into governed intelligence that supports faster, more confident decisions. Customer intelligence, contact-centre intelligence and private AI decision support."
+  },
+  {
+    "id": "industry_food-beverage",
+    "title": "Food & Beverage",
+    "path": "/industries/food-beverage",
+    "text": "F&B operators balance demand volatility, stock availability, promotion effectiveness and customer preference across locations and channels. Nyrix connects those signals so teams can plan with greater clarity and act before margin or service levels are affected. Demand, stock, audience and promotion decisions across locations and channels."
+  },
+  {
+    "id": "industry_insurance",
+    "title": "Insurance",
+    "path": "/industries/insurance",
+    "text": "Insurance decisions depend on timing, trust and context. Nyrix helps insurers connect customer behaviour, service conversations and portfolio signals to understand who needs attention, what action is most useful and where value is being lost. Customer segmentation, lifetime value, retention and next-best action."
+  },
+  {
+    "id": "industry_legal",
+    "title": "Legal",
+    "path": "/industries/legal",
+    "text": "Legal teams work across documents, precedent, deadlines and decisions where accuracy, traceability and human accountability matter. Nyrix can help structure knowledge workflows and decision support without treating automation as a substitute for professional judgement. Knowledge workflows, document intelligence and accountable decision support."
+  },
+  {
+    "id": "industry_media-advertising",
+    "title": "Media & Advertising",
+    "path": "/industries/media-advertising",
+    "text": "Media and advertising organisations need to connect audience behaviour, campaign performance and commercial opportunity across fast-moving channels. Nyrix turns fragmented signals into practical intelligence for planning, targeting and optimisation. Audience signals, campaign performance and marketing opportunity intelligence."
+  },
+  {
+    "id": "industry_travel-hospitality",
+    "title": "Travel & Hospitality",
+    "path": "/industries/travel-hospitality",
+    "text": "Travel and hospitality organisations coordinate customer service, pricing, capacity, movement and operational delivery in real time. Nyrix connects those signals to help teams respond with more consistency and foresight. Customer support, tariff intelligence, demand signals and operational visibility."
+  },
+  {
+    "id": "industry_pharmaceutical",
+    "title": "Pharmaceutical",
+    "path": "/industries/pharmaceutical",
+    "text": "Pharmaceutical organisations manage planning, supply, evidence and operational decisions where traceability and control are essential. Nyrix supports applied AI initiatives that fit existing workflows and remain accountable to the people responsible for the outcome. Planning, operational monitoring and governed applied AI for complex workflows."
+  },
+  {
+    "id": "team_0",
+    "title": "Sarim bin Tahir",
+    "path": "/company/team",
+    "text": "Co-founder & CEO. Leads Nyrix's product vision and enterprise AI strategy, turning emerging technology into dependable business infrastructure."
+  },
+  {
+    "id": "team_1",
+    "title": "Huzaifa Faran",
+    "path": "/company/team",
+    "text": "Co-founder & Solutions Architect. Builds scalable AI solutions that turn business problems into real-world impact and hosts The Next Question."
+  },
+  {
+    "id": "team_2",
+    "title": "M. Ehtesham ul Hassan Malik",
+    "path": "/company/team",
+    "text": "Lead ML Engineer. Designs machine learning architectures, multimodal models and real-time inference systems for production deployment."
+  },
+  {
+    "id": "team_3",
+    "title": "Aijaz Usman",
+    "path": "/company/team",
+    "text": "Accounts and Finance Head. Leads accounts and finance at Nyrix, bringing a background in HR consulting and executive recruitment."
+  },
+  {
+    "id": "advisor_0",
+    "title": "Shamsul Islam",
+    "path": "/company/advisors",
+    "text": "Advisor. Corporate governance & strategic finance. Shamsul Islam is a corporate executive and board leader with experience spanning governance, strategic finance, infrastructure investment and industrial development. He served as Chairman of Pakistan Petroleum Limited. His background brings a board-level perspective on corporate strategy, project finance and the governance of complex organizations."
+  },
+  {
+    "id": "advisor_1",
+    "title": "Shaikh Mashhood Rahman",
+    "path": "/company/advisors",
+    "text": "Advisor. Technology & digital transformation. Shaikh Mashhood Rahman is a technology executive with extensive experience in IT leadership, enterprise technology and banking transformation. He has served as Chief Information Officer at Bank of Khyber and Dubai Islamic Bank Pakistan, alongside senior technology roles in financial institutions. His expertise spans technology strategy, enterprise architecture, IT governance and digital transformation."
+  },
+  {
+    "id": "article_0",
+    "title": "Chapter 6: Memory",
+    "path": "/resources/articles",
+    "text": "Huzaifa Faran. The database metrics are open on your second monitor and the number that keeps catching your eye is not the error rate. Scaling memory and persistence."
+  },
+  {
+    "id": "article_1",
+    "title": "Chapter 5: The Receptionist",
+    "path": "/resources/articles",
+    "text": "Huzaifa Faran. A user has sent four hundred requests in three minutes. Routing, rate limiting and load orchestration in production architecture."
+  },
+  {
+    "id": "article_2",
+    "title": "Chapter 4: The Blind Entrance",
+    "path": "/resources/articles",
+    "text": "Huzaifa Faran. The metrics dashboard is still open on your screen and the number keeps climbing steadily. Managing API gateways and inbound traffic spikes."
+  },
+  {
+    "id": "article_3",
+    "title": "Chapter 3: The Room and The Apartment",
+    "path": "/resources/articles",
+    "text": "Huzaifa Faran. Resource allocation, isolation, and process scheduling when operating machine learning backends under continuous load."
+  },
+  {
+    "id": "article_4",
+    "title": "Chapter 2: The Open Door",
+    "path": "/resources/articles",
+    "text": "Huzaifa Faran. Keeping systems alive: how traffic moves, requests are dispatched, and resilient error recovery is structured."
+  },
+  {
+    "id": "article_5",
+    "title": "Chapter 1: One Server. A Hundred Thousand Users.",
+    "path": "/resources/articles",
+    "text": "Huzaifa Faran. Your first night at an AI startup when unexpected scale hits single-server infrastructure at 2 AM."
+  },
+  {
+    "id": "article_6",
+    "title": "From Startup Speed to Enterprise Reality: Lessons from Contour Software",
+    "path": "/resources/articles",
+    "text": "Huzaifa Faran. Lessons from leading an industrial visit to Contour Software on how large corporate software houses manage scale, governance and delivery."
+  },
+  {
+    "id": "agent_1",
+    "title": "Sair",
+    "path": "/agents",
+    "text": "Personal AI Assistant. I designed and developed Sair, an AI-powered personal assistant that automates daily workflows."
+  },
+  {
+    "id": "agent_2",
+    "title": "CMO Agent",
+    "path": "/agents",
+    "text": "AI-Powered Marketing & Content Automation. I designed and built the CMO Agent, an AI-driven marketing assistant that automates content creation and publishing."
+  },
+  {
+    "id": "agent_3",
+    "title": "SalesIQ AI",
+    "path": "/agents",
+    "text": "The Conversational Data Analyst. Introducing SalesIQ AI, the innovative AI Data Analysis Chatbot designed to make data accessible to everyone, regardless of their technical expertise."
+  },
+  {
+    "id": "agent_4",
+    "title": "The Market Whisperer",
+    "path": "/agents",
+    "text": "Your Price Drop Recorder. Meet The Market Whisperer, your ultimate companion for monitoring e-commerce prices."
+  },
+  {
+    "id": "agent_5",
+    "title": "Growth Oracle",
+    "path": "/agents",
+    "text": "The Keyword Spike Capitalizer. Introducing Growth Oracle, the AI-powered tool that gives you a competitive edge by identifying emerging trends as they happen."
+  },
+  {
+    "id": "agent_6",
+    "title": "CertiGuard AI",
+    "path": "/agents",
+    "text": "Your Proactive SSL/TLS Monitor. Introducing CertiGuard AI, the guardian of your domain's security and trust."
+  },
+  {
+    "id": "agent_7",
+    "title": "Verity Scout",
+    "path": "/agents",
+    "text": "Your AI Landing Page Analyst. Introducing Verity Scout, the AI-powered landing page analyzer that gives you the unfiltered truth about your online presence."
+  },
+  {
+    "id": "agent_8",
+    "title": "CliniCall",
+    "path": "/agents",
+    "text": "The AI Appointment Assistant. Meet CliniCall, the intelligent AI agent designed to streamline your practice's scheduling."
+  },
+  {
+    "id": "agent_9",
+    "title": "FinSense",
+    "path": "/agents",
+    "text": "Your AI Financial Analyst. Meet FinSense, the AI agent designed to make financial analysis accessible and engaging."
+  },
+  {
+    "id": "agent_10",
+    "title": "Personalized Writing Agent",
+    "path": "/agents",
+    "text": "AI Content Generator. An AI-powered writing assistant that learns your unique writing style from sample text and generates new content in the same voice, tone, and flow."
+  },
+  {
+    "id": "agent_11",
+    "title": "YouTube Summarizer",
+    "path": "/agents",
+    "text": "AI-Powered Video to Text Insights. An AI tool that transforms any YouTube video into a structured, actionable summary."
+  },
+  {
+    "id": "agent_12",
+    "title": "Gmail AI Auto-Responder",
+    "path": "/agents",
+    "text": "Smart Email Draft Generator. An AI-powered assistant that reads every incoming Gmail message, analyzes the sender's intent and tone, and generates a ready-to-send draft."
+  },
+  {
+    "id": "agent_13",
+    "title": "MailMaster",
+    "path": "/agents",
+    "text": "Smart Email Organization & Categorization. Automatically organizes your Gmail inbox by intelligently labeling and categorizing emails based on content, sender, and context."
+  },
+  {
+    "id": "agent_14",
+    "title": "LeadConnect",
+    "path": "/agents",
+    "text": "Transform Engagement into Business Opportunities. Converts LinkedIn comment interactions into qualified leads by analyzing engagement patterns and initiating meaningful business conversations."
+  },
+  {
+    "id": "agent_15",
+    "title": "VideoScript",
+    "path": "/agents",
+    "text": "AI-Powered Video Description Generation. Automatically generates comprehensive, SEO-optimized descriptions for YouTube videos based on content analysis and trending keywords."
+  },
+  {
+    "id": "agent_16",
+    "title": "DataViz",
+    "path": "/agents",
+    "text": "Natural Language Google Sheets Interface. Talk to your Google Sheets data using natural language. Ask questions, generate insights, and manipulate data through conversational AI."
+  },
+  {
+    "id": "agent_17",
+    "title": "InvoiceBot",
+    "path": "/agents",
+    "text": "Intelligent Document Processing & Data Extraction. Upload invoices and automatically extract, transcribe, and organize all relevant data into structured formats for easy processing."
+  },
+  {
+    "id": "agent_18",
+    "title": "ProposalCraft",
+    "path": "/agents",
+    "text": "AI-Powered Freelance Proposal Generator. Generate compelling proposals, cover letters, and visual diagrams for Upwork projects to increase your win rate and land more clients."
+  },
+  {
+    "id": "agent_19",
+    "title": "LegalGuard",
+    "path": "/agents",
+    "text": "Intelligent Contract Review & Analysis. Review contracts, identify potential issues, and provide legal insights using AI-powered analysis to protect your business interests."
+  },
+  {
+    "id": "agent_20",
+    "title": "ExpenseTracker",
+    "path": "/agents",
+    "text": "Automated Invoice & Revenue Tracking. Automatically tracks invoices and revenue from Gmail, organizing financial documents and maintaining expense records."
+  },
+  {
+    "id": "agent_21",
+    "title": "FitGenie",
+    "path": "/agents",
+    "text": "Personal Fitness & Diet Coach. AI-powered fitness coach that creates personalized diet plans and exercise routines based on your goals and preferences."
+  },
+  {
+    "id": "agent_22",
+    "title": "TravelMate",
+    "path": "/agents",
+    "text": "AI Travel Planning Assistant. Plans complete travel itineraries including flights, hotels, and activities based on your preferences and budget."
+  },
+  {
+    "id": "agent_23",
+    "title": "RedditHound",
+    "path": "/agents",
+    "text": "Reddit Thread Scraper & Q&A Agent. Scrapes Reddit threads to answer questions and queries by analyzing community discussions and expert opinions."
+  },
+  {
+    "id": "agent_24",
+    "title": "ScamGuard",
+    "path": "/agents",
+    "text": "Website Scam Detection System. Analyzes websites to determine if they are scams by checking content, reviews, SSL certificates, and other security parameters."
+  },
+  {
+    "id": "agent_25",
+    "title": "Alex",
+    "path": "/agents",
+    "text": "Personal Diary & Notes Manager. Keeps your notes, passwords, contacts organized, groups thoughts, and keeps you engaged with your personal information."
+  },
+  {
+    "id": "agent_26",
+    "title": "AdCraft",
+    "path": "/agents",
+    "text": "Product to Ad Poster Creator. Transforms products into engaging ad posters and marketing materials with compelling visuals and copy."
+  },
+  {
+    "id": "agent_27",
+    "title": "StyleLab",
+    "path": "/agents",
+    "text": "Virtual Try-On & Artistic Style Filter. Provides virtual try-on experiences and applies artistic style filters to images for fashion and beauty applications."
+  },
+  {
+    "id": "agent_28",
+    "title": "ArtFilter",
+    "path": "/agents",
+    "text": "Artistic Style Filter Agent. Applies various artistic styles and filters to images, transforming them into different artistic interpretations."
+  },
+  {
+    "id": "agent_29",
+    "title": "PharmaStock",
+    "path": "/agents",
+    "text": "Pharmacy Stock Keeper & Reporter. Manages pharmacy inventory, tracks stock levels, and generates reports on medication availability and usage."
+  },
+  {
+    "id": "agent_30",
+    "title": "FollowUpGenie",
+    "path": "/agents",
+    "text": "Meeting Follow-Up Email Generator. Automatically generates and sends follow-up emails after meetings to all concerned parties."
+  },
+  {
+    "id": "agent_31",
+    "title": "CryptoAlert",
+    "path": "/agents",
+    "text": "Cryptocurrency Updates & Graph System. Sends crypto market updates via email with graphs and analysis to keep you informed of market movements."
+  },
+  {
+    "id": "agent_32",
+    "title": "OutlookMaster",
+    "path": "/agents",
+    "text": "Your Personal Outlook Manager. Enhances your Outlook experience by intelligently organizing emails and boosting productivity with automation and real-time alerts."
+  },
+  {
+    "id": "agent_33",
+    "title": "TweetSentiment",
+    "path": "/agents",
+    "text": "Twitter Sentiment Analysis Agent. Analyzes Twitter tweets to determine sentiment, trends, and public opinion on various topics."
+  },
+  {
+    "id": "agent_34",
+    "title": "LeadAnalyst",
+    "path": "/agents",
+    "text": "Lead Generation & Business Analyst. Generates qualified leads and provides business analysis to identify opportunities and market trends."
+  },
+  {
+    "id": "agent_35",
+    "title": "NewsletterBot",
+    "path": "/agents",
+    "text": "AI Newsletter Creator & Distributor. Creates and distributes personalized newsletters with curated content and automated delivery."
+  },
+  {
+    "id": "agent_36",
+    "title": "DeepScholar",
+    "path": "/agents",
+    "text": "Comprehensive Research & Academic Writing Agent. Conducts deep research on any topic and writes comprehensive 5-chapter reports with accurate citations and academic standards."
+  },
+  {
+    "id": "agent_37",
+    "title": "NewsTone",
+    "path": "/agents",
+    "text": "Company News Scraper & Meeting Tone Analyzer. Scrapes recent news about companies and determines the appropriate meeting tone based on current events and sentiment."
+  },
+  {
+    "id": "agent_38",
+    "title": "SiteGuard",
+    "path": "/agents",
+    "text": "URL Monitoring & Downtime Alert System. Automatically monitors URLs for downtime and sends alerts when websites go offline or experience issues."
+  },
+  {
+    "id": "agent_39",
+    "title": "ResumeScreener",
+    "path": "/agents",
+    "text": "AI Resume Screening & Candidate Evaluation. Transforms recruitment by instantly analyzing resumes, identifying qualified candidates, and providing evaluation scores for faster, smarter hiring decisions."
+  },
+  {
+    "id": "agent_40",
+    "title": "ResumeBuilder",
+    "path": "/agents",
+    "text": "AI-Powered Resume Creation Assistant. Creates professional resumes tailored to specific job applications and career goals."
+  },
+  {
+    "id": "agent_41",
+    "title": "TubeStrategist",
+    "path": "/agents",
+    "text": "Personalized YouTube Growth Strategist. Creates personalized YouTube strategies for content creators to grow their channels and increase engagement."
+  },
+  {
+    "id": "agent_42",
+    "title": "WebAnalyzer",
+    "path": "/agents",
+    "text": "AI Website Analyzer & Personal Recommendations. Analyzes websites and provides personalized recommendations for improvement and optimization."
+  },
+  {
+    "id": "agent_43",
+    "title": "BackupBot",
+    "path": "/agents",
+    "text": "n8n Workflow Backup & Recovery Agent. Automatically backs up n8n workflows and provides recovery solutions for automation processes."
+  },
+  {
+    "id": "agent_44",
+    "title": "Fritz",
+    "path": "/agents",
+    "text": "Intelligent Interview Agent. Conducts AI-powered interviews to assess candidates and provide evaluation insights."
+  },
+  {
+    "id": "agent_45",
+    "title": "FatigueAgent",
+    "path": "/agents",
+    "text": "Ad Performance Monitor & Fatigue Detector. Monitors ad campaigns 24/7 to detect burnout, overspending, and performance drops before they impact ROI."
+  },
+  {
+    "id": "agent_46",
+    "title": "ChurnPredictor",
+    "path": "/agents",
+    "text": "Customer Churn Propensity Visualizer. Identifies at-risk customers and automates retention strategies to prevent churn before it happens."
+  },
+  {
+    "id": "technology_0",
+    "title": "Agentic AI & Autonomous Systems",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Agentic AI & Autonomous Systems among the technologies it works with."
+  },
+  {
+    "id": "technology_1",
+    "title": "Multi-Agent Orchestration",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Multi-Agent Orchestration among the technologies it works with."
+  },
+  {
+    "id": "technology_2",
+    "title": "Computer Vision",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Computer Vision among the technologies it works with."
+  },
+  {
+    "id": "technology_3",
+    "title": "Visual Quality Assurance & Defect Detection",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Visual Quality Assurance & Defect Detection among the technologies it works with."
+  },
+  {
+    "id": "technology_4",
+    "title": "Industrial Visual Inspection",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Industrial Visual Inspection among the technologies it works with."
+  },
+  {
+    "id": "technology_5",
+    "title": "Multimodal AI & Reasoning",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Multimodal AI & Reasoning among the technologies it works with."
+  },
+  {
+    "id": "technology_6",
+    "title": "Real-Time Video Analytics",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Real-Time Video Analytics among the technologies it works with."
+  },
+  {
+    "id": "technology_7",
+    "title": "Object Detection, Segmentation & Tracking",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Object Detection, Segmentation & Tracking among the technologies it works with."
+  },
+  {
+    "id": "technology_8",
+    "title": "Document AI & Intelligent Information Extraction",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Document AI & Intelligent Information Extraction among the technologies it works with."
+  },
+  {
+    "id": "technology_9",
+    "title": "Speech AI & Real-Time Voice Intelligence",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Speech AI & Real-Time Voice Intelligence among the technologies it works with."
+  },
+  {
+    "id": "technology_10",
+    "title": "Conversational Intelligence",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Conversational Intelligence among the technologies it works with."
+  },
+  {
+    "id": "technology_11",
+    "title": "Enterprise Retrieval-Augmented Generation",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Enterprise Retrieval-Augmented Generation among the technologies it works with."
+  },
+  {
+    "id": "technology_12",
+    "title": "Knowledge Graphs & GraphRAG",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Knowledge Graphs & GraphRAG among the technologies it works with."
+  },
+  {
+    "id": "technology_13",
+    "title": "Predictive Analytics & Decision Intelligence",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Predictive Analytics & Decision Intelligence among the technologies it works with."
+  },
+  {
+    "id": "technology_14",
+    "title": "Conversational AutoML",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Conversational AutoML among the technologies it works with."
+  },
+  {
+    "id": "technology_15",
+    "title": "Time-Series Forecasting",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Time-Series Forecasting among the technologies it works with."
+  },
+  {
+    "id": "technology_16",
+    "title": "Anomaly Detection & Early Warning Systems",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Anomaly Detection & Early Warning Systems among the technologies it works with."
+  },
+  {
+    "id": "technology_17",
+    "title": "Predictive Maintenance",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Predictive Maintenance among the technologies it works with."
+  },
+  {
+    "id": "technology_18",
+    "title": "Recommendation & Personalisation Engines",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Recommendation & Personalisation Engines among the technologies it works with."
+  },
+  {
+    "id": "technology_19",
+    "title": "Customer Intelligence & Behavioural Modelling",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Customer Intelligence & Behavioural Modelling among the technologies it works with."
+  },
+  {
+    "id": "technology_20",
+    "title": "Process Mining & Conformance Intelligence",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Process Mining & Conformance Intelligence among the technologies it works with."
+  },
+  {
+    "id": "technology_21",
+    "title": "Causal Inference & Uplift Modelling",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Causal Inference & Uplift Modelling among the technologies it works with."
+  },
+  {
+    "id": "technology_22",
+    "title": "Prescriptive Analytics & Decision Optimisation",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Prescriptive Analytics & Decision Optimisation among the technologies it works with."
+  },
+  {
+    "id": "technology_23",
+    "title": "Simulation & Scenario Modelling",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Simulation & Scenario Modelling among the technologies it works with."
+  },
+  {
+    "id": "technology_24",
+    "title": "Geospatial AI & Remote Sensing",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Geospatial AI & Remote Sensing among the technologies it works with."
+  },
+  {
+    "id": "technology_25",
+    "title": "Synthetic Data Generation",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Synthetic Data Generation among the technologies it works with."
+  },
+  {
+    "id": "technology_26",
+    "title": "Model Fine-Tuning & Domain Adaptation",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Model Fine-Tuning & Domain Adaptation among the technologies it works with."
+  },
+  {
+    "id": "technology_27",
+    "title": "Edge AI & On-Premises Inference",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists Edge AI & On-Premises Inference among the technologies it works with."
+  },
+  {
+    "id": "technology_28",
+    "title": "AI Evaluation, Reliability & Observability",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists AI Evaluation, Reliability & Observability among the technologies it works with."
+  },
+  {
+    "id": "technology_29",
+    "title": "MLOps & Production AI Infrastructure",
+    "path": "/#work-marquee-title",
+    "text": "Nyrix lists MLOps & Production AI Infrastructure among the technologies it works with."
+  },
+  {
+    "id": "research",
+    "title": "Research and development",
+    "path": "/company/research",
+    "text": "A dedicated research wing working alongside our engineering teams on applied AI."
+  },
+  {
+    "id": "contact",
+    "title": "Contact Nyrix",
+    "path": "/contact",
+    "text": "Contact the team at hello@nyrix.co; the contact form is available on this page."
+  },
+  {
+    "id": "careers",
+    "title": "Careers",
+    "path": "/careers#introduce-yourself",
+    "text": "Send a general expression of interest, resume or portfolio to huzaifa@nyrix.co."
+  },
+  {
+    "id": "podcast",
+    "title": "The Next Question",
+    "path": "/resources/podcasts",
+    "text": "Conversations with researchers and practitioners about AI in practice."
+  }
+]

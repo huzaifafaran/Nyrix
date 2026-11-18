@@ -1,0 +1,218 @@
+{
+  "home": {
+    "label": "Nyrix home",
+    "path": "/",
+    "type": "navigate"
+  },
+  "technologies": {
+    "label": "The Nyrix Spectrum",
+    "path": "/#work-marquee-title",
+    "type": "navigate"
+  },
+  "services": {
+    "label": "What we do",
+    "path": "/what-we-do",
+    "type": "navigate"
+  },
+  "decision_framing": {
+    "label": "Decision framing",
+    "path": "/what-we-do#decision-framing",
+    "type": "navigate"
+  },
+  "ai_enablement": {
+    "label": "AI enablement",
+    "path": "/what-we-do#ai-enablement",
+    "type": "navigate"
+  },
+  "productisation": {
+    "label": "Productisation and engineering",
+    "path": "/what-we-do#productisation",
+    "type": "navigate"
+  },
+  "governance": {
+    "label": "Governance",
+    "path": "/what-we-do#governance",
+    "type": "navigate"
+  },
+  "products": {
+    "label": "Products",
+    "path": "/products",
+    "type": "navigate"
+  },
+  "kinlu": {
+    "label": "KINLU",
+    "path": "/products/kinlu",
+    "type": "navigate"
+  },
+  "kinlu_voice": {
+    "label": "KINLU Voice",
+    "path": "/products/kinlu-voice",
+    "type": "navigate"
+  },
+  "solutions": {
+    "label": "Solutions",
+    "path": "/solutions",
+    "type": "navigate"
+  },
+  "solution_inventory": {
+    "label": "Inventory and planning",
+    "path": "/solutions#inventory-planning",
+    "type": "navigate"
+  },
+  "solution_audience": {
+    "label": "Audience intelligence",
+    "path": "/solutions#audience",
+    "type": "navigate"
+  },
+  "solution_group": {
+    "label": "Group office intelligence",
+    "path": "/solutions#group-office",
+    "type": "navigate"
+  },
+  "solution_contact_centre": {
+    "label": "Contact centre intelligence",
+    "path": "/solutions#contact-centre",
+    "type": "navigate"
+  },
+  "solution_marketing": {
+    "label": "Marketing opportunity intelligence",
+    "path": "/solutions#marketing-opportunity",
+    "type": "navigate"
+  },
+  "solution_cargo": {
+    "label": "Cargo intelligence",
+    "path": "/solutions#cargo",
+    "type": "navigate"
+  },
+  "solution_decision": {
+    "label": "Decision sciences",
+    "path": "/solutions#decision-sciences",
+    "type": "navigate"
+  },
+  "industries": {
+    "label": "Industries",
+    "path": "/industries",
+    "type": "navigate"
+  },
+  "industry_banking": {
+    "label": "Banking and finance",
+    "path": "/industries/banking-finance",
+    "type": "navigate"
+  },
+  "industry_food": {
+    "label": "Food and beverage",
+    "path": "/industries/food-beverage",
+    "type": "navigate"
+  },
+  "industry_insurance": {
+    "label": "Insurance",
+    "path": "/industries/insurance",
+    "type": "navigate"
+  },
+  "industry_legal": {
+    "label": "Legal",
+    "path": "/industries/legal",
+    "type": "navigate"
+  },
+  "industry_media": {
+    "label": "Media and advertising",
+    "path": "/industries/media-advertising",
+    "type": "navigate"
+  },
+  "industry_travel": {
+    "label": "Travel and hospitality",
+    "path": "/industries/travel-hospitality",
+    "type": "navigate"
+  },
+  "industry_pharma": {
+    "label": "Pharmaceutical",
+    "path": "/industries/pharmaceutical",
+    "type": "navigate"
+  },
+  "case_studies": {
+    "label": "Case studies",
+    "path": "/case-studies",
+    "type": "navigate"
+  },
+  "case_gerrys": {
+    "label": "Gerry’s dnata",
+    "path": "/case-studies/gerrys-dnata",
+    "type": "navigate"
+  },
+  "case_bank": {
+    "label": "Private bank voice proof of concept",
+    "path": "/case-studies/private-bank-voice-poc",
+    "type": "navigate"
+  },
+  "case_genix": {
+    "label": "Genix cleanroom monitoring",
+    "path": "/case-studies/cleanroom-ems",
+    "type": "navigate"
+  },
+  "company": {
+    "label": "About Nyrix",
+    "path": "/company",
+    "type": "navigate"
+  },
+  "team": {
+    "label": "Our team",
+    "path": "/company/team",
+    "type": "navigate"
+  },
+  "advisors": {
+    "label": "Advisors",
+    "path": "/company/advisors",
+    "type": "navigate"
+  },
+  "research": {
+    "label": "Research and development",
+    "path": "/company/research",
+    "type": "navigate"
+  },
+  "insights": {
+    "label": "Insights",
+    "path": "/resources",
+    "type": "navigate"
+  },
+  "articles": {
+    "label": "Articles and publications",
+    "path": "/resources/articles",
+    "type": "navigate"
+  },
+  "tnq": {
+    "label": "The Next Question",
+    "path": "/resources/podcasts",
+    "type": "navigate"
+  },
+  "careers": {
+    "label": "Careers",
+    "path": "/careers",
+    "type": "navigate"
+  },
+  "careers_interest": {
+    "label": "Express interest in joining",
+    "path": "/careers#introduce-yourself",
+    "type": "navigate"
+  },
+  "agents": {
+    "label": "Agent library",
+    "path": "/agents",
+    "type": "navigate"
+  },
+  "contact": {
+    "label": "Contact Nyrix",
+    "path": "/contact",
+    "type": "navigate"
+  },
+  "prepare_inquiry": {
+    "label": "Prepare an enquiry",
+    "path": "/contact#enquiry-title",
+    "type": "prepare_inquiry"
+  },
+  "booking": {
+    "label": "Book a conversation",
+    "path": "/contact",
+    "requiresConfirmation": true,
+    "type": "booking"
+  }
+}

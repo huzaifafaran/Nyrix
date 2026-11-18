@@ -62,3 +62,12 @@
   .work-marquee-viewport { overflow-x: auto; }
   .work-marquee-group:not(:first-child) { display: none; }
 }
+
+/* Technology marks retain the original monochrome strip and motion. */
+.work-marquee-belt { animation-duration: 240s; }
+.work-marquee:hover .work-marquee-belt, .work-marquee:focus-within .work-marquee-belt { animation-play-state: paused; }
+.technology-mark { gap: 12px; width: 250px; min-width: 250px; overflow: visible; justify-content: flex-start; font-size: 15px; font-weight: 600; line-height: 1.25; }
+.technology-mark svg { flex: 0 0 auto; }
+.technology-mark span { max-width: 205px; }
+.work-marquee-viewport:focus-visible { outline: 2px solid var(--color-ink); outline-offset: -2px; overflow-x: auto; }
+@media (max-width: 650px) { .technology-mark { width: 225px; min-width: 225px; font-size: 14px; } .technology-mark span { max-width: 180px; } }

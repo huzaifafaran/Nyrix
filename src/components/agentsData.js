@@ -42,8 +42,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
     color: '#8B5CF6',
-    imageHero: '/sair th.jpg',
-    imageThumb: '/sair th.jpg'
+    imageHero: '/agents/sair.svg',
+    imageThumb: '/agents/sair.svg'
   },
   {
     id: 2,
@@ -62,8 +62,8 @@ export const agents = [
       ],
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)',
     color: '#7c3aed',
-    imageHero: '/cmo.jpg',
-    imageThumb: '/cmo.jpg'
+    imageHero: '/agents/cmo-agent.svg',
+    imageThumb: '/agents/cmo-agent.svg'
   },
   {
     id: 3,
@@ -83,8 +83,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%)',
     color: '#8b5cf6',
-    imageHero: '/SalesIQ AI The Conversational Data Analyst.jpeg',
-    imageThumb: '/SalesIQ AI The Conversational Data Analyst.jpeg'
+    imageHero: '/agents/salesiq-ai.svg',
+    imageThumb: '/agents/salesiq-ai.svg'
   },
   {
     id: 4,
@@ -104,8 +104,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #6d28d9 0%, #8b5cf6 100%)',
     color: '#6d28d9',
-    imageHero: '/market-whisperer.jpg',
-    imageThumb: '/market-whisperer.jpg'
+    imageHero: '/agents/the-market-whisperer.svg',
+    imageThumb: '/agents/the-market-whisperer.svg'
   },
   {
     id: 5,
@@ -125,8 +125,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%)',
     color: '#a78bfa',
-    imageHero: '/growth oracle.jpeg',
-    imageThumb: '/growth oracle.jpeg'
+    imageHero: '/agents/growth-oracle.svg',
+    imageThumb: '/agents/growth-oracle.svg'
   },
   {
     id: 6,
@@ -146,8 +146,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #5b21b6 0%, #8b5cf6 100%)',
     color: '#5b21b6',
-    imageHero: '/certiguard-ai.jpeg',
-    imageThumb: '/certiguard-ai.jpeg'
+    imageHero: '/agents/certiguard-ai.svg',
+    imageThumb: '/agents/certiguard-ai.svg'
   },
   {
     id: 7,
@@ -167,8 +167,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #9333ea 0%, #a78bfa 100%)',
     color: '#9333ea',
-    imageHero: '/verity-scout.jpg',
-    imageThumb: '/verity-scout.jpg'
+    imageHero: '/agents/verity-scout.svg',
+    imageThumb: '/agents/verity-scout.svg'
   },
   {
     id: 8,
@@ -188,8 +188,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%)',
     color: '#4c1d95',
-    imageHero: '/clinicall.jpeg',
-    imageThumb: '/clinicall.jpeg'
+    imageHero: '/agents/clinicall.svg',
+    imageThumb: '/agents/clinicall.svg'
   },
   {
     id: 9,
@@ -209,8 +209,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #c084fc 100%)',
     color: '#7c3aed',
-    imageHero: '/finsense.jpg',
-    imageThumb: '/finsense.jpg'
+    imageHero: '/agents/finsense.svg',
+    imageThumb: '/agents/finsense.svg'
   },
 
   {
@@ -231,8 +231,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #6d28d9 0%, #a78bfa 100%)',
     color: '#6d28d9',
-    imageHero: '/personalized-writing agent.jpg',
-    imageThumb: '/personalized-writing agent.jpg'
+    imageHero: '/agents/personalized-writing-agent.svg',
+    imageThumb: '/agents/personalized-writing-agent.svg'
   },
   {
     id: 11,
@@ -252,8 +252,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%)',
     color: '#5b21b6',
-    imageHero: '/youtube-summarizer.jpeg',
-    imageThumb: '/youtube-summarizer.jpeg'
+    imageHero: '/agents/youtube-summarizer.svg',
+    imageThumb: '/agents/youtube-summarizer.svg'
   },
   {
     id: 12,
@@ -273,8 +273,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)',
     color: '#8b5cf6',
-    imageHero: '/email auto responder draft.jpeg',
-    imageThumb: '/email auto responder draft.jpeg'
+    imageHero: '/agents/gmail-ai-auto-responder.svg',
+    imageThumb: '/agents/gmail-ai-auto-responder.svg'
   },
   {
     id: 13,
@@ -293,8 +293,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #a78bfa 0%, #c084fc 100%)',
     color: '#a78bfa',
-    imageHero: '/gmail auto labeler.jpeg',
-    imageThumb: '/gmail auto labeler.jpeg'
+    imageHero: '/agents/mailmaster.svg',
+    imageThumb: '/agents/mailmaster.svg'
   },
   {
     id: 14,
@@ -312,8 +312,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #9333ea 0%, #7c3aed 100%)',
     color: '#9333ea',
-    imageHero: '/linkdin-commnts to leads.jpeg',
-    imageThumb: '/linkdin-commnts to leads.jpeg'
+    imageHero: '/agents/leadconnect.svg',
+    imageThumb: '/agents/leadconnect.svg'
   },
   {
     id: 15,
@@ -331,8 +331,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%)',
     color: '#4c1d95',
-    imageHero: '/youtub auto description writer.jpeg',
-    imageThumb: '/youtub auto description writer.jpeg'
+    imageHero: '/agents/videoscript.svg',
+    imageThumb: '/agents/videoscript.svg'
   },
   {
     id: 16,
@@ -350,8 +350,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%)',
     color: '#7c3aed',
-    imageHero: '/data-query.jpeg',
-    imageThumb: '/data-query.jpeg'
+    imageHero: '/agents/dataviz.svg',
+    imageThumb: '/agents/dataviz.svg'
   },
   {
     id: 17,
@@ -369,8 +369,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #6d28d9 0%, #c084fc 100%)',
     color: '#6d28d9',
-    imageHero: '/invoice-capture.jpeg',
-    imageThumb: '/invoice-capture.jpeg'
+    imageHero: '/agents/invoicebot.svg',
+    imageThumb: '/agents/invoicebot.svg'
   },
   {
     id: 18,
@@ -388,8 +388,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #a78bfa 0%, #5b21b6 100%)',
     color: '#a78bfa',
-    imageHero: '/proposal-craft.jpeg',
-    imageThumb: '/proposal-craft.jpeg'
+    imageHero: '/agents/proposalcraft.svg',
+    imageThumb: '/agents/proposalcraft.svg'
   },
   {
     id: 19,
@@ -407,8 +407,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #5b21b6 0%, #a78bfa 100%)',
     color: '#5b21b6',
-    imageHero: '/legal-agent.jpeg',
-    imageThumb: '/legal-agent.jpeg'
+    imageHero: '/agents/legalguard.svg',
+    imageThumb: '/agents/legalguard.svg'
   },
   {
     id: 20,
@@ -428,8 +428,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #9333ea 0%, #c084fc 100%)',
     color: '#9333ea',
-    imageHero: '/expense tracker.jpeg',
-    imageThumb: '/expense tracker.jpeg'
+    imageHero: '/agents/expensetracker.svg',
+    imageThumb: '/agents/expensetracker.svg'
   },
   {
     id: 21,
@@ -449,8 +449,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)',
     color: '#7c3aed',
-    imageHero: '/fitness agent.jpeg',
-    imageThumb: '/fitness agent.jpeg'
+    imageHero: '/agents/fitgenie.svg',
+    imageThumb: '/agents/fitgenie.svg'
   },
   {
     id: 22,
@@ -470,8 +470,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
     color: '#8b5cf6',
-    imageHero: '/travel agent.jpeg',
-    imageThumb: '/travel agent.jpeg'
+    imageHero: '/agents/travelmate.svg',
+    imageThumb: '/agents/travelmate.svg'
   },
   {
     id: 23,
@@ -491,8 +491,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%)',
     color: '#4c1d95',
-    imageHero: '/reddithound.jpeg',
-    imageThumb: '/reddithound.jpeg'
+    imageHero: '/agents/reddithound.svg',
+    imageThumb: '/agents/reddithound.svg'
   },
   {
     id: 24,
@@ -512,8 +512,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #6d28d9 0%, #9333ea 100%)',
     color: '#6d28d9',
-    imageHero: '/isthisascam.jpeg',
-    imageThumb: '/isthisascam.jpeg'
+    imageHero: '/agents/scamguard.svg',
+    imageThumb: '/agents/scamguard.svg'
   },
   {
     id: 25,
@@ -533,8 +533,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #7C3AED 0%, #A855F7 100%)',
     color: '#7C3AED',
-    imageHero: '/alex- the diary manager.jpeg',
-    imageThumb: '/alex- the diary manager.jpeg'
+    imageHero: '/agents/alex.svg',
+    imageThumb: '/agents/alex.svg'
   },
   {
     id: 26,
@@ -554,8 +554,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%)',
     color: '#a78bfa',
-    imageHero: '/product-to-ad-poster.jpeg',
-    imageThumb: '/product-to-ad-poster.jpeg'
+    imageHero: '/agents/adcraft.svg',
+    imageThumb: '/agents/adcraft.svg'
   },
   {
     id: 27,
@@ -575,8 +575,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #5b21b6 0%, #c084fc 100%)',
     color: '#5b21b6',
-    imageHero: '/lookslab virtual-try-on.jpeg',
-    imageThumb: '/lookslab virtual-try-on.jpeg'
+    imageHero: '/agents/stylelab.svg',
+    imageThumb: '/agents/stylelab.svg'
   },
   {
     id: 28,
@@ -596,8 +596,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #8B5CF6 0%, #C084FC 100%)',
     color: '#8B5CF6',
-    imageHero: '/looks-lab-artistic-style-filter.jpeg',
-    imageThumb: '/looks-lab-artistic-style-filter.jpeg'
+    imageHero: '/agents/artfilter.svg',
+    imageThumb: '/agents/artfilter.svg'
   },
   {
     id: 29,
@@ -617,8 +617,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #9333ea 100%)',
     color: '#7c3aed',
-    imageHero: '/pharmacy stock keeper and reporter.jpeg',
-    imageThumb: '/pharmacy stock keeper and reporter.jpeg'
+    imageHero: '/agents/pharmastock.svg',
+    imageThumb: '/agents/pharmastock.svg'
   },
   {
     id: 30,
@@ -638,8 +638,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #9333ea 0%, #a78bfa 100%)',
     color: '#9333ea',
-    imageHero: '/followup-genie.jpeg',
-    imageThumb: '/followup-genie.jpeg'
+    imageHero: '/agents/followupgenie.svg',
+    imageThumb: '/agents/followupgenie.svg'
   },
   {
     id: 31,
@@ -659,8 +659,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%)',
     color: '#4c1d95',
-    imageHero: '/crypto-alert.jpeg',
-    imageThumb: '/crypto-alert.jpeg'
+    imageHero: '/agents/cryptoalert.svg',
+    imageThumb: '/agents/cryptoalert.svg'
   },
   {
     id: 32,
@@ -680,8 +680,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #6d28d9 0%, #a78bfa 100%)',
     color: '#6d28d9',
-    imageHero: '/your-outlook-manager.jpeg',
-    imageThumb: '/your-outlook-manager.jpeg'
+    imageHero: '/agents/outlookmaster.svg',
+    imageThumb: '/agents/outlookmaster.svg'
   },
   {
     id: 33,
@@ -701,8 +701,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #8b5cf6 0%, #5b21b6 100%)',
     color: '#8b5cf6',
-    imageHero: '/twitter-sentiment-analysis.jpeg',
-    imageThumb: '/twitter-sentiment-analysis.jpeg'
+    imageHero: '/agents/tweetsentiment.svg',
+    imageThumb: '/agents/tweetsentiment.svg'
   },
   {
     id: 34,
@@ -722,8 +722,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%)',
     color: '#a78bfa',
-    imageHero: '/business analyst-lead-gen agent.jpeg',
-    imageThumb: '/business analyst-lead-gen agent.jpeg'
+    imageHero: '/agents/leadanalyst.svg',
+    imageThumb: '/agents/leadanalyst.svg'
   },
   {
     id: 35,
@@ -743,8 +743,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #c084fc 100%)',
     color: '#7c3aed',
-    imageHero: '/newsletter agent.jpeg',
-    imageThumb: '/newsletter agent.jpeg'
+    imageHero: '/agents/newsletterbot.svg',
+    imageThumb: '/agents/newsletterbot.svg'
   },
   {
     id: 36,
@@ -764,8 +764,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #5b21b6 0%, #8b5cf6 100%)',
     color: '#5b21b6',
-    imageHero: '/deep-researcher.jpg',
-    imageThumb: '/deep-researcher.jpg'
+    imageHero: '/agents/deepscholar.svg',
+    imageThumb: '/agents/deepscholar.svg'
   },
   {
     id: 37,
@@ -783,8 +783,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)',
     color: '#6366F1',
-    imageHero: '/scrap recent news about company and dcide meeting tone.jpeg',
-    imageThumb: '/scrap recent news about company and dcide meeting tone.jpeg'
+    imageHero: '/agents/newstone.svg',
+    imageThumb: '/agents/newstone.svg'
   },
   {
     id: 38,
@@ -802,8 +802,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #9333ea 0%, #6d28d9 100%)',
     color: '#9333ea',
-    imageHero: '/auto monitoring of url and downtime alert.jpg',
-    imageThumb: '/auto monitoring of url and downtime alert.jpg'
+    imageHero: '/agents/siteguard.svg',
+    imageThumb: '/agents/siteguard.svg'
   },
   {
     id: 39,
@@ -815,7 +815,7 @@ export const agents = [
     shortDescription: 'Transforms recruitment by instantly analyzing resumes, identifying qualified candidates, and providing evaluation scores for faster, smarter hiring decisions.',
     fullDescription: 'ResumeScreener transforms recruitment by instantly analyzing resumes, identifying qualified candidates, and providing evaluation scores to help hiring teams make faster, smarter decisions. It eliminates manual resume screening, ensuring no top talent slips through the cracks.',
     features: [
-      'Automatic Trigger: Activates the moment a new resume or CV is received via email',
+      'Automatic Trigger: Activates the moment a new resume is received via email',
       'Resume Analysis: Reads and analyzes resume content, qualifications, and career history',
       'Skill Matching: Compares candidate skills and experience against specific job requirements',
       'Candidate Scoring: Generates objective evaluation scores with clear recommendations',
@@ -824,8 +824,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #4c1d95 0%, #a78bfa 100%)',
     color: '#4c1d95',
-    imageHero: '/resume screener.jpeg',
-    imageThumb: '/resume screener.jpeg'
+    imageHero: '/agents/resumescreener.svg',
+    imageThumb: '/agents/resumescreener.svg'
   },
   {
     id: 40,
@@ -843,8 +843,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #a78bfa 0%, #6d28d9 100%)',
     color: '#a78bfa',
-    imageHero: '/resume builder.jpeg',
-    imageThumb: '/resume builder.jpeg'
+    imageHero: '/agents/resumebuilder.svg',
+    imageThumb: '/agents/resumebuilder.svg'
   },
   {
     id: 41,
@@ -862,8 +862,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%)',
     color: '#6d28d9',
-    imageHero: '/prsonalized yt strategist.jpeg',
-    imageThumb: '/prsonalized yt strategist.jpeg'
+    imageHero: '/agents/tubestrategist.svg',
+    imageThumb: '/agents/tubestrategist.svg'
   },
   {
     id: 42,
@@ -881,8 +881,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
     color: '#8B5CF6',
-    imageHero: '/ai websit analyzer and personalized recommnedation.jpeg',
-    imageThumb: '/ai websit analyzer and personalized recommnedation.jpeg'
+    imageHero: '/agents/webanalyzer.svg',
+    imageThumb: '/agents/webanalyzer.svg'
   },
   {
     id: 43,
@@ -900,8 +900,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%)',
     color: '#8b5cf6',
-    imageHero: '/n8n backup agent.jpeg',
-    imageThumb: '/n8n backup agent.jpeg'
+    imageHero: '/agents/backupbot.svg',
+    imageThumb: '/agents/backupbot.svg'
   },
   {
     id: 44,
@@ -919,8 +919,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)',
     color: '#7c3aed',
-    imageHero: '/interview agent fritz.jpeg',
-    imageThumb: '/interview agent fritz.jpeg'
+    imageHero: '/agents/fritz.svg',
+    imageThumb: '/agents/fritz.svg'
   },
   {
     id: 45,
@@ -940,8 +940,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #5b21b6 0%, #9333ea 100%)',
     color: '#5b21b6',
-    imageHero: '/ad fatigu agent.jpg',
-    imageThumb: '/ad fatigu agent.jpg'
+    imageHero: '/agents/fatigueagent.svg',
+    imageThumb: '/agents/fatigueagent.svg'
   },
   {
     id: 46,
@@ -961,8 +961,8 @@ export const agents = [
     ],
     gradient: 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)',
     color: '#7C3AED',
-    imageHero: '/ad churn agent.jpeg',
-    imageThumb: '/ad churn agent.jpeg'
+    imageHero: '/agents/churnpredictor.svg',
+    imageThumb: '/agents/churnpredictor.svg'
   }
 ];
 

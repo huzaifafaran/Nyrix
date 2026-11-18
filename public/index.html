@@ -1,94 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/logo.png" />
+    <script>document.documentElement.classList.remove('no-js');</script>
+    <link rel="icon" href="%PUBLIC_URL%/wordmark.svg" />
+    <link rel="alternate icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
     <meta
       name="description"
-      content="NYRIX partners with modern enterprises to build custom machine learning systems, generative AI products, computer vision workflows, and operational decision intelligence."
+      content="Nyrix is a Decision Sciences &amp; Applied AI company. Explore KINLU, KINLU Voice and governed intelligence for enterprise decisions."
     />
     <meta name="keywords" content="NYRIX, applied AI, machine learning, decision sciences, enterprise AI, generative products, computer vision, AI strategy" />
     <meta property="og:title" content="NYRIX | Applied AI &amp; Decision Sciences" />
-    <meta property="og:description" content="Applied AI engineered around real enterprise work. Custom ML systems, generative products, and decision intelligence." />
+    <meta property="og:description" content="Decision sciences and applied AI for enterprise work. Meet KINLU and KINLU Voice, explore our industries and see our applied work." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
+    <meta property="og:url" content="https://nyrix.co/" />
+    <meta property="og:image" content="https://nyrix.co/media/enterprise/cover-ribbon.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="NYRIX | Applied AI &amp; Decision Sciences" />
     <meta name="twitter:description" content="Applied AI engineered around real enterprise work." />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta name="twitter:image" content="https://nyrix.co/media/enterprise/cover-ribbon.webp" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://nyrix.co/" />
+
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    
 
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    
-    <!-- Calendly Integration -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="fbf4abd4-c027-4c7f-891a-6ed2c217f1be" data-blockingmode="auto" type="text/javascript"></script>
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-    
+
+
+    <!-- Fonts are served from this site. Licenses are in /fonts/. -->
+    <link href="%PUBLIC_URL%/fonts/fonts.css" rel="stylesheet">
+
+    <!-- First-party choices; no optional tag loads before explicit saved consent. -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/consent.css">
+    <script id="nyrix-consent" src="%PUBLIC_URL%/consent.js" defer></script>
+
               <title>NYRIX | Applied AI &amp; Decision Sciences</title>
-          
-          <!-- Google tag (gtag.js) -->
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RVE61MDWE"></script>
-          <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-9RVE61MDWE');
-          </script>
-          
-          <!-- Google Analytics Configuration - Only runs after consent -->
-          <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            
-            // Set default denied state for all tracking
-            gtag("consent", "default", {
-                ad_personalization: "denied",
-                ad_storage: "denied",
-                ad_user_data: "denied",
-                analytics_storage: "denied",
-                functionality_storage: "denied",
-                personalization_storage: "denied",
-                security_storage: "granted",
-            });
-            
-            // Wait for Cookiebot consent before enabling analytics
-            window.addEventListener('CookiebotOnAccept', function () {
-              console.log('Cookiebot consent given - enabling Google Analytics');
-              gtag("consent", "update", {
-                  ad_personalization: "granted",
-                  ad_storage: "granted",
-                  ad_user_data: "granted",
-                  analytics_storage: "granted",
-                  functionality_storage: "granted",
-                  personalization_storage: "granted",
-                  security_storage: "granted",
-              });
-              
-              // Now initialize GA after consent
-              gtag('js', new Date());
-              gtag('config', 'G-9RVE61MDWE');
-            });
-            
-            // If consent is declined, keep analytics disabled
-            window.addEventListener('CookiebotOnDecline', function () {
-              console.log('Cookiebot consent declined - keeping analytics disabled');
-            });
-          </script>
-           
-
 
         </head>
      <body>
-     <noscript>You need to enable JavaScript to run this app.</noscript>
      <div id="root"></div>
    </body>
-</html> 
+</html>

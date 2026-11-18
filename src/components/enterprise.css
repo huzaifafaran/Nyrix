@@ -9,7 +9,7 @@
   --color-accent: #7045ba;
   --color-accent-dark: #593194;
   --color-rule: #e3dfe9;
-  --color-inverse: #fbfaff;
+  --color-inverse: #ffffff;
   --color-dark: #18171d;
   --color-dark-muted: #ffffff;
   --color-dark-rule: #453a56;
@@ -135,7 +135,7 @@
 }
 .primary-nav > a:hover,
 .primary-nav > a.active {
-  color: var(--color-accent);
+  color: var(--color-ink);
 }
 .primary-nav > a.nav-contact {
   display: flex;
@@ -200,7 +200,7 @@
   align-items: center;
   gap: 14px;
   min-height: 44px;
-  color: var(--color-accent);
+  color: var(--color-ink);
   font-size: 13px;
   font-weight: 500;
   text-decoration: none;
@@ -229,7 +229,7 @@
   align-items: center;
   gap: 10px;
   font-size: 12px;
-  color: var(--color-accent);
+  color: var(--color-ink);
   margin-bottom: 26px;
 }
 .hero-context::before {
@@ -341,7 +341,7 @@
 }
 .section-kicker {
   display: block;
-  color: var(--color-accent);
+  color: var(--color-ink);
   font-size: 12px;
   font-weight: 500;
   margin-bottom: 18px;
@@ -413,7 +413,7 @@
   margin: 0;
 }
 .capability-item:hover h3 {
-  color: var(--color-accent);
+  color: var(--color-ink);
 }
 .capability-arrow {
   margin-top: 5px;
@@ -463,7 +463,7 @@
 }
 .work-meta {
   font-size: 11px;
-  color: var(--color-accent);
+  color: var(--color-ink);
   margin-bottom: 12px;
 }
 .work-card h3 {
@@ -482,7 +482,7 @@
   margin: 0 0 16px;
 }
 .work-card:hover h3 {
-  color: var(--color-accent);
+  color: var(--color-ink);
 }
 .product-list {
   margin-top: 40px;
@@ -507,7 +507,7 @@
   letter-spacing: -0.04em;
 }
 .product-category {
-  color: var(--color-accent);
+  color: var(--color-ink);
   font-size: 11px;
   margin-bottom: 6px;
 }
@@ -519,7 +519,7 @@
   max-width: 680px;
 }
 .product-row:hover .product-name {
-  color: var(--color-accent);
+  color: var(--color-ink);
 }
 .company-feature {
   display: grid;
@@ -546,7 +546,7 @@
   justify-content: center;
   flex-shrink: 0;
   background: var(--color-paper-muted);
-  color: var(--color-accent);
+  color: var(--color-ink);
   font-size: 12px;
 }
 .person-photo {
@@ -782,7 +782,7 @@
 }
 .content-card-number {
   font-size: 12px;
-  color: var(--color-accent);
+  color: var(--color-ink);
   margin-bottom: 20px;
 }
 .page-divider {
@@ -837,7 +837,7 @@
   border-radius: 6px;
   padding: 5px 10px;
   font-size: 10px;
-  color: var(--color-accent);
+  color: var(--color-ink);
 }
 .contact-panel {
   background: var(--color-paper-soft);
@@ -1788,7 +1788,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #716c7b;
+  color: var(--color-ink);
 }
 
 /* Indented nested submenu group */
@@ -2073,7 +2073,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #716c7b;
+  color: var(--color-ink);
   margin-bottom: 14px;
 }
 
@@ -2091,7 +2091,7 @@
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.65;
-  color: #55525d;
+  color: var(--color-ink);
   margin: 0 0 28px;
   max-width: 38ch;
 }
@@ -2217,7 +2217,7 @@
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 500;
-  color: #716c7b;
+  color: var(--color-ink);
   margin-bottom: 8px;
 }
 
@@ -2235,7 +2235,7 @@
   font-family: var(--font-body);
   font-size: 13px;
   line-height: 1.6;
-  color: #55525d;
+  color: var(--color-ink);
   margin: 0 0 24px;
   max-width: 32ch;
 }
@@ -2322,7 +2322,7 @@
   font-family: var(--font-body);
   font-size: clamp(14px, 1.3vw, 17px);
   line-height: 1.65;
-  color: #55525d;
+  color: var(--color-ink);
   margin: 0 0 32px;
   max-width: 36ch;
 }
@@ -2995,7 +2995,7 @@
   margin: 0 0 28px;
   font-size: clamp(15px, 1.25vw, 17px);
   line-height: 1.6;
-  color: var(--color-ink-soft, #555555);
+  color: var(--color-ink-soft, #000000);
   max-width: 44ch;
 }
 
@@ -3085,7 +3085,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #716c7b;
+  color: var(--color-ink);
   margin-bottom: 12px;
   display: block;
 }
@@ -3237,7 +3237,7 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #716c7b;
+  color: var(--color-ink);
   margin-bottom: 6px;
 }
 
@@ -3257,14 +3257,14 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #716c7b;
+  color: var(--color-ink);
   margin-bottom: 18px;
 }
 
 .home-product-showcase-desc {
   font-size: clamp(14px, 1.2vw, 16px);
   line-height: 1.6;
-  color: #2b2830 !important;
+  color: var(--color-ink) !important;
   margin: 0 0 28px;
   max-width: 34ch;
 }
@@ -3357,3 +3357,23 @@
 
 
 
+
+/* Q012: frame the supplied full-length portrait around the face and medal.
+   CSS cropping keeps the original photograph unchanged in every consumer. */
+.enterprise-site img[src="/people/huzaifa-faran-2026.jpeg"] {
+  object-position: 50% 50%;
+  transform-origin: 40% 48%;
+  scale: 1.85;
+}
+.enterprise-site .team-dock-avatar img[src="/people/huzaifa-faran-2026.jpeg"] {
+  transform-origin: 43% 40%;
+  scale: 3.5;
+}
+/* Q029: exact copy ink on the light footer CTA; retain dark/violet surfaces. */
+.enterprise-site .site-footer .footer-invite-link {
+  color: var(--color-ink) !important;
+}
+/* Screen-reader labels stay semantic text; supplied work marks keep their gray ink. */
+.enterprise-site .work-marquee-mark .sr-only {
+  color: var(--color-ink);
+}

@@ -6,8 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { team } from "../content/nyrixContent";
 import "./TeamShowcase.css";
 
-export default function TeamShowcase({ initialIndex = 1, showViewAll = true, isFullPage = false }) {
-  // Default to index 1 (Huzaifa Faran) as featured in the reference, or 0
+export default function TeamShowcase({ initialIndex = 0, showViewAll = true, isFullPage = false }) {
   const [currentIndex, setCurrentIndex] = useState(
     initialIndex >= 0 && initialIndex < team.length ? initialIndex : 0
   );

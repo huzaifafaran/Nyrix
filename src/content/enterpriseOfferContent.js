@@ -1,0 +1,186 @@
+// Q022 content basis: supplied NYRIX Website Content and Visual Brief, pp4–6,10–13.
+// Product capabilities are supplied positioning, not independently measured outcomes.
+const media = (id) => `/media/enterprise/${id}.webp`;
+
+export const deliveryStages = [
+  {
+    id: "decision-framing", slug: "decision-framing", title: "Decision framing & AI strategy",
+    description: "Start with the decision, workflow or customer experience that matters. Define the problem, the opportunity and the path to value.",
+    href: "/what-we-do#decision-framing", image: media("positioning-glass"),
+    detail: "A clear business question gives the work a useful starting point.",
+  },
+  {
+    id: "ai-enablement", slug: "ai-enablement", title: "AI enablement & advisory",
+    description: "Assess AI opportunities, clarify the operating model and establish a practical path to adoption for your teams.",
+    href: "/what-we-do#ai-enablement", image: media("challenge-layers"),
+    detail: "Connect the opportunity with the people and processes it needs to support.",
+  },
+  {
+    id: "productisation", slug: "productisation", title: "Productisation & engineering",
+    description: "Connect models, software, data and existing systems into dependable operational products.",
+    href: "/what-we-do#productisation", image: media("model-core"),
+    detail: "Scope and evaluate a useful first version, then connect it to the work around it.",
+  },
+  {
+    id: "governance", slug: "governance", title: "Governance & operating model",
+    description: "Define priorities, decision ownership, security expectations and controls for long-term operation.",
+    href: "/what-we-do#governance", image: media("deployment-vault"),
+    detail: "Make responsibility and operating expectations part of the system from the start.",
+  },
+];
+
+export const solutionDomains = [
+  {
+    id: "inventory-planning", slug: "inventory-planning", title: "Inventory & Planning Intelligence",
+    question: "What should we stock, replenish and plan for?",
+    description: "Demand, stock and replenishment decisions.",
+    href: "/solutions#inventory-planning", image: media("solutions-strip"),
+    industry: { label: "F&B", href: "/industries/food-beverage" },
+  },
+  {
+    id: "audience", slug: "audience", title: "Audience Intelligence",
+    question: "Who should we target, retain and grow?",
+    description: "Understand the customers and audiences behind your next decision.",
+    href: "/solutions#audience", image: media("solutions-strip"),
+    industry: { label: "Banking & Finance", href: "/industries/banking-finance" },
+  },
+  {
+    id: "group-office", slug: "group-office", title: "Group Office Intelligence",
+    question: "What is happening across our business units?",
+    description: "Portfolio visibility across business units.",
+    href: "/solutions#group-office", image: media("solutions-strip"),
+    industry: { label: "Legal", href: "/industries/legal" },
+  },
+  {
+    id: "contact-centre", slug: "contact-centre", title: "Contact Centre Intelligence",
+    question: "What does this conversation tell us to do next?",
+    description: "Conversation insight and next-best action.",
+    href: "/solutions#contact-centre", image: media("voice-wave"),
+    industry: { label: "Insurance", href: "/industries/insurance" },
+  },
+  {
+    id: "marketing-opportunity", slug: "marketing-opportunity", title: "Marketing Opportunity Intelligence",
+    question: "Where can our spend turn into growth?",
+    description: "Connect marketing opportunity with the decisions behind your next investment.",
+    href: "/solutions#marketing-opportunity", image: media("solutions-strip"),
+    industry: { label: "Media & Advertising", href: "/industries/media-advertising" },
+  },
+  {
+    id: "cargo", slug: "cargo", title: "Cargo Intelligence",
+    question: "Where are movement, capacity and handling changing?",
+    description: "Movement, capacity and handling signals.",
+    href: "/solutions#cargo", image: media("case-aviation-glass"),
+    industry: { label: "Travel & Hospitality", href: "/industries/travel-hospitality" },
+  },
+  {
+    id: "decision-sciences", slug: "decision-sciences", title: "Decision Sciences",
+    question: "What if the question does not fit a template?",
+    description: "Custom models, scenario analysis and decision support for the questions specific to your business.",
+    href: "/solutions#decision-sciences", image: media("model-core"),
+    industry: { label: "Pharmaceutical", href: "/industries/pharmaceutical" },
+  },
+];
+
+export const enterpriseProducts = [
+  {
+    id: "kinlu", slug: "kinlu", name: "KINLU", title: "KINLU",
+    headline: "Your data science team, just a prompt away.",
+    description: "An automated machine-learning platform that understands a business question, builds, trains and hosts the model, and returns live predictions 24/7.",
+    href: "/products/kinlu", image: media("kinlu-flow-landscape"), imageSmall: media("kinlu-flow-landscape-768"),
+    imageAlt: "Glass platforms joined by a continuous violet path, illustrating a question becoming working intelligence.",
+    imageWidth: 1672, imageHeight: 941,
+    category: "Predictive intelligence", status: "Product",
+    integration: "Works with the systems and data you already use, from CRM and ERP platforms to spreadsheets and marketing tools.",
+    steps: [
+      { title: "Understand intent", description: "Start with the intent behind your business question." },
+      { title: "Build & train", description: "Build and train the model around that question." },
+      { title: "Host & monitor", description: "Host the model and monitor its operation." },
+      { title: "Predict 24/7", description: "Return live predictions to the workflows that need them." },
+    ],
+    industry: { label: "Explore industry applications", href: "/industries" },
+  },
+  {
+    id: "kinlu-voice", slug: "kinlu-voice", name: "KINLU Voice", title: "KINLU Voice",
+    headline: "Conversations, understood in Urdu and English.",
+    description: "Private AI-powered contact-centre intelligence designed to automate customer interactions in natural Urdu and English.",
+    href: "/products/kinlu-voice", image: media("voice-wave-landscape"), imageSmall: media("voice-wave-landscape-768"),
+    imageAlt: "A violet wave passing through frosted glass, representing connected conversations and intelligence.",
+    imageWidth: 1672, imageHeight: 941,
+    category: "Conversation intelligence", status: "Product",
+    integration: "Designed to integrate with existing contact-centre infrastructure while keeping sensitive data within your organisation’s approved private AI environment.",
+    capabilities: [
+      { title: "Churn prediction", description: "Bring retention signals into customer conversations." },
+      { title: "Customer segmentation", description: "Understand the customer context behind each interaction." },
+      { title: "Lifetime value forecasting", description: "Connect service decisions with the longer customer relationship." },
+      { title: "Next-best action", description: "Turn conversation insight into a useful next step." },
+    ],
+    industry: { label: "Explore Banking & Finance", href: "/industries/banking-finance" },
+  },
+];
+
+export const enterpriseCases = [
+  {
+    id: "gerrys-dnata", slug: "gerrys-dnata", name: "Gerry’s dnata",
+    title: "Gerry’s dnata — Customer Support & Tariff Intelligence",
+    headline: "Tariff intelligence, closer to the conversation.",
+    description: "An enterprise AI implementation for Gerry’s dnata, focused on customer support and tariff intelligence.",
+    href: "/case-studies/gerrys-dnata", image: media("case-aviation-glass"),
+    imageAlt: "An abstract glass aircraft and violet route, created for the aviation intelligence case.",
+    imageWidth: 1024, imageHeight: 1024,
+    status: "Enterprise implementation", clientLabel: "Gerry’s dnata",
+    breadcrumbLabel: "Gerry’s dnata", readLabel: "Read the Gerry’s dnata case",
+    integrationTitle: "Support with escalation and control.",
+    integrationDescription: "Plain-language answers bring tariff knowledge into the conversation. Uncertain cases have a path to escalation, with control retained in the support workflow.",
+    challenge: "Tariff and quotation queries arrived through several channels, while the answers lived across rate sheets, documents and individual expertise. Response time and consistency depended on who was available.",
+    built: [
+      { title: "Tariff intelligence", description: "Bring applicable tariff information into the support workflow." },
+      { title: "Plain-language support", description: "A support assistant that answers questions in plain language with the applicable tariff." },
+      { title: "Escalation & control", description: "Route uncertain cases for attention instead of treating every answer as settled." },
+    ],
+    relatedProduct: { label: "Explore contact-centre intelligence", href: "/solutions#contact-centre" },
+    industry: { label: "Travel & Hospitality", href: "/industries/travel-hospitality" },
+  },
+  {
+    id: "private-bank-voice-poc", slug: "private-bank-voice-poc", name: "Anonymous local-bank POC",
+    title: "Private voice intelligence, tested inside a bank.",
+    headline: "Private voice intelligence, tested inside a bank.",
+    description: "A KINLU Voice proof of concept for a leading local bank, bringing Urdu and English interactions together with predictive intelligence.",
+    href: "/case-studies/private-bank-voice-poc", image: media("poc-voice-panels"),
+    imageAlt: "Layered translucent panels representing private voice intelligence; conceptual artwork with no client identifiers.",
+    imageWidth: 848, imageHeight: 1264,
+    status: "Proof of concept", clientLabel: "Leading local bank — name withheld",
+    breadcrumbLabel: "Private bank POC", readLabel: "Read the bank proof of concept",
+    integrationTitle: "Designed for a private AI environment.",
+    integrationDescription: "Designed to integrate with existing contact-centre infrastructure and run inside the organisation’s approved private AI environment.",
+    challenge: "Explore private contact-centre intelligence that understands natural Urdu and English and connects customer conversations with a predictive layer.",
+    environment: "Designed to integrate with existing contact-centre infrastructure and run inside the organisation’s approved private AI environment.",
+    built: [
+      { title: "Natural interactions", description: "Automate customer interactions in Urdu and English with KINLU Voice." },
+      { title: "Predictive intelligence", description: "Churn prediction, customer segmentation, lifetime value forecasting and next-best-action recommendations, powered by KINLU." },
+      { title: "Private environment", description: "An approach designed around existing infrastructure and the organisation’s approved private AI environment." },
+    ],
+    relatedProduct: { label: "Explore KINLU Voice", href: "/products/kinlu-voice" },
+    industry: { label: "Banking & Finance", href: "/industries/banking-finance" },
+  },
+  {
+    id: "cleanroom-ems", slug: "cleanroom-ems", name: "Genix",
+    title: "Genix — Cleanroom Environmental Monitoring",
+    headline: "Environmental data, made useful.",
+    description: "A monitoring application for Genix pharmaceutical cleanrooms, connecting environmental telemetry with an operational web interface.",
+    href: "/case-studies/cleanroom-ems", image: "/media/work-cleanroom-v2.webp",
+    imageAlt: "Conceptual filtration layers and glass channels crossed by a violet light trace.",
+    imageWidth: 1200, imageHeight: 800,
+    status: "Enterprise project", clientLabel: "Genix",
+    breadcrumbLabel: "Genix", readLabel: "Read the Genix case", featured: false,
+    challenge: "Cleanroom teams need environmental readings in a form they can inspect while managing daily operations. This project connects monitoring data from Genix pharmaceutical cleanrooms to a web interface designed around that work.",
+    built: [
+      { title: "Environmental data", description: "Bring readings from the cleanroom environment into a single monitoring application." },
+      { title: "Operational view", description: "Present telemetry in a browser interface so the information is easier to review in context." },
+      { title: "Built for the setting", description: "Shape the interface around the needs of a pharmaceutical cleanroom rather than a generic analytics dashboard." },
+    ],
+    integrationTitle: "Environmental data, made useful.",
+    integrationDescription: "The work illustrates how operational data can become a focused interface for the people who use it.",
+    relatedProduct: { label: "Explore productisation & engineering", href: "/what-we-do#productisation" },
+    industry: { label: "Pharmaceutical", href: "/industries/pharmaceutical" },
+  },
+];

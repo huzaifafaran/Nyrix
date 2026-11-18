@@ -1,0 +1,24 @@
+# Release allowlist: private intake, archives, logs and working documents never upload.
+*
+!src
+!src/**
+!public
+!public/**
+!api
+!api/**
+!scripts
+!scripts/generate-static.cjs
+!scripts/generate-nyrix-knowledge.cjs
+!package.json
+!package-lock.json
+!postcss.config.js
+!tailwind.config.js
+!vercel.json
+!.vercelignore
+src/**/*.test.js
+src/setupTests.js
+**/*.zip
+**/*.docx
+**/*.pdf
+**/.env*
+**/*.map

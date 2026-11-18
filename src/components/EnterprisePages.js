@@ -18,8 +18,9 @@ import "./EnterprisePages.css";
 import { OfferingIcon } from "./EnterpriseIcons";
 import TeamShowcase from "./TeamShowcase";
 import EmphasizedTitle from "./EmphasizedTitle";
+import InquiryForm from "./InquiryForm";
 
-const productDirectoryOrder = { kinlu: 0, numaya: 1, artifex: 2, veeko: 3 };
+const productDirectoryOrder = { kinlu: 0, "kinlu-voice": 1 };
 const productDirectoryItems = [...products].sort(
   (first, second) => (productDirectoryOrder[first.slug] ?? 99) - (productDirectoryOrder[second.slug] ?? 99),
 );
@@ -108,9 +109,9 @@ export function CompanyPage() {
   return (
     <div className="enterprise-page">
       <Intro section="Company" title="Applied AI, built around real work.">
-        Nyrix brings together AI product development, advisory and business
-        transformation. Our work spans predictive analytics, creative tools and
-        operational systems.
+        Nyrix is a Decision Sciences & Applied AI company. We combine strategy,
+        machine learning and software engineering to move important business
+        questions into working, governed systems.
       </Intro>
       <section className="enterprise-section site-container split-layout">
         <h2 className="section-heading">
@@ -173,6 +174,19 @@ export function CompanyPage() {
             </figure>
           </Link>
         </div>
+      </section>
+      <section className="site-container company-careers-invitation" aria-labelledby="company-careers-title">
+        <div>
+          <h2 id="company-careers-title">Your next chapter in applied AI.</h2>
+          <p>Get to know our work and introduce yourself.</p>
+        </div>
+        <Link className="text-link" to="/careers">
+          Explore careers <span aria-hidden="true">↗</span>
+        </Link>
+      </section>
+      <section className="enterprise-section site-container revamp-company-research">
+        <figure><img src="/media/enterprise/rd-research-architecture.webp" alt="" width="1152" height="928" loading="lazy" /></figure>
+        <div><p className="section-kicker">Research & development</p><h2 className="section-heading">Research depth for applied enterprise AI.</h2><p className="section-copy">Applied research, model development and a connection between academic thinking and enterprise delivery.</p><Link className="text-link" to="/company/research">Explore our research <span aria-hidden="true">↗</span></Link></div>
       </section>
       <ContactPrompt />
     </div>
@@ -246,7 +260,7 @@ export function TeamPage() {
       >
         The people behind our products, architecture and client work.
       </Intro>
-      <TeamShowcase initialIndex={1} showViewAll={false} isFullPage={true} />
+      <TeamShowcase showViewAll={false} isFullPage={true} />
       <ContactPrompt title="Start a conversation with our team." />
     </div>
   );
@@ -591,7 +605,7 @@ export function ArticlesPage() {
               <input
                 id="article-search"
                 type="search"
-                placeholder="Search by topic, keyword, or chapter..."
+                placeholder="Topic or chapter"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -845,7 +859,7 @@ export function PodcastsPage() {
               <input
                 id="podcast-search"
                 type="search"
-                placeholder="Search by topic, guest name, or discussion..."
+                placeholder="Topic or guest"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -873,7 +887,7 @@ export function PodcastsPage() {
               >
                 <option value="all">All episodes</option>
                 <option value="published">Published</option>
-                <option value="upcoming">Upcoming premiere</option>
+                <option value="listed">Episode listing</option>
               </select>
             </div>
           </div>
@@ -928,7 +942,7 @@ export function PodcastsPage() {
                     href={episode.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${episode.status === "upcoming" ? "View premiere for" : "Watch"} ${episode.title} (opens in a new tab)`}
+                    aria-label={`${episode.status === "listed" ? "View on YouTube:" : "Watch"} ${episode.title} (opens in a new tab)`}
                   >
                     <img
                       src={episode.thumbnail}
@@ -941,21 +955,13 @@ export function PodcastsPage() {
                   <div className="ep-episode-meta">
                     <span>Episode {String(epNum).padStart(2, "0")}</span>
                     <span>
-                      {episode.status === "upcoming"
-                        ? "Upcoming"
-                        : episode.duration}
+                      {episode.status === "listed" ? "YouTube" : episode.duration}
                     </span>
                   </div>
                   <h2>{episode.topic}</h2>
                   <p className="muted">With {episode.guest}</p>
                   <p>{episode.description}</p>
-                  {episode.status === "upcoming" ? (
-                    <p className="ep-premiere">
-                      <time dateTime={episode.premieresAt}>
-                        {episode.premiereLabel}
-                      </time>
-                    </p>
-                  ) : (
+                  {episode.publishedAt && (
                     <p className="muted">
                       <time dateTime={episode.publishedAt}>
                         {new Date(
@@ -975,9 +981,7 @@ export function PodcastsPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {episode.status === "upcoming"
-                      ? "View premiere"
-                      : "Watch episode"}
+                    {episode.status === "listed" ? "View on YouTube" : "Watch episode"}
                     <span className="ep-sr-only">
                       {" "}
                       {epNum} (opens in a new tab)
@@ -1008,10 +1012,11 @@ export function PodcastsPage() {
 export function ContactPage() {
   return (
     <div className="enterprise-page">
-      <Intro section="Contact" title="Tell us what you’re working on.">
-        Start a conversation about an AI product, a business workflow or your
-        organization’s next step with AI.
+      <Intro section="Contact" title="Bring us the decision that matters.">
+        We start with the business problem, then build the intelligence to solve it.
+        Tell us about the decision, workflow or customer experience you want to improve.
       </Intro>
+      <InquiryForm />
       <section className="enterprise-section site-container">
         <div className="content-grid">
           <article className="content-card">

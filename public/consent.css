@@ -1,0 +1,37 @@
+/* First-party consent, inheriting the existing Nyrix enterprise system. */
+#nyrix-consent-root { color: #000; font-family: var(--font-body, "Inter", sans-serif); font-size: 14px; line-height: 1.6; }
+#nyrix-consent-root *, #nyrix-consent-root *::before, #nyrix-consent-root *::after { box-sizing: border-box; }
+#nyrix-consent-root [hidden] { display: none !important; }
+#nyrix-consent-root h2, #nyrix-consent-root h3, #nyrix-consent-root p { margin: 0; color: #000; }
+#nyrix-consent-root h2 { font-family: var(--font-display, "IBM Plex Sans", sans-serif); font-size: 21px; font-weight: 500; line-height: 1.3; letter-spacing: -.02em; }
+#nyrix-consent-root h3, #nyrix-consent-root strong { font-weight: 600; }
+#nyrix-consent-root p { margin-top: 10px; }
+#nyrix-consent-root a { color: #000; text-decoration: underline; text-underline-offset: 3px; }
+#nyrix-consent-root button { min-height: 44px; border: 1px solid #000; border-radius: var(--radius-small, 8px); padding: 10px 14px; background: #fff; color: #000; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer; line-height: 1.4; }
+#nyrix-consent-root button:hover { background: #f5f5f7; color: #000; }
+#nyrix-consent-root :focus-visible { outline: 3px solid var(--color-accent, #7045ba); outline-offset: 3px; }
+.nyrix-consent-banner { position: fixed; z-index: 2000; bottom: 20px; left: 20px; right: 20px; margin-inline: auto; max-width: 1120px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; gap: 24px; padding: 20px 24px; border: 1px solid #e3dfe9; border-radius: var(--radius-card, 12px); background: #fff; box-shadow: 0 10px 40px rgba(0,0,0,.12); }
+.nyrix-consent-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.nyrix-consent-message:empty { display: none; }
+.nyrix-consent-message:not(:empty) { font-size: 13px; font-weight: 500; }
+body.nyrix-consent-banner-visible { padding-bottom: var(--nyrix-consent-offset, 220px); }
+body.nyrix-consent-dialog-open { overflow: hidden; }
+.nyrix-consent-overlay { position: fixed; z-index: 2100; inset: 0; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(0,0,0,.45); }
+.nyrix-consent-dialog { width: min(600px, 100%); max-height: calc(100dvh - 40px); overflow-y: auto; overscroll-behavior: contain; padding: 28px; border-radius: var(--radius-card, 12px); background: #fff; color: #000; box-shadow: 0 20px 70px rgba(0,0,0,.16); }
+.nyrix-consent-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.nyrix-consent-category { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0; margin-top: 18px; border-top: 1px solid #e3dfe9; }
+.nyrix-consent-category + .nyrix-consent-category { margin-top: 0; border-bottom: 1px solid #e3dfe9; }
+.nyrix-consent-category p, .nyrix-consent-category > span > span { display: block; margin-top: 5px; font-size: 13px; }
+.nyrix-consent-category > span:last-child { flex-shrink: 0; font-size: 12px; }
+.nyrix-consent-category input { flex: 0 0 auto; width: 22px; height: 22px; accent-color: #000; cursor: pointer; }
+.nyrix-consent-dialog > .nyrix-consent-actions { margin-top: 24px; }
+.enterprise-site .site-footer .footer-consent-button { border: 0; border-radius: var(--radius-small, 8px); padding: 0; background: transparent; color: #fff; font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.enterprise-site .site-footer .footer-consent-button:hover { color: #fff; }
+.enterprise-site .site-footer .footer-consent-button:focus-visible { outline: 2px solid #fff; outline-offset: 5px; }
+@media (max-width: 760px) {
+  .nyrix-consent-banner { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 18px; left: 12px; right: 12px; bottom: 12px; }
+  .nyrix-consent-banner h2 { font-size: 19px !important; }
+  .nyrix-consent-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nyrix-consent-actions button:last-child { grid-column: 1 / -1; }
+  .nyrix-consent-dialog { padding: 22px; }
+}
