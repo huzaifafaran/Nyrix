@@ -23,5 +23,20 @@ function retrievePublicContext({ query = '', maxChars = 8000 } = {}) {
   }
   return { text: chunks.join('\n\n'), sources };
 }
-module.exports = { allowedActionIds, resolveAction, retrievePublicContext };
+function semanticCatalog() {
+  return entries.map(({id, title, text}) => ({id, title, summary: text.slice(0, 75)}));
+}
+function contextForIds(ids, maxChars = 8000) {
+  const lookup = new Map(entries.map(entry => [entry.id, entry]));
+  const sources = [], chunks = []; let size = 0;
+  for (const id of [...new Set(ids)].slice(0, 8)) {
+    const entry = lookup.get(id); if (!entry) continue;
+    const chunk = `[${entry.id}] ${entry.title}: ${entry.text}`;
+    const needed = chunk.length + (chunks.length ? 2 : 0);
+    if (size + needed > Math.max(0, Math.min(maxChars, 12000))) continue;
+    chunks.push(chunk); sources.push({id: entry.id, title: entry.title, path: entry.path, url: entry.path}); size += needed;
+  }
+  return {text: chunks.join('\n\n'), sources};
+}
+module.exports = { allowedActionIds, resolveAction, retrievePublicContext, semanticCatalog, contextForIds };
 

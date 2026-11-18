@@ -1,6 +1,6 @@
 "use strict";
 const {config,cost,fault,groundedOutput,identities,readBody,sameOrigin,selectTier,validate,LIMITS}=require('./nyrixgpt/_core.cjs');
-const {createProvider,requestFor}=require('./nyrixgpt/_provider.cjs');
+const {createProvider,requestFor,selectionFor}=require('./nyrixgpt/_provider.cjs');
 const {createLedger}=require('./nyrixgpt/_ledger.cjs');
 const {createPublicAnswerCache}=require('./nyrixgpt/_cache.cjs');
 const MESSAGES={disabled:'NyrixGPT is currently unavailable. You can explore the site or contact the team.',unavailable:'NyrixGPT is temporarily unavailable. Please try again later.',invalid_request:'Please shorten your message or check the request and try again.',rate_limited:'Too many requests are in progress. Please wait before trying again.',daily_limit:'NyrixGPT has reached its daily question limit. Please return tomorrow or contact the team.',budget_exhausted:'NyrixGPT has reached its usage limit. Please try again later or contact the team.',duplicate_request:'This request was already received. Start a new request if you want to try again.',provider_error:'NyrixGPT could not complete this response. Please try again later.',timeout:'The response took too long. Please try again later.'};
@@ -34,27 +34,45 @@ function createNyrixGptHandler({env=process.env,ledger:injectedLedger,knowledge:
   try{
    ledger=injectedLedger||createLedger({databaseUrl:cfg.databaseUrl});provider=injectedProvider||createProvider();knowledge=injectedKnowledge||loadKnowledge();
    if(!Array.isArray(knowledge.allowedActionIds)||typeof knowledge.resolveAction!=='function'||knowledge.allowedActionIds.some(id=>typeof id!=='string'||id.length>100)||knowledge.allowedActionIds.length>128)throw fault('unavailable');
-   const found=await knowledge.retrievePublicContext({query:input.message,maxChars:LIMITS.knowledgeChars});
+   let found=await knowledge.retrievePublicContext({query:input.message,maxChars:LIMITS.knowledgeChars});
    if(typeof found?.text!=='string'||found.text.length>LIMITS.knowledgeChars||!Array.isArray(found.sources)||found.sources.length>8)throw fault('unavailable');
-   const sources=found.sources.map((source,index)=>{
+   const sourceRecords=records=>records.map((source,index)=>{
     if(typeof source.title!=='string'||source.title.length>180||typeof source.path!=='string'||!/^\/(?!\/)[a-zA-Z0-9/_#?%=&.~-]*$/.test(source.path)||source.path.length>180)throw fault('unavailable');
     const id=source.id??`S${index+1}`;
     if(typeof id!=='string'||!/^[-a-zA-Z0-9_]{1,100}$/.test(id))throw fault('unavailable');
     return {id,title:source.title,url:source.path};
    });
+   let sources=sourceRecords(found.sources);
    if(new Set(sources.map(source=>source.id)).size!==sources.length)throw fault('unavailable');
-   const payload=requestFor({input,context:found.text,sourceList:sources,actionIds:knowledge.allowedActionIds,cfg,stream:wantsStream});
+   let payload=requestFor({input,context:found.text,sourceList:sources,actionIds:knowledge.allowedActionIds,cfg,stream:wantsStream});
+   const semantic=typeof knowledge.semanticCatalog==='function'&&typeof knowledge.contextForIds==='function';
+   const selector=semantic?selectionFor({input,catalog:knowledge.semanticCatalog(),cfg}):null;
    // Byte-level upper bound plus protocol allowance, not a chars/4 guess.
-   inputTokenUpper=Buffer.byteLength(JSON.stringify(payload),'utf8')+4096;
-   if(inputTokenUpper>LIMITS.inputTokens)throw fault('invalid_request',422);
-   reservedMicro=Math.max(1,cost({inputTokens:inputTokenUpper,outputTokens:LIMITS.outputTokens},cfg));
+   inputTokenUpper=Buffer.byteLength(JSON.stringify(payload),'utf8')+4096+(semantic?Buffer.byteLength(JSON.stringify(selector),'utf8')+14000:0);
+   if(inputTokenUpper>(semantic?LIMITS.inputTokens*2:LIMITS.inputTokens))throw fault('invalid_request',422);
+   const outputTokenUpper=LIMITS.outputTokens+(semantic?256:0);
+   reservedMicro=Math.max(1,cost({inputTokens:inputTokenUpper,outputTokens:outputTokenUpper},cfg));
    const ids=identities(req,input,{...cfg,vercel:env.VERCEL==='1'},now());
    reservation=await ledger.reserve({...ids,reservedMicro,accountingMode:cfg.accountingMode});
    if(!reservation?.allowed){const code=['disabled','budget_exhausted','daily_limit','rate_limited','duplicate_request'].includes(reservation?.code)?reservation.code:'unavailable';throw Object.assign(fault(code,code==='duplicate_request'?409:['budget_exhausted','daily_limit','rate_limited'].includes(code)?429:503),{retryAfter:reservation?.retryAfter});}
    if(typeof reservation.id!=='string')throw fault('unavailable');
    if(controller.signal.aborted||env.NYRIXGPT_KILL_SWITCH==='true')throw fault('disabled');
-   const useCache=env.NYRIXGPT_PUBLIC_CACHE_ENABLED!=='false';
+   // Semantic selection and evidence must stay paired; bypass the legacy FAQ cache.
+   const useCache=!semantic&&env.NYRIXGPT_PUBLIC_CACHE_ENABLED!=='false';
    const cached=useCache?cache.get(input,cfg):null;
+   let selectionUsage=null;
+   if(semantic&&!cached){
+    phase='provider';
+    const selected=await abortable(provider.complete({payload:selector,cfg,signal:controller.signal}),controller.signal);
+    if(!selected?.data||!Array.isArray(selected.data.ids)||selected.data.ids.length>8||selected.data.ids.some(id=>typeof id!=='string'||!/^[-a-zA-Z0-9_]{1,100}$/.test(id)))throw fault('provider_error',502);
+    selectionUsage=selected.usage;
+    found=knowledge.contextForIds(selected.data.ids,LIMITS.knowledgeChars);
+    if(typeof found?.text!=='string'||found.text.length>LIMITS.knowledgeChars||!Array.isArray(found.sources)||found.sources.length>8)throw fault('unavailable');
+    sources=sourceRecords(found.sources);
+    if(new Set(sources.map(source=>source.id)).size!==sources.length)throw fault('unavailable');
+    payload=requestFor({input,context:found.text,sourceList:sources,actionIds:knowledge.allowedActionIds,cfg,stream:wantsStream});
+    if(Buffer.byteLength(JSON.stringify(selector),'utf8')+Buffer.byteLength(JSON.stringify(payload),'utf8')+4096>inputTokenUpper)throw fault('unavailable');
+   }
    res.setHeader('X-NyrixGPT-Cache',cached?'HIT':useCache&&cache.eligible(input,cfg)?'MISS':'BYPASS');
    if(wantsStream){res.statusCode=200;res.setHeader('Content-Type','text/event-stream; charset=utf-8');res.setHeader('X-Accel-Buffering','no');res.flushHeaders?.();streamStarted=true;}
    let emitted='';
@@ -64,12 +82,12 @@ function createNyrixGptHandler({env=process.env,ledger:injectedLedger,knowledge:
     if(typeof delta!=='string'||emitted.length+delta.length>LIMITS.answerChars)throw fault('provider_error',502);
     emitted+=delta;if(wantsStream)event('delta',{delta});
    }}),controller.signal);
-   usage=result.usage;
+   usage=semantic&&!cached?(selectionUsage&&result.usage?{inputTokens:selectionUsage.inputTokens+result.usage.inputTokens,outputTokens:selectionUsage.outputTokens+result.usage.outputTokens}:null):result.usage;
    if(controller.signal.aborted)throw Object.assign(fault('timeout',504),{name:'AbortError'});
    const output=groundedOutput(result.data,knowledge,sources);
    if(cached&&wantsStream)event('delta',{delta:output.answer});
    if(emitted&&!output.answer.startsWith(emitted))throw fault('provider_error',502);
-   const verified=usage&&Number.isSafeInteger(usage.inputTokens)&&usage.inputTokens>=0&&usage.inputTokens<=inputTokenUpper&&Number.isSafeInteger(usage.outputTokens)&&usage.outputTokens>=0&&usage.outputTokens<=LIMITS.outputTokens;
+   const verified=usage&&Number.isSafeInteger(usage.inputTokens)&&usage.inputTokens>=0&&usage.inputTokens<=inputTokenUpper&&Number.isSafeInteger(usage.outputTokens)&&usage.outputTokens>=0&&usage.outputTokens<=outputTokenUpper;
    phase='settle';settlementAttempted=true;
    const settled=await ledger.settle({id:reservation.id,verified:!!verified,actualMicro:verified?cost(usage,cfg):null,inputTokens:verified?usage.inputTokens:null,outputTokens:verified?usage.outputTokens:null,outcome:'success'});
    if(settled===false)throw fault('unavailable');

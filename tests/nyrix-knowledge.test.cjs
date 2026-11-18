@@ -10,6 +10,16 @@ test('founder questions retrieve both public co-founder profiles', () => {
   }
 });
 
+test('semantic selection resolves only approved source IDs within limits', () => {
+  const k = require('../api/_nyrixgpt-knowledge.cjs');
+  const catalog = k.semanticCatalog();
+  assert.ok(catalog.some(x => x.id === 'team_0' && x.title === 'Sarim bin Tahir'));
+  const result = k.contextForIds(['team_1', 'team_0', 'invented', 'team_1'], 6000);
+  assert.deepEqual(result.sources.map(s => s.id), ['team_1', 'team_0']);
+  assert.match(result.text, /Co-founder/);
+  assert.ok(result.text.length <= 6000);
+});
+
 test('retrieval grounds voice questions in public source pages', () => {
   const k = require('../api/_nyrixgpt-knowledge.cjs');
   const result = k.retrievePublicContext({ query: 'Urdu customer calls voice', maxChars: 6000 });
