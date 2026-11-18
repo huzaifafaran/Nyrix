@@ -7,9 +7,11 @@ function resolveAction(id) {
 }
 function retrievePublicContext({ query = '', maxChars = 8000 } = {}) {
   const terms = [...new Set(String(query).toLowerCase().match(/[a-z0-9]{3,}/g) || [])];
+  const asksAboutFounders = /\b(?:co[\s-]*)?found(?:er(?:s)?|ed|ing)\b/i.test(String(query));
   const ranked = entries.map((entry, index) => {
     const title = entry.title.toLowerCase(), text = entry.text.toLowerCase();
-    return { entry, index, score: terms.reduce((n, term) => n + (title.includes(term) ? 4 : 0) + (text.includes(term) ? 1 : 0), 0) };
+    const founderMatch = asksAboutFounders && entry.id.startsWith('team_') && /\bco[\s-]*founder\b/i.test(entry.text);
+    return { entry, index, score: terms.reduce((n, term) => n + (title.includes(term) ? 4 : 0) + (text.includes(term) ? 1 : 0), 0) + (founderMatch ? 20 : 0) };
   }).filter(x => x.score > 0).sort((a, b) => b.score - a.score || a.index - b.index);
   const sources = [], chunks = []; let size = 0;
   for (const { entry } of ranked) {
