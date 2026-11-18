@@ -8,8 +8,8 @@ import './NyrixAssistantHost.css';
 export function findAction(id) {
   return typeof id === 'string' && Object.prototype.hasOwnProperty.call(actions, id) ? { id, ...actions[id] } : null;
 }
-export function prepareInquiry(blueprint) {
-  if (!blueprint || typeof blueprint.problem !== 'string') return '';
+export function prepareInquiry(blueprint, conversation = []) {
+  if (!blueprint || typeof blueprint.problem !== 'string') return conversation.filter(item => typeof item === 'string').slice(-3).join('\n\n').slice(0, 3000);
   const lines = [`Problem: ${blueprint.problem}`];
   if (typeof blueprint.outcome === 'string' && blueprint.outcome) lines.push(`Desired outcome: ${blueprint.outcome}`);
   if (Array.isArray(blueprint.proposedAiWorkflow)) lines.push(`Proposed workflow: ${blueprint.proposedAiWorkflow.filter(x => typeof x === 'string').join('; ')}`);
@@ -60,7 +60,7 @@ export default function NyrixAssistantHost() {
       window.open(bookingUrl, '_blank', 'noopener,noreferrer');
       return { ok: true, message: 'Your browser was asked to open the booking page. No appointment has been made.' };
     }
-    const draft = id === 'prepare_inquiry' ? prepareInquiry(options.blueprint) : '';
+    const draft = id === 'prepare_inquiry' ? prepareInquiry(options.blueprint, options.conversation) : '';
     const fragment = action.path.split('#')[1];
     setPreviousLocation(`${location.pathname}${location.search}${location.hash}`);
     navigate(action.path, { state: draft ? { nyrixInquiryDraft: draft } : undefined });

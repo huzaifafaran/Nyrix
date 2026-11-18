@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import actionRegistry from '../content/nyrixGptActions.json';
+import { bookingUrl } from '../content/nyrixContent';
 import './NyrixGPT.css';
 
 const SESSION_KEY = 'nyrixgpt.session.v1';
@@ -107,18 +108,11 @@ export async function readNyrixGPTResponse(response, onDelta) {
   } finally { reader.releaseLock?.(); }
 }
 
-function contextualSuggestions(context) {
-  if (context?.path?.startsWith('/products/')) return ['What could this product help us decide?', 'What data would we need to get started?'];
-  if (context?.path?.startsWith('/industries/')) return ['Which workflows could we improve first?', 'Help me outline a practical first project'];
-  if (context?.path === '/careers') return ['How can I express interest in joining Nyrix?', 'What does the team work on?'];
-  return ['Help me find the right starting point', 'Turn a business problem into a project brief'];
-}
-
 function ChatIcon() {
   return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M5 4.5h14a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H9l-5.5 4V6A1.5 1.5 0 0 1 5 4.5Z" /><path d="M8 9h8M8 12h5" /></svg>;
 }
 
-export default function NyrixGPT({ context = { path: '/' }, suggestions, tours = [], onAction, resolveNavigation, canReturn = false }) {
+export default function NyrixGPT({ context = { path: '/' }, tours = [], onAction, resolveNavigation, canReturn = false }) {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [mobile, setMobile] = useState(false);
@@ -143,10 +137,6 @@ export default function NyrixGPT({ context = { path: '/' }, suggestions, tours =
   const currentRequest = useRef(null);
   const lastRequest = useRef(null);
   const active = useRef(false);
-  const tourPanel = useRef(null);
-  const restoreTourFocus = useRef(false);
-  const confirmationSource = useRef(null);
-  const prompts = suggestions || contextualSuggestions(context);
 
   useEffect(() => { setMounted(true); active.current = true; return () => { active.current = false; currentRequest.current?.controller.abort(); }; }, []);
   useEffect(() => {
@@ -173,19 +163,6 @@ export default function NyrixGPT({ context = { path: '/' }, suggestions, tours =
     };
   }, [open, mobile]);
   useEffect(() => { if (open && messages.length) lastMessage.current?.scrollIntoView?.({ block: 'nearest' }); }, [messages, open]);
-  useEffect(() => { if (tour) tourPanel.current?.focus(); }, [tour, stepIndex]);
-  useEffect(() => { if (!tour && restoreTourFocus.current) { trigger.current?.focus(); restoreTourFocus.current = false; } }, [tour]);
-  useEffect(() => {
-    if (confirmation) {
-      const review = panel.current?.querySelector('.nyrixgpt-confirmation');
-      review?.scrollIntoView?.({ block: 'nearest' });
-      review?.querySelector('button')?.focus();
-    } else if (confirmationSource.current) {
-      const source = confirmationSource.current;
-      confirmationSource.current = null;
-      if (document.contains(source)) source.focus();
-    }
-  }, [confirmation]);
   useEffect(() => {
     if (!error) return;
     const notice = panel.current?.querySelector('.nyrixgpt-error');
@@ -201,6 +178,20 @@ export default function NyrixGPT({ context = { path: '/' }, suggestions, tours =
     if (busy) return;
     const text = retry ? lastRequest.current?.message : draft.trim();
     if (!text || text.length > MAX_MESSAGE) { setError({ message: 'Enter a question of up to 2,000 characters.' }); composer.current?.focus(); return; }
+    if (!retry && confirmation && /^(?:yes|yeah|yep|sure|confirm|go ahead|proceed|haan|han|ji|theek hai|kar do|krdo|jee|جی|ہاں|हाँ|जी)(?:[,.! ]+(?:please|go ahead|proceed|send it|open it|kar do|krdo|bhej do|please do))*[.! ]*$/i.test(text)) {
+      setMessages(previous => [...previous, { id: newId(), role: 'user', content: text }]); setDraft('');
+      await executeAction(confirmation, true); return;
+    }
+    if (!retry && confirmation && /^(?:no|nah|cancel|stop|nahi|nhi|nahin|mat karo|नहीं|نہیں)[.! ]*$/i.test(text)) {
+      setMessages(previous => [...previous, { id: newId(), role: 'user', content: text }, { id: newId(), role: 'assistant', content: confirmation.type === 'submit_inquiry' ? 'Okay, I will not send the enquiry.' : 'Okay, I will not open it.' }]); setConfirmation(null); setDraft(''); return;
+    }
+    if (!retry && confirmation) setConfirmation(null);
+    if (!retry && tour && /^(?:next|continue|agla|aage|اگلا|आगे|skip|exit|exit tour|stop tour|end tour)[.! ]*$/i.test(text)) {
+      setMessages(previous => [...previous, { id: newId(), role: 'user', content: text }]); setDraft('');
+      if (/^(?:exit|stop|end)/i.test(text)) { setTour(null); setMessages(previous => [...previous, { id: newId(), role: 'assistant', content: 'Tour ended. What would you like to explore next?' }]); }
+      else await tourMove(stepIndex + 1, !/^skip/i.test(text));
+      return;
+    }
     if (!window.crypto?.getRandomValues) { setError({ message: 'A secure browser connection is required. Please reload the website over HTTPS.' }); return; }
     session.current = session.current || sessionId();
     let history = boundedHistory(messages);
@@ -227,13 +218,13 @@ export default function NyrixGPT({ context = { path: '/' }, suggestions, tours =
       if (controller.signal.aborted || !active.current || currentRequest.current !== request) return;
       if (typeof result.answer !== 'string' || !result.answer.trim() || result.answer.length > 24000) throw failure(null, 'NyrixGPT returned an incomplete response. Please retry.');
       const citations = (Array.isArray(result.citations) ? result.citations : []).filter(c => c && typeof c.title === 'string' && safeUrl(c.url)).slice(0, 8);
-      const actions = (Array.isArray(result.actions) ? result.actions : []).filter(a => a && typeof a.id === 'string' && Object.prototype.hasOwnProperty.call(actionRegistry, a.id)).slice(0, 5).map(action => ({ ...action, ...actionRegistry[action.id], type: action.id === 'booking' ? 'booking' : action.id === 'prepare_inquiry' ? 'prepare_inquiry' : 'navigate' }));
+      const actions = (Array.isArray(result.actions) ? result.actions : []).filter(a => a && typeof a.id === 'string' && Object.prototype.hasOwnProperty.call(actionRegistry, a.id)).slice(0, 5).map(action => ({ ...action, ...actionRegistry[action.id] }));
       setMessages(previous => [...previous, { id: `${payload.requestId}-answer`, role: 'assistant', content: result.answer, citations, actions }]);
       if (result.blueprint && typeof result.blueprint === 'object') setBlueprint(result.blueprint);
       setDraft(''); setPartial(''); setStatus('Response ready.');
       const directId = result.autoActionId || resolveNavigation?.(text, actions);
-      const directAction = actions.find(action => action.id === directId && action.type === 'navigate' && !action.requiresConfirmation);
-      if (directAction) await executeAction(directAction);
+      const directAction = actions.find(action => action.id === directId && ['navigate','booking','prepare_inquiry','submit_inquiry','start_tour','return','tour_next','tour_skip','tour_exit','copy_blueprint','download_blueprint'].includes(action.type));
+      if (directAction) await executeAction({ ...directAction, inquiryDraft: result.inquiryDraft }, false, result.blueprint || blueprint, [...messages.filter(item => item.role === 'user').map(item => item.content), text]);
     } catch (reason) {
       if (!active.current || currentRequest.current !== request || controller.signal.aborted) return;
       setPartial(''); setError({ message: reason.message || 'NyrixGPT could not respond. Please retry.', retryAfter: reason.retryAfter }); setStatus('');
@@ -250,19 +241,59 @@ export default function NyrixGPT({ context = { path: '/' }, suggestions, tours =
     if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
     if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
   };
-  const executeAction = async (action, confirmed = false) => {
+  const executeAction = async (action, confirmed = false, blueprintOverride = blueprint, conversationOverride = messages.filter(item => item.role === 'user').map(item => item.content)) => {
     if (actionBusy) return;
-    if (!confirmed && (action.requiresConfirmation || /submit|send|book/i.test(action.type || ''))) { confirmationSource.current = document.activeElement; setConfirmation(action); return; }
+    if (action.type === 'submit_inquiry') {
+      const values = action.inquiryDraft;
+      const userText = conversationOverride.join('\n').toLocaleLowerCase();
+      const valid = values && ['name','email','organisation','decision'].every(key => typeof values[key] === 'string' && values[key].trim()) && ['name','email','organisation'].every(key => userText.includes(values[key].trim().toLocaleLowerCase())) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email) && values.decision.trim().length >= 10;
+      if (!confirmed && !valid) { setMessages(previous => [...previous, { id: newId(), role: 'assistant', content: 'To prepare your enquiry, please share your name, work email, organisation and a short description of the problem.' }]); return; }
+      if (!confirmed) {
+        setConfirmation({ ...action, inquiryDraft: values, requestId: newId() });
+        setMessages(previous => [...previous, { id: newId(), role: 'assistant', content: `Please review before I send this to hello@nyrix.co:\nName: ${values.name}\nEmail: ${values.email}\nOrganisation: ${values.organisation}\nMessage: ${values.decision}\n\nMay I send it? Please confirm or say no.` }]); return;
+      }
+      setActionBusy(true); setError(null); setStatus('Sending your enquiry…');
+      const controller = new AbortController(); const timeout = setTimeout(() => controller.abort(), 15000);
+      try {
+        const response = await fetch('/api/contact', { method:'POST', credentials:'same-origin', headers:{'Content-Type':'application/json',Accept:'application/json'}, signal:controller.signal, body:JSON.stringify({ ...values, website:'', requestId:action.requestId }) });
+        const result = await response.json().catch(() => null);
+        if (!response.ok || result?.ok !== true || typeof result.id !== 'string' || !result.id.trim()) throw new Error(result?.error || 'The enquiry could not be sent. Please try again.');
+        setConfirmation(null); setStatus('Enquiry sent.'); setMessages(previous => [...previous, { id:newId(), role:'assistant', content:'Your enquiry has been submitted. Thank you.' }]);
+      } catch (reason) { setError({ message: reason.name === 'AbortError' ? 'Delivery could not be confirmed. Say yes to retry the same request, or no to cancel.' : (reason.message || 'The enquiry could not be sent. Say yes to retry or no to cancel.') }); setStatus(''); }
+      finally { clearTimeout(timeout); setActionBusy(false); }
+      return;
+    }
+    if (!confirmed && (action.requiresConfirmation || /submit|send|book/i.test(action.type || ''))) {
+      setConfirmation(action);
+      setMessages(previous => [...previous, { id: newId(), role: 'assistant', content: `Would you like me to open the booking page at ${bookingUrl}? No appointment will be made yet. Please confirm or say no.` }]);
+      return;
+    }
     if (action.type === 'start_tour' && action.tourId) {
       const selected = tours.find(item => item.id === action.tourId && item.steps?.length);
       if (selected) { await startTour(selected); setConfirmation(null); return; }
     }
+    if (['tour_next','tour_skip','tour_exit'].includes(action.type)) {
+      if (!tour) { setError({ message: 'There is no active tour. Ask me to show you around first.' }); return; }
+      if (action.type === 'tour_exit') { setTour(null); setMessages(previous => [...previous, { id: newId(), role: 'assistant', content: 'Tour ended. What would you like to explore next?' }]); }
+      else await tourMove(stepIndex + 1, action.type !== 'tour_skip');
+      return;
+    }
+    if (['copy_blueprint','download_blueprint'].includes(action.type)) {
+      if (!blueprintOverride) { setError({ message: 'There is no blueprint yet. Ask me to create one first.' }); return; }
+      try {
+        if (action.type === 'copy_blueprint') await navigator.clipboard.writeText(JSON.stringify(blueprintOverride, null, 2));
+        else { const url = URL.createObjectURL(new Blob([JSON.stringify(blueprintOverride, null, 2)], {type:'application/json'})); const link = document.createElement('a'); link.href = url; link.download = 'nyrix-project-blueprint.json'; link.click(); URL.revokeObjectURL(url); }
+        setMessages(previous => [...previous, { id:newId(), role:'assistant', content:action.type === 'copy_blueprint' ? 'Blueprint copied.' : 'Your browser was asked to download the blueprint.' }]);
+      } catch (_) { setError({ message:'Your browser could not complete that action. Please try again.' }); }
+      return;
+    }
     if (!onAction) { setError({ message: 'This action is unavailable. Please use the website navigation.' }); return; }
     setActionBusy(true); setStatus(''); setError(null);
     try {
-      const result = await onAction(action.id, { confirmed, blueprint, context });
+      const result = await onAction(action.id, { confirmed, blueprint: blueprintOverride, conversation: conversationOverride.slice(-3), context });
       if (result?.ok !== true) throw new Error(result?.error || 'The action was not completed. Please try again.');
       setStatus(result.message || 'Action completed.'); setConfirmation(null);
+      setMessages(previous => [...previous, { id: newId(), role: 'assistant', content: result.message || 'Action completed.' }]);
       if (action.id === 'return_previous') panel.current?.querySelector('[aria-label="Close NyrixGPT"]')?.focus();
     } catch (reason) { setError({ message: reason.message || 'The action was not completed.' }); }
     finally { setActionBusy(false); }
@@ -277,14 +308,14 @@ export default function NyrixGPT({ context = { path: '/' }, suggestions, tours =
   const tourMove = async (next, navigate = true) => {
     if (!tour || actionBusy) return;
     const step = tour.steps[next];
-    if (!step) { restoreTourFocus.current = true; setTour(null); setStatus('Tour finished.'); return; }
+    if (!step) { setTour(null); setMessages(previous => [...previous, { id: newId(), role: 'assistant', content: 'Tour finished. What would you like to explore next?' }]); return; }
     if (navigate && step.actionId) {
       setActionBusy(true);
       try { const result = await onAction?.(step.actionId, { confirmed: false, context, tourId: tour.id }); if (result?.ok !== true) throw new Error(result?.error || 'This tour step is unavailable.'); }
       catch (reason) { setError({ message: reason.message }); setActionBusy(false); return; }
       setActionBusy(false);
     }
-    setError(null); setStepIndex(next);
+    setError(null); setStepIndex(next); setMessages(previous => [...previous, { id: newId(), role: 'assistant', content: `${step.title}. ${step.body || step.description || ''} Say next, skip or exit tour.` }]);
   };
   const startTour = async selected => {
     if (actionBusy) return;
@@ -295,9 +326,8 @@ export default function NyrixGPT({ context = { path: '/' }, suggestions, tours =
       catch (reason) { setError({ message: reason.message }); setActionBusy(false); return; }
       setActionBusy(false);
     }
-    setTour(selected); setStepIndex(0); setOpen(false);
+    setTour(selected); setStepIndex(0); const first = selected.steps[0]; setMessages(previous => [...previous, { id: newId(), role: 'assistant', content: `${first.title}. ${first.body || first.description || ''} Say next, skip or exit tour.` }]);
   };
-  const exitTour = () => { restoreTourFocus.current = true; setTour(null); setError(null); };
   const workspaceKeys = (event, name) => {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
@@ -309,14 +339,9 @@ export default function NyrixGPT({ context = { path: '/' }, suggestions, tours =
     try { sessionStorage.removeItem(SESSION_KEY); } catch (_) { /* Storage is optional. */ }
     composer.current?.focus();
   };
-  const exportBlueprint = () => {
-    const file = new Blob([JSON.stringify(blueprint, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(file); const link = document.createElement('a'); link.href = url; link.download = 'nyrix-project-blueprint.json'; link.click(); URL.revokeObjectURL(url);
-  };
-  const step = tour?.steps[stepIndex];
   if (!mounted) return null;
   return createPortal(<div className="nyrixgpt-root" ref={root}>
-    <button type="button" className="nyrixgpt-trigger" ref={trigger} hidden={open || !!tour} aria-label="Ask NyrixGPT" aria-haspopup="dialog" aria-expanded={open} aria-controls="nyrixgpt-panel" onClick={() => { setOpen(true); setStatus(''); }}><ChatIcon /><span>Ask NyrixGPT</span></button>
+    <button type="button" className="nyrixgpt-trigger" ref={trigger} hidden={open} aria-label="Ask NyrixGPT" aria-haspopup="dialog" aria-expanded={open} aria-controls="nyrixgpt-panel" onClick={() => { setOpen(true); setStatus(''); }}><ChatIcon /><span>Ask NyrixGPT</span></button>
     {open && <div className="nyrixgpt-overlay">
       {mobile && <div className="nyrixgpt-backdrop" aria-hidden="true" onClick={close} />}
       <section id="nyrixgpt-panel" className="nyrixgpt-panel" role="dialog" aria-modal={mobile ? 'true' : undefined} aria-labelledby="nyrixgpt-title" aria-describedby="nyrixgpt-description" ref={panel} onKeyDown={keyDown}>
@@ -327,18 +352,17 @@ export default function NyrixGPT({ context = { path: '/' }, suggestions, tours =
         </div>
         <div className="nyrixgpt-content">
           <div role="tabpanel" id="nyrixgpt-conversation" aria-labelledby="nyrixgpt-tab-conversation" hidden={tab !== 'conversation'}>
-            {!messages.length && <div className="nyrixgpt-welcome"><p className="nyrixgpt-context">{context.title ? `Exploring ${context.title}` : 'Where would you like to begin?'}</p><h3>A clearer<br />next step.</h3><p>Ask about our work, explore a workflow, or shape a first project.</p><div className="nyrixgpt-suggestions">{prompts.slice(0, 4).map((item, i) => { const label = typeof item === 'string' ? item : item.label; return <button key={i} type="button" onClick={() => { setDraft(typeof item === 'string' ? item : item.prompt || label); composer.current?.focus(); }}>{label}<span aria-hidden="true">↗</span></button>; })}</div>{tours.length > 0 && <div className="nyrixgpt-tours">{tours.filter(t => t.steps?.length).map(item => <button type="button" key={item.id} onClick={() => startTour(item)}>Take a tour: {item.title}<span aria-hidden="true">→</span></button>)}</div>}</div>}
+            {!messages.length && <div className="nyrixgpt-welcome"><p className="nyrixgpt-context">{context.title ? `Exploring ${context.title}` : 'Where would you like to begin?'}</p><h3>A clearer<br />next step.</h3><p>Ask about our work, describe a problem, or tell me where you would like to go.</p></div>}
             <div role="log" aria-label="Conversation" aria-live="off" className="nyrixgpt-messages">
-              {messages.map(message => <article className={`nyrixgpt-message nyrixgpt-message--${message.role}`} key={message.id}><h3>{message.role === 'user' ? 'You' : 'NyrixGPT'}</h3><p className="nyrixgpt-message-text">{message.content}</p>{message.citations?.length > 0 && <nav className="nyrixgpt-sources" aria-label="Sources"><h4>Sources</h4>{message.citations.map((citation, i) => <Link to={safeUrl(citation.url)} onClick={event => websiteClick(event, citation.url)} key={`${citation.id}-${i}`}>{citation.title}<span aria-hidden="true">↗</span></Link>)}</nav>}{message.actions?.length > 0 && <div className="nyrixgpt-actions">{message.actions.map(action => <button type="button" key={action.id} disabled={busy || actionBusy} onClick={() => executeAction(action)}>{action.label}<span aria-hidden="true">→</span></button>)}</div>}</article>)}
+              {messages.map(message => <article className={`nyrixgpt-message nyrixgpt-message--${message.role}`} key={message.id}><h3>{message.role === 'user' ? 'You' : 'NyrixGPT'}</h3><p className="nyrixgpt-message-text">{message.content}</p>{message.citations?.length > 0 && <nav className="nyrixgpt-sources" aria-label="Sources"><h4>Sources</h4>{message.citations.map((citation, i) => <Link to={safeUrl(citation.url)} onClick={event => websiteClick(event, citation.url)} key={`${citation.id}-${i}`}>{citation.title}<span aria-hidden="true">↗</span></Link>)}</nav>}</article>)}
               {partial && <article className="nyrixgpt-message nyrixgpt-message--assistant" aria-label="Response in progress"><h3>NyrixGPT</h3><p className="nyrixgpt-message-text">{partial}</p><p className="nyrixgpt-small">Response in progress</p></article>}
               <div ref={lastMessage} />
             </div>
           </div>
           <div role="tabpanel" id="nyrixgpt-blueprint" aria-labelledby="nyrixgpt-tab-blueprint" hidden={tab !== 'blueprint'} className="nyrixgpt-blueprint">
             <h3>Your project blueprint</h3><p>A working draft to review with the Nyrix team.</p>
-            {blueprint ? <><div className="nyrixgpt-blueprint-fields">{BLUEPRINT_FIELDS.map(([key, label]) => { const [parent, child] = key.split('.'); const field = child ? blueprint[parent]?.[child] : blueprint[key]; const id = `nyrixgpt-blueprint-${key.replace('.', '-')}`; return <div key={key}><label htmlFor={id}>{label}</label><textarea id={id} rows={LIST_FIELDS.has(key) ? 3 : 2} maxLength={2000} value={Array.isArray(field) ? field.join('\n') : typeof field === 'string' ? field : ''} onChange={event => { const value = LIST_FIELDS.has(key) ? event.target.value.split('\n') : event.target.value; setBlueprint(previous => child ? { ...previous, [parent]: { ...previous[parent], [child]: value } } : { ...previous, [key]: value }); }} /></div>; })}</div><button type="button" className="nyrixgpt-secondary" onClick={exportBlueprint}>Download draft</button></> : <div className="nyrixgpt-blueprint-empty"><p>Tell us the decision, workflow and constraints in the conversation. Ask NyrixGPT to outline a project blueprint.</p><button type="button" className="nyrixgpt-secondary" onClick={() => { setTab('conversation'); setDraft('Help me create a project blueprint. Ask me about the decision, workflow, data and constraints first.'); composer.current?.focus(); }}>Start a brief</button></div>}
+            {blueprint ? <><div className="nyrixgpt-blueprint-fields">{BLUEPRINT_FIELDS.map(([key, label]) => { const [parent, child] = key.split('.'); const field = child ? blueprint[parent]?.[child] : blueprint[key]; const id = `nyrixgpt-blueprint-${key.replace('.', '-')}`; return <div key={key}><label htmlFor={id}>{label}</label><textarea id={id} rows={LIST_FIELDS.has(key) ? 3 : 2} maxLength={2000} value={Array.isArray(field) ? field.join('\n') : typeof field === 'string' ? field : ''} onChange={event => { const value = LIST_FIELDS.has(key) ? event.target.value.split('\n') : event.target.value; setBlueprint(previous => child ? { ...previous, [parent]: { ...previous[parent], [child]: value } } : { ...previous, [key]: value }); }} /></div>; })}</div></> : <div className="nyrixgpt-blueprint-empty"><p>Tell us the decision, workflow and constraints in the conversation. Ask NyrixGPT to outline a project blueprint.</p></div>}
           </div>
-          {confirmation && <section className="nyrixgpt-confirmation" aria-labelledby="nyrixgpt-confirm-title"><h3 id="nyrixgpt-confirm-title">Review before continuing</h3><p>{confirmation.description || confirmation.label}</p><p>No enquiry or booking is sent until you confirm.</p><div><button type="button" className="nyrixgpt-primary" disabled={actionBusy} onClick={() => executeAction(confirmation, true)}>Confirm {confirmation.label}</button><button type="button" className="nyrixgpt-secondary" disabled={actionBusy} onClick={() => setConfirmation(null)}>Go back</button></div></section>}
           {error && <div className="nyrixgpt-error" role="alert"><p>{error.message}</p>{error.retryAfter && <p>Try again in {error.retryAfter} seconds.</p>}{lastRequest.current && !busy && <button type="button" className="nyrixgpt-secondary" onClick={() => send(true)}>Retry response</button>}<nav aria-label="Continue on the website" className="nyrixgpt-fallback"><Link to="/what-we-do" onClick={event => websiteClick(event, '/what-we-do')}>Explore our approach</Link><Link to="/products" onClick={event => websiteClick(event, '/products')}>Explore products</Link><Link to="/contact" onClick={event => websiteClick(event, '/contact')}>Contact Nyrix</Link></nav></div>}
           <p className="nyrixgpt-status" role="status">{status}</p>
         </div>
@@ -349,6 +373,5 @@ export default function NyrixGPT({ context = { path: '/' }, suggestions, tours =
         </form>
       </section>
     </div>}
-    {tour && step && <section className="nyrixgpt-tour" aria-labelledby="nyrixgpt-tour-title" tabIndex="-1" ref={tourPanel} onKeyDown={event => { if (event.key === 'Escape') exitTour(); }}><div className="nyrixgpt-tour-heading"><p>{tour.title} · {stepIndex + 1} of {tour.steps.length}</p><button type="button" className="nyrixgpt-icon-button" aria-label="Exit tour" onClick={exitTour}>×</button></div><h2 id="nyrixgpt-tour-title">{step.title}</h2><p>{step.body || step.description}</p>{error && <p role="alert">{error.message}</p>}<div className="nyrixgpt-tour-controls"><button type="button" className="nyrixgpt-secondary" disabled={actionBusy} onClick={() => tourMove(stepIndex + 1, false)}>Skip</button><button type="button" className="nyrixgpt-primary" disabled={actionBusy} onClick={() => tourMove(stepIndex + 1)}>{stepIndex + 1 === tour.steps.length ? 'Finish tour' : 'Next'}</button></div></section>}
   </div>, document.body);
 }

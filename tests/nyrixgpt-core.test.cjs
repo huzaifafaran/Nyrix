@@ -1,12 +1,13 @@
 const test=require('node:test');const assert=require('node:assert/strict');const {Readable}=require('node:stream');
 const {config,cost,identities,readBody,validate,groundedOutput}=require('../api/nyrixgpt/_core.cjs');
 const {createLedger}=require('../api/nyrixgpt/_ledger.cjs');const {createConfigHandler}=require('../api/nyrixgpt/config.js');
-test('automatic actions must be returned allowlisted navigation and cannot book or prepare forms',()=>{
+test('automatic actions must be returned in the approved action list',()=>{
  const entries={team:{id:'team',type:'navigate',path:'/company/team'},booking:{id:'booking',type:'booking',requiresConfirmation:true,path:'/contact'},prepare_inquiry:{id:'prepare_inquiry',type:'prepare_inquiry',path:'/contact'}};
  const knowledge={allowedActionIds:Object.keys(entries),resolveAction:id=>entries[id]};
  const base={answer:'Here is the team.',citationIds:[],actionIds:['team'],blueprint:null};
  assert.equal(groundedOutput({...base,autoActionId:'team'},knowledge,[]).autoActionId,'team');
- for(const id of ['booking','prepare_inquiry','https://evil.example']) assert.throws(()=>groundedOutput({...base,actionIds:[id],autoActionId:id},knowledge,[]),/provider_error/);
+ assert.equal(groundedOutput({...base,actionIds:['booking'],autoActionId:'booking'},knowledge,[]).autoActionId,'booking');
+ assert.throws(()=>groundedOutput({...base,actionIds:['https://evil.example'],autoActionId:'https://evil.example'},knowledge,[]),/provider_error/);
  assert.throws(()=>groundedOutput({...base,autoActionId:'booking'},knowledge,[]),/provider_error/);
 });
 const input={sessionId:'0b826af5-a678-42dc-8cc6-dea042c2ec70',requestId:'47a6dbb3-c9b5-4fb1-9f4b-de847b0af510'};

@@ -77,7 +77,8 @@ function identities(req,input,cfg,date=new Date()){
 function cost(usage,cfg){return cfg.freeTier?usage.inputTokens+usage.outputTokens:Math.ceil((usage.inputTokens*cfg.inputRate+usage.outputTokens*cfg.outputRate)/1000000);}
 const stringArray={type:'array',items:{type:'string'}};
 const blueprintFields={problem:{type:'string'},industry:{type:'string'},workflow:{type:'string'},bottleneck:{type:'string'},outcome:{type:'string'},proposedAiWorkflow:stringArray,relevantCapabilities:stringArray,dataAndIntegrations:stringArray,pilot:{type:'object',additionalProperties:false,properties:{scope:{type:'string'},steps:stringArray,humanReview:{type:'string'}},required:['scope','steps','humanReview']},measures:stringArray,assumptions:stringArray,questions:stringArray,guardrails:stringArray};
-const OUTPUT_SCHEMA={type:'object',additionalProperties:false,properties:{answer:{type:'string'},citationIds:stringArray,actionIds:stringArray,autoActionId:{type:['string','null']},blueprint:{anyOf:[{type:'null'},{type:'object',additionalProperties:false,properties:blueprintFields,required:Object.keys(blueprintFields)}]}},required:['answer','citationIds','actionIds','autoActionId','blueprint']};
+const inquiryFields={name:{type:'string'},email:{type:'string'},organisation:{type:'string'},decision:{type:'string'}};
+const OUTPUT_SCHEMA={type:'object',additionalProperties:false,properties:{answer:{type:'string'},citationIds:stringArray,actionIds:stringArray,autoActionId:{type:['string','null']},inquiryDraft:{anyOf:[{type:'null'},{type:'object',additionalProperties:false,properties:inquiryFields,required:Object.keys(inquiryFields)}]},blueprint:{anyOf:[{type:'null'},{type:'object',additionalProperties:false,properties:blueprintFields,required:Object.keys(blueprintFields)}]}},required:['answer','citationIds','actionIds','autoActionId','inquiryDraft','blueprint']};
 function validateBlueprint(value){
  if(value===null)return null;
  if(!exactKeys(value,Object.keys(blueprintFields))||Object.keys(value).length!==Object.keys(blueprintFields).length)throw fault('provider_error',502);
@@ -88,11 +89,13 @@ function validateBlueprint(value){
  return value;
 }
 function groundedOutput(data,knowledge,sources){
- if(!exactKeys(data,['answer','citationIds','actionIds','autoActionId','blueprint'])||!text(data.answer,LIMITS.answerChars)||!Array.isArray(data.citationIds)||data.citationIds.length>8||!Array.isArray(data.actionIds)||data.actionIds.length>4)throw fault('provider_error',502);
+ if(!exactKeys(data,['answer','citationIds','actionIds','autoActionId','inquiryDraft','blueprint'])||!text(data.answer,LIMITS.answerChars)||!Array.isArray(data.citationIds)||data.citationIds.length>8||!Array.isArray(data.actionIds)||data.actionIds.length>4)throw fault('provider_error',502);
  const citations=[...new Set(data.citationIds)].map(id=>{const source=sources.find(item=>item.id===id);if(!source)throw fault('provider_error',502);return source;});
  const actions=[...new Set(data.actionIds)].map(id=>{if(typeof id!=='string'||!knowledge.allowedActionIds.includes(id))throw fault('provider_error',502);const resolved=knowledge.resolveAction(id);if(!resolved||resolved.id!==id)throw fault('provider_error',502);return resolved;});
  const autoActionId=data.autoActionId??null;
- if(autoActionId!==null&&(typeof autoActionId!=='string'||!actions.some(action=>action.id===autoActionId&&action.type==='navigate'&&!action.requiresConfirmation)))throw fault('provider_error',502);
- return {answer:data.answer,citations,actions,autoActionId,blueprint:validateBlueprint(data.blueprint)};
+ if(autoActionId!==null&&(typeof autoActionId!=='string'||!actions.some(action=>action.id===autoActionId&&['navigate','booking','prepare_inquiry','submit_inquiry','start_tour','return','tour_next','tour_skip','tour_exit','copy_blueprint','download_blueprint'].includes(action.type))))throw fault('provider_error',502);
+ const inquiryDraft=data.inquiryDraft??null;
+ if(inquiryDraft!==null&&(!exactKeys(inquiryDraft,Object.keys(inquiryFields))||Object.keys(inquiryDraft).length!==4||Object.entries(inquiryDraft).some(([key,value])=>typeof value!=='string'||value.length>({name:150,email:254,organisation:200,decision:3000}[key])||/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(value))))throw fault('provider_error',502);
+ return {answer:data.answer,citations,actions,autoActionId,inquiryDraft,blueprint:validateBlueprint(data.blueprint)};
 }
 module.exports={LIMITS,OUTPUT_SCHEMA,config,cost,fault,groundedOutput,identities,readBody,sameOrigin,selectTier,validate};

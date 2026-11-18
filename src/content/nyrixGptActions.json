@@ -209,10 +209,20 @@
     "path": "/contact#enquiry-title",
     "type": "prepare_inquiry"
   },
+  "submit_inquiry": { "label": "Review and send an enquiry to hello@nyrix.co", "path": "/contact", "type": "submit_inquiry", "requiresConfirmation": true },
   "booking": {
     "label": "Book a conversation",
     "path": "/contact",
     "requiresConfirmation": true,
     "type": "booking"
-  }
+  },
+  "return_previous": { "label": "Return to the previous page", "path": "/", "type": "return" },
+  "tour_founder": { "label": "Founder tour", "path": "/", "type": "start_tour", "tourId": "founder" },
+  "tour_technology": { "label": "Technology lead tour", "path": "/", "type": "start_tour", "tourId": "technology" },
+  "tour_marketing": { "label": "Marketing lead tour", "path": "/", "type": "start_tour", "tourId": "marketing" },
+  "tour_next": { "label": "Continue the current tour", "path": "/", "type": "tour_next" },
+  "tour_skip": { "label": "Skip a tour stop", "path": "/", "type": "tour_skip" },
+  "tour_exit": { "label": "Exit the current tour", "path": "/", "type": "tour_exit" },
+  "copy_blueprint": { "label": "Copy the current blueprint", "path": "/", "type": "copy_blueprint" },
+  "download_blueprint": { "label": "Download the current blueprint", "path": "/", "type": "download_blueprint" }
 }

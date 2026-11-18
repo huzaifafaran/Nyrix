@@ -59,10 +59,9 @@ it('sends real context and bounded history, then renders plain text and safe cit
   expect(screen.getByRole('link', { name: 'How Nyrix works' })).toHaveAttribute('href', '/what-we-do');
 });
 
-it('uses context suggestions as editable input without silently sending a request', () => {
+it('does not show suggested action buttons', () => {
   open({ suggestions: [{ label: 'Explore inventory planning', prompt: 'Which workflow could we improve first?' }] });
-  fireEvent.click(screen.getByRole('button', { name: 'Explore inventory planning' }));
-  expect(screen.getByLabelText('Message NyrixGPT')).toHaveValue('Which workflow could we improve first?');
+  expect(screen.queryByRole('button', { name: 'Explore inventory planning' })).not.toBeInTheDocument();
   expect(global.fetch).not.toHaveBeenCalled();
 });
 
@@ -79,6 +78,36 @@ it('never automatically books or executes unlisted destinations', async () => {
   open({ onAction }); send('Book me a call');
   await screen.findByText(answer.answer);
   expect(onAction).not.toHaveBeenCalled();
+});
+
+it('reviews the exact enquiry and sends it only after conversational confirmation', async () => {
+  const inquiryDraft = { name: 'Test Person', email: 'test@example.com', organisation: 'Test Co', decision: 'We want to improve customer call follow-up.' };
+  global.fetch.mockImplementationOnce(() => response({ ...answer, autoActionId: 'submit_inquiry', actions: [{ id: 'submit_inquiry' }], inquiryDraft }))
+    .mockImplementationOnce(() => response({ ok: true, id: 'verified-id' }));
+  open(); send('Please send an enquiry. I am Test Person, test@example.com, from Test Co. We want to improve customer call follow-up.');
+  await screen.findByText(/Please review before I send this to hello@nyrix.co/);
+  expect(global.fetch).toHaveBeenCalledTimes(1);
+  send('yes'); await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(2));
+  expect(global.fetch.mock.calls[1][0]).toBe('/api/contact');
+  expect(JSON.parse(global.fetch.mock.calls[1][1].body)).toMatchObject(inquiryDraft);
+  expect(await screen.findByText(/Your enquiry has been submitted/)).toBeInTheDocument();
+});
+
+it('does not send guessed contact details', async () => {
+  const inquiryDraft = { name: 'Unknown Person', email: 'invented@example.com', organisation: 'Unknown Co', decision: 'We need help with our workflow.' };
+  global.fetch.mockImplementation(() => response({ ...answer, autoActionId: 'submit_inquiry', actions: [{ id: 'submit_inquiry' }], inquiryDraft }));
+  open(); send('Please send an enquiry about our workflow');
+  await screen.findByText(/please share your name/i);
+  expect(global.fetch).toHaveBeenCalledTimes(1);
+  expect(screen.queryByText(/May I send it/)).not.toBeInTheDocument();
+});
+
+it('honours a declined enquiry without sending', async () => {
+  const inquiryDraft = { name: 'Test Person', email: 'test@example.com', organisation: 'Test Co', decision: 'Improve customer call follow-up.' };
+  global.fetch.mockImplementation(() => response({ ...answer, autoActionId: 'submit_inquiry', actions: [{ id: 'submit_inquiry' }], inquiryDraft }));
+  open(); send('Send an enquiry: Test Person, test@example.com, Test Co. Improve customer call follow-up.');
+  await screen.findByText(/May I send it/); send('no');
+  await screen.findByText(/I will not send the enquiry/); expect(global.fetch).toHaveBeenCalledTimes(1);
 });
 
 it('keeps input and an honest error on unavailability, and retries the same logical request', async () => {
@@ -134,16 +163,14 @@ it('offers real allowlisted website shortcuts when the service is unavailable', 
   expect(screen.getByRole('link', { name: 'Explore products' })).toHaveAttribute('href', '/products');
 });
 
-it('requires deliberate booking confirmation and never claims an unsuccessful action completed', async () => {
+it('requires conversational booking confirmation and never claims an unsuccessful action completed', async () => {
   const action = { id: 'booking', type: 'booking', label: 'Book a conversation', requiresConfirmation: true, description: 'Review the destination before opening the booking page.' };
   const onAction = jest.fn().mockResolvedValue({ ok: false, error: 'Booking is unavailable.' });
-  global.fetch.mockImplementation(() => response({ ...answer, actions: [action] }));
-  open({ onAction }); send(); await screen.findByText(answer.answer);
-  fireEvent.click(screen.getByRole('button', { name: 'Book a conversation' }));
+  global.fetch.mockImplementation(() => response({ ...answer, autoActionId:'booking', actions: [action] }));
+  open({ onAction }); send('Please book a call'); await screen.findByText(answer.answer);
   expect(onAction).not.toHaveBeenCalled();
-  expect(screen.getByRole('heading', { name: 'Review before continuing' })).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'Confirm Book a conversation' })).toHaveFocus();
-  fireEvent.click(screen.getByRole('button', { name: 'Confirm Book a conversation' }));
+  expect(await screen.findByText(/Would you like me to open the booking page/)).toBeInTheDocument();
+  send('Yes, go ahead');
   await waitFor(() => expect(onAction).toHaveBeenCalledWith('booking', expect.objectContaining({ confirmed: true })));
   expect(await screen.findByRole('alert')).toHaveTextContent('Booking is unavailable.');
   expect(screen.getByRole('status')).not.toHaveTextContent('completed');
@@ -179,20 +206,17 @@ it('gives workspace tabs arrow-key navigation and a single selected tab stop', (
   expect(conversation).toHaveAttribute('tabindex', '-1');
 });
 
-it('starts a real curated tour step, supports Next/Skip and restores the launcher on Exit', async () => {
+it('starts a curated tour and advances through chat commands', async () => {
   const onAction = jest.fn().mockResolvedValue({ ok: true });
-  const tours = [{ id: 'overview', title: 'The Nyrix approach', steps: [{ id: 'one', title: 'Start with the decision', body: 'Review our approach.', actionId: 'tour-step-one' }, { id: 'two', title: 'Explore a product', body: 'Review a product.', actionId: 'tour-step-two' }, { id: 'three', title: 'Talk to the team', body: 'Review the contact page.' }] }];
-  open({ tours, onAction }); fireEvent.click(screen.getByRole('button', { name: 'Take a tour: The Nyrix approach' }));
-  await waitFor(() => expect(onAction).toHaveBeenCalledWith('tour-step-one', expect.objectContaining({ tourId: 'overview' })));
-  expect(await screen.findByRole('region', { name: 'Start with the decision' })).toHaveFocus();
-  fireEvent.click(screen.getByRole('button', { name: 'Next' }));
-  await screen.findByRole('heading', { name: 'Explore a product' });
-  fireEvent.click(screen.getByRole('button', { name: 'Skip' }));
-  await screen.findByRole('heading', { name: 'Talk to the team' });
+  const tours = [{ id: 'founder', title: 'Founder', steps: [{ id: 'one', title: 'Start with the decision', body: 'Review our approach.', actionId: 'tour-step-one' }, { id: 'two', title: 'Explore a product', body: 'Review a product.', actionId: 'tour-step-two' }, { id: 'three', title: 'Talk to the team', body: 'Review the contact page.' }] }];
+  global.fetch.mockImplementation(() => response({ ...answer, autoActionId:'tour_founder', actions:[{id:'tour_founder'}] }));
+  open({ tours, onAction }); send('Show me around');
+  await waitFor(() => expect(onAction).toHaveBeenCalledWith('tour-step-one', expect.objectContaining({ tourId: 'founder' })));
+  await screen.findByText(/Start with the decision/);
+  send('next'); await screen.findByText(/Explore a product/);
+  send('skip'); await screen.findByText(/Talk to the team/);
   expect(onAction).toHaveBeenCalledTimes(2);
-  fireEvent.click(screen.getByRole('button', { name: 'Exit tour' }));
-  expect(screen.queryByRole('region', { name: 'Talk to the team' })).not.toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'Ask NyrixGPT' })).toHaveFocus();
+  send('exit tour'); await screen.findByText(/Tour ended/);
 });
 
 it('decodes split SSE events and UTF-8 text while keeping actions confined to the final event', async () => {
