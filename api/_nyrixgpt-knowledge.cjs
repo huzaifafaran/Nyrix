@@ -26,6 +26,14 @@ function retrievePublicContext({ query = '', maxChars = 8000 } = {}) {
 function semanticCatalog() {
   return entries.map(({id, title, text}) => ({id, title, summary: text.slice(0, 75)}));
 }
+function semanticEvidenceUpperBytes() {
+  const sizes = entries.map(({id, title, path, text}) => {
+    const chunk = `[${id}] ${title}: ${text}`;
+    const source = {id, title, url:path};
+    return Buffer.byteLength(JSON.stringify(JSON.stringify(chunk))) + Buffer.byteLength(JSON.stringify(JSON.stringify(source))) + 16;
+  }).sort((a, b) => b - a);
+  return sizes.slice(0, 8).reduce((sum, size) => sum + size, 1024);
+}
 function contextForIds(ids, maxChars = 8000) {
   const lookup = new Map(entries.map(entry => [entry.id, entry]));
   const sources = [], chunks = []; let size = 0;
@@ -38,5 +46,5 @@ function contextForIds(ids, maxChars = 8000) {
   }
   return {text: chunks.join('\n\n'), sources};
 }
-module.exports = { allowedActionIds, resolveAction, retrievePublicContext, semanticCatalog, contextForIds };
+module.exports = { allowedActionIds, resolveAction, retrievePublicContext, semanticCatalog, semanticEvidenceUpperBytes, contextForIds };
 

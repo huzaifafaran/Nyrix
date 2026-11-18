@@ -20,6 +20,19 @@ test('semantic selection resolves only approved source IDs within limits', () =>
   assert.ok(result.text.length <= 6000);
 });
 
+test('semantic evidence budget bounds every approved eight-source payload', () => {
+  const k = require('../api/_nyrixgpt-knowledge.cjs');
+  const entries = k.semanticCatalog();
+  const upper = k.semanticEvidenceUpperBytes();
+  for (let offset = 0; offset < entries.length; offset++) {
+    const ids = Array.from({length:8}, (_, i) => entries[(offset+i)%entries.length].id);
+    const found = k.contextForIds(ids, 8000);
+    const evidence = { text:found.text, sources:found.sources.map(({id,title,path})=>({id,title,url:path})) };
+    assert.ok(Buffer.byteLength(JSON.stringify(JSON.stringify(evidence))) <= upper);
+  }
+  assert.ok(upper < 14000);
+});
+
 test('retrieval grounds voice questions in public source pages', () => {
   const k = require('../api/_nyrixgpt-knowledge.cjs');
   const result = k.retrievePublicContext({ query: 'Urdu customer calls voice', maxChars: 6000 });

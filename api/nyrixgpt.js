@@ -49,7 +49,9 @@ function createNyrixGptHandler({env=process.env,ledger:injectedLedger,knowledge:
    const semantic=typeof knowledge.semanticCatalog==='function'&&typeof knowledge.contextForIds==='function';
    const selector=semantic?selectionFor({input,catalog:knowledge.semanticCatalog(),cfg}):null;
    // Byte-level upper bound plus protocol allowance, not a chars/4 guess.
-   inputTokenUpper=Buffer.byteLength(JSON.stringify(payload),'utf8')+4096+(semantic?Buffer.byteLength(JSON.stringify(selector),'utf8')+14000:0);
+   const evidenceUpper=semantic&&typeof knowledge.semanticEvidenceUpperBytes==='function'?knowledge.semanticEvidenceUpperBytes():14000;
+   if(!Number.isSafeInteger(evidenceUpper)||evidenceUpper<0||evidenceUpper>14000)throw fault('unavailable');
+   inputTokenUpper=Buffer.byteLength(JSON.stringify(payload),'utf8')+4096+(semantic?Buffer.byteLength(JSON.stringify(selector),'utf8')+evidenceUpper:0);
    if(inputTokenUpper>(semantic?LIMITS.inputTokens*2:LIMITS.inputTokens))throw fault('invalid_request',422);
    const outputTokenUpper=LIMITS.outputTokens+(semantic?256:0);
    reservedMicro=Math.max(1,cost({inputTokens:inputTokenUpper,outputTokens:outputTokenUpper},cfg));
