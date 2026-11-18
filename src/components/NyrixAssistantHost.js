@@ -70,6 +70,7 @@ export default function NyrixAssistantHost() {
         const element = document.getElementById(fragment);
         if (!element && Date.now() - started < 5000) return setTimeout(highlight, 100);
         if (!element) return;
+        element.scrollIntoView?.({ behavior: 'auto', block: 'start' });
         element.classList.add('nyrix-assistant-highlight');
         clearTimeout(highlightTimer.current);
         highlightTimer.current = setTimeout(() => element.classList.remove('nyrix-assistant-highlight'), 2200);

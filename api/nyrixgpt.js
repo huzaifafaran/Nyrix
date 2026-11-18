@@ -44,7 +44,8 @@ function createNyrixGptHandler({env=process.env,ledger:injectedLedger,knowledge:
    });
    let sources=sourceRecords(found.sources);
    if(new Set(sources.map(source=>source.id)).size!==sources.length)throw fault('unavailable');
-   let payload=requestFor({input,context:found.text,sourceList:sources,actionIds:knowledge.allowedActionIds,cfg,stream:wantsStream});
+   const actionCatalog=knowledge.allowedActionIds.map(id=>knowledge.resolveAction(id)).filter(action=>action&&typeof action.id==='string').map(({id,label,path,type,requiresConfirmation})=>({id,label,path,type,requiresConfirmation:!!requiresConfirmation}));
+   let payload=requestFor({input,context:found.text,sourceList:sources,actionIds:knowledge.allowedActionIds,actionCatalog,cfg,stream:wantsStream});
    const semantic=typeof knowledge.semanticCatalog==='function'&&typeof knowledge.contextForIds==='function';
    const selector=semantic?selectionFor({input,catalog:knowledge.semanticCatalog(),cfg}):null;
    // Byte-level upper bound plus protocol allowance, not a chars/4 guess.
@@ -70,7 +71,7 @@ function createNyrixGptHandler({env=process.env,ledger:injectedLedger,knowledge:
     if(typeof found?.text!=='string'||found.text.length>LIMITS.knowledgeChars||!Array.isArray(found.sources)||found.sources.length>8)throw fault('unavailable');
     sources=sourceRecords(found.sources);
     if(new Set(sources.map(source=>source.id)).size!==sources.length)throw fault('unavailable');
-    payload=requestFor({input,context:found.text,sourceList:sources,actionIds:knowledge.allowedActionIds,cfg,stream:wantsStream});
+    payload=requestFor({input,context:found.text,sourceList:sources,actionIds:knowledge.allowedActionIds,actionCatalog,cfg,stream:wantsStream});
     if(Buffer.byteLength(JSON.stringify(selector),'utf8')+Buffer.byteLength(JSON.stringify(payload),'utf8')+4096>inputTokenUpper)throw fault('unavailable');
    }
    res.setHeader('X-NyrixGPT-Cache',cached?'HIT':useCache&&cache.eligible(input,cfg)?'MISS':'BYPASS');

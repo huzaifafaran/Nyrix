@@ -231,7 +231,7 @@ export default function NyrixGPT({ context = { path: '/' }, suggestions, tours =
       setMessages(previous => [...previous, { id: `${payload.requestId}-answer`, role: 'assistant', content: result.answer, citations, actions }]);
       if (result.blueprint && typeof result.blueprint === 'object') setBlueprint(result.blueprint);
       setDraft(''); setPartial(''); setStatus('Response ready.');
-      const directId = resolveNavigation?.(text, actions);
+      const directId = result.autoActionId || resolveNavigation?.(text, actions);
       const directAction = actions.find(action => action.id === directId && action.type === 'navigate' && !action.requiresConfirmation);
       if (directAction) await executeAction(directAction);
     } catch (reason) {
